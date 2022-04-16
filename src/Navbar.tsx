@@ -3,11 +3,7 @@ import logo from "./assets/images/genlent_new.svg";
 
 export default function Navbar(props: any) {
   const [scrolled, setScrolled] = React.useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [showDrawer, setShowDrawer] = React.useState(false);
-  const [displayAnnouncements, setDisplayAnnouncements] = React.useState(false);
-
-  const changeNavbarColor = () => {
+  const scrollHandler = () => {
     if (window.scrollY > 20) {
       setScrolled(true);
     } else {
@@ -16,7 +12,7 @@ export default function Navbar(props: any) {
   };
 
   React.useEffect(() => {
-    window.addEventListener("scroll", changeNavbarColor);
+    window.addEventListener("scroll", scrollHandler);
   }, []);
 
   return (
