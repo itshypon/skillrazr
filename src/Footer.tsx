@@ -52,15 +52,6 @@ const RazrFinance = styled(Grid)`
   // }
 `;
 
-const ItemContainer = styled("div")`
-  @media (max-width: 500px) {
-    display: flex;
-    min-width: 600px;
-    justify-content: center;
-    padding-right: 30px;
-  }
-`;
-
 const NavLink = styled(Link)`
   text-decoration: none;
 `;
