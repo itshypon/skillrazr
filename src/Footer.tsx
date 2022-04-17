@@ -63,6 +63,8 @@ export default function Footer() {
   const [showPrivacyDialog, setShowPrivacyDialog] =
     React.useState(isPrivacyOpen);
 
+  console.log(showTermsDialog, showPrivacyDialog);
+
   return (
     <>
       <BG>
