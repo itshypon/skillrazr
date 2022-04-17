@@ -35,19 +35,16 @@ export default function Navbar(props: any) {
                 Features
               </a>
             </li>
-
-            <li className="nav-item ml-8 font-semibold">
-              <a className="nav-link" href="#training">
-                Free Training
-              </a>
-            </li>
-
             <li className="nav-item ml-8 font-semibold">
               <a className="nav-link" href="#courses">
                 Courses
               </a>
             </li>
-
+            <li className="nav-item ml-8 font-semibold">
+              <a className="nav-link" href="#training">
+                Internship
+              </a>
+            </li>
             <li className="nav-item ml-8 font-semibold">
               <a className="nav-link" href="#faqs">
                 FAQs
