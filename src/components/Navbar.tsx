@@ -1,5 +1,5 @@
 import * as React from "react";
-import logo from "./assets/images/genlent_new.svg";
+import logo from "../assets/images/genlent_new.svg";
 
 export default function Navbar(props: any) {
   const [scrolled, setScrolled] = React.useState<boolean>(false);
