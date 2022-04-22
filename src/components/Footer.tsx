@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Grid } from "@mui/material";
+import { Grid, Link as MLink } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import genlent from "./assets/images/genlent_new.svg";
+import genlent from "../assets/images/genlent_new.svg";
 // import PrivacyPolicy from "./PrivacyPolicy";
 // import ModalDialog from "./ModalDialog";
 // import Terms from "./Terms";
@@ -90,26 +90,6 @@ export default function Footer() {
               <br /> All rights reserved
             </Rights>
           </Grid>
-          {/* <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
-            <Grid item>
-              <Title>Product</Title>
-            </Grid>
-            <Grid item>
-              <NavLink to="/project" target="_blank">
-                <Sub>IDO Platform</Sub>
-              </NavLink>
-            </Grid>
-            <Grid item>
-              <NavLink to="/nft" target="_blank">
-                <Sub>NFT Platform</Sub>
-              </NavLink>
-            </Grid>
-            <Grid item>
-              <NavLink to="/fair_launch" target="_blank">
-                <Sub>Fair Launch</Sub>
-              </NavLink>
-            </Grid>
-          </Grid> */}
           <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
               <Title>Company</Title>
@@ -121,7 +101,9 @@ export default function Footer() {
               <Sub>Team</Sub>
             </Grid>
             <Grid item>
-              <Sub>Careers</Sub>
+              <NavLink to="/blogs" target="_blank">
+                <Sub>Blogs</Sub>
+              </NavLink>
             </Grid>
             <Grid item>
               <Sub>Contact</Sub>
@@ -158,13 +140,25 @@ export default function Footer() {
               <Title>Social</Title>
             </Grid>
             <Grid item>
-              <Sub>LinkedIn</Sub>
+              <MLink
+                href="https://www.linkedin.com/company/genlent-technologies/"
+                target="_blank"
+              >
+                <Sub>LinkedIn</Sub>
+              </MLink>
             </Grid>
             <Grid item>
-              <Sub>Twitter</Sub>
+              <MLink href="https://genlent.medium.com/" target="_blank">
+                <Sub>Medium</Sub>
+              </MLink>
             </Grid>
             <Grid item>
-              <Sub>Quora</Sub>
+              <MLink
+                href=" https://www.quora.com/profile/Tukuna-Patro"
+                target="_blank"
+              >
+                <Sub>Quora</Sub>
+              </MLink>
             </Grid>
           </Grid>
         </TopGrid>
