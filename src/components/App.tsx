@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import HomePage from "./HomePage";
+import AboutPage from "./AboutPage";
 
 function App(props: any) {
   return (
@@ -10,13 +11,16 @@ function App(props: any) {
       <Routes>
         <Route path="/" element={<Layout {...props} />}>
           <Route index element={<HomePage {...props} />} />
-          <Route path="/about" element={<div {...props}>About Page</div>} />
-          <Route path="/courses" element={<div {...props}>Courses Page</div>} />
+          <Route path="/about" element={<AboutPage {...props} />} />
+          <Route
+            path="/courses"
+            element={<div {...props}>Course Details Page</div>}
+          />
           <Route
             path="/blogs"
             element={
-              <div {...props} style={{ paddingTop: "500px" }}>
-                Blog Page
+              <div {...props} className="p-48">
+                Blogs are coming soon...
               </div>
             }
           />

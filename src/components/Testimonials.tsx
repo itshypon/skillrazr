@@ -69,7 +69,7 @@ export default function Testimonials(props: any) {
 
   return (
     <div
-      id="courses"
+      id="testimonials"
       className={
         " px-6 pt-20 flex flex-col items-center flex-wrap justify-between"
       }

@@ -23,7 +23,7 @@ export default function Navbar(props: any) {
     >
       <div className="flex flex-wrap flex-col md:flex-row items-center justify-between p-2 w-full">
         <div className="flex items-center mt-lg-0">
-          <a className="navbar-brand p-0 m-0" href="/" aria-label="Maiar">
+          <a className="navbar-brand p-0 m-0" href="/" aria-label="genlent">
             <img src={logo} alt="genlent" style={{ width: "160px" }} />
           </a>
         </div>
@@ -31,22 +31,27 @@ export default function Navbar(props: any) {
         <div className="navbar-nav-scroll flex flex-row">
           <ul className="navbar-nav flex items-center flex-row text-xs sm:text-base py-3">
             <li className="first:ml-0 nav-item ml-8 font-semibold">
-              <a className="nav-link" href="#features">
+              <a className="nav-link" href="/#features">
                 Features
               </a>
             </li>
             <li className="nav-item ml-8 font-semibold">
-              <a className="nav-link" href="#courses">
+              <a className="nav-link" href="/#testimonials">
+                Stories
+              </a>
+            </li>
+            <li className="nav-item ml-8 font-semibold">
+              <a className="nav-link" href="/#courses">
                 Courses
               </a>
             </li>
             <li className="nav-item ml-8 font-semibold">
-              <a className="nav-link" href="#training">
+              <a className="nav-link" href="/#training">
                 Internship
               </a>
             </li>
             <li className="nav-item ml-8 font-semibold">
-              <a className="nav-link" href="#faqs">
+              <a className="nav-link" href="/#faqs">
                 FAQs
               </a>
             </li>

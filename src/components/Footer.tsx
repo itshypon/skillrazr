@@ -95,18 +95,24 @@ export default function Footer() {
               <Title>Company</Title>
             </Grid>
             <Grid item>
-              <Sub>About</Sub>
+              <a href="/about#about">
+                <Sub>About</Sub>
+              </a>
             </Grid>
             <Grid item>
-              <Sub>Team</Sub>
+              <a href="/about/#team">
+                <Sub>Team</Sub>
+              </a>
             </Grid>
             <Grid item>
-              <NavLink to="/blogs" target="_blank">
+              <a href="/about/#contact">
+                <Sub>Contact</Sub>
+              </a>
+            </Grid>
+            <Grid item>
+              <NavLink to="/blogs">
                 <Sub>Blogs</Sub>
               </NavLink>
-            </Grid>
-            <Grid item>
-              <Sub>Contact</Sub>
             </Grid>
           </Grid>
           <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>

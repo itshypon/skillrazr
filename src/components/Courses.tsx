@@ -30,7 +30,7 @@ export default function Courses(props: any) {
       title: "Project Work",
       icon: CurrencyRupeeIcon,
       description:
-        "Intro to HTML, CSS and JavaScript, Shell scripting, SCM, Intro to CSS and JS UI frameworks",
+        "Intro to HTML, CSS and JavaScript, \n Shell scripting, SCM, Intro to CSS and JS UI frameworks",
     },
   ];
 
@@ -38,11 +38,11 @@ export default function Courses(props: any) {
     <div
       id="courses"
       className={
-        "my-24 px-6 pt-20 flex flex-col items-center flex-wrap justify-between"
+        "my-24 px-6 pt-20 flex flex-col items-center flex-wrap justify-center"
       }
     >
       <div className="text-6xl text-center mb-4">Courses</div>
-      <div className="flex flex-wrap flex-col md:flex-row  justify-between p-2 w-full">
+      <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
         {courses.map((course) => {
           return (
             <div
