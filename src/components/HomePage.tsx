@@ -1,12 +1,14 @@
 import MainSection from "./MainSection";
 import Features from "./Features";
 import Courses from "./Courses";
+import Testimonials from "./Testimonials";
 
 const HomePage = () => {
   return (
     <div className="App">
       <MainSection />
       <Features />
+      <Testimonials />
       <Courses />
     </div>
   );

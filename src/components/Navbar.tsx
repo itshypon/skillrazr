@@ -17,7 +17,7 @@ export default function Navbar(props: any) {
 
   return (
     <header
-      className={`fixed px-6 top-0 left-0 right-0 bg-white flex flex-col items-center flex-wrap justify-between hover:shadow ${
+      className={`fixed z-10 px-6 top-0 left-0 right-0 bg-white flex flex-col items-center flex-wrap justify-between hover:shadow ${
         scrolled ? "shadow" : ""
       }`}
     >
