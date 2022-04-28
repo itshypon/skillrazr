@@ -53,6 +53,7 @@ export default function About(props: any) {
             <a
               href="https://www.linkedin.com/in/tukunapatro/"
               target="_blank"
+              rel="noreferrer"
               className="ml-1"
             >
               <LinkedInIcon />
