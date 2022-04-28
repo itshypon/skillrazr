@@ -1,11 +1,5 @@
-import LiveTvIcon from "@mui/icons-material/LiveTv";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import AssessmentIcon from "@mui/icons-material/Assessment";
-import LooksOneIcon from "@mui/icons-material/LooksOne";
-import StarIcon from "@mui/icons-material/Star";
 import Carousel from "react-material-ui-carousel";
 import styled from "@emotion/styled";
-import image from "../assets/images/courses.png";
 import aka from "../assets/images/akankshya.png";
 import suman from "../assets/images/suman.png";
 import subhasmita from "../assets/images/subhasmita.png";
@@ -93,7 +87,7 @@ export default function Testimonials(props: any) {
                   <ImageContainer
                     className={`w-24 h-48 flex items-center justify-center cl-${index}`}
                   >
-                    <img src={course.icon} />
+                    <img src={course.icon} alt="" />
                   </ImageContainer>
                   <div style={{ marginTop: "20px" }}>{course.author}</div>
                 </div>
