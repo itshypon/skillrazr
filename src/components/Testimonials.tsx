@@ -16,7 +16,7 @@ export default function Testimonials(props: any) {
       title: "Great Experience",
       icon: aka,
       description:
-        "The project work exceeded my expectations, especially in the quality of content provided and the access to the instructor for my project work. I learned a lot in web develoment technologies.",
+        "The training I received for my project work exceeded my expectations, especially in the quality of content provided and the availability of the instructor. I learned a lot in web develoment technologies.",
       author: "Akankshya",
     },
     {
@@ -82,12 +82,7 @@ export default function Testimonials(props: any) {
     >
       <div className="text-6xl text-center mb-4">Success stories</div>
       <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
-        <Carousel
-          autoPlay={false}
-          stopAutoPlayOnHover
-          interval={6000}
-          className="w-full"
-        >
+        <Carousel stopAutoPlayOnHover interval={8000} className="w-full">
           {testimonials.map((course, index) => {
             return (
               <div

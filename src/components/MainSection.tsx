@@ -11,8 +11,8 @@ export default function MainSection(props: any) {
         <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
           <div className="text-7xl mb-2">Get Trained</div>
           <div className="text-2xl ml-0 sm:ml-1">
-            Learn essential tech skills, build projects <br /> Showcase talent
-            and get industry ready
+            Learn essential tech skills, build projects. <br /> Showcase talent
+            and get industry ready.
           </div>
           {/* <div className="text-1xl">
             Get your project done with proper guidance
