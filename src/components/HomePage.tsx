@@ -5,7 +5,7 @@ import Testimonials from "./Testimonials";
 
 const HomePage = () => {
   return (
-    <div className="App">
+    <div className="App container">
       <MainSection />
       <Features />
       <Testimonials />

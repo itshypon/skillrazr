@@ -7,7 +7,7 @@ export default function MainSection(props: any) {
         "mt-24 px-6 pt-20 sm:pt-[120px] flex flex-col items-center flex-wrap justify-between"
       }
     >
-      <div className="flex flex-wrap flex-col md:flex-row  justify-between p-2 w-full">
+      <div className="flex flex-wrap flex-col lg:flex-row items-center justify-between p-2 w-full">
         <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
           <div className="text-7xl mb-2">Get Trained</div>
           <div className="text-2xl ml-0 sm:ml-1">
@@ -19,7 +19,7 @@ export default function MainSection(props: any) {
           </div> */}
         </div>
 
-        <div className="navbar-nav-scroll flex flex-row sm:mr-12">
+        <div className="navbar-nav-scroll flex flex-row lg:mr-12">
           <img
             src={main}
             alt="genlent"
