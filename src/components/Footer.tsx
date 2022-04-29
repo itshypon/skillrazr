@@ -67,7 +67,7 @@ export default function Footer() {
 
   return (
     <>
-      <BG>
+      <BG className="w-full">
         <TopGrid
           className="flex-column sm:flex-row"
           container
@@ -141,7 +141,7 @@ export default function Footer() {
               </NavLink>
             </Grid>
           </Grid>
-          <Grid spacing={2} md={2} sm={2} xs={2} container direction={"column"}>
+          <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
               <Title>Social</Title>
             </Grid>

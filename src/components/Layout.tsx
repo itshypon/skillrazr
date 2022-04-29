@@ -5,12 +5,9 @@ import Navbar from "./Navbar";
 
 function Layout(props: any) {
   return (
-    <div className="App layout">
+    <div className="App flex flex-center flex-col items-center">
       <Navbar {...props} />
-
-      <div className="main-content">
-        <Outlet {...props} />
-      </div>
+      <Outlet {...props} className="container" />
       <Footer {...props} />
     </div>
   );

@@ -61,8 +61,9 @@ export default function About(props: any) {
           </div>
 
           <div>
-            10+ Years in Tech industry, mostly worked as a full stack JavaScript
-            Software Engineer
+            <span className="font-bold">10+</span> years in tech industry,
+            mostly as a full stack JavaScript Software Engineer,{" "}
+            <span className="font-bold">5+</span> years in teaching.
           </div>
         </div>
       </div>
