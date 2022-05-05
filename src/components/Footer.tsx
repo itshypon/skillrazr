@@ -2,11 +2,12 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Grid, Link as MLink } from "@mui/material";
 import { Link } from "react-router-dom";
+import ModalDialog from "./Modal";
+import PrivacyPolicy from "./Privacy";
+import TermsOfService from "./Terms";
+import ReturnsPolicy from "./ReturnsPolicy";
 
 import genlent from "../assets/images/genlent_new.svg";
-// import PrivacyPolicy from "./PrivacyPolicy";
-// import ModalDialog from "./ModalDialog";
-// import Terms from "./Terms";
 
 const BG = styled("div")`
   background: #161c2d;
@@ -57,13 +58,26 @@ const NavLink = styled(Link)`
 `;
 const isPrivacyOpen = window.location.href.indexOf("privacy") !== -1;
 const isTermsOpen = window.location.href.indexOf("terms") !== -1;
+const isReturnsOpen = window.location.href.indexOf("returns") !== -1;
 
 export default function Footer() {
   const [showTermsDialog, setShowTermsDialog] = React.useState(isTermsOpen);
   const [showPrivacyDialog, setShowPrivacyDialog] =
     React.useState(isPrivacyOpen);
 
-  console.log(showTermsDialog, showPrivacyDialog);
+  const [showReturnsDialog, setShowReturnsDialog] =
+    React.useState(isReturnsOpen);
+
+  const handleDialogClose = () => {
+    setShowPrivacyDialog(false);
+  };
+  const handleTermsDialogClose = () => {
+    setShowTermsDialog(false);
+  };
+
+  const handleReturnsDialogClose = () => {
+    setShowReturnsDialog(false);
+  };
 
   return (
     <>
@@ -95,19 +109,19 @@ export default function Footer() {
               <Title>Company</Title>
             </Grid>
             <Grid item>
-              <a href="/about#about">
+              <NavLink to="/about">
                 <Sub>About</Sub>
-              </a>
+              </NavLink>
             </Grid>
             <Grid item>
-              <a href="/about/#team">
+              <NavLink to="/about">
                 <Sub>Team</Sub>
-              </a>
+              </NavLink>
             </Grid>
             <Grid item>
-              <a href="/about/#contact">
+              <NavLink to="/about">
                 <Sub>Contact</Sub>
-              </a>
+              </NavLink>
             </Grid>
             <Grid item>
               <NavLink to="/blogs">
@@ -140,6 +154,16 @@ export default function Footer() {
                 <Sub>Privacy Policy</Sub>
               </NavLink>
             </Grid>
+            <Grid item>
+              <NavLink
+                to="#returns"
+                onClick={() => {
+                  setShowReturnsDialog(true);
+                }}
+              >
+                <Sub>Return Policy</Sub>
+              </NavLink>
+            </Grid>
           </Grid>
           <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
@@ -169,24 +193,39 @@ export default function Footer() {
           </Grid>
         </TopGrid>
       </BG>
-      {/* <ModalDialog
-        showDialog={showTermsDialog}
+      <ModalDialog
+        showModal={showTermsDialog}
         setShowDialog={setShowTermsDialog}
+        cancelHandler={handleTermsDialogClose}
+        title="Terms of Service"
         content={
           <div>
-            <Terms />
+            <TermsOfService />
           </div>
         }
       />
       <ModalDialog
-        showDialog={showPrivacyDialog}
+        showModal={showPrivacyDialog}
+        cancelHandler={handleDialogClose}
         setShowDialog={setShowPrivacyDialog}
+        title="Privacy Policy"
         content={
           <div>
             <PrivacyPolicy />
           </div>
         }
-      /> */}
+      />
+      <ModalDialog
+        showModal={showReturnsDialog}
+        cancelHandler={handleReturnsDialogClose}
+        setShowDialog={setShowReturnsDialog}
+        title="Return Policy"
+        content={
+          <div>
+            <ReturnsPolicy />
+          </div>
+        }
+      />
     </>
   );
 }
