@@ -30,7 +30,6 @@ import Button from '@mui/material/Button';
 import ApiIcon from '@mui/icons-material/Api';
 import StreamIcon from '@mui/icons-material/Stream';
 import Typography from '@mui/material/Typography';
-import ModalDialog from "./Modal";
 
 
 const Accordion = styled((props: AccordionProps) => (
@@ -349,10 +348,8 @@ function FAQsAccordians() {
 
 const CourseDetailsPage = () => {
     const { id } = useParams();
-    const [showPurchaseModal, setShowPurchaseModal] = React.useState(false);
 
     const ProjectWork = (props: any) => {
-        const { course } = props;
         return <div className="mt-4">
             {/* <PersonOutlineIcon className="!w-10 !h-10 mr-4" />
             <AssignmentIcon className="!w-10 !h-10 mr-4" />
