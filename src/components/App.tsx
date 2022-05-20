@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
+import CourseDetailsPage from './CourseDetailsPage';
 
 function App(props: any) {
   return (
@@ -13,8 +14,8 @@ function App(props: any) {
           <Route index element={<HomePage {...props} />} />
           <Route path="/about" element={<AboutPage {...props} />} />
           <Route
-            path="/courses"
-            element={<div {...props}>Course Details Page</div>}
+            path="/courses/:id"
+            element={<CourseDetailsPage {...props} />}
           />
           <Route
             path="/blogs"

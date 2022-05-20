@@ -75,6 +75,10 @@ export default function About(props: any) {
         <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
           <div className="text-4xl ml-0 sm:ml-1 pb-4">Contact Us</div>
           <div className="text-1xl py-2">
+            Plot No 1073 & 1074, Raja Rajeswara Nagar, <br />
+            Serilingampally Hyderabad, 500084, India
+          </div>
+          <div className="text-1xl py-2">
             <EmailIcon />{" "}
             <a href="mailto:contact@genlent.in">contact@genlent.in</a>
           </div>

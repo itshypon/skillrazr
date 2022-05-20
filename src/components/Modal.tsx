@@ -7,9 +7,10 @@ import {
   Button,
 } from "@mui/material";
 
-const Modal = ({ showModal, title, content, cancelHandler }: any) => {
+const Modal = ({ showModal, fullScreen = false, title, content, cancelHandler }: any) => {
   return (
     <Dialog
+      fullScreen={fullScreen}
       className="modal"
       open={showModal}
       onClose={cancelHandler}
