@@ -96,7 +96,7 @@ export default function Footer() {
             className="mb-10 sm:mb-0 items-center"
           >
             <RazrFinance>
-              <img src={genlent} alt="" style={{ width: "160px" }} />
+              <img src={genlent} alt="" style={{ width: "220px" }} />
             </RazrFinance>
 
             <Rights>
