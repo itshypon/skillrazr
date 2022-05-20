@@ -5,6 +5,7 @@ import StarIcon from "@mui/icons-material/Star";
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import UpcomingTwoToneIcon from '@mui/icons-material/UpcomingTwoTone';
 import OpenInNewTwoToneIcon from '@mui/icons-material/OpenInNewTwoTone';
+import { NavLink } from "react-router-dom";
 
 export default function Courses(props: any) {
   const upComingCourses = [
@@ -69,7 +70,9 @@ export default function Courses(props: any) {
       <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
         {availalbeCourses.map((course) => {
           return (
-            <a href={`/courses/${course.id}`} rel='noreferrer'>
+            <NavLink to={`/courses/${course.id}`} onClick={() => {
+              window.scrollTo(0, 0);
+            }}>
               <div
                 key={course.title}
                 className="flex flex-col items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-4 mt-lg-0 font-bold box-shadow border border-green-500 rounded-[5px]"
@@ -80,8 +83,7 @@ export default function Courses(props: any) {
                 <div className="ml-2 text-2xl">{course.title} <OpenInNewTwoToneIcon /></div>
                 <div className="ml-2">{course.description}</div>
               </div>
-            </a>
-
+            </NavLink>
           );
         })}
       </div>
