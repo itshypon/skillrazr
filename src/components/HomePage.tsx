@@ -2,6 +2,9 @@ import MainSection from "./MainSection";
 import Features from "./Features";
 import Courses from "./Courses";
 import Testimonials from "./Testimonials";
+import Internship from "./Internship";
+import Faqs from "./Faqs";
+
 
 const HomePage = () => {
   return (
@@ -10,6 +13,8 @@ const HomePage = () => {
       <Features />
       <Testimonials />
       <Courses />
+      <Internship />
+      <Faqs />
     </div>
   );
 };

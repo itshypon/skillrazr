@@ -84,7 +84,7 @@ function ContentAccordians() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        HTML
+                        <b>HTML</b>
                     </Typography>
                     <div>DocType, Structuring a web page
                         Header, Nav, Section, Footer and other tags
@@ -94,29 +94,29 @@ function ContentAccordians() {
                         Injecting CSS in various ways
                         Audio, Video, Iframes etc  </div>
                     <Typography>
-                        CSS
+                        <b>CSS</b>
                     </Typography>
-                    <div>Positioning
-                        Display
-                        Box Model
-                        Specificity
-                        Responsive Layout
-                        Animation
-                        Frameworks (BootStrap)
-                        Pseudo selectors
+                    <div>Positioning,
+                        Display,
+                        Box Model,
+                        Specificity,
+                        Responsive Layout,
+                        Animation,
+                        Frameworks (Tailwind, BootStrap),
+                        Pseudo selectors,
                         Flexbox</div>
-
                     <Typography>
-                        JavaScript
+                        <b>JavaScript</b>
                     </Typography>
                     <div>
                         1. JS Concepts
-                        2. Cookies
-                        3. Adding behaviour to a webpage and page elements, like button click, select change etc
-                        4. Objects, Arrays, Functions in details
-                        5. Functions as first class citizens (higher order functions)
-                        6. Closure
-                        7. Prototype inheritance in JS
+                        2. Objects, Arrays, Functions in details
+                        3. Functions as first class citizens (higher order functions)
+                        4. Closure
+                        5. Prototype inheritance in JS
+                        6. Cookies
+                        7. Adding behaviour to a webpage and page elements, like button click, select change etc
+                        8. And much more
                     </div>
 
                 </AccordionDetails>
@@ -140,34 +140,46 @@ function ContentAccordians() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        ReactJS Library
-                        BootStrap
-                        jQuery
-                        Angular Framework
-                        SASS for CSS
-                        React NextJS
+                        ReactJS Library,
+                        BootStrap,
+                        jQuery,
+                        Angular Framework,
+                        SASS for CSS,
+                        React NextJS and so on
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel3a'} onChange={handleChange('panel3a')}>
+                <AccordionSummary aria-controls="panel3ad-content" id="panel3ad-header">
+                    <Typography>4. Shell Scripting and NPM  <ApiIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        Shell Commands,
+                        Introduction to NPM
                     </Typography>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography>4. APIs and Backend  <ApiIcon /></Typography>
+                    <Typography>5. APIs and Backend  <ApiIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        HTTP Standards
-                        API specifications
-                        NodeJS Concepts
-                        NPM
-                        API server and Database Server
-                        Security
-                        Networking Concepts
+                        HTTP Standards,
+                        API specifications,
+                        NodeJS Concepts,
+                        NPM,
+                        API server and Database Server,
+                        Security,
+                        Networking Concepts and more
                     </Typography>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography>5. Debugging & Problem Solving <PestControlIcon /> </Typography>
+                    <Typography>6. Debugging & Problem Solving <PestControlIcon /> </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -178,10 +190,11 @@ function ContentAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
-                    <Typography>6. Software Testing  <AssignmentTurnedInIcon /></Typography>
+                    <Typography>7. Web Security and Software Testing  <AssignmentTurnedInIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
+                        Web Security,
                         Intro to Testing
                         Manual Testing
                         Unit Testing using JS libraries
@@ -191,7 +204,7 @@ function ContentAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
                 <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
-                    <Typography>7. Deployment <CloudDoneIcon /> </Typography>
+                    <Typography>8. Deployment <CloudDoneIcon /> </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -203,7 +216,7 @@ function ContentAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
                 <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
-                    <Typography>8. Lab work  <HomeWorkIcon /></Typography>
+                    <Typography>9. Lab work  <HomeWorkIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -219,7 +232,7 @@ function ContentAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
                 <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
-                    <Typography>9. Interview Preparations  <WorkIcon /></Typography>
+                    <Typography>10. Interview Preparations  <WorkIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -233,7 +246,7 @@ function ContentAccordians() {
 
 
 function FAQsAccordians() {
-    const [expanded, setExpanded] = React.useState<string | false>('panel1');
+    const [expanded, setExpanded] = React.useState<string | false>('');
 
     const handleChange =
         (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -244,11 +257,11 @@ function FAQsAccordians() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span>What's next after applying for this course? </span></Typography>
+                    <Typography><span>What's next after purchasing this course? </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        After you've submitted your details and the course fee, an instructor will be assigned to you. <br />Course will be started based on the mutually agreed convenient time.
+                        After you've submitted your details and the course fee, an instructor will be assigned to you. <br />Course will start based on the mutually agreed convenient time.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -293,13 +306,12 @@ function FAQsAccordians() {
                 <AccordionDetails>
                     <Typography>
                         <div>Yes, you'll awarded course completion certificate upon successful completion of the course.</div>
-                        <a href="https://developer.chrome.com/docs/devtools/" rel="noreferrer" target="_blank">https://developer.chrome.com/docs/devtools/</a>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-                <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
+            <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
+                <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
                     <Typography>Who are the instructors? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -320,8 +332,8 @@ function FAQsAccordians() {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-                <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
+            <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
+                <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
                     <Typography>Can I choose the final project? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -331,8 +343,8 @@ function FAQsAccordians() {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-                <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
+            <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
+                <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
                     <Typography>How to get support? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -434,7 +446,6 @@ const CourseDetailsPage = () => {
                     </div>
                 </div>
 
-                {/* <Button variant='contained' className='bg-[#ff1493]'>Apply Now</Button> */}
                 <Button variant='contained' className='!my-8 !py-2 !px-8 !text-xl !capitalize'>
                     <a href="https://rzp.io/l/genlentfullstackjs" target="_blank" rel='noreferrer'
                     > Buy Now</a></Button>

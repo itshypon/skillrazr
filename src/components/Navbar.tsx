@@ -17,9 +17,8 @@ export default function Navbar(props: any) {
 
   return (
     <header
-      className={`fixed z-10 px-0 sm:px-6 top-0 left-0 right-0 bg-white flex flex-col items-center flex-wrap justify-between hover:shadow ${
-        scrolled ? "shadow" : ""
-      }`}
+      className={`fixed z-10 px-0 sm:px-6 top-0 left-0 right-0 bg-white flex flex-col items-center flex-wrap justify-between hover:shadow ${scrolled ? "shadow" : ""
+        }`}
     >
       <div className="flex flex-wrap flex-col md:flex-row items-center justify-between p-2 w-full">
         <div className="flex items-center mt-lg-0">
@@ -46,7 +45,7 @@ export default function Navbar(props: any) {
               </a>
             </li>
             <li className="nav-item ml-8 font-semibold">
-              <a className="nav-link" href="/#training">
+              <a className="nav-link" href="/#internship">
                 Internship
               </a>
             </li>
