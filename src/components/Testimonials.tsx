@@ -75,7 +75,7 @@ export default function Testimonials(props: any) {
       }
     >
       <div className="text-6xl text-center mb-4">Success stories</div>
-      <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
+      <div className="h-[540px] sm:h-[auto]  flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
         <Carousel stopAutoPlayOnHover interval={8000} className="w-full">
           {testimonials.map((course, index) => {
             return (
@@ -89,7 +89,7 @@ export default function Testimonials(props: any) {
                   >
                     <img src={course.icon} alt="" />
                   </ImageContainer>
-                  <div style={{ marginTop: "20px" }}>{course.author}</div>
+                  <div style={{ marginTop: "20px" }} className='text-center'>{course.author}</div>
                 </div>
                 <div>
                   <div className="mb-4 text-2xl">{course.title}</div>
