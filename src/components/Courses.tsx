@@ -17,13 +17,6 @@ export default function Courses(props: any) {
       disabled: true,
     },
     {
-      id: 'more_js',
-      title: "More JavaScript",
-      icon: LiveTvIcon,
-      description: "JavaScript in depth",
-      disabled: true,
-    },
-    {
       id: 'react',
       title: "ReactJS",
       icon: AssessmentIcon,
@@ -39,6 +32,11 @@ export default function Courses(props: any) {
       icon: LooksOneIcon,
       description: "Intro to HTML, CSS and JavaScript, \n Shell scripting, SCM, UI frameworks, NPM and NodeJS, JS in depth and so on",
 
+    },
+    {
+      id: 'deep_js_node_js',
+      title: "Deep JS and Advance NodeJS",
+      description: "JavaScript in depth, NodeJS advance topics"
     },
   ]
 
