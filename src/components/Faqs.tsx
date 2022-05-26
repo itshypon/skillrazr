@@ -5,7 +5,6 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 
-
 const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -53,7 +52,7 @@ function FAQsAccordians() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span>What's next after purchasing a course? </span></Typography>
+                    <Typography className='!font-bold'><span>What's next after purchasing a course? </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -64,22 +63,23 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel1a'} onChange={handleChange('panel1a')}>
                 <AccordionSummary aria-controls="panel1ad-content" id="panel1ad-header">
-                    <Typography><span>Who are elligible for the courses? </span></Typography>
+                    <Typography className='!font-bold'><span>Who are elligible for the courses? </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
                         There is no age limit for learning. <br /> But all our courses are suitable for anyone above 13 years old.
+                        <br /> If you feel a particular course content is not suitable and you want to customise it a bit, please <a href="/about" className="font-bold" target={"_blank"}>contact</a> support for the same.
                     </Typography>
                 </AccordionDetails>
 
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography>Is there a refund option available, if I'm not satisfied? </Typography>
+                    <Typography className='!font-bold'>Is there a refund option available, if I'm not satisfied? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
-                        <div> If you are not satisfied with the course, you can recieve a refund within max thirty business days to the original source of payment, excluding taxes.
+                    <Typography >
+                        <div> If you are not satisfied with the course, you can recieve a refund within max 30 business days to the original source of payment, excluding taxes.
                             <br /> Raise refund request within 10 days of purchase of a course. Any refund
                             request beyond 10 days of purchasing the course will not be accepted and
                             no refund will be provided.</div>
@@ -89,7 +89,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                    <Typography>Are there any jobs available, after completion of this course? </Typography>
+                    <Typography className='!font-bold'>Are there any jobs available, after completion of this course? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -99,7 +99,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography>Is it 100% Online? </Typography>
+                    <Typography className='!font-bold'>Is it 100% Online? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -109,7 +109,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography>Do I get a course completion certificate?  </Typography>
+                    <Typography className='!font-bold'>Do I get a course completion certificate?  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -120,7 +120,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
-                    <Typography>Who are the instructors? </Typography>
+                    <Typography className='!font-bold'>Who are the instructors? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -131,18 +131,18 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
                 <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
-                    <Typography>How much time is allocated for the project work? </Typography>
+                    <Typography className='!font-bold'>How much time is allocated for the project work? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Out of 4 months, 3 months is allocated for covering all the topics including lab assignments. You'll be completing your final project work in 1 months time.
+                        For specific coureses where project work is part of the course, 75% of total course time is allocated for covering all the concepts including lab assignments. You'll be completing your final project work in 25% of the total course time.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
                 <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
-                    <Typography>Can I choose the final project? </Typography>
+                    <Typography className='!font-bold'>Can I choose the final project? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -153,12 +153,12 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
                 <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
-                    <Typography>How to get support? </Typography>
+                    <Typography className='!font-bold'>How to get support? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        You can reach out to us via Email to contact@genlent.in <br />
-                        Also you can contact us by visiting <a href="/about" target={"_blank"}>Contact</a>
+                        You can reach out to us via Email to <a href="mailto:contact@genlent.in">contact@genlent.in</a> <br />
+                        Also you can contact us by visiting <a href="/about" className="font-bold" target={"_blank"}>Contact</a>
                     </Typography>
                 </AccordionDetails>
             </Accordion>

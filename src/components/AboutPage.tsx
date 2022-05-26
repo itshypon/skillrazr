@@ -84,7 +84,7 @@ export default function About(props: any) {
           </div>
           <div className="text-1xl py-2">
             <PhoneIcon />
-            <span className="px-2">+918297074155</span>
+            <span className="px-2"><a href="tel:+918297074155">8297074155</a></span>
           </div>
         </div>
       </div>
