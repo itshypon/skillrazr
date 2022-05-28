@@ -7,7 +7,7 @@ import PrivacyPolicy from "./Privacy";
 import TermsOfService from "./Terms";
 import ReturnsPolicy from "./ReturnsPolicy";
 
-import genlent from "../assets/images/genlent_new.svg";
+import logo from "../assets/images/SkillRazr.svg";
 
 const BG = styled("div")`
   background: #161c2d;
@@ -96,7 +96,7 @@ export default function Footer() {
             className="mb-10 sm:mb-0 items-center"
           >
             <RazrFinance>
-              <img src={genlent} alt="" style={{ width: "220px" }} />
+              <img src={logo} alt="" style={{ width: "220px" }} />
             </RazrFinance>
 
             <Rights>
