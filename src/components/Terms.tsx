@@ -3,9 +3,9 @@ const TermsOfService = () => {
     <div className="text-[black]">
       These Terms and Conditions constitute a legally binding agreement made
       between you, whether personally or on behalf of an entity (“you”) and
-      Genlent (OPC) Pvt. Ltd (“
-      <b>Genlent</b>”, “we”, “us”) and its Affiliates concerning your access to
-      and use of the <a href="https://genlent.in">https://genlent.in</a> website
+      Genlent Technologies (OPC) Pvt. Ltd (“
+      <b>SkillRazr</b>”, “we”, “us”) and its Affiliates concerning your access to
+      and use of the <a href="https://skillrazr.com">https://skillrazr.com</a> website
       as well as any other media form, media channel, mobile website or mobile
       application related, linked, or otherwise connected thereto (collectively,
       the “Site” or “Application”). You agree that by accessing the Site, you
@@ -231,7 +231,7 @@ const TermsOfService = () => {
         <b>Force Majeure</b>
       </h5>
       <br />
-      Genlent shall have no liability to you if it is prevented from or delayed
+      SkillRazr shall have no liability to you if it is prevented from or delayed
       in performing its obligations or from carrying on its business, by acts,
       events, omissions or accidents beyond its reasonable control, including,
       without limitation, strikes, failure of a utility service or
@@ -244,35 +244,36 @@ const TermsOfService = () => {
         <b>Disclaimers and Warranties</b>
       </h5>
       <br />
-      Genlent is merely a technology platform, and does not provide any legal,
+      SkillRazr is merely a edu tech platform that provides information about various technologies
+      and does not provide any legal,
       tax, investment, financial, or other advice and no information provided by
-      Genlent in connection with the Website should be construed as such.
+      SkillRazr in connection with the Website should be construed as such.
       <br />
       You agree that your use of the Website is at your sole risk. To the extent
       permitted by applicable law, the Website is provided on an “as is” and “as
-      available” basis. Genlent does not warrant that the functions contained in
+      available” basis. SkillRazr does not warrant that the functions contained in
       the Website will meet your requirements. You hereby accept full
       responsibility for any consequences that may arise from your use of the
-      Website, and expressly agree and acknowledge that Genlent shall have
+      Website, and expressly agree and acknowledge that SkillRazr shall have
       absolutely no liability in this regard.
       <br />
-      Genlent does not warrant or represent that the Website will be compatible
+      SkillRazr does not warrant or represent that the Website will be compatible
       with any third party hardware or software. It shall be your responsibility
-      to ensure compatibility of the Website prior to use. Additionally, Genlent
+      to ensure compatibility of the Website prior to use. Additionally, SkillRazr
       shall not be held responsible for any actual, incidental or consequential
       damages that may result from any use or inability to use any third-party
-      peripherals with the Website. 
+      peripherals with the Website.
       <br />
       The Application may contain links to third party web sites or Website that
-      are not owned or controlled by Genlent. Genlent has no control over, and
+      are not owned or controlled by SkillRazr. SkillRazr has no control over, and
       assumes no responsibility for, the content, privacy policies, or practices
-      of any such websites. You further acknowledge and agree that Genlent shall
+      of any such websites. You further acknowledge and agree that SkillRazr shall
       not be responsible or liable, directly or indirectly, for any damage or
       loss caused or alleged to be caused by or in connection with use of or
       reliance on any such content, goods or Website available on or through any
       such web sites or service.
       <br />
-      To the fullest extent permissible under applicable law, Genlent expressly
+      To the fullest extent permissible under applicable law, SkillRazr expressly
       disclaims all warranties of any kind, express or implied, arising out of
       the Website, including warranties of merchantability, fitness for a
       particular purpose, satisfactory quality, accuracy, title and
@@ -280,7 +281,7 @@ const TermsOfService = () => {
       appropriateness, and any warranty that may arise out of course of
       performance, course of dealing, or usage of trade.
       <br />
-      To the fullest extent permissible by law, Genlent, its affiliates, and
+      To the fullest extent permissible by law, SkillRazr, its affiliates, and
       their related parties each disclaim all liability to you for any loss or
       damage arising out of or due to:
       <br />
@@ -291,7 +292,7 @@ const TermsOfService = () => {
       the occurrence or existence of any defect, interruption, deletion of
       files, delays in the operation or transmission of information to, from, or
       through the Website, communications failure, theft, destruction or
-      unauthorised access to Genlent's records, programs, Website, server, or
+      unauthorised access to SkillRazr's records, programs, Website, server, or
       other infrastructure relating to the Website;
       <br />
       the Website being infected with any malicious code or viruses; or the
@@ -309,7 +310,7 @@ const TermsOfService = () => {
       it and acknowledge that the use of such Third Party Website is solely at
       your own risk.
       <br />
-      Genlent makes no representations and excludes all warranties and
+      SkillRazr makes no representations and excludes all warranties and
       liabilities arising out of or pertaining to such Third Party Website,
       including its accuracy or completeness.
       <br />
@@ -321,7 +322,7 @@ const TermsOfService = () => {
         <b>Indemnity</b>
       </h5>
       <br />
-      You agree to indemnify and hold harmless Genlent, its affiliates,
+      You agree to indemnify and hold harmless SkillRazr, its affiliates,
       subsidiaries, licensors, and their respective directors, officers,
       members, managers, employees, and agents from and against any and all
       claims and expenses arising out of your use of the Website, a breach of

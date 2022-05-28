@@ -3,7 +3,7 @@ const PrivacyPolicy = () => {
     <div className="text-[black]">
       This policy, together with any other documents referred to in it, sets out
       the basis on which any personal data Genlent Technologies (OPC) Pvt. Ltd
-      (“<b>Genlent </b>”, “we”, “us”) collects from you, or that you provide to
+      (“<b>SkillRazr </b>”, “we”, “us”) collects from you, or that you provide to
       us, will be processed by us. Please read the following carefully to
       understand our views and practices regarding your personal data and how we
       will treat it. By visiting this website, you are accepting and consenting
@@ -248,9 +248,9 @@ const PrivacyPolicy = () => {
       parties send us correspondence about your activities or postings on the
       Website, we may collect such information into a file specific to you.
       <br />
-      More information on how cookies work, what cookies we use and why, can be
+      {/* More information on how cookies work, what cookies we use and why, can be
       found in our Cookie Policy (
-      <a href="https://genlent.in/#cookie">https://genlent.in/#cookie</a>).
+      <a href="https://skillrazr.com/#cookie">https://skillrazr.com/#cookie</a>). */}
       <br />
       <br />
       <h3>
