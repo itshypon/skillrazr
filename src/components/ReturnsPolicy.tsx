@@ -4,12 +4,18 @@ const ReturnPolicy = () => {
       <div>
         <b>
           Thank you for trusting and starting your learning journey with us.
-          <br />
+          <br /> <br />
         </b>{" "}
-        <b>Genlent</b> ensures that you have a rewarding experience for any
+        These Terms and Conditions constitute a legally binding agreement made
+        between you, whether personally or on behalf of an entity (“you”) and
+        Genlent Technologies (OPC) Pvt. Ltd (“
+        <b>SkillRazr</b>”, “we”, “us”) and its Affiliates concerning your access to
+        and use of the <a href="https://skillrazr.com">https://skillrazr.com</a> website.
+        <br /> <br />
+        <b>SkillRazr</b> (Genlent Technologies (OPC) Pvt. Ltd) ensures that you have a rewarding experience for any
         instructor-led or self-paced courses you purchase. As with any online
         purchase experience, there are terms and conditions that govern the
-        Refund Policy. When you buy a course on <b>Genlent</b>, you agree to our
+        Refund Policy. When you buy a course on <b>SkillRazr</b>, you agree to our
         Privacy Policy, Terms of service and Refund Policy.
       </div>
       <br />
@@ -39,13 +45,13 @@ const ReturnPolicy = () => {
       <div>
         <b>For Offline Courses:-</b>
         <br />
-        <b>Genlent</b>, reserves the right to postpone/cancel an event, or
+        <b>SkillRazr</b>, reserves the right to postpone/cancel an event, or
         change the location of an event because of insufficient enrollments,
         instructor illness or for natural and unavoidable catastrophes (like
-        floods, earthquakes, political instability, etc) In case <b>Genlent</b>{" "}
+        floods, earthquakes, political instability, etc) In case <b>SkillRazr</b>{" "}
         cancels an event, 100% of course fees will be refunded to the
         participant. However travel, logistics or any personal expense incurred
-        by participants will not be refunded. In case Genlent cancels/postpones
+        by participants will not be refunded. In case SkillRazr cancels/postpones
         an event, the participants who are ahead of 15 days of purchase, of
         course, will be rescheduled to any upcoming batch without any extra
         charges. If a cancellation is done by a participant within 7 business
@@ -64,10 +70,10 @@ const ReturnPolicy = () => {
           section on the website. Refund of the duplicate payment made by the
           participant will be processed via the same source (original method of
           payment) in 7 working days post intimation by the participant.{" "}
-          <b>Genlent</b> reserves the right to revise the terms & conditions of
+          <b>SkillRazr</b> reserves the right to revise the terms & conditions of
           this policy without any prior notice. <br />
           Note: All refunds will be processed within 10 working days after the
-          refund request is approved by <b>Genlent</b>.
+          refund request is approved by <b>SkillRazr</b>.
         </div>
       </div>
     </div>

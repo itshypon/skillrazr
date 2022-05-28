@@ -27,7 +27,7 @@ export default function About(props: any) {
         id="about"
       >
         <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
-          <div className="text-4xl pb-4">Why Genlent?</div>
+          <div className="text-4xl pb-4">Why SkillRazr?</div>
           <div className="text-1xl">
             We focus on giving quality tech training to students and give them
             an exposure to software development and make them industry ready.
@@ -80,7 +80,7 @@ export default function About(props: any) {
           </div>
           <div className="text-1xl py-2">
             <EmailIcon />{" "}
-            <a href="mailto:contact@genlent.in">contact@genlent.in</a>
+            <a href="mailto:contact@genlent.in">support@skillrazr.com</a>
           </div>
           <div className="text-1xl py-2">
             <PhoneIcon />
