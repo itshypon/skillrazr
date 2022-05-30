@@ -171,14 +171,14 @@ export default function Footer() {
             </Grid>
             <Grid item>
               <MLink
-                href="https://www.linkedin.com/company/genlent-technologies/"
+                href="https://www.linkedin.com/company/skillrazr"
                 target="_blank"
               >
                 <Sub>LinkedIn</Sub>
               </MLink>
             </Grid>
             <Grid item>
-              <MLink href="https://genlent.medium.com/" target="_blank">
+              <MLink href="https://skillrazr.medium.com/" target="_blank">
                 <Sub>Medium</Sub>
               </MLink>
             </Grid>

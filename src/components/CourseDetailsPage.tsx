@@ -10,6 +10,8 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import ConstructionIcon from '@mui/icons-material/Construction';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
@@ -345,10 +347,10 @@ function DeepJS() {
                 <AccordionDetails>
                     <Typography>
                         <ul>
-                            <li>Advance JS Excercises</li>
+                            <li>Advance JS Exercises</li>
                             <li>Express integration</li>
                             <li>Cloud database integration</li>
-                            <li>NodeJS Excercises</li>
+                            <li>NodeJS Exercises</li>
                             <li>and so on</li>
                         </ul>
                     </Typography>
@@ -481,8 +483,254 @@ function FAQsAccordians() {
     );
 }
 
+
+function DSAlgo() {
+    const [expanded, setExpanded] = React.useState<string | false>('');
+
+    const handleChange =
+        (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+            setExpanded(newExpanded ? panel : false);
+        };
+
+    return (
+        <div>
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography><span className='font-bold'>1. Data Structures </span> <LightbulbCircleIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    {/* <Typography>
+                        <b className='text-2xl'>Stack</b>
+                    </Typography> */}
+                    <div className='text-1xl font-bold'>
+                        1. Stack <br />
+                        2. Queue <br />
+                        3: Linked list <br />
+                        4: Trees <br />
+                        4a: Trees - BST <br />
+
+                        4b: Trees - AVL<br />
+                        4c: Trees - Red Black<br />
+                        5: Hash Table <br />
+                        6: Graphs <br />
+                        6a: Graph and its representations<br />
+                        6b: Adjacency List<br />
+                        6c: Directed Graph<br />
+                        6d: Undirected Graph<br />
+                    </div>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography className='!font-bold'>2. Algorithms <AccountTreeIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <ul className='font-bold'>
+                            <div className='text-xl font-bold'>
+                                1. Searching and Sorting
+                            </div>
+                            <li>
+                                Complexity Theory <br />
+                                Big O Notation<br />
+                                Divide and Conquer
+                            </li>
+                            <li>
+                                Binary Search
+                            </li><li>
+                                Selection Sort
+                            </li>
+                            <li>
+                                Bubble Sort
+                            </li>
+                            <li>
+                                Insertion Sort
+                            </li>
+                            <li>
+                                Merge Sort
+                            </li>
+                            <li>
+                                Heap Sort
+                            </li> <li>
+                                Quick Sort
+                            </li>
+                            <li>
+                                Radix Sort
+                            </li>
+                            <br />
+
+                            2. Greedy Algorithm <br />
+                            3. Dynamic Programming <br />
+                            4. Recursion <br />
+                            5. Balanced Trees <br />
+                            6. Trie concpts <br />
+                        </ul>
+
+
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+                    <Typography className='!font-bold'>3. Interview Preparations <WorkIcon /> </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <ul>
+                            <li>Interview Guidance
+                            </li>
+                            <li>
+                                Mock Interview Session
+                            </li>
+                            <li>
+                                How To Crack Coding interviews
+                            </li>
+                            <li>
+                                Mock Interviews (One on one ) With an expert
+                            </li>
+                        </ul>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+                    <Typography className='!font-bold'>4. System Design (Addon for Professional candidates) <BorderOuterIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <ul>
+                            <div>We will explain design principles with real world applications</div>
+                            <li>System design concepts</li>
+                            <li>Design Tinder application</li>
+                            <li>Design Tiny URL Pattern</li>
+                            <li>Design Logging Application</li>
+                        </ul>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+        </div>
+    );
+}
+
+function CPP() {
+    const [expanded, setExpanded] = React.useState<string | false>('');
+
+    const handleChange =
+        (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+            setExpanded(newExpanded ? panel : false);
+        };
+
+    return (
+        <div>
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography><span className='font-bold'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <b className='text-2xl'>Part 1</b>
+                    </Typography>
+                    <div className='text-1xl font-bold'>
+                        Object Oriented Programming Concepts <br />
+                        Structure of a program, Compiling and linking source file<br />
+                        Tokens, expressions, control structures<br />
+                        Functions<br />
+                        Classes and Objects <br />
+                        Overloading in detail <br />
+                        Type conversion<br />
+                        Inheritance<br />
+                    </div>
+                    <br />
+                    <Typography>
+                        <b className='text-2xl'>Part 2</b>
+                        <div className='text-1xl font-bold'>
+                            Pointers, Virtual Functions<br />
+                            Pollymorphism <br />
+                            I/O Operations, Files<br />
+                            Templates<br />
+                            Exception Handling<br />
+                            Standard Template Library
+                        </div>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography>2. Source Code Management (Git) <IntegrationInstructionsIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <div> Git commands walk thru in live workshop {' '}</div>
+                        <a href="https://training.github.com/downloads/github-git-cheat-sheet/" rel="noreferrer" target="_blank">https://training.github.com/downloads/github-git-cheat-sheet/</a>
+                        <br />
+                        <a href="https://www.atlassian.com/git/tutorials/git-alias/" rel="noreferrer" target="_blank">https://www.atlassian.com/git/tutorials/git-alias</a>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+                    <Typography className='!font-bold'>3. Lab work  <HomeWorkIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <ul>
+                            <li>Programs related to topics </li>
+                            <li>Exercises</li>
+                            <li>Coding best practices</li>
+                            <li>and so on</li>
+                        </ul>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
+                    <Typography className='!font-bold'>4. Customizable session (5 hrs) <WorkIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        5 hrs* dedicated sessions to clarify all your doubts for topics related to this course.
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+        </div>
+    );
+}
+
 const CourseDetailsPage = () => {
     const { id } = useParams();
+
+
+    const renderContent = (course: string) => {
+        switch (course) {
+            case 'fullstack_js': {
+                return <ContentAccordians />;
+            }
+
+            case 'deep_js_node_js': {
+                return <DeepJS />;
+            }
+
+            case 'cplusplus': {
+                return <CPP />;
+            }
+
+            case 'core_java': {
+                return <DeepJS />;
+            }
+
+            case 'ds_algo_java': {
+                return <DSAlgo />;
+            }
+
+            default:
+                return null;
+
+        }
+    }
 
     const ProjectWork = (props: any) => {
         return <div className="mt-4">
@@ -493,7 +741,8 @@ const CourseDetailsPage = () => {
             <DoneIcon htmlColor="green" className="!w-12 !h-12" /> */}
 
             <div className='text-left text-2xl py-2'>Course Content </div>
-            {props.course.id === 'fullstack_js' ? <ContentAccordians /> : <DeepJS />}
+
+            {renderContent(props.course.id)}
         </div>
     }
 
@@ -519,7 +768,7 @@ const CourseDetailsPage = () => {
                 "4. Digital track of your learning",
                 "5. Customizable sessions for interviews or clearing specific doubts",
             ],
-            duration: { total: '2 months', weekly: 'At 5 hours/week + 10hrs*' },
+            duration: { total: '2 months', weekly: 'At 5 hours/week + 10 hrs*' },
             feeStriked: "₹8,999",
             fee: 4999,
             feeInRupees: "₹4,999",
@@ -551,7 +800,63 @@ const CourseDetailsPage = () => {
             feeInRupees: "₹5,999",
             duration: { total: '4 months', weekly: 'At 10 hours/week' },
             paymentPage: 'https://rzp.io/l/genlentfullstackjs',
-        }];
+        },
+        {
+            id: 'cplusplus',
+            title: "OOPs with C++",
+            description: "Object Oriented Programming in C++",
+            overview: "This course provides you concept of Object Oriented Programming with explanatory programming sessions. This will help you to cover all concepts and aid you in your programming journey.",
+            features: [
+                "1. Learn essential concepts",
+                "2. Get exposure to cutting edge tools and industry insights",
+                "3. Live coding and doubt clear classes",
+                "4. Digital track of your learning",
+                "5. Interview preparation sessions",
+            ],
+            feeStriked: "₹2,999",
+            fee: 1999,
+            feeInRupees: "₹1,999",
+            duration: { total: '1 month', weekly: 'At 5 hours/week + 5 hrs*' },
+            paymentPage: 'https://rzp.io/l/skillrazr-opps-cpp',
+
+        },
+        {
+            id: 'core_java',
+            title: "Core Java",
+            description: "Core Java concepts one should know",
+            overview: "",
+            features: [
+                "1. Learn essential concepts",
+                "2. Get exposure to cutting edge tools and industry insights",
+                "3. Live coding and doubt clear classes",
+                "4. Digital track of your learning",
+                "5. Interview preparation sessions",
+            ],
+            feeStriked: "₹2,999",
+            fee: 1999,
+            feeInRupees: "₹1,999",
+            duration: { total: '1 month', weekly: 'At 5 hours/week' },
+            paymentPage: 'https://rzp.io/l/genlentfullstackjs',
+        },
+        {
+            id: 'ds_algo_java',
+            title: "DS and Algo in Java",
+            description: "Data Structures and Algorithms in depth",
+            overview: "This course provides you deep understanding of Data structures and Algorithm concepts from ground up. This is designed by experts to match with real world interview preparations for both freshers and working professionals.",
+            features: [
+                "1. Learn essential concepts",
+                "2. Get exposure to cutting edge tools and industry insights",
+                "3. Live coding and doubt clear classes",
+                "4. Digital track of your learning",
+                "5. Interview preparation sessions",
+            ],
+            feeStriked: "₹5,999",
+            fee: 5999,
+            feeInRupees: "₹3,999",
+            duration: { total: '2 months', weekly: 'At 5 hours/week' },
+            paymentPage: 'https://rzp.io/l/skillrazr-algo-java',
+        },
+    ];
 
     const course = courses.find(i => i.id === id);
 
@@ -607,6 +912,8 @@ const CourseDetailsPage = () => {
                     })}
                 </ul>
 
+
+                <div>Note:- To attend this course, you need to have PC/Laptop with internet access.</div>
                 <ProjectWork course={course} />
 
                 <div className='text-2xl my-4'>Course FAQs</div>
