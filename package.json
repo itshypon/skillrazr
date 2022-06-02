@@ -20,6 +20,7 @@
     "lint-staged": "^12.3.8",
     "preval.macro": "^5.0.0",
     "react": "^18.0.0",
+    "react-countdown-circle-timer": "^3.0.9",
     "react-dom": "^18.0.0",
     "react-material-ui-carousel": "^2.3.10-mui5",
     "react-router-dom": "^6.3.0",
@@ -36,9 +37,10 @@
     "tailwindcss": "^3.0.23"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "REACT_APP_ENV=development react-scripts start",
+    "build": "REACT_APP_ENV=production react-scripts build",
+    "stage": "REACT_APP_ENV=stage react-scripts build",
+    "test": "REACT_APP_ENV=test react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"**/*.{ts,tsx}\""
   },

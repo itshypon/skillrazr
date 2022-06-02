@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "genlent-8aab7"
+  },
+  "targets": {
+    "genlent-8aab7": {
+      "hosting": {
+        "stage": [
+          "skillrazr"
+        ],
+        "prod": [
+          "genlent-8aab7"
+        ]
+      }
+    }
   }
 }

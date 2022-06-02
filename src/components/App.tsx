@@ -5,6 +5,7 @@ import Layout from "./Layout";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from './CourseDetailsPage';
+import QuizDetailsPage from './QuizDetailsPage';
 import SummerCoursePage from './EverGreenCoursePage';
 import { ParallaxProvider } from "react-scroll-parallax";
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
@@ -14,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import days from '../days';
 
-interface State extends SnackbarOrigin {
+export interface State extends SnackbarOrigin {
   open: boolean;
 }
 
@@ -114,8 +115,6 @@ function App(props: any) {
   const dateMonth = `${date.getDate()}/${date.getMonth() + 1}`;
   const [daySnackSeen, setDaySnackSeen] = React.useState(false);
 
-  console.log('message today', days, dateMonth, days[dateMonth]);
-
   return (
     <ParallaxProvider>
       <BrowserRouter>
@@ -130,6 +129,10 @@ function App(props: any) {
             <Route
               path="/courses/:id"
               element={<CourseDetailsPage {...props} />}
+            />
+            <Route
+              path="/quizes/:id"
+              element={<QuizDetailsPage {...props} />}
             />
             <Route
               path="/blogs"
