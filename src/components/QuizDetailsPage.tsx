@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { useState, useEffect } from 'react';
 import { FormHelperText, Radio, RadioGroup, FormControl, FormControlLabel, FormLabel, Button, Grid } from '@mui/material';
-import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import Snackbar from '@mui/material/Snackbar';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 import IconButton from '@mui/material/IconButton';
@@ -17,7 +17,7 @@ import { State } from '../components/App';
 // quizData in the form {answer: {}, questions: []}
 
 function Snack(props: any) {
-    const { score, message } = props;
+    const { message } = props;
     const [state, setState] = useState<State>({
         open: true,
         vertical: 'top',
@@ -77,7 +77,7 @@ const QuizPlayGround = ({ quizData, submitHandler, previewMode = false }: any) =
             }
         }
         getData();
-    }, []);
+    }, [quizId]);
 
     const renderMathExpression = (input: string, id: string) => {
         if (Object.keys(questionAnswers).length > 0) {
@@ -119,7 +119,7 @@ const QuizPlayGround = ({ quizData, submitHandler, previewMode = false }: any) =
         const unattended = allQuestionIds.filter((qId: any) => !answeredQuestionIds.includes(qId));
         setUnAnsweredQuestions(unattended);
 
-        if (unattended.length == 0) {
+        if (unattended.length === 0) {
             setIsSubmitDisabled(true);
             setFetchingData(false);
 

@@ -1,4 +1,4 @@
-export default [
+const data = [
     {
         "questions": [
             {
@@ -667,3 +667,4 @@ export default [
         "updatedBy": null
     }
 ];
+export default data;
