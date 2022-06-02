@@ -1,25 +1,4 @@
-const admin = require('firebase-admin');
-const serviceAccount = require('../../../../Downloads/genlent-8aab7-firebase-adminsdk-tfyyv-28a722171e.json');
-
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
-
-const db = admin.firestore();
-
-
-const insertToQuizDb = async (quiz) => {
-    await db
-        .collection('quiz')
-        .doc(quiz.id)
-        .set({
-            ...quiz
-        });
-    console.log('*** All records uploaded! ***',);
-};
-
-const quizes = [
+export default [
     {
         "questions": [
             {
@@ -138,7 +117,7 @@ const quizes = [
         "title": "NODE JS",
         "description": "A quiz about Node Js",
         "createdAt": 1626022546462,
-        "status": "published",
+        "status": "unpublished",
         "submittedBy": "sumanpatra688@gmail.com",
         "organisation": "smera",
         "updatedAt": 1630140239904,
@@ -196,7 +175,7 @@ const quizes = [
         "title": "MONGO DB",
         "description": "A quiz about Mongo DB",
         "createdAt": 1626023484795,
-        "status": "published",
+        "status": "unpublished",
         "submittedBy": "sumanpatra688@gmail.com",
         "organisation": "smera"
     },
@@ -273,7 +252,7 @@ const quizes = [
         "title": "HTML",
         "description": "A quiz about html",
         "createdAt": 1629956459071,
-        "status": "published",
+        "status": "unpublished",
         "createdBy": "sumanpatra688@gmail.com",
         "organisation": "smera",
         "guest": true
@@ -330,7 +309,7 @@ const quizes = [
         "title": "CSS",
         "description": "A quiz about CSS",
         "createdAt": 1629958817039,
-        "status": "published",
+        "status": "unpublished",
         "createdBy": "sumanpatra688@gmail.com",
         "organisation": "smera"
     },
@@ -386,7 +365,7 @@ const quizes = [
         "title": "JAVA",
         "description": "A quiz about java",
         "createdAt": 1630241644247,
-        "status": "published",
+        "status": "unpublished",
         "createdBy": "sumanpatra688@gmail.com",
         "organisation": "smera"
     },
@@ -442,7 +421,7 @@ const quizes = [
         "id": 'ds_1',
         "description": "A quiz about Data Structure",
         "createdAt": 1630244384439,
-        "status": "published",
+        "status": "unpublished",
         "createdBy": "sumanpatra688@gmail.com",
         "organisation": "smera"
     },
@@ -507,11 +486,11 @@ const quizes = [
             {
                 "options": [
                     "Playing a game on Computer ",
-                    "Making a machine Intelligent",
+                    "Making a machine Intelligent ",
                     "Programming on Machine with your Own Intelligence ",
                     "Putting your intelligence in Machine"
                 ],
-                "title": "Artificial Intelligence is about _____."
+                "title": "Artificial Intelligence is about_____."
             },
             {
                 "options": [
@@ -610,7 +589,7 @@ const quizes = [
         "title": "COMPUTER NETWORK",
         "description": "A quiz about Computer Network",
         "createdAt": 1630301738199,
-        "status": "published",
+        "status": "unpublished",
         "createdBy": "sumanpatra688@gmail.com",
         "organisation": "smera"
     },
@@ -688,7 +667,3 @@ const quizes = [
         "updatedBy": null
     }
 ];
-
-quizes.forEach((quiz) => {
-    insertToQuizDb(quiz);
-});
