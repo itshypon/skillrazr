@@ -48,3 +48,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Firebase config set commands
 firebase functions:config:set someservice.key="THE API KEY" someservice.id="THE CLIENT ID"
+
+
+## Firebase Deployment 
+
+# Hosting - Staging
+firebase deploy --only hosting:stage

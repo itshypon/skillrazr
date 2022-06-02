@@ -125,7 +125,7 @@ const QuizPlayGround = ({ quizData, submitHandler, previewMode = false }: any) =
 
             try {
                 setFetchingScore(true);
-                const { score } = quizId && await getQuizScrore(quizId, questionAnswers);
+                const { data: { score } } = quizId && await getQuizScrore(quizId, questionAnswers);
                 setScore(score);
                 setFetchingScore(false);
             } catch (e) {
@@ -212,7 +212,7 @@ const QuizPlayGround = ({ quizData, submitHandler, previewMode = false }: any) =
 
     return (
         <div className="flex flex-col mt-10 p-20 w-full">
-            <div id="timer" className="flex justify-center">
+            <div id="timer" className="mt-10 sm:mt-0 flex justify-center">
                 {isQuizStarted && !previewMode && (
                     <CountdownCircleTimer
                         onComplete={onTimeComplete}
