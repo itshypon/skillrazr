@@ -6,6 +6,8 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from './CourseDetailsPage';
 import QuizDetailsPage from './QuizDetailsPage';
+import QuizesList from './QuizesList';
+import NewQuiz from './NewQuiz';
 import SummerCoursePage from './EverGreenCoursePage';
 import { ParallaxProvider } from "react-scroll-parallax";
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
@@ -140,6 +142,18 @@ function App(props: any) {
                 <div {...props} className="p-48">
                   Blogs are coming soon...
                 </div>
+              }
+            />
+            <Route
+              path="/quizes/new"
+              element={
+                <NewQuiz />
+              }
+            />
+            <Route
+              path="/quizes"
+              element={
+                <QuizesList {...props} className="p-48" />
               }
             />
           </Route>

@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getQuizes } from "../uiHelper";
 import localQuizes from '../data/quizes';
-
+import MoreIcon from '@mui/icons-material/More';
+import { Button } from "@mui/material";
 
 export default function Quizes(props: any) {
     const [quizes, setQuizes] = useState<any[]>([]);
@@ -31,6 +32,8 @@ export default function Quizes(props: any) {
             <div className="text-6xl text-center mb-4"> Quizes</div>
             <div className='text-xl mt-2 font-bold'>Live</div>
 
+            <div>Test your skills with these short quizes</div>
+
             <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
                 {quizes.map((quiz: any) => {
                     return (
@@ -50,6 +53,11 @@ export default function Quizes(props: any) {
                     );
                 })}
             </div>
+
+            <NavLink to={"/quizes"} className="text-2xl mt-2 p-4 font-bold underline underline-offset-3" onClick={() => {
+                window.scrollTo(0, 0);
+            }}> Explore more <MoreIcon /></NavLink>
+
         </div>
     );
 }
