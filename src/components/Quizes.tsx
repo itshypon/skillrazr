@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { getQuizes } from "../uiHelper";
 import localQuizes from '../data/quizes';
 import MoreIcon from '@mui/icons-material/More';
-import { Button } from "@mui/material";
 
 export default function Quizes(props: any) {
     const [quizes, setQuizes] = useState<any[]>([]);

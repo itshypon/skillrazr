@@ -5,7 +5,6 @@ import DoneIcon from '@mui/icons-material/Done';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddQuestionForm from './AddQuestionForm';
 import { QuizPlayGround } from './QuizDetailsPage';
-import { Typography } from "@mui/material";
 import { Accordion, AccordionSummary, AccordionDetails } from './AccordianUtils';
 
 
@@ -44,26 +43,26 @@ export default function NewQuiz() {
         setOpen(true);
     };
 
-    const saveQuiz = async () => {
-        if (quizData.questions.length < 5) {
-            setInCompleteQuiz(true);
-        } else {
-            setInCompleteQuiz(false);
+    // const saveQuiz = async () => {
+    //     if (quizData.questions.length < 5) {
+    //         setInCompleteQuiz(true);
+    //     } else {
+    //         setInCompleteQuiz(false);
 
-            // const rawResponse = await fetch(`${getApiBaseUrl()}addQuiz`, {
-            //     method: 'POST',
-            //     credentials: 'include',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify({ ...quizData, createdAt: Date.now(), status: 'unpublished' })
-            // });
+    //         const rawResponse = await fetch(`${getApiBaseUrl()}addQuiz`, {
+    //             method: 'POST',
+    //             credentials: 'include',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ ...quizData, createdAt: Date.now(), status: 'unpublished' })
+    //         });
 
-            // if (rawResponse.ok) {
-            //     console.log('added one quiz');
-            // }
-        }
-    };
+    //         if (rawResponse.ok) {
+    //             console.log('added one quiz');
+    //         }
+    //     }
+    // };
     const [open, setOpen] = React.useState(false);
 
     const handleClose = () => {
@@ -90,7 +89,6 @@ export default function NewQuiz() {
                             setInCompleteQuiz(false);
                         }
                         navigator.clipboard.writeText(output).then(function () {
-                            console.log('Async: Copying to clipboard was successful!');
                             setCopied(true);
 
                             setTimeout(() => { setCopied(false); }, 5000);
@@ -143,7 +141,7 @@ export default function NewQuiz() {
                 <Grid md={6} xs={12}>
                     <div className='p-4'>
                         {!quizData.title ||
-                            (!quizData.description && quizData.questions.length == 0 && (
+                            (!quizData.description && quizData.questions.length === 0 && (
                                 <span style={{ fontSize: '14px', color: 'red' }}>
                                     Fill all required fields
                                 </span>

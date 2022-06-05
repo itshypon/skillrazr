@@ -1,4 +1,4 @@
-import { AccordionProps, AccordionSummaryProps, styled, Typography } from "@mui/material";
+import { AccordionProps, AccordionSummaryProps, styled } from "@mui/material";
 import MuiAccordion from '@mui/material/Accordion';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';

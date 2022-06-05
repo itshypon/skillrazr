@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Icon, TextField } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, TextField } from '@mui/material';
 
 
 const AddQuestionForm = ({ setOneQuestionData, isDialogOpen, handleClose, quizData, setAnswerData, editingQuestionId }: any) => {
@@ -11,6 +11,7 @@ const AddQuestionForm = ({ setOneQuestionData, isDialogOpen, handleClose, quizDa
         if (editingQuestionId) {
             setQuestionData(quizData.questions[+editingQuestionId - 1]);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editingQuestionId])
 
     const handleQuestionTitleChange = (event: any) => {
@@ -48,14 +49,12 @@ const AddQuestionForm = ({ setOneQuestionData, isDialogOpen, handleClose, quizDa
             _questionData.title && _questionData.options.length === 4;
 
         if (formFilled && new Set(_questionData.options).size === 4 && validAnswer) {
-            console.log('complete question');
             setInCompleteQuestion(false);
             setInvalidAnswer(false);
             return true;
         } else {
             setInCompleteQuestion(true);
             formFilled && !validAnswer && setInvalidAnswer(true);
-            console.log('incomplete questions');
         }
     };
     const handleAddQuestion = () => {
