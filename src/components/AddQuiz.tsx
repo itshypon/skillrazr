@@ -4,6 +4,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DoneIcon from '@mui/icons-material/Done';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddQuestionForm from './AddQuestionForm';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { NavLink } from 'react-router-dom';
 import { QuizPlayGround } from './QuizDetailsPage';
 import { Accordion, AccordionSummary, AccordionDetails } from './AccordianUtils';
 
@@ -138,22 +140,15 @@ export default function NewQuiz() {
             <Grid direction="row" container md={12}>
                 <Grid md={6} xs={12}>
                     <div className='p-4'>
-                        {!quizData.title ||
+                        {/* {!quizData.title ||
                             (!quizData.description && quizData.questions.length === 0 && (
                                 <span style={{ fontSize: '14px', color: 'red' }}>
                                     Fill all required fields
                                 </span>
-                            ))}
-                        {quizData.questions.length >= 1 && quizData.questions.length < 5 ? (
-                            <>
-                                <div className='font-bold'>
-                                    So far <b>{quizData.questions.length} </b> question{quizData.questions.length === 1 ? '' : 's'} added!
-                                </div>
-                                <div className='font-bold text-red-500 pb-2'>
-                                    {quizData.questions.length < 5 ? `Need at least ${5 - quizData.questions.length} more question(s)!` : 'Quiz is ready!'}
-                                </div>
-                            </>
-                        ) : quizData.questions.length < 1 ? <div className='font-bold py-2'>Add your first question!</div> : null}
+                            ))} */}
+
+                        {(!quizData.title || !quizData.description) ? <div className='font-bold py-2'>Set title and description for the quiz</div> : null}
+
 
                         <div className='mb-2'>
                             <TextField
@@ -180,6 +175,17 @@ export default function NewQuiz() {
                             />
                         </div>
                         <div className='mt-2'>
+                            {quizData.questions.length < 1 ? <div className='font-bold py-2'>Add your first question!</div> : null}
+                            {quizData.questions.length >= 1 && quizData.questions.length < 5 ? (
+                                <>
+                                    <div className='font-bold'>
+                                        So far <b>{quizData.questions.length} </b> question{quizData.questions.length === 1 ? '' : 's'} added!
+                                    </div>
+                                    <div className='font-bold text-red-500 pb-2'>
+                                        {quizData.questions.length < 5 ? `Need at least ${5 - quizData.questions.length} more question(s)!` : 'Quiz is ready!'}
+                                    </div>
+                                </>
+                            ) : null}
                             <Button
                                 id="submit"
                                 style={{ marginRight: '20px' }}
@@ -219,6 +225,7 @@ export default function NewQuiz() {
                     }} previewMode={true} />
                 </Grid>
             </Grid>
+            {<div className='w-full text-left pt-6'><NavLink to="/quizes"><ArrowBackIcon /> Back to Quizes List <br /> <span className='text-xs'>  (Unsaved changes will be lost)</span></NavLink></div>}
             <div className='p-4 w-full sm:w-1/2'>{renderHelpAccordian()}</div>
         </Grid>
     );
