@@ -225,24 +225,34 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
 
     return (
         <div className={`flex flex-col w-full ${previewMode ? '' : 'mt-10 p-20'}`}>
-            {isQuizStarted && !previewMode && (<div id="timer" className="mt-10 sm:mt-0 flex justify-center">
-                <CountdownCircleTimer
-                    onComplete={onTimeComplete}
-                    {...timerProps}
-                    isPlaying={isQuizStarted && !isSubmitDisabled}
-                    duration={60}
-                    colors={['#31db6b', '#85dba3', '#ec856d', '#f03307']}
-                    colorsTime={[60, 30, 10, 0]}>
-                    {renderTime}
-                </CountdownCircleTimer>
-            </div>)}
+            {
+                isQuizStarted && !previewMode && (<div id="timer" className="mt-10 sm:mt-0 flex justify-center">
+                    <CountdownCircleTimer
+                        onComplete={onTimeComplete}
+                        {...timerProps}
+                        isPlaying={isQuizStarted && !isSubmitDisabled}
+                        duration={60}
+                        colors={['#31db6b', '#85dba3', '#ec856d', '#f03307']}
+                        colorsTime={[60, 30, 10, 0]}>
+                        {renderTime}
+                    </CountdownCircleTimer>
+                </div>)
+            }
 
             <div style={{ padding: '20px' }}>
-                {isFetchingData && <div className='!flex items-center justify-center text-center !w-full'><CircularProgress /></div>}
+                {isFetchingData && <div className='!flex justify-center !w-full'><CircularProgress /></div>}
 
+                {quizesData && quizesData.title && !previewMode && <div className='flex justify-center p-2'><a
+                    className="twitter-logo twitter-share-button"
+                    href={`https://twitter.com/intent/tweet?text=Quiz Time ${quizesData.title}`}
+                >
+                    {' '}<i></i>
+                    <span>Tweet</span>
+                </a> </div>}
                 {quizesData && quizesData.title && !isQuizStarted && (
                     <div className="flex items-center flex-col">
                         <QuizIcon />
+
                         <h1 className='text-xl font-bold'>{quizesData.title}</h1>
                         <div className='text-xl'>
                             {quizesData.description}
@@ -303,10 +313,9 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                     <span className='font-bold flex items-center text-xl text-red-500'> <ErrorOutlineIcon htmlColor='red' /> <span className='ml-1'>Quiz not found!</span></span>
                 </div>)}
                 {getStatusMessage() && <Snack score={score} message={getStatusMessage()} />}
-                <div className='w-full text-center pt-6'><NavLink to="/quizes"><ArrowBackIcon /> Back to Quizes List</NavLink></div>
-
+                {!previewMode && <div className='w-full text-center pt-6'><NavLink to="/quizes"><ArrowBackIcon /> Back to Quizes List <br /> <span className='text-xs'>(Unsaved changes will be lost)</span></NavLink></div>}
             </div>
-        </div>
+        </div >
     );
 };
 

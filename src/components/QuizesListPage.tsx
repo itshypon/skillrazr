@@ -68,7 +68,7 @@ export default function QuizesList(props: any) {
         >
             <div className="text-6xl text-center mb-4">Quizes</div>
 
-            {isFetchingData ? <div className='!flex items-center justify-center text-center !w-full'><CircularProgress /></div> : <>
+            {isFetchingData ? <div className='!flex justify-center !w-full'><CircularProgress /></div> : <>
                 <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
                     {quizes.map((quiz: any) => {
                         return (

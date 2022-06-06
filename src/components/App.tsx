@@ -7,7 +7,7 @@ import AboutPage from "./AboutPage";
 import CourseDetailsPage from './CourseDetailsPage';
 import QuizDetailsPage from './QuizDetailsPage';
 import QuizesList from './QuizesListPage';
-import NewQuiz from './NewQuiz';
+import NewQuiz from './AddQuiz';
 import SummerCoursePage from './EverGreenCoursePage';
 import { ParallaxProvider } from "react-scroll-parallax";
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
