@@ -6,7 +6,7 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from './CourseDetailsPage';
 import QuizDetailsPage from './QuizDetailsPage';
-import QuizesList from './QuizesList';
+import QuizesList from './QuizesListPage';
 import NewQuiz from './NewQuiz';
 import SummerCoursePage from './EverGreenCoursePage';
 import { ParallaxProvider } from "react-scroll-parallax";
@@ -41,7 +41,8 @@ function Snack() {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        message="Get the basics right, explore our evergreen courses!"
+        message="Explore our evergreen courses!"
+        autoHideDuration={7000}
         key={vertical + horizontal}
         onClick={() => {
           navigate("../evergreen_courses", { replace: false });
@@ -84,6 +85,7 @@ function DaySnack(props: any) {
     <div>
       <Snackbar className='!top-[110px] sm:!top-[70px] cursor-pointer'
         anchorOrigin={{ vertical, horizontal }}
+        autoHideDuration={7000}
         open={open}
         onClose={handleClose}
         message={<div><NewspaperIcon /><span className='ml-2 font-bold inline-block'>Today is :- {messages[0]}</span> <div>{messages[1]}</div></div>}

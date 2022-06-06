@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { useState, useEffect } from 'react';
-import { FormHelperText, Radio, RadioGroup, FormControl, FormControlLabel, FormLabel, Button, Grid } from '@mui/material';
+import { FormHelperText, Radio, RadioGroup, FormControl, FormControlLabel, FormLabel, Button, Grid, CircularProgress } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
@@ -10,10 +10,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import QuizIcon from '@mui/icons-material/Quiz';
 import { getQuiz, getQuizScrore, getScore } from '../uiHelper';
 import localQuizes from '../data/quizes';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { State } from '../components/App';
 
 // quizData in the form {answer: {}, questions: []}
@@ -39,7 +40,7 @@ function Snack(props: any) {
                 onClose={handleClose}
                 message={message}
                 key={vertical + horizontal}
-
+                autoHideDuration={7000}
                 action={<IconButton
                     aria-label="close"
                     color="inherit"
@@ -165,7 +166,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
         return (
             <div className="timer text-sm text-center">
                 <div className="text">{isQuizStarted && isSubmitDisabled ? 'You took' : 'Remaining'}</div>
-                <div className="value font-bold">{isQuizStarted && isSubmitDisabled ? 60 - remainingTime : remainingTime}</div>
+                <div className="value text-xl font-bold">{isQuizStarted && isSubmitDisabled ? 60 - remainingTime : remainingTime}</div>
                 <div className="text">seconds</div>
                 {isSubmitDisabled && <PlayCircleFilledWhiteIcon htmlColor='green' className='cursor-pointer' onClick={() => {
                     window.location.reload();
@@ -216,9 +217,6 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
         }
         if (score !== undefined) {
             return `You're score in this quiz is ${score}`;
-        }
-        else if (isFetchingData) {
-            return 'Please wait...'
         } else if (isFetchingScore) {
             return 'Getting your score...';
         }
@@ -240,6 +238,8 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
             </div>)}
 
             <div style={{ padding: '20px' }}>
+                {isFetchingData && <div className='!flex items-center justify-center text-center !w-full'><CircularProgress /></div>}
+
                 {quizesData && quizesData.title && !isQuizStarted && (
                     <div className="flex items-center flex-col">
                         <QuizIcon />
@@ -247,7 +247,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                         <div className='text-xl'>
                             {quizesData.description}
                         </div>
-                        <div className='text-small mt-8'>Note:- Clicking start will start the quiz. <br /> There'll be total 5 questions and you need to complete all questions before you can submit the quiz. <br />Timer will start immediatedly after you click start. <br />Good luck!</div>
+                        <div className='text-small mt-8'>Note:- Quiz is timed and timer will start immediatedly after you click on Start. <br /> There'll be a total of <b>{quizesData.questions.length}</b> questions and you need to complete all questions before you can submit the quiz. <br />Good luck!</div>
                         <div
                             style={{
                                 cursor: 'pointer',
@@ -303,6 +303,8 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                     <span className='font-bold flex items-center text-xl text-red-500'> <ErrorOutlineIcon htmlColor='red' /> <span className='ml-1'>Quiz not found!</span></span>
                 </div>)}
                 {getStatusMessage() && <Snack score={score} message={getStatusMessage()} />}
+                <div className='w-full text-center pt-6'><NavLink to="/quizes"><ArrowBackIcon /> Back to Quizes List</NavLink></div>
+
             </div>
         </div>
     );
