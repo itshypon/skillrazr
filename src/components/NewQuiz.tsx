@@ -7,7 +7,6 @@ import AddQuestionForm from './AddQuestionForm';
 import { QuizPlayGround } from './QuizDetailsPage';
 import { Accordion, AccordionSummary, AccordionDetails } from './AccordianUtils';
 
-
 export default function NewQuiz() {
     const [quizData, setQuizData] = useState<any>({ questions: [], answers: {} });
     const [inCompleteQuiz, setInCompleteQuiz] = useState(false);
@@ -136,7 +135,6 @@ export default function NewQuiz() {
 
     return (
         <Grid container className='mt-24 sm:mt-20 p-4'>
-            <div className='p-4 w-full' >{renderHelpAccordian()}</div>
             <Grid direction="row" container md={12}>
                 <Grid md={6} xs={12}>
                     <div className='p-4'>
@@ -146,18 +144,18 @@ export default function NewQuiz() {
                                     Fill all required fields
                                 </span>
                             ))}
-                        {quizData.questions.length < 5 ? (
+                        {quizData.questions.length >= 1 && quizData.questions.length < 5 ? (
                             <>
-                                <span>
+                                <div className='font-bold'>
                                     So far <b>{quizData.questions.length} </b> question{quizData.questions.length === 1 ? '' : 's'} added!
-                                </span>
-                                <div style={{ fontSize: '14px', color: 'red' }}>
+                                </div>
+                                <div className='font-bold text-red-500 pb-2'>
                                     {quizData.questions.length < 5 ? `Need at least ${5 - quizData.questions.length} more question(s)!` : 'Quiz is ready!'}
                                 </div>
                             </>
-                        ) : null}
+                        ) : quizData.questions.length < 1 ? <div className='font-bold py-2'>Add your first question!</div> : null}
 
-                        <div>
+                        <div className='mb-2'>
                             <TextField
                                 className='w-full sm:w-2/3'
                                 error={inCompleteQuiz && !quizData.title}
@@ -214,13 +212,14 @@ export default function NewQuiz() {
 
                 </Grid>
                 <Grid md={6} xs={12}>
-                    <div className='p-4 text-xl font-bold' >Quiz Preview Mode</div>
+                    {quizData.questions.length > 0 && <div className='p-4 text-xl font-bold' >Quiz Preview Mode</div>}
                     <QuizPlayGround quizData={quizData} editHandler={(questionId: any) => {
                         setOpen(true);
                         setEditingQuestionId(questionId);
                     }} previewMode={true} />
                 </Grid>
             </Grid>
+            <div className='p-4 w-full sm:w-1/2'>{renderHelpAccordian()}</div>
         </Grid>
     );
 }
