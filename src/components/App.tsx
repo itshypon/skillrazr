@@ -6,7 +6,9 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from './CourseDetailsPage';
 import QuizDetailsPage from './QuizDetailsPage';
+import BlogDetailsPage from './BlogDetailsPage';
 import QuizesList from './QuizesListPage';
+import BlogsList from './BlogsListPage';
 import NewQuiz from './AddQuiz';
 import SummerCoursePage from './EverGreenCoursePage';
 import { ParallaxProvider } from "react-scroll-parallax";
@@ -139,11 +141,13 @@ function App(props: any) {
               element={<QuizDetailsPage {...props} />}
             />
             <Route
+              path="/blogs/:id"
+              element={<BlogDetailsPage {...props} />}
+            />
+            <Route
               path="/blogs"
               element={
-                <div {...props} className="p-48">
-                  Blogs are coming soon...
-                </div>
+                <BlogsList {...props} className="p-48" />
               }
             />
             <Route
