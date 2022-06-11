@@ -28,6 +28,8 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import WorkIcon from '@mui/icons-material/Work';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import Button from '@mui/material/Button';
+import ModalDialog from "./Modal";
+import BankDetails from './BankDetails';
 
 import ApiIcon from '@mui/icons-material/Api';
 import StreamIcon from '@mui/icons-material/Stream';
@@ -702,6 +704,11 @@ function CPP() {
 
 const CourseDetailsPage = () => {
     const { id } = useParams();
+    const [showBankDetails, setShowBankDetails] = React.useState(false);
+
+    const handleDialogClose = () => {
+        setShowBankDetails(false);
+    };
 
 
     const renderContent = (course: string) => {
@@ -851,7 +858,7 @@ const CourseDetailsPage = () => {
                 "5. Interview preparation sessions",
             ],
             feeStriked: "₹5,999",
-            fee: 5999,
+            fee: 3999,
             feeInRupees: "₹3,999",
             duration: { total: '2 months', weekly: 'At 5 hours/week' },
             paymentPage: 'https://rzp.io/l/skillrazr-algo-java',
@@ -889,9 +896,10 @@ const CourseDetailsPage = () => {
                     </div>
                 </div>
 
-                <Button variant='contained' className='!my-8 !py-2 !px-8 !text-xl !capitalize'>
-                    <a href={course.paymentPage} target="_blank" rel='noreferrer'
-                    > Buy Now</a></Button>
+                <Button variant='contained' className='!my-8 !py-2 !px-8 !text-xl !capitalize' onClick={() => {
+                    setShowBankDetails(true);
+                }}>
+                    Buy Now</Button>
 
 
                 <div className='text-2xl my-2 font-bold'>Features:- </div>
@@ -919,10 +927,20 @@ const CourseDetailsPage = () => {
                 <div className='text-2xl my-4'>Course FAQs</div>
                 <FAQsAccordians />
 
-                <Button variant='contained' className='!my-8 !py-2 !px-8 !text-xl !capitalize'>
-                    <a href={course.paymentPage} target="_blank" rel='noreferrer'
+                <Button variant='contained' className='!my-8 !py-2 !px-8 !text-xl !capitalize' onClick={() => {
+                    setShowBankDetails(true);
+                }}>
+                    Buy Now</Button>
 
-                    >Buy Now</a></Button>
+                <ModalDialog
+                    showModal={showBankDetails}
+                    cancelHandler={handleDialogClose}
+                    setShowDialog={setShowBankDetails}
+                    title="Payment"
+                    content={
+                        <BankDetails amount={course.fee} />
+                    }
+                />
             </>
 
                 : <h2>404</h2>}
