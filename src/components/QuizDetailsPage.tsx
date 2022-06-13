@@ -257,7 +257,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
     }
 
     return (
-        <div className={`flex flex-col w-full ${previewMode ? '' : 'mt-16 sm:mt-10 pt-12 px-2 sm:px-20'}`}>
+        <div className={`flex flex-col w-full ${previewMode ? '' : 'mt-16 sm:mt-10 py-16  px-2 sm:px-20'}`}>
             {
                 isQuizStarted && !previewMode && (<div id="timer" className="mt-10 sm:mt-0 flex justify-center">
                     <CountdownCircleTimer
@@ -275,9 +275,9 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
             <div style={{ padding: '20px' }}>
                 {isFetchingData && <div className='!flex justify-center !w-full'><CircularProgress /></div>}
 
-                {quizesData && quizesData.title && !previewMode && <div className='flex justify-center p-2'><a
+                {isQuizStarted && !previewMode && <div className='flex justify-center p-2'><a
                     className="twitter-logo twitter-share-button"
-                    href={`https://twitter.com/intent/tweet?text=Quiz Time ${quizesData.title}`}
+                    href={`https://twitter.com/intent/tweet?text=Quiz Time ${quizesData.title}&url=${window.location.href}`}
                 >
                     {' '}<i></i>
                     <span>Tweet</span>
