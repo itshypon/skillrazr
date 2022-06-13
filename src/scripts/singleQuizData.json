@@ -1,0 +1,120 @@
+{
+    "questions": [
+        {
+            "options": [
+                "The scrum team consists of a Product Owner, a Development Team and a Scrum Master. ",
+                "Testing team is part of the development team. ",
+                "Scrum team’s don’t have a project manager.",
+                "All of the above"
+            ],
+            "title": "Which of the following statements is/are correct in Scrum?",
+            "id": "1"
+        },
+        {
+            "options": [
+                "Individuals and interactions over processes and tools",
+                " Working software over comprehensive documentation",
+                "Customer collaboration over contract negotiation",
+                "None of them"
+            ],
+            "title": "Which of the following is unrelated to the Agile manifesto?",
+            "id": "2"
+        },
+        {
+            "options": [
+                "Scrum master",
+                "Tech lead",
+                " Product owner",
+                "Project manager"
+            ],
+            "title": "Who among the followings, does the role of an Agile life coach?",
+            "id": "3"
+        },
+        {
+            "options": [
+                "Scrum master",
+                "Development Team",
+                "Product owner",
+                "Project manager"
+            ],
+            "title": "Role of identifying and eliminating Technical Debt is assigned to?",
+            "id": "4"
+        },
+        {
+            "options": [
+                "Transparency",
+                "Collaboration",
+                "Controlled",
+                "Continuous Improvement "
+            ],
+            "title": "Which one of the followings is not relevant to Scrum?",
+            "id": "5"
+        },
+        {
+            "options": [
+                "Scrum master",
+                "Tech lead",
+                "Product owner",
+                "Project manager"
+            ],
+            "title": "Who facilitates all scrum meetings?",
+            "id": "6"
+        },
+        {
+            "options": [
+                "The development team is responsible for estimating of backlog items.",
+                " Product owner is responsible for establishing the product vision. ",
+                "Once an item is placed in the product backlog, it is never re-ordered. ",
+                "Each team member can create product backlog items, but Product owner has overall responsibility to manage it."
+            ],
+            "title": "Which of the followings is incorrect in Scrum?",
+            "id": "7"
+        },
+        {
+            "options": [
+                "Scrum Master",
+                "Product Owner",
+                "Development Team",
+                "All of them "
+            ],
+            "title": "Who manages the sprint backlog?",
+            "id": "8"
+        },
+        {
+            "options": [
+                "Daily Scrum -> Sprint Planning -> Sprint Review -> Sprint Retro",
+                "Sprint Retro -> Sprint Planning -> Daily Scrum -> Sprint Review",
+                "Sprint Planning -> Daily Scrum  -> Sprint Retro ->  Sprint Review",
+                "Sprint Planning -> Daily Scrum -> Sprint Review -> Sprint Retro"
+            ],
+            "title": "Pick the standard order of meetings in a Sprint.",
+            "id": "9"
+        },
+        {
+            "options": [
+                "Tech lead",
+                "Scrum master",
+                "Product owner",
+                "Project manager"
+            ],
+            "title": "Who among the following is the servant-leader of the scrum team?",
+            "id": "10"
+        }
+    ],
+    "answers": {
+        "1": "All of the above",
+        "2": "None of them",
+        "3": "Scrum master",
+        "4": "Development Team",
+        "5": "Controlled",
+        "6": "Scrum master",
+        "7": "Once an item is placed in the product backlog, it is never re-ordered. ",
+        "8": "Development Team",
+        "9": "Sprint Planning -> Daily Scrum -> Sprint Review -> Sprint Retro",
+        "10": "Scrum master"
+    },
+    "description": "A quiz on Scrum framework",
+    "title": "How much you know about Scrum?",
+    "status": "unpublished",
+    "id": "agile_scrum_1"
+}

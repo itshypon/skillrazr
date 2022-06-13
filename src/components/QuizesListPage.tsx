@@ -72,7 +72,7 @@ export default function QuizesList(props: any) {
                 <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
                     {quizes.map((quiz: any) => {
                         return (
-                            <NavLink to={`/quizes/${quiz.id}`} onClick={() => {
+                            <NavLink to={`/quizzes/${quiz.id}`} onClick={() => {
                                 window.scrollTo(0, 0);
                             }}>
                                 <div
@@ -90,7 +90,7 @@ export default function QuizesList(props: any) {
                 </div>
                 <div className='p-2'>Quizes on other topics coming soon...</div>
             </>}
-            <NavLink to={"/quizes/new"} className="text-2xl mt-2 mb-4 p-4 font-bold underline underline-offset-3" onClick={() => {
+            <NavLink to={"/quizzes/new"} className="text-2xl mt-2 mb-4 p-4 font-bold underline underline-offset-3" onClick={() => {
                 window.scrollTo(0, 0);
             }}> Add Quiz <AddBoxIcon /></NavLink>
             <div className='w-full sm:w-1/2 align-left text-left left '>{renderInfoAccordian()}</div>

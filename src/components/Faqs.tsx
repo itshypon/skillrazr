@@ -79,10 +79,10 @@ function FAQsAccordians() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography >
-                        <div> If you are not satisfied with the course, you can recieve a refund within max 30 business days to the original source of payment, excluding taxes.
-                            <br /> Raise refund request within 10 days of purchase of a course. Any refund
-                            request beyond 10 days of purchasing the course will not be accepted and
-                            no refund will be provided.</div>
+                        If you are not satisfied with the course, you can recieve a refund within max 30 business days to the original source of payment, excluding taxes.
+                        <br /> Raise refund request within 10 days of purchase of a course. Any refund
+                        request beyond 10 days of purchasing the course will not be accepted and
+                        no refund will be provided.
 
                     </Typography>
                 </AccordionDetails>
@@ -113,7 +113,7 @@ function FAQsAccordians() {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <div>Yes, you'll awarded course completion certificate upon successful completion of the course.</div>
+                        Yes, you'll awarded course completion certificate upon successful completion of the course.
                     </Typography>
                 </AccordionDetails>
             </Accordion>

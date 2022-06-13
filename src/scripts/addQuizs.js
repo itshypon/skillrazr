@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('../../../../Downloads/genlent-8aab7-firebase-adminsdk-tfyyv-28a722171e.json');
-
+const quiz = require('./singleQuizData.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -8,15 +8,15 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-
 const insertToQuizDb = async (quiz) => {
+    console.log('*** Writing to DB started ...');
     await db
         .collection('quiz')
         .doc(quiz.id)
         .set({
             ...quiz
         });
-    console.log('*** All records uploaded! ***',);
+    console.log('*** All records written! to DB  ***',);
 };
 
 const quizes = [
@@ -689,6 +689,12 @@ const quizes = [
     }
 ];
 
-quizes.forEach((quiz) => {
+// quizes.forEach((quiz) => {
+//     insertToQuizDb(quiz);
+// });
+
+console.log(quiz);
+
+if (quiz.title) {
     insertToQuizDb(quiz);
-});
+}
