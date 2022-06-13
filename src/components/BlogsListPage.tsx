@@ -13,7 +13,7 @@ export default function BlogsList(props: any) {
         <div
             id="courses"
             className={
-                "my-24 px-6 pt-20 flex flex-col items-center flex-wrap justify-center"
+                "my-24 px-6 py-20 flex flex-col items-center flex-wrap justify-center"
             }
         >
             <div className="text-6xl text-center mb-4">Blogs</div>

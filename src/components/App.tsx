@@ -137,6 +137,10 @@ function App(props: any) {
               element={<CourseDetailsPage {...props} />}
             />
             <Route
+              path="/quizes/:id"
+              element={<QuizDetailsPage {...props} />}
+            />
+            <Route
               path="/quizzes/:id"
               element={<QuizDetailsPage {...props} />}
             />
@@ -151,9 +155,21 @@ function App(props: any) {
               }
             />
             <Route
+              path="/quizes/new"
+              element={
+                <NewQuiz />
+              }
+            />
+            <Route
               path="/quizzes/new"
               element={
                 <NewQuiz />
+              }
+            />
+            <Route
+              path="/quizes"
+              element={
+                <QuizesList {...props} className="p-48" />
               }
             />
             <Route
