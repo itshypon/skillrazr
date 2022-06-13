@@ -18,6 +18,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const analytics = process.env.REACT_APP_ENV === 'production' ? getAnalytics(app) : {};
 
 export default analytics;

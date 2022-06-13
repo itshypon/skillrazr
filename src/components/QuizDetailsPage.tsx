@@ -16,8 +16,18 @@ import { getQuiz, getQuizScrore, getScore } from '../uiHelper';
 import localQuizes from '../data/quizes';
 import { useParams, NavLink } from 'react-router-dom';
 import { State } from '../components/App';
+import singleQuiz from '../scripts/singleQuizData.json';
+import confetti from 'canvas-confetti';
 
 // quizData in the form {answer: {}, questions: []}
+
+const renderConfetti = () => {
+    confetti({
+        particleCount: 400,
+        spread: 70,
+        origin: { y: 0.6 }
+    })
+}
 
 function Snack(props: any) {
     const { message } = props;
@@ -40,7 +50,6 @@ function Snack(props: any) {
                 onClose={handleClose}
                 message={message}
                 key={vertical + horizontal}
-                autoHideDuration={7000}
                 action={<IconButton
                     aria-label="close"
                     color="inherit"
@@ -63,7 +72,10 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
     const [isFetchingData, setFetchingData] = useState<boolean>(false);
     const [isFetchingScore, setFetchingScore] = useState<boolean>(false);
     const [notFound, setNotFound] = useState<boolean>(false);
+    const [allowedTime, setAllowedTime] = useState<number>(60);
     const { id: quizId } = useParams<string>();
+    const [submitClicked, setSubmitClicked] = useState<boolean>(false);
+    const [learnMoreLinks, setLearnMoreLinks] = useState([]);
 
     useEffect(() => {
         setQuizesData(quizData);
@@ -76,14 +88,21 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                 setFetchingData(true);
                 const resp = quizId && await getQuiz(quizId);
                 setQuizesData(resp.data);
+                setAllowedTime(resp.data.allowedTime || 120);
+                setLearnMoreLinks(resp.data.learnMoreLinks || []);
                 setFetchingData(false);
                 if (resp.status === 0) {
                     setNotFound(true);
                 }
             } catch (e) {
                 setFetchingData(false);
-                const quiz = localQuizes.find(quiz => quiz.id === quizId) || {};
-                setQuizesData(quiz);
+                if (process.env.REACT_APP_ENV !== 'production') {
+                    setQuizesData(singleQuiz);
+                    const quiz: any = localQuizes.find(quiz => quiz.id === quizId) || {};
+                    setQuizesData(quiz);
+                    setLearnMoreLinks(quiz.learnMoreLinks || []);
+                    setAllowedTime(120);
+                }
             }
         }
         quizId && getData();
@@ -119,7 +138,15 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
 
     const handleChange = (event: any) => {
         const questionId = event.target.getAttribute('id');
-        setQuestionValues({ ...questionAnswers, [questionId]: event.target.value });
+        const answers = { ...questionAnswers, [questionId]: event.target.value };
+        setQuestionValues(answers);
+
+        setTimeout(() => {
+            const answeredQuestionIds = Object.keys(answers);
+            const allQuestionIds = quizesData.questions.map((q: any) => q.id);
+            const unattended = allQuestionIds.filter((qId: any) => !answeredQuestionIds.includes(qId));
+            submitClicked && setUnAnsweredQuestions(unattended);
+        }, 0);
     };
 
     const _submitHandler = async () => {
@@ -128,6 +155,9 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
 
         const unattended = allQuestionIds.filter((qId: any) => !answeredQuestionIds.includes(qId));
         setUnAnsweredQuestions(unattended);
+        if (unattended) {
+            setSubmitClicked(true);
+        }
 
         if (quizId && unattended.length === 0) {
             setIsSubmitDisabled(true);
@@ -136,6 +166,9 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                 setFetchingScore(true);
                 const { data: { score } } = await getQuizScrore(quizId, questionAnswers);
                 setScore(score);
+                if (score === 100) {
+                    renderConfetti();
+                }
                 setFetchingScore(false);
             } catch (e) {
                 setScore(20);
@@ -166,7 +199,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
         return (
             <div className="timer text-sm text-center">
                 <div className="text">{isQuizStarted && isSubmitDisabled ? 'You took' : 'Remaining'}</div>
-                <div className="value text-xl font-bold">{isQuizStarted && isSubmitDisabled ? 60 - remainingTime : remainingTime}</div>
+                <div className="value text-xl font-bold">{isQuizStarted && isSubmitDisabled ? allowedTime - remainingTime : remainingTime}</div>
                 <div className="text">seconds</div>
                 {isSubmitDisabled && <PlayCircleFilledWhiteIcon htmlColor='green' className='cursor-pointer' onClick={() => {
                     window.location.reload();
@@ -178,10 +211,10 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
     const renderQuestion = (question: any, _id: number) => {
         const isUnanswered = unAnswered.includes(question.id);
         return (
-            <FormControl component="fieldset" error={isUnanswered} className="!mt-4 !border !border-solid !border-stone-600 !rounded !p-4">
-                {isUnanswered && <FormHelperText>{'Select an answer'}</FormHelperText>}
-                <FormLabel component="legend"><span className='font-bold text-xl'>{`${_id + 1}*`}</span> <span className='font-bold'>{question.type === 'math' ? 'Evaluate the math expression' : ''} </span> <span id={`output${_id}`} className='font-bold text-xl'>{question.type === 'math' ? renderMathExpression(question.title, `output${_id}`) : question.title}</span></FormLabel>
-                <FormLabel component="legend"><span>{question.description}</span></FormLabel>
+            <FormControl key={_id} component="fieldset" error={isUnanswered} className={`!mt-12 !border !border-solid ${isUnanswered ? '!border-red-600' : '!border-stone-600'} !rounded !p-4`}>
+                {isUnanswered && <FormHelperText className='font-bold absolute top-0'>{'Select an answer'}</FormHelperText>}
+                <FormLabel component="legend"><span className='text-black text-xl'>{`${_id + 1}*`}</span> <span className='text-black font-bold'>{question.type === 'math' ? 'Evaluate the math expression' : ''} </span> <span id={`output${_id}`} className='font-bold text-black text-xl'>{question.type === 'math' ? renderMathExpression(question.title, `output${_id}`) : question.title}</span></FormLabel>
+                <FormLabel component="legend"><span className='text-black'>{question.description}</span></FormLabel>
                 {previewMode && <EditIcon className='cursor-pointer absolute right-2' onClick={() => {
                     editHandler(question.id);
                 }} />}
@@ -198,7 +231,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                                 id="option"
                                 value={option}
                                 control={<Radio disabled={isSubmitDisabled} id={question.id} />}
-                                label={option}
+                                label={<span className='text-black font-bold'>{option}</span>}
                             />
                         );
                     })}
@@ -216,7 +249,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
             return '';
         }
         if (score !== undefined) {
-            return `You're score in this quiz is ${score}`;
+            return score === 100 ? "Wow, you scored a perfect 100!" : `You're score in this quiz is ${score}`;
         } else if (isFetchingScore) {
             return 'Getting your score...';
         }
@@ -224,14 +257,14 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
     }
 
     return (
-        <div className={`flex flex-col w-full ${previewMode ? '' : 'mt-10 p-20'}`}>
+        <div className={`flex flex-col w-full ${previewMode ? '' : 'mt-16 sm:mt-10 pt-12 px-2 sm:px-20'}`}>
             {
                 isQuizStarted && !previewMode && (<div id="timer" className="mt-10 sm:mt-0 flex justify-center">
                     <CountdownCircleTimer
                         onComplete={onTimeComplete}
                         {...timerProps}
                         isPlaying={isQuizStarted && !isSubmitDisabled}
-                        duration={60}
+                        duration={allowedTime}
                         colors={['#31db6b', '#85dba3', '#ec856d', '#f03307']}
                         colorsTime={[60, 30, 10, 0]}>
                         {renderTime}
@@ -257,7 +290,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                         <div className='text-xl'>
                             {quizesData.description}
                         </div>
-                        <div className='text-small mt-8'>Note:- Quiz is timed and timer will start immediatedly after you click on Start. <br /> There'll be a total of <b>{quizesData.questions.length}</b> questions and you need to complete all questions before you can submit the quiz. <br />Good luck!</div>
+                        <div className='text-small mt-8 font-bold'>Note:- Quiz is timed and timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to complete all questions before you can submit the quiz. <br />Good luck!</div>
                         <div
                             style={{
                                 cursor: 'pointer',
@@ -272,9 +305,10 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                             }}
                             id="startbtn"
                             onClick={() => {
+                                window.scrollTo(0, 0);
                                 setIsQuizStarted(true);
                             }}>
-                            <PlayCircleFilledWhiteIcon /> <span>Start</span>
+                            <PlayCircleFilledWhiteIcon /> <span className='font-bold'>Start</span>
                         </div>
                     </div>
                 )}
@@ -300,10 +334,20 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                                 {previewMode && <FactCheckIcon className="mr-2" />}
                                 {previewMode ? 'Validate Quiz' : 'Submit quiz'}
                             </Button>
+                            {isQuizStarted && unAnswered.length > 0 && <FormHelperText className='font-bold !text-red-500'>Please answer all the questions!</FormHelperText>}
+
                             {(previewMode && score !== undefined) && (
                                 <div className='font-bold'>Your last score <b>{score}</b></div>
                             )}
                         </form>
+
+                        {learnMoreLinks.length > 0 && isSubmitDisabled && <ul><div className='font-bold mt-10'>Learn More :- </div>
+                            {learnMoreLinks.map(link => {
+                                return <li key={link}>
+                                    <a href={link} target="_blank" rel="noreferrer">{link}</a>
+                                </li>
+                            })}
+                        </ul>}
                     </Grid>
                 ) : null}
 
@@ -313,7 +357,11 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                     <span className='font-bold flex items-center text-xl text-red-500'> <ErrorOutlineIcon htmlColor='red' /> <span className='ml-1'>Quiz not found!</span></span>
                 </div>)}
                 {getStatusMessage() && <Snack score={score} message={getStatusMessage()} />}
-                {!previewMode && <div className='w-full text-center pt-6'><NavLink to="/quizes"><ArrowBackIcon /> Back to Quizes List <br /> <span className='text-xs'>(Unsaved changes will be lost)</span></NavLink></div>}
+
+                {!previewMode && <div className='w-full text-center pt-10 mt-4'>
+                    <NavLink to="/quizzes"><ArrowBackIcon /> <span className='font-bold'>Back to Quizzes List</span> <br />
+                        {isQuizStarted && <span className='text-xs'>(Unsaved changes will be lost)</span>}
+                    </NavLink></div>}
             </div>
         </div >
     );

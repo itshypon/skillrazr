@@ -88,6 +88,7 @@ export default function Footer() {
           justifyContent={"space-between"}
         >
           <Grid
+            item
             md={3}
             sm={3}
             xs={12}
@@ -104,7 +105,7 @@ export default function Footer() {
               <br /> All rights reserved
             </Rights>
           </Grid>
-          <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
               <Title>Company</Title>
             </Grid>
@@ -129,7 +130,7 @@ export default function Footer() {
               </NavLink>
             </Grid>
           </Grid>
-          <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
               <Title>Legal</Title>
             </Grid>
@@ -165,7 +166,7 @@ export default function Footer() {
               </NavLink>
             </Grid>
           </Grid>
-          <Grid spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
               <Title>Social</Title>
             </Grid>

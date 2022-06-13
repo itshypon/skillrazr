@@ -378,7 +378,8 @@ const data = [
                     "Container that stores the elements of similar types ",
                     "The Array is not a data structure"
                 ],
-                "title": "How can we describe an array in the best possible way?"
+                "title": "How can we describe an array in the best possible way?",
+                "id": "1",
             },
             {
                 "options": [
@@ -387,7 +388,8 @@ const data = [
                     "javatpoint{20}; ",
                     "array javatpoint[10];"
                 ],
-                "title": "Which of the following is the correct way of declaring an array?"
+                "title": "Which of the following is the correct way of declaring an array?",
+                "id": "2",
             },
             {
                 "options": [
@@ -396,7 +398,8 @@ const data = [
                     " int arr[2] = {10, 20}",
                     " int arr(2) = (10, 20)"
                 ],
-                "title": " How can we initialize an array in C language?"
+                "title": " How can we initialize an array in C language?",
+                "id": "3",
             },
             {
                 "options": [
@@ -405,7 +408,8 @@ const data = [
                     "Index of the first element starts from 1. ",
                     "Elements of an array cannot be sorted"
                 ],
-                "title": "Which of the following is the advantage of the array data structure?"
+                "title": "Which of the following is the advantage of the array data structure?",
+                "id": "4",
             },
             {
                 "options": [
@@ -414,7 +418,8 @@ const data = [
                     "Spatial locality ",
                     "Scheduling of Processes"
                 ],
-                "title": " Which of the following highly uses the concept of an array?"
+                "title": " Which of the following highly uses the concept of an array?",
+                "id": "5",
             }
         ],
         "title": "DATA STRUCTURE",
@@ -423,7 +428,8 @@ const data = [
         "createdAt": 1630244384439,
         "status": "unpublished",
         "createdBy": "sumanpatra688@gmail.com",
-        "organisation": "smera"
+        "organisation": "smera",
+        learnMoreLinks: ["https://smera.io", "https://learn.smera.io"]
     },
     {
         "questions": [

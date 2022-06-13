@@ -138,7 +138,7 @@ export default function NewQuiz() {
     return (
         <Grid container className='mt-24 sm:mt-20 p-4'>
             <Grid direction="row" container md={12}>
-                <Grid md={6} xs={12}>
+                <Grid item md={6} xs={12}>
                     <div className='p-4'>
                         {/* {!quizData.title ||
                             (!quizData.description && quizData.questions.length === 0 && (
@@ -217,7 +217,7 @@ export default function NewQuiz() {
                     </div>
 
                 </Grid>
-                <Grid md={6} xs={12}>
+                <Grid item md={6} xs={12}>
                     {quizData.questions.length > 0 && <div className='p-4 text-xl font-bold' >Quiz Preview Mode</div>}
                     <QuizPlayGround quizData={quizData} editHandler={(questionId: any) => {
                         setOpen(true);
@@ -225,7 +225,7 @@ export default function NewQuiz() {
                     }} previewMode={true} />
                 </Grid>
             </Grid>
-            {<div className='w-full text-left pt-6'><NavLink to="/quizes"><ArrowBackIcon /> Back to Quizes List <br /> <span className='text-xs'>  (Unsaved changes will be lost)</span></NavLink></div>}
+            {<div className='w-full text-left pt-6 pl-4'><NavLink to="/quizzes"><ArrowBackIcon /> <span className='font-bold'>Back to Quizes List </span><br /> <span className='text-xs'>  (Unsaved changes will be lost)</span></NavLink></div>}
             <div className='p-4 w-full sm:w-1/2'>{renderHelpAccordian()}</div>
         </Grid>
     );

@@ -25,7 +25,7 @@ export default function Internship(props: any) {
                         'Get decent stipend',
                         'Open doors to new opportunities'
                     ].map((i, index) =>
-                        <Parallax
+                        <Parallax key={i}
                             translateY={[
                                 `${index * -25}%`,
                                 `${index * 50}%`

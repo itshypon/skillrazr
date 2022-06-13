@@ -90,7 +90,7 @@ function DaySnack(props: any) {
         autoHideDuration={7000}
         open={open}
         onClose={handleClose}
-        message={<div><NewspaperIcon /><span className='ml-2 font-bold inline-block'>Today is :- {messages[0]}</span> <div>{messages[1]}</div></div>}
+        message={<div className='flex flex-col items-center'><div className='text-center'><NewspaperIcon /></div><div className='ml-2 font-bold text-center'>Today is :- {messages[0]}</div> <div className='text-center'>{messages[1]}</div></div>}
         key={vertical + horizontal}
         onClick={() => {
           handleClick(true);
@@ -137,7 +137,7 @@ function App(props: any) {
               element={<CourseDetailsPage {...props} />}
             />
             <Route
-              path="/quizes/:id"
+              path="/quizzes/:id"
               element={<QuizDetailsPage {...props} />}
             />
             <Route
@@ -151,20 +151,20 @@ function App(props: any) {
               }
             />
             <Route
-              path="/quizes/new"
+              path="/quizzes/new"
               element={
                 <NewQuiz />
               }
             />
             <Route
-              path="/quizes"
+              path="/quizzes"
               element={
                 <QuizesList {...props} className="p-48" />
               }
             />
           </Route>
         </Routes>
-        {days[dateMonth] && !daySnackSeen ? <DaySnack messages={days[dateMonth]} handleClick={setDaySnackSeen} /> : <Snack />}
+        {days[dateMonth] ? <DaySnack messages={days[dateMonth]} handleClick={setDaySnackSeen} /> : <Snack />}
       </BrowserRouter>
     </ParallaxProvider>
   );
