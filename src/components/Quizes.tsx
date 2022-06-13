@@ -13,7 +13,7 @@ export default function Quizes(props: any) {
         const getData = async () => {
             try {
                 const resp = await getQuizes();
-                setQuizes(resp.data.filter((i: any) => i.status === 'published'));
+                setQuizes(resp.data.filter((i: any) => i.status === 'published').slice(0, 5));
             } catch (e) {
                 setQuizes(localQuizes.filter((i: any) => i.status === 'published'));
             }
