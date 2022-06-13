@@ -79,7 +79,7 @@ function DaySnack(props: any) {
   const { vertical, horizontal, open } = state;
 
   const handleClose = () => {
-    handleClick(true);
+    // handleClick(true);
     setState({ ...state, open: false });
   };
 
@@ -119,7 +119,7 @@ function DaySnack(props: any) {
 function App(props: any) {
   const date = new Date();
   const dateMonth = `${date.getDate()}/${date.getMonth() + 1}`;
-  const [daySnackSeen, setDaySnackSeen] = React.useState(false);
+  // const [daySnackSeen, setDaySnackSeen] = React.useState(false);
 
   return (
     <ParallaxProvider>
@@ -164,7 +164,7 @@ function App(props: any) {
             />
           </Route>
         </Routes>
-        {days[dateMonth] ? <DaySnack messages={days[dateMonth]} handleClick={setDaySnackSeen} /> : <Snack />}
+        {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
       </BrowserRouter>
     </ParallaxProvider>
   );
