@@ -52,3 +52,29 @@ export const getScore = (answerObj: any, submissionObj: any) => {
 
     return (correctAnswers / totalQuestions) * 100;
 };
+
+export const shuffleArray = (array: number[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+export const renderMathExpression = (input: string, id: string) => {
+    setTimeout(() => {
+        let output: any = document.getElementById(id);
+        output.innerHTML = '';
+
+        window.MathJax.texReset();
+        let options = MathJax.getMetricsFor(output);
+        options.display = true;
+        MathJax.tex2chtmlPromise(input, options).then(function (node: any) {
+            output.appendChild(node);
+            MathJax.startup.document.clear();
+            MathJax.startup.document.updateDocument();
+        }).catch(function (err: any) {
+            output.appendChild(document.createElement('pre')).appendChild(document.createTextNode(err.message));
+        });
+    }, 200);
+};
