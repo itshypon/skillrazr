@@ -12,7 +12,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import QuizIcon from '@mui/icons-material/Quiz';
-import { getQuiz, getQuizScrore, getScore } from '../uiHelper';
+import { getQuiz, getQuizScrore, getScore, shuffleArray, renderMathExpression } from '../uiHelper';
 import localQuizes from '../data/quizes';
 import { useParams, NavLink } from 'react-router-dom';
 import { State } from '../components/App';
@@ -67,6 +67,46 @@ function Snack(props: any) {
     );
 }
 
+const RenderQuestion = (props: any) => {
+    const { question, _id, unAnswered, previewMode, editHandler, questionAnswers, handleChange, isSubmitDisabled } = props;
+    const isUnanswered = unAnswered.includes(question.id);
+    const [optionIndices, setOptionIndices] = useState<any>([]);
+
+    useEffect(() => {
+        setOptionIndices(previewMode ? Array.from(Array(question.options.length).keys()) : shuffleArray(Array.from(Array(question.options.length).keys())));
+    }, [previewMode, question.options.length]);
+
+    return (
+        <FormControl key={_id} component="fieldset" error={isUnanswered} className={`!mt-12 !border !border-solid ${isUnanswered ? '!border-red-600' : '!border-stone-600'} !rounded !p-4`}>
+            {isUnanswered && <FormHelperText className='font-bold absolute top-0'>{'Select an answer'}</FormHelperText>}
+            <FormLabel component="legend"><span className='text-black text-xl'>{`${_id + 1}*`}</span> <span className='text-black font-bold'>{question.type === 'math' ? 'Evaluate the math expression' : ''} </span> <span id={`output${_id}`} className='font-bold text-black text-xl'>{question.type === 'math' ?
+                Object.keys(questionAnswers).length > 0 ? undefined : renderMathExpression(question.title, `output${_id}`) : question.title}</span></FormLabel>
+            <FormLabel component="legend"><span className='text-black'>{question.description}</span></FormLabel>
+            {previewMode && <EditIcon className='cursor-pointer absolute right-2' onClick={() => {
+                editHandler(question.id);
+            }} />}
+            <RadioGroup
+                className='options'
+                aria-label="option"
+                name="option"
+                id={question.id}
+                value={questionAnswers.id}
+                onChange={handleChange}>
+                {optionIndices.map((index: number) => {
+                    return (
+                        <FormControlLabel
+                            id="option"
+                            value={question.options[index]}
+                            control={<Radio disabled={isSubmitDisabled} id={question.id} />}
+                            label={<span className='text-black font-bold'>{question.options[index]}</span>}
+                        />
+                    );
+                })}
+            </RadioGroup>
+        </FormControl >
+    );
+};
+
 export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: any) => {
     const [quizesData, setQuizesData] = useState<any>(quizData);
     const [isFetchingData, setFetchingData] = useState<boolean>(false);
@@ -76,9 +116,11 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
     const { id: quizId } = useParams<string>();
     const [submitClicked, setSubmitClicked] = useState<boolean>(false);
     const [learnMoreLinks, setLearnMoreLinks] = useState([]);
+    const [questionIndices, setQuestionIndices] = useState<any>([]);
 
     useEffect(() => {
         setQuizesData(quizData);
+        quizData && setQuestionIndices(Array.from(Array(quizData.questions.length).keys()));
     }, [quizData]);
 
 
@@ -88,6 +130,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                 setFetchingData(true);
                 const resp = quizId && await getQuiz(quizId);
                 setQuizesData(resp.data);
+                setQuestionIndices(shuffleArray(Array.from(Array(resp.data.questions.length).keys())));
                 setAllowedTime(resp.data.allowedTime || 120);
                 setLearnMoreLinks(resp.data.learnMoreLinks || []);
                 setFetchingData(false);
@@ -100,6 +143,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                     setQuizesData(singleQuiz);
                     const quiz: any = localQuizes.find(quiz => quiz.id === quizId) || {};
                     setQuizesData(quiz);
+                    setQuestionIndices(shuffleArray(Array.from(Array(quiz.questions.length).keys())));
                     setLearnMoreLinks(quiz.learnMoreLinks || []);
                     setAllowedTime(120);
                 }
@@ -107,27 +151,6 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
         }
         quizId && getData();
     }, [quizId]);
-
-    const renderMathExpression = (input: string, id: string) => {
-        if (Object.keys(questionAnswers).length > 0) {
-            return;
-        }
-        setTimeout(() => {
-            let output: any = document.getElementById(id);
-            output.innerHTML = '';
-
-            window.MathJax.texReset();
-            let options = MathJax.getMetricsFor(output);
-            options.display = true;
-            MathJax.tex2chtmlPromise(input, options).then(function (node: any) {
-                output.appendChild(node);
-                MathJax.startup.document.clear();
-                MathJax.startup.document.updateDocument();
-            }).catch(function (err: any) {
-                output.appendChild(document.createElement('pre')).appendChild(document.createTextNode(err.message));
-            });
-        }, 200);
-    };
 
 
     const [isQuizStarted, setIsQuizStarted] = useState(previewMode);
@@ -208,38 +231,6 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
         );
     };
 
-    const renderQuestion = (question: any, _id: number) => {
-        const isUnanswered = unAnswered.includes(question.id);
-        return (
-            <FormControl key={_id} component="fieldset" error={isUnanswered} className={`!mt-12 !border !border-solid ${isUnanswered ? '!border-red-600' : '!border-stone-600'} !rounded !p-4`}>
-                {isUnanswered && <FormHelperText className='font-bold absolute top-0'>{'Select an answer'}</FormHelperText>}
-                <FormLabel component="legend"><span className='text-black text-xl'>{`${_id + 1}*`}</span> <span className='text-black font-bold'>{question.type === 'math' ? 'Evaluate the math expression' : ''} </span> <span id={`output${_id}`} className='font-bold text-black text-xl'>{question.type === 'math' ? renderMathExpression(question.title, `output${_id}`) : question.title}</span></FormLabel>
-                <FormLabel component="legend"><span className='text-black'>{question.description}</span></FormLabel>
-                {previewMode && <EditIcon className='cursor-pointer absolute right-2' onClick={() => {
-                    editHandler(question.id);
-                }} />}
-                <RadioGroup
-                    className='options'
-                    aria-label="option"
-                    name="option"
-                    id={question.id}
-                    value={questionAnswers.id}
-                    onChange={handleChange}>
-                    {question.options.map((option: any) => {
-                        return (
-                            <FormControlLabel
-                                id="option"
-                                value={option}
-                                control={<Radio disabled={isSubmitDisabled} id={question.id} />}
-                                label={<span className='text-black font-bold'>{option}</span>}
-                            />
-                        );
-                    })}
-                </RadioGroup>
-            </FormControl >
-        );
-    };
-
     const onTimeComplete = () => {
         setIsSubmitDisabled(true);
     };
@@ -290,7 +281,6 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                         <div className='text-xl'>
                             {quizesData.description}
                         </div>
-                        <div className='text-small mt-8 font-bold'>Note:- Quiz is timed and timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to complete all questions before you can submit the quiz. <br />Good luck!</div>
                         <div
                             style={{
                                 cursor: 'pointer',
@@ -310,6 +300,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                             }}>
                             <PlayCircleFilledWhiteIcon /> <span className='font-bold'>Start</span>
                         </div>
+                        <div className='text-sm mt-8 font-bold'>Note:- Quiz timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to complete all questions to get a score. <br />Good luck!</div>
                     </div>
                 )}
 
@@ -321,8 +312,8 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                         </div>
 
                         <form className="quiz-form flex flex-col justify-start">
-                            {quizesData.questions.map((question: any, _id: number) => {
-                                return renderQuestion(question, _id);
+                            {questionIndices.map((index: any, _id: number) => {
+                                return <RenderQuestion question={quizesData.questions[index]} _id={_id} unAnswered={unAnswered} previewMode={previewMode} editHandler={editHandler} questionAnswers={questionAnswers} handleChange={handleChange} isSubmitDisabled={isSubmitDisabled} />;
                             })}
                             <Button
                                 className='!mt-4 w-[200px]'
