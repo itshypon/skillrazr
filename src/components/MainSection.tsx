@@ -1,4 +1,4 @@
-import main from "../assets/images/main.jpg";
+import main from "../assets/images/main2.jpg";
 
 export default function MainSection(props: any) {
   return (
