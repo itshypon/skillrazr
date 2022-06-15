@@ -300,7 +300,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                             }}>
                             <PlayCircleFilledWhiteIcon /> <span className='font-bold'>Start</span>
                         </div>
-                        <div className='text-sm mt-8 font-bold'>Note:- Quiz timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to complete all questions to get a score. <br />Good luck!</div>
+                        <div className='text-sm mt-8 font-bold'>Note:- Quiz timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to answer all questions to get a score. <br />Good luck!</div>
                     </div>
                 )}
 
