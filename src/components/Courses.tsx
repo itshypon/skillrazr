@@ -38,9 +38,12 @@ export default function Courses(props: any) {
       title: "Deep JS and Advance NodeJS",
       description: "JavaScript in depth, NodeJS advance topics"
     },
+    {
+      id: 'complete_software_testing',
+      title: "The Complete Software Testing",
+      description: "Manual and Automation Software Testing",
+    }
   ]
-
-
 
   return (
     <div
@@ -89,7 +92,6 @@ export default function Courses(props: any) {
             <div className="ml-2 text-2xl">{course.title}</div>
             <div className="ml-2">{course.description}</div>
           </div>)
-
         })}
       </div>
     </div>

@@ -5,23 +5,10 @@ import { useParams } from 'react-router-dom';
 // import CodeIcon from '@mui/icons-material/Code';
 // import AssignmentIcon from '@mui/icons-material/Assignment';
 // import DoneIcon from '@mui/icons-material/Done';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import CastForEducationIcon from '@mui/icons-material/CastForEducation';
-import ConstructionIcon from '@mui/icons-material/Construction';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
-import MuiAccordionSummary, {
-    AccordionSummaryProps,
-} from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import PestControlIcon from '@mui/icons-material/PestControl';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
@@ -30,47 +17,19 @@ import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import Button from '@mui/material/Button';
 import ModalDialog from "./Modal";
 import BankDetails from './BankDetails';
+import { Accordion, AccordionSummary, AccordionDetails } from './AccordianUtils';
 
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CastForEducationIcon from '@mui/icons-material/CastForEducation';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 import ApiIcon from '@mui/icons-material/Api';
 import StreamIcon from '@mui/icons-material/Stream';
 import Typography from '@mui/material/Typography';
 import { Parallax } from 'react-scroll-parallax';
-
-const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-        borderBottom: 0,
-    },
-    '&:before': {
-        display: 'none',
-    },
-}));
-
-const AccordionSummary = styled((props: AccordionSummaryProps) => (
-    <MuiAccordionSummary
-        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-        {...props}
-    />
-))(({ theme }) => ({
-    backgroundColor:
-        theme.palette.mode === 'dark'
-            ? 'rgba(255, 255, 255, .05)'
-            : 'rgba(0, 0, 0, .03)',
-    flexDirection: 'row-reverse',
-    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-        transform: 'rotate(90deg)',
-    },
-    '& .MuiAccordionSummary-content': {
-        marginLeft: theme.spacing(1),
-    },
-}));
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-    padding: theme.spacing(2),
-    borderTop: '1px solid rgba(0, 0, 0, .125)',
-}));
 
 function ContentAccordians() {
     const [expanded, setExpanded] = React.useState<string | false>('panel1');
@@ -360,7 +319,7 @@ function DeepJS() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>5. Customizable session (10 hrs) <WorkIcon /></Typography>
+                    <Typography className='!font-bold'>5. Customizable session (10 hrs) <DashboardCustomizeIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -690,11 +649,121 @@ function CPP() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>4. Customizable session (5 hrs) <WorkIcon /></Typography>
+                    <Typography className='!font-bold'>4. Customizable session (5 hrs) <DashboardCustomizeIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        5 hrs* dedicated sessions to clarify all your doubts for topics related to this course.
+                        Extra 5 hrs* dedicated sessions to clarify all your doubts for topics related to this course.
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+        </div>
+    );
+}
+
+function TheCompleteSoftwareTesting() {
+    const [expanded, setExpanded] = React.useState<string | false>('');
+
+    const handleChange =
+        (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+            setExpanded(newExpanded ? panel : false);
+        };
+
+    return (
+        <div>
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography><span className='font-bold'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <b className='text-2xl'>Part 1</b>
+                    </Typography>
+                    <div className='text-1xl font-bold'>
+                        Software Testing Concepts <br />
+                        Types of Testing <br />
+                        Testing Techniques:- Black Box and White Box Testing<br />
+                        Unit Testing <br />
+                        API Testing<br />
+                        Performance Testing<br />
+                        Test planning <br />
+                        Bug Report Writing <br />
+                    </div>
+                    <br />
+                    <Typography>
+                        <b className='text-2xl'>Part 2</b>
+                        <div className='text-1xl font-bold'>
+                            Agile principles<br />
+                            Introduction to Automation Testing<br />
+                            WebdriverIO, Page Object Model <br />
+                            Intro to Mocha, Chai, Cucumber, Jasmine and other popular frameworks<br />
+                            Allure Test Reporting <br />
+                        </div>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography><span className='font-bold'>2. Source Code Management (Git) <IntegrationInstructionsIcon /> </span></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <div className='text-1xl font-bold'> Git commands walk thru in live workshop {' '}</div>
+                        <a href="https://training.github.com/downloads/github-git-cheat-sheet/" rel="noreferrer" target="_blank">https://training.github.com/downloads/github-git-cheat-sheet/</a>
+                        <br />
+                        <a href="https://www.atlassian.com/git/tutorials/git-alias/" rel="noreferrer" target="_blank">https://www.atlassian.com/git/tutorials/git-alias</a>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel2a'} onChange={handleChange('panel2a')}>
+                <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography><span className='font-bold'>3. Agile Principles and Tools <ConstructionIcon /> </span></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <div className='text-1xl font-bold'> Intro to Agile Principles and Scrum Framework <br /></div>
+                        <div className='text-1xl font-bold'> Jira Software detailed usage <br /></div>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+                    <Typography className='!font-bold'>4. Lab work  <HomeWorkIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <ul className='font-bold'>
+                            <div className='text-xl'>Following activities will be perfomed on a real Web App</div>
+                            <li>Writing Test plans, scenarios</li>
+                            <li>Executing Test Scenarios Manually</li>
+                            <li>Writing Unit Tests using Jest</li>
+                            <li>Writing API Tests using Postman</li>
+                            <li>Writing Automation Tests using WebdriverIO</li>
+                        </ul>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
+                    <Typography className='!font-bold'>5. Interview Preparation Sessions <WorkIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <span className='font-bold'>Interview preparation sessions</span><br />
+                        <span className='font-bold'>Mock interview sessions with experts</span>
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
+                    <Typography className='!font-bold'>6. Customizable session (5 hrs) <DashboardCustomizeIcon /></Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        <span className='font-bold'>Extra 5 hrs* dedicated sessions to clarify all your doubts for topics related to this course.</span>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -731,6 +800,10 @@ const CourseDetailsPage = () => {
 
             case 'ds_algo_java': {
                 return <DSAlgo />;
+            }
+
+            case 'complete_software_testing': {
+                return <TheCompleteSoftwareTesting />
             }
 
             default:
@@ -861,6 +934,24 @@ const CourseDetailsPage = () => {
             fee: 3999,
             feeInRupees: "₹3,999",
             duration: { total: '2 months', weekly: 'At 5 hours/week' },
+            paymentPage: 'https://rzp.io/l/skillrazr-algo-java',
+        },
+        {
+            id: 'complete_software_testing',
+            title: "The Complete Software Testing",
+            description: "Manual and Automation Software Testing",
+            overview: "This course provides you deep understanding of Software Testing. This is designed to help you explore career in Software Testing.",
+            features: [
+                "1. Learn essential concepts",
+                "2. Get exposure to cutting edge tools and industry insights",
+                "3. Live coding and doubt clear classes",
+                "4. Digital track of your learning",
+                "5. Interview preparation sessions",
+            ],
+            feeStriked: "₹6,999",
+            fee: 3999,
+            feeInRupees: "₹3,999",
+            duration: { total: '2 months', weekly: 'At 5 hours/week + 5 hrs*' },
             paymentPage: 'https://rzp.io/l/skillrazr-algo-java',
         },
     ];

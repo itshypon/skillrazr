@@ -66,7 +66,7 @@ export const renderMathExpression = (input: string, id: string) => {
         let output: any = document.getElementById(id);
         output.innerHTML = '';
 
-        window.MathJax.texReset();
+        MathJax.texReset();
         let options = MathJax.getMetricsFor(output);
         options.display = true;
         MathJax.tex2chtmlPromise(input, options).then(function (node: any) {
