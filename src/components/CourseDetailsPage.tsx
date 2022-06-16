@@ -681,12 +681,14 @@ function TheCompleteSoftwareTesting() {
                     </Typography>
                     <div className='text-1xl font-bold'>
                         Software Testing Concepts <br />
+                        SDLC & STLC <br />
+                        Test planning <br />
+                        Test case design techniques <br />
                         Types of Testing <br />
                         Testing Techniques:- Black Box and White Box Testing<br />
                         Unit Testing <br />
                         API Testing<br />
                         Performance Testing<br />
-                        Test planning <br />
                         Bug Report Writing <br />
                     </div>
                     <br />
