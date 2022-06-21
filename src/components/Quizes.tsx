@@ -28,10 +28,10 @@ export default function Quizes(props: any) {
                 "my-24 px-6 pt-20 flex flex-col items-center flex-wrap justify-center"
             }
         >
-            <div className="text-6xl text-center mb-8"> Quizes</div>
+            <div className="text-6xl text-center mb-8"> Quizzes</div>
             <div className='text-xl mt-2'>Live</div>
 
-            <div>Test your skills with these short quizes</div>
+            <div>Test your skills with these short quizzes</div>
 
             <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
                 {quizes.map((quiz: any) => {
