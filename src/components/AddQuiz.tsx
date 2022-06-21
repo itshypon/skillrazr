@@ -106,7 +106,7 @@ export default function NewQuiz() {
                 Copy Quiz Data
             </Button>
 
-            {isCopied && <div className='font-bold mt-2'><DoneIcon htmlColor='green' />Copy successful!</div>}
+            {isCopied && <div className='text-xl mt-2'><DoneIcon htmlColor='green' />Copy successful!</div>}
         </ >;
     }
 
@@ -118,7 +118,7 @@ export default function NewQuiz() {
     const renderHelpAccordian = () => {
         return <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                <div className='!font-bold'><span>How to add a new quiz? </span></div>
+                <div className='text-xl'><span>How to add a new quiz? </span></div>
             </AccordionSummary>
             <AccordionDetails>
                 <div className='p-4'>
@@ -147,7 +147,7 @@ export default function NewQuiz() {
                                 </span>
                             ))} */}
 
-                        {(!quizData.title || !quizData.description) ? <div className='font-bold py-2'>Set title and description for the quiz</div> : null}
+                        {(!quizData.title || !quizData.description) ? <div className='py-2'>Set title and description for the quiz</div> : null}
 
 
                         <div className='mb-2'>
@@ -175,13 +175,13 @@ export default function NewQuiz() {
                             />
                         </div>
                         <div className='mt-2'>
-                            {quizData.questions.length < 1 ? <div className='font-bold py-2'>Add your first question!</div> : null}
+                            {quizData.questions.length < 1 ? <div className='py-2'>Add your first question!</div> : null}
                             {quizData.questions.length >= 1 && quizData.questions.length < 5 ? (
                                 <>
-                                    <div className='font-bold'>
+                                    <div className='text-xl'>
                                         So far <b>{quizData.questions.length} </b> question{quizData.questions.length === 1 ? '' : 's'} added!
                                     </div>
-                                    <div className='font-bold text-red-500 pb-2'>
+                                    <div className='text-xl text-red-500 pb-2'>
                                         {quizData.questions.length < 5 ? `Need at least ${5 - quizData.questions.length} more question(s)!` : 'Quiz is ready!'}
                                     </div>
                                 </>
@@ -218,14 +218,14 @@ export default function NewQuiz() {
 
                 </Grid>
                 <Grid item md={6} xs={12}>
-                    {quizData.questions.length > 0 && <div className='p-4 text-xl font-bold' >Quiz Preview Mode</div>}
+                    {quizData.questions.length > 0 && <div className='p-4 text-xl' >Quiz Preview Mode</div>}
                     <QuizPlayGround quizData={quizData} editHandler={(questionId: any) => {
                         setOpen(true);
                         setEditingQuestionId(questionId);
                     }} previewMode={true} />
                 </Grid>
             </Grid>
-            {<div className='w-full text-left pt-6 pl-4'><NavLink to="/quizzes"><ArrowBackIcon /> <span className='font-bold'>Back to Quizes List </span><br /> <span className='text-xs'>  (Unsaved changes will be lost)</span></NavLink></div>}
+            {<div className='w-full text-left pt-6 pl-4'><NavLink to="/quizzes"><Button variant='outlined'><ArrowBackIcon /> <span>Back to Quizes List </span></Button><br /> <span className='text-xs'>  (Unsaved changes will be lost)</span></NavLink></div>}
             <div className='p-4 w-full sm:w-1/2'>{renderHelpAccordian()}</div>
         </Grid>
     );

@@ -36,7 +36,7 @@ export default function QuizesList(props: any) {
     const renderInfoAccordian = () => {
         return <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                <div className='!font-bold'><span>Why quizes? </span></div>
+                <div className='text-xl'><span>Why quizes? </span></div>
             </AccordionSummary>
             <AccordionDetails>
                 <div className='p-4'>
@@ -66,7 +66,7 @@ export default function QuizesList(props: any) {
                 "my-24 px-6 pt-20 flex flex-col items-center flex-wrap justify-center"
             }
         >
-            <div className="text-6xl text-center mb-4">Quizes</div>
+            <div className="text-6xl text-center mb-8">Quizes</div>
 
             {isFetchingData ? <div className='!flex justify-center !w-full'><CircularProgress /></div> : <>
                 <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
@@ -77,11 +77,11 @@ export default function QuizesList(props: any) {
                             }}>
                                 <div
                                     key={quiz.title}
-                                    className="flex flex-col items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-4 mt-lg-0 font-bold box-shadow border border-green-500 rounded-[5px]"
+                                    className="flex flex-col items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-4 mt-lg-0 box-shadow border border-green-500 rounded-[5px]"
                                 >
 
 
-                                    <div className="ml-2 text-2xl">{quiz.title} </div>
+                                    <div className="ml-2 text-xl">{quiz.title} </div>
                                     <div className="ml-2">{quiz.description}</div>
                                 </div>
                             </NavLink>
@@ -90,7 +90,7 @@ export default function QuizesList(props: any) {
                 </div>
                 <div className='p-2'>Quizes on other topics coming soon...</div>
             </>}
-            <NavLink to={"/quizzes/new"} className="text-2xl mt-2 mb-4 p-4 font-bold underline underline-offset-3" onClick={() => {
+            <NavLink to={"/quizzes/new"} className="text-2xl mt-2 mb-4 p-4 text-xl underline underline-offset-3" onClick={() => {
                 window.scrollTo(0, 0);
             }}> Add Quiz <AddBoxIcon /></NavLink>
             <div className='w-full sm:w-1/2 align-left text-left left '>{renderInfoAccordian()}</div>

@@ -28,8 +28,8 @@ export default function Quizes(props: any) {
                 "my-24 px-6 pt-20 flex flex-col items-center flex-wrap justify-center"
             }
         >
-            <div className="text-6xl text-center mb-4"> Quizes</div>
-            <div className='text-xl mt-2 font-bold'>Live</div>
+            <div className="text-6xl text-center mb-8"> Quizes</div>
+            <div className='text-xl mt-2'>Live</div>
 
             <div>Test your skills with these short quizes</div>
 
@@ -40,7 +40,7 @@ export default function Quizes(props: any) {
                             window.scrollTo(0, 0);
                         }}>
                             <div
-                                className="flex flex-col items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-4 mt-lg-0 font-bold box-shadow border border-green-500 rounded-[5px]"
+                                className="flex flex-col items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-4 mt-lg-0  box-shadow border border-green-500 rounded-[5px]"
                             >
 
 
@@ -52,7 +52,7 @@ export default function Quizes(props: any) {
                 })}
             </div>
 
-            <NavLink to={"/quizzes"} className="text-2xl mt-2 p-4 font-bold underline underline-offset-3" onClick={() => {
+            <NavLink to={"/quizzes"} className="text-2xl mt-2 p-4  underline underline-offset-3" onClick={() => {
                 window.scrollTo(0, 0);
             }}> Explore more <MoreIcon /></NavLink>
 

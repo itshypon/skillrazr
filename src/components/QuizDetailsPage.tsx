@@ -78,8 +78,8 @@ const RenderQuestion = (props: any) => {
 
     return (
         <FormControl key={_id} component="fieldset" error={isUnanswered} className={`!mt-12 !border !border-solid ${isUnanswered ? '!border-red-600' : '!border-stone-600'} !rounded !p-4`}>
-            {isUnanswered && <FormHelperText className='font-bold absolute top-0'>{'Select an answer'}</FormHelperText>}
-            <FormLabel component="legend"><span className='text-black text-xl'>{`${_id + 1}*`}</span> <span className='text-black font-bold'>{question.type === 'math' ? 'Evaluate the math expression' : ''} </span> <span id={`output${_id}`} className='font-bold text-black text-xl'>{question.type === 'math' ?
+            {isUnanswered && <FormHelperText className='absolute top-0'>{'Select an answer'}</FormHelperText>}
+            <FormLabel component="legend"><span className='text-black text-xl'>{`${_id + 1}*`}</span> <span className='text-black'>{question.type === 'math' ? 'Evaluate the math expression' : ''} </span> <span id={`output${_id}`} className='text-black text-xl'>{question.type === 'math' ?
                 Object.keys(questionAnswers).length > 0 ? undefined : renderMathExpression(question.title, `output${_id}`) : question.title}</span></FormLabel>
             <FormLabel component="legend"><span className='text-black'>{question.description}</span></FormLabel>
             {previewMode && <EditIcon className='cursor-pointer absolute right-2' onClick={() => {
@@ -98,7 +98,7 @@ const RenderQuestion = (props: any) => {
                             id="option"
                             value={question.options[index]}
                             control={<Radio disabled={isSubmitDisabled} id={question.id} />}
-                            label={<span className='text-black font-bold'>{question.options[index]}</span>}
+                            label={<span className='text-black'>{question.options[index]}</span>}
                         />
                     );
                 })}
@@ -222,7 +222,7 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
         return (
             <div className="timer text-sm text-center">
                 <div className="text">{isQuizStarted && isSubmitDisabled ? 'You took' : 'Remaining'}</div>
-                <div className="value text-xl font-bold">{isQuizStarted && isSubmitDisabled ? allowedTime - remainingTime : remainingTime}</div>
+                <div className="value font-bold">{isQuizStarted && isSubmitDisabled ? allowedTime - remainingTime : remainingTime}</div>
                 <div className="text">seconds</div>
                 {isSubmitDisabled && <PlayCircleFilledWhiteIcon htmlColor='green' className='cursor-pointer' onClick={() => {
                     window.location.reload();
@@ -277,8 +277,8 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                     <div className="flex items-center flex-col">
                         <QuizIcon />
 
-                        <h1 className='text-xl font-bold'>{quizesData.title}</h1>
-                        <div className='text-xl'>
+                        <h1 className='text-xl mt-2'>{quizesData.title}</h1>
+                        <div className=''>
                             {quizesData.description}
                         </div>
                         <div
@@ -298,16 +298,16 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                                 window.scrollTo(0, 0);
                                 setIsQuizStarted(true);
                             }}>
-                            <PlayCircleFilledWhiteIcon /> <span className='font-bold'>Start</span>
+                            <PlayCircleFilledWhiteIcon /> <span className='text-xl'>Start</span>
                         </div>
-                        <div className='text-sm mt-8 font-bold'>Note:- Quiz timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to answer all questions to get a score. <br />Good luck!</div>
+                        <div className='text-sm mt-12'>Note:- Quiz timer will start immediatedly after you click on Start. <br /> There'll be a total of <span className='font-black'>{quizesData.questions.length}</span> questions and you need to answer all questions to get a score. <br />Good luck!</div>
                     </div>
                 )}
 
                 {isQuizStarted && quizesData.questions.length ? (
                     <Grid>
-                        <h1 className='text-xl font-bold'>{quizesData.title}</h1>
-                        <div className='text-xl'>
+                        <h1 className='text-xl'>{quizesData.title}</h1>
+                        <div className=''>
                             {quizesData.description}
                         </div>
 
@@ -325,14 +325,14 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                                 {previewMode && <FactCheckIcon className="mr-2" />}
                                 {previewMode ? 'Validate Quiz' : 'Submit quiz'}
                             </Button>
-                            {isQuizStarted && unAnswered.length > 0 && <FormHelperText className='font-bold !text-red-500'>Please answer all the questions!</FormHelperText>}
+                            {isQuizStarted && unAnswered.length > 0 && <FormHelperText className='!text-red-500'>Please answer all the questions!</FormHelperText>}
 
                             {(previewMode && score !== undefined) && (
-                                <div className='font-bold'>Your last score <b>{score}</b></div>
+                                <div className='text-xl'>Your last score <b>{score}</b></div>
                             )}
                         </form>
 
-                        {learnMoreLinks.length > 0 && isSubmitDisabled && <ul><div className='font-bold mt-10'>Learn More :- </div>
+                        {learnMoreLinks.length > 0 && isSubmitDisabled && <ul><div className='text-xl mt-10'>Learn More :- </div>
                             {learnMoreLinks.map(link => {
                                 return <li key={link}>
                                     <a href={link} target="_blank" rel="noreferrer">{link}</a>
@@ -343,14 +343,14 @@ export const QuizPlayGround = ({ quizData, editHandler, previewMode = false }: a
                 ) : null}
 
                 {notFound && (<div className='flex flex-col items-center p-10'>
-                    <span className='text-red-500 font-bold text-6xl'>
+                    <span className='text-red-500 text-6xl'>
                         <span>4</span><span>0</span><span>4</span></span>
-                    <span className='font-bold flex items-center text-xl text-red-500'> <ErrorOutlineIcon htmlColor='red' /> <span className='ml-1'>Quiz not found!</span></span>
+                    <span className='flex items-center text-xl text-red-500'> <ErrorOutlineIcon htmlColor='red' /> <span className='ml-1'>Quiz not found!</span></span>
                 </div>)}
                 {getStatusMessage() && <Snack score={score} message={getStatusMessage()} />}
 
                 {!previewMode && <div className='w-full text-center pt-10 mt-4'>
-                    <NavLink to="/quizzes"><ArrowBackIcon /> <span className='font-bold'>Back to Quizzes List</span> <br />
+                    <NavLink to="/quizzes"><Button variant='outlined'><ArrowBackIcon /> <span className=''>Back to Quizzes List</span></Button> <br />
                         {isQuizStarted && <span className='text-xs'>(Unsaved changes will be lost)</span>}
                     </NavLink></div>}
             </div>

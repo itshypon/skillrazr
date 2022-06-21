@@ -39,20 +39,6 @@ const Sub = styled("span")`
   color: #eeeff4;
 `;
 
-const TopGrid = styled(Grid)`
-  @media (max-width: 500px) {
-    // min-width: 600px;
-  }
-`;
-
-const RazrFinance = styled(Grid)`
-  margin-top: 30px;
-  // @media (max-width: 500px) {
-  //     display: flex;
-  //     justify-content: center;
-  // }
-`;
-
 const NavLink = styled(Link)`
   text-decoration: none;
 `;
@@ -82,7 +68,7 @@ export default function Footer() {
   return (
     <>
       <BG className="w-full">
-        <TopGrid
+        <Grid
           className="flex-column sm:flex-row"
           container
           justifyContent={"space-between"}
@@ -96,9 +82,12 @@ export default function Footer() {
             direction={"column"}
             className="mb-10 sm:mb-0 items-center"
           >
-            <RazrFinance>
-              <img src={logo} alt="" style={{ width: "220px" }} />
-            </RazrFinance>
+            <Grid>
+              <NavLink to="/" onClick={() => {
+                window.scrollTo(0, 0);
+              }}>
+                <img src={logo} alt="" style={{ width: "220px" }} /></NavLink>
+            </Grid>
 
             <Rights>
               © 2022 Genlent Technologies
@@ -110,22 +99,30 @@ export default function Footer() {
               <Title>Company</Title>
             </Grid>
             <Grid item>
-              <NavLink to="/about">
+              <NavLink to="/about" onClick={() => {
+                window.scrollTo(0, 0);
+              }}>
                 <Sub>About</Sub>
               </NavLink>
             </Grid>
             <Grid item>
-              <NavLink to="/about">
+              <NavLink to="/about#team" onClick={() => {
+                window.scrollTo(0, 0);
+              }}>
                 <Sub>Team</Sub>
               </NavLink>
             </Grid>
             <Grid item>
-              <NavLink to="/about">
+              <NavLink to="/about#contact" onClick={() => {
+                window.scrollTo(0, 0);
+              }}>
                 <Sub>Contact</Sub>
               </NavLink>
             </Grid>
             <Grid item>
-              <NavLink to="/blogs">
+              <NavLink to="/blogs" onClick={() => {
+                window.scrollTo(0, 0);
+              }}>
                 <Sub>Blogs</Sub>
               </NavLink>
             </Grid>
@@ -179,6 +176,11 @@ export default function Footer() {
               </MLink>
             </Grid>
             <Grid item>
+              <MLink href="https://twitter.com/skillrazr" target="_blank">
+                <Sub>Twitter</Sub>
+              </MLink>
+            </Grid>
+            <Grid item>
               <MLink href="https://skillrazr.medium.com/" target="_blank">
                 <Sub>Medium</Sub>
               </MLink>
@@ -192,7 +194,7 @@ export default function Footer() {
               </MLink>
             </Grid>
           </Grid>
-        </TopGrid>
+        </Grid>
       </BG>
       <ModalDialog
         showModal={showTermsDialog}

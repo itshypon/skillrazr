@@ -220,13 +220,13 @@ function DeepJS() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span className='font-bold'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
+                    <Typography><span className='text-xl'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
                         <b className='text-2xl'>Deep JS</b>
                     </Typography>
-                    <div className='text-1xl font-bold'>
+                    <div className='text-1xl'>
                         Object Oriented and Functional Programming <br />
                         Inheritance, Prototype Chain<br />
                         Scope and Execution Context<br />
@@ -245,7 +245,7 @@ function DeepJS() {
                     <br />
                     <Typography>
                         <b className='text-2xl'>Advance NodeJS</b>
-                        <div className='text-1xl font-bold'>
+                        <div className='text-1xl font-medium'>
                             Event Loop, Callback, Non-blocking IO<br />
                             API server using Express<br />
                             Session Management using Redis<br />
@@ -264,7 +264,7 @@ function DeepJS() {
 
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography className='!font-bold'>2. Tools and Libraries <ConstructionIcon /></Typography>
+                    <Typography ><span className='text-xl'>2. Tools and Libraries</span> <ConstructionIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -284,7 +284,7 @@ function DeepJS() {
 
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                    <Typography className='!font-bold'>3. Deployment <CloudDoneIcon /> </Typography>
+                    <Typography><span className='text-xl'>3. Deployment <CloudDoneIcon /> </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -303,7 +303,7 @@ function DeepJS() {
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography className='!font-bold'>4. Lab work  <HomeWorkIcon /></Typography>
+                    <Typography><span className='text-xl'>4. Lab work  </span><HomeWorkIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -319,7 +319,7 @@ function DeepJS() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>5. Customizable session (10 hrs) <DashboardCustomizeIcon /></Typography>
+                    <Typography><span className='text-xl'>5. Customizable session (10 hrs)</span> <DashboardCustomizeIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -343,7 +343,7 @@ function FAQsAccordians() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span className='font-bold'>What's next after purchasing this course? </span></Typography>
+                    <Typography><span className='text-xl'>What's next after purchasing this course? </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -353,7 +353,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography className='!font-bold'>Is there a refund option available, if I'm not satisfied? </Typography>
+                    <Typography className='!text-xl'>Is there a refund option available, if I'm not satisfied? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -367,7 +367,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                    <Typography className='!font-bold'>Are there any jobs available, after completion of this course? </Typography>
+                    <Typography className='!text-xl'>Are there any jobs available, after completion of this course? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -377,7 +377,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography className='!font-bold'>Is it 100% Online? </Typography>
+                    <Typography className='!text-xl'>Is it 100% Online? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -387,7 +387,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>Do I get a course completion certificate?  </Typography>
+                    <Typography className='!text-xl'>Do I get a course completion certificate?  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -398,7 +398,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
-                    <Typography className='!font-bold'>Who is the instructor?</Typography>
+                    <Typography className='!text-xl'>Who is the instructor?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -409,7 +409,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
                 <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
-                    <Typography className='!font-bold'>How much time is allocated for the lab work? </Typography>
+                    <Typography className='!text-xl'>How much time is allocated for the lab work? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -420,7 +420,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
                 <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
-                    <Typography className='!font-bold'>Can I choose the final project? </Typography>
+                    <Typography className='!text-xl'>Can I choose the final project? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -431,11 +431,11 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
                 <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
-                    <Typography className='!font-bold'>How to get support? </Typography>
+                    <Typography className='!text-xl'>How to get support? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        You can reach out to us via Email to <a href="mailto:contact@genlent.in">contact@genlent.in</a><br />
+                        You can reach out to us via Email to <a href="mailto:support@skillrazr.com" className="font-bold">support@skillrazr.com</a><br />
                         Also you can contact us by visiting <a href="/about" className='font-bold' target={"_blank"}>Contact</a>
                     </Typography>
                 </AccordionDetails>
@@ -457,13 +457,13 @@ function DSAlgo() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span className='font-bold'>1. Data Structures </span> <LightbulbCircleIcon /></Typography>
+                    <Typography><span className='text-xl'>1. Data Structures </span> <LightbulbCircleIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     {/* <Typography>
                         <b className='text-2xl'>Stack</b>
                     </Typography> */}
-                    <div className='text-1xl font-bold'>
+                    <div className='text-1xl'>
                         1. Stack <br />
                         2. Queue <br />
                         3: Linked list <br />
@@ -484,12 +484,12 @@ function DSAlgo() {
 
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography className='!font-bold'>2. Algorithms <AccountTreeIcon /></Typography>
+                    <Typography><span className='text-xl'>2. Algorithms </span><AccountTreeIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <ul className='font-bold'>
-                            <div className='text-xl font-bold'>
+                        <ul>
+                            <div className='text-xl'>
                                 1. Searching and Sorting
                             </div>
                             <li>
@@ -521,11 +521,11 @@ function DSAlgo() {
                             </li>
                             <br />
 
-                            2. Greedy Algorithm <br />
-                            3. Dynamic Programming <br />
-                            4. Recursion <br />
-                            5. Balanced Trees <br />
-                            6. Trie concpts <br />
+                            <div className='text-xl'>2. Greedy Algorithm</div>
+                            <div className='text-xl'>3. Dynamic Programming </div>
+                            <div className='text-xl'>4. Recursion </div>
+                            <div className='text-xl'>5. Balanced Trees </div>
+                            <div className='text-xl'>6. Trie concepts </div>
                         </ul>
 
 
@@ -535,7 +535,7 @@ function DSAlgo() {
 
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                    <Typography className='!font-bold'>3. Interview Preparations <WorkIcon /> </Typography>
+                    <Typography><span className='text-xl'>3. Interview Preparations </span><WorkIcon /> </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -557,7 +557,7 @@ function DSAlgo() {
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography className='!font-bold'>4. System Design (Addon for Professional candidates) <BorderOuterIcon /></Typography>
+                    <Typography><span className='text-xl'>4. System Design (Addon for Professional candidates) </span><BorderOuterIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -587,13 +587,13 @@ function CPP() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span className='font-bold'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
+                    <Typography><span className='text-xl'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <b className='text-2xl'>Part 1</b>
+                        <b className='text-xl'>Part 1</b>
                     </Typography>
-                    <div className='text-1xl font-bold'>
+                    <div className=''>
                         Object Oriented Programming Concepts <br />
                         Structure of a program, Compiling and linking source file<br />
                         Tokens, expressions, control structures<br />
@@ -605,8 +605,8 @@ function CPP() {
                     </div>
                     <br />
                     <Typography>
-                        <b className='text-2xl'>Part 2</b>
-                        <div className='text-1xl font-bold'>
+                        <b className='text-xl'>Part 2</b>
+                        <div className=''>
                             Pointers, Virtual Functions<br />
                             Pollymorphism <br />
                             I/O Operations, Files<br />
@@ -634,7 +634,7 @@ function CPP() {
 
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography className='!font-bold'>3. Lab work  <HomeWorkIcon /></Typography>
+                    <Typography><span className='text-xl'>3. Lab work  </span><HomeWorkIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -649,7 +649,7 @@ function CPP() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>4. Customizable session (5 hrs) <DashboardCustomizeIcon /></Typography>
+                    <Typography><span className='text-xl'>4. Customizable session (5 hrs) </span><DashboardCustomizeIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -673,13 +673,13 @@ function TheCompleteSoftwareTesting() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography><span className='font-bold'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
+                    <Typography><span className='text-xl'>1. Concepts </span> <LightbulbCircleIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
                         <b className='text-2xl'>Part 1</b>
                     </Typography>
-                    <div className='text-1xl font-bold'>
+                    <div className=''>
                         Software Testing Concepts <br />
                         SDLC & STLC <br />
                         Test planning <br />
@@ -694,7 +694,7 @@ function TheCompleteSoftwareTesting() {
                     <br />
                     <Typography>
                         <b className='text-2xl'>Part 2</b>
-                        <div className='text-1xl font-bold'>
+                        <div className=''>
                             Agile principles<br />
                             Introduction to Automation Testing<br />
                             WebdriverIO, Page Object Model <br />
@@ -707,11 +707,11 @@ function TheCompleteSoftwareTesting() {
 
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography><span className='font-bold'>2. Source Code Management (Git) <IntegrationInstructionsIcon /> </span></Typography>
+                    <Typography><span className='text-xl'>2. Source Code Management (Git) <IntegrationInstructionsIcon /> </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <div className='text-1xl font-bold'> Git commands walk thru in live workshop {' '}</div>
+                        <div className=''> Git commands walk through live workshop {' '}</div>
                         <a href="https://training.github.com/downloads/github-git-cheat-sheet/" rel="noreferrer" target="_blank">https://training.github.com/downloads/github-git-cheat-sheet/</a>
                         <br />
                         <a href="https://www.atlassian.com/git/tutorials/git-alias/" rel="noreferrer" target="_blank">https://www.atlassian.com/git/tutorials/git-alias</a>
@@ -721,23 +721,23 @@ function TheCompleteSoftwareTesting() {
 
             <Accordion expanded={expanded === 'panel2a'} onChange={handleChange('panel2a')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography><span className='font-bold'>3. Agile Principles and Tools <ConstructionIcon /> </span></Typography>
+                    <Typography><span className='text-xl'>3. Agile Principles and Tools <ConstructionIcon /> </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <div className='text-1xl font-bold'> Intro to Agile Principles and Scrum Framework <br /></div>
-                        <div className='text-1xl font-bold'> Jira Software detailed usage <br /></div>
+                        <div className=''> Intro to Agile Principles and Scrum Framework <br /></div>
+                        <div className=''> Jira Software detailed usage <br /></div>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
 
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography className='!font-bold'>4. Lab work  <HomeWorkIcon /></Typography>
+                    <Typography><span className='text-xl'>4. Lab work  </span><HomeWorkIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <ul className='font-bold'>
+                        <ul>
                             <div className='text-xl'>Following activities will be perfomed on a real Web App</div>
                             <li>Writing Test plans, scenarios</li>
                             <li>Executing Test Scenarios Manually</li>
@@ -750,22 +750,22 @@ function TheCompleteSoftwareTesting() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>5. Interview Preparation Sessions <WorkIcon /></Typography>
+                    <Typography><span className='text-xl'>5. Interview Preparation Sessions</span> <WorkIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <span className='font-bold'>Interview preparation sessions</span><br />
-                        <span className='font-bold'>Mock interview sessions with experts</span>
+                        <span >Interview preparation sessions</span><br />
+                        <span>Mock interview sessions with experts</span>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>6. Customizable session (5 hrs) <DashboardCustomizeIcon /></Typography>
+                    <Typography><span className='text-xl'>6. Customizable session (5 hrs)</span> <DashboardCustomizeIcon /></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        <span className='font-bold'>Extra 5 hrs* dedicated sessions to clarify all your doubts for topics related to this course.</span>
+                        <span>Extra 5 hrs* dedicated sessions to clarify all your doubts for topics related to this course.</span>
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -964,10 +964,10 @@ const CourseDetailsPage = () => {
     return (
         <div className="container p-3 pt-20 sm:p-10 mt-10 sm:mt-20">
             {course ? <>
-                <div className='font-black text-4xl sm:text-6xl'>{course.title}</div>
-                <div className='font-black my-4'>{course.overview}</div>
+                <div className='text-4xl sm:text-6xl'>{course.title}</div>
+                <div className='my-4'>{course.overview}</div>
 
-                <div>Total Course Fee <span className='line-through'>{course.feeStriked}</span> <span className='text-2xl font-bold'>{course.feeInRupees}</span><span className='text-small'> {' '}(Incl. taxes)</span></div>
+                <div>Total Course Fee <span className='line-through'>{course.feeStriked}</span> <span className='text-2xl'>{course.feeInRupees}</span><span className='text-small'> {' '}(Incl. taxes)</span></div>
 
 
                 <div className='flex flex-row justify-around border-[1px] border-[#ff1493]  shadow-lg rounded my-4 p-2'>
@@ -995,7 +995,7 @@ const CourseDetailsPage = () => {
                     Buy Now</Button>
 
 
-                <div className='text-2xl my-2 font-bold'>Features:- </div>
+                <div className='text-2xl my-2'>Features:- </div>
                 <ul className='mb-8'>
                     {course.features?.map((i, index) => {
                         return (

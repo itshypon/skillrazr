@@ -26,7 +26,7 @@ const CourseDetailsPage = () => {
 
     return (
         <div className="container p-3 pt-20 sm:p-10 mt-10 sm:mt-20">
-            <div className='text-4xl text-center p-4'>Evergreen Courses</div>
+            <div className='text-4xl text-center p-4 mb-8'>Evergreen Courses</div>
 
             <div className='bg-green-600 text-white p-2 rounded'>
                 <div className="flex flex-wrap flex-col md:flex-row  items-center justify-center p-2 w-full">
@@ -37,7 +37,7 @@ const CourseDetailsPage = () => {
                             }}>
                                 <div
                                     key={course.title}
-                                    className="flex flex-col items-center justify-center mt-2 ml-0 mr-6 px-4 py-4 mt-lg-0 font-bold box-shadow border border-white-500 rounded-[5px]"
+                                    className="flex flex-col items-center justify-center mt-2 ml-0 mr-6 px-4 py-4 mt-lg-0 box-shadow border border-white-500 rounded-[5px]"
                                 >
                                     {/* {<course.icon />} */}
                                     <EventAvailableIcon />

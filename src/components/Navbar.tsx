@@ -1,5 +1,6 @@
 import * as React from "react";
 import logo from "../assets/images/SkillRazr.svg";
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar(props: any) {
   const [scrolled, setScrolled] = React.useState<boolean>(false);
@@ -22,34 +23,36 @@ export default function Navbar(props: any) {
     >
       <div className="flex flex-wrap flex-col md:flex-row items-center justify-between p-2 w-full">
         <div className="flex items-center mt-lg-0">
-          <a className="navbar-brand p-0 m-0" href="/" aria-label="genlent">
+          <NavLink to="/" onClick={() => {
+            window.scrollTo(0, 0);
+          }}>
             <img src={logo} alt="genlent" style={{ width: "160px" }} />
-          </a>
+          </NavLink>
         </div>
 
         <div className="navbar-nav-scroll flex flex-row">
           <ul className="navbar-nav flex items-center flex-row text-xs sm:text-base py-3">
-            <li className="first:ml-0 nav-item ml-8 font-semibold">
+            <li className="first:ml-0 nav-item ml-8 font-medium">
               <a className="nav-link" href="/#features">
                 Features
               </a>
             </li>
-            <li className="nav-item ml-8 font-semibold">
+            <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#testimonials">
                 Stories
               </a>
             </li>
-            <li className="nav-item ml-8 font-semibold">
+            <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#courses">
                 Courses
               </a>
             </li>
-            <li className="nav-item ml-8 font-semibold">
+            <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#internship">
                 Internship
               </a>
             </li>
-            <li className="nav-item ml-8 font-semibold">
+            <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#faqs">
                 FAQs
               </a>
