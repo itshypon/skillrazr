@@ -90,7 +90,7 @@ function DaySnack(props: any) {
         autoHideDuration={7000}
         open={open}
         onClose={handleClose}
-        message={<div className='flex flex-col items-center'><div className='text-center'><NewspaperIcon /></div><div className='ml-2 font-bold text-center'>Today is :- {messages[0]}</div> <div className='text-center'>{messages[1]}</div></div>}
+        message={<div className='flex flex-col items-center'><div className='text-center'><NewspaperIcon /></div><div className='ml-2 text-center'>Today is :- {messages[0]}</div> <div className='text-center'>{messages[1]}</div></div>}
         key={vertical + horizontal}
         onClick={() => {
           handleClick(true);

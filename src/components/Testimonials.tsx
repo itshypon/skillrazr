@@ -81,7 +81,7 @@ export default function Testimonials(props: any) {
             return (
               <div
                 key={course.title}
-                className="flex flex-col sm:flex-row items-center justify-center mt-2 ml-0 px-4 py-2 mt-lg-0 font-bold box-shadow"
+                className="flex flex-col sm:flex-row items-center justify-center mt-2 ml-0 px-4 py-2 mt-lg-0 box-shadow"
               >
                 <div>
                   <ImageContainer

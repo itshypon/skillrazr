@@ -18,7 +18,7 @@ export default function Internship(props: any) {
             <div className="text-6xl text-center mb-4">Paid Internship</div>
             <div className="flex flex-wrap flex-col  items-center justify-center p-8 w-full">
                 <ul className='text-small py-4'>
-                    <div className='text-2xl font-bold mb-4'>Get a chance to show case your skills and much more!</div>
+                    <div className='text-2xl mb-4'>Get a chance to show case your skills and much more!</div>
                     {[
                         'Gain industry experience',
                         'Develop new skills',

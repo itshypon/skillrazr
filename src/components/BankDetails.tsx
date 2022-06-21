@@ -6,7 +6,7 @@ const BankDetails = (props: any) => {
 
     return (
         <div className="p-1">
-            <div className='font-bold'>Pay ₹{(amount).toLocaleString()} to purchase this course</div>
+            <div className='text-xl'>Pay ₹{(amount).toLocaleString()} to purchase this course</div>
             <div className='text-4xl flex justify-center p-4'><img className='w-[240px]' src={logo} alt="logo" /></div>
 
             <div className='bg-gray-600 text-white p-2 rounded'>

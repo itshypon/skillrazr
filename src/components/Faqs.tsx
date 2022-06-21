@@ -52,7 +52,7 @@ function FAQsAccordians() {
         <div>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                    <Typography className='!font-bold'><span>What's next after purchasing a course? </span></Typography>
+                    <Typography className='text-xl'><span>What's next after purchasing a course? </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -63,7 +63,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel1a'} onChange={handleChange('panel1a')}>
                 <AccordionSummary aria-controls="panel1ad-content" id="panel1ad-header">
-                    <Typography className='!font-bold'><span>Who are elligible for the courses? </span></Typography>
+                    <Typography className='text-xl'><span>Who are elligible for the courses? </span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -75,7 +75,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-                    <Typography className='!font-bold'>Is there a refund option available, if I'm not satisfied? </Typography>
+                    <Typography className='text-xl'>Is there a refund option available, if I'm not satisfied? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography >
@@ -89,7 +89,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-                    <Typography className='!font-bold'>Are there any jobs available, after completion of this course? </Typography>
+                    <Typography className='text-xl'>Are there any jobs available, after completion of this course? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -99,7 +99,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
                 <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-                    <Typography className='!font-bold'>Is it 100% Online? </Typography>
+                    <Typography className='text-xl'>Is it 100% Online? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -109,7 +109,7 @@ function FAQsAccordians() {
             </Accordion>
             <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
                 <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
-                    <Typography className='!font-bold'>Do I get a course completion certificate?  </Typography>
+                    <Typography className='text-xl'>Do I get a course completion certificate?  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -120,7 +120,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
                 <AccordionSummary aria-controls="panel6d-content" id="panel6d-header">
-                    <Typography className='!font-bold'>Who are the instructors? </Typography>
+                    <Typography className='text-xl'>Who are the instructors? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -131,7 +131,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
                 <AccordionSummary aria-controls="panel7d-content" id="panel7d-header">
-                    <Typography className='!font-bold'>How much time is allocated for the project work? </Typography>
+                    <Typography className='text-xl'>How much time is allocated for the project work? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -142,7 +142,7 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
                 <AccordionSummary aria-controls="panel8d-content" id="panel8d-header">
-                    <Typography className='!font-bold'>Can I choose the final project? </Typography>
+                    <Typography className='text-xl'>Can I choose the final project? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
@@ -153,11 +153,11 @@ function FAQsAccordians() {
 
             <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
                 <AccordionSummary aria-controls="panel9d-content" id="panel9d-header">
-                    <Typography className='!font-bold'>How to get support? </Typography>
+                    <Typography className='text-xl'>How to get support? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        You can reach out to us via Email to <a href="mailto:contact@genlent.in">contact@genlent.in</a> <br />
+                        You can reach out to us via Email to <a href="mailto:support@skillrazr.com">support@skillrazr.com</a> <br />
                         Also you can contact us by visiting <a href="/about" className="font-bold" target={"_blank"}>Contact</a>
                     </Typography>
                 </AccordionDetails>
@@ -174,7 +174,7 @@ export default function Faqs(props: any) {
                 " px-6 pt-20 flex flex-col items-center flex-wrap justify-between"
             }
         >
-            <div className="text-6xl text-center mb-4">FAQs</div>
+            <div className="text-6xl text-center mb-8">FAQs</div>
             <div className="flex flex-wrap flex-col  items-center justify-center p-8 w-full">
                 <FAQsAccordians />
             </div>

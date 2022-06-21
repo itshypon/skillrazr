@@ -49,3 +49,23 @@ code {
   top: -5px;
   position: relative;
 }
+
+#mocha {
+  width: 100%;
+}
+
+#mocha .test h2 {
+  font-size: 16px !important;
+}
+
+#mocha .test a.replay {
+  display: none !important;
+}
+
+#mocha-report pre {
+  overflow: auto;
+}
+
+#mocha-stats {
+  display: none;
+}

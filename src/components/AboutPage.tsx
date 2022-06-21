@@ -26,7 +26,7 @@ export default function About(props: any) {
         className="flex flex-wrap flex-col md:flex-row  justify-between p-2 w-full"
         id="about"
       >
-        <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
+        <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0  text-center sm:text-left">
           <div className="text-4xl pb-4">Why SkillRazr?</div>
           <div className="text-1xl">
             We focus on giving quality tech training to students and give them
@@ -42,7 +42,7 @@ export default function About(props: any) {
         className="flex flex-wrap flex-col md:flex-row justify-center sm:justify-start p-2 w-full"
         id="team"
       >
-        <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
+        <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0  text-center sm:text-left">
           <div className="text-4xl ml-0 sm:ml-1 pb-8">Team</div>
           <div className="text-1xl"></div>
           <ImageContainer className="flex justify-center sm:justify-start">
@@ -61,9 +61,9 @@ export default function About(props: any) {
           </div>
 
           <div>
-            <span className="font-bold">10+</span> years in tech industry,
+            <span className="">10+</span> years in tech industry,
             mostly as a full stack JavaScript Software Engineer,{" "}
-            <span className="font-bold">5+</span> years in teaching.
+            <span className="">5+</span> years in teaching.
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function About(props: any) {
         className="flex flex-wrap flex-col md:flex-row  justify-between p-2 w-full"
         id="contact"
       >
-        <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0 font-bold text-center sm:text-left">
+        <div className="mt-2 ml-0 sm:ml-12 mb-12 mt-lg-0  text-center sm:text-left">
           <div className="text-4xl ml-0 sm:ml-1 pb-4">Contact Us</div>
           <div className="text-1xl py-2">
             Plot No 1073 & 1074, Raja Rajeswara Nagar, <br />
@@ -80,7 +80,7 @@ export default function About(props: any) {
           </div>
           <div className="text-1xl py-2">
             <EmailIcon />{" "}
-            <a href="mailto:contact@genlent.in">support@skillrazr.com</a>
+            <a href="mailto:support@skillrazr.com">support@skillrazr.com</a>
           </div>
           <div className="text-1xl py-2">
             <PhoneIcon />

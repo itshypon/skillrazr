@@ -26,7 +26,7 @@ const Modal = ({ showModal, fullScreen = false, title, content, cancelHandler }:
             className="content"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id="alert-dialog-description" className='w-full'>
               {content}
             </DialogContentText>
           </DialogContent>
