@@ -41,7 +41,27 @@ const days: Record<string, string[]> = {
     "28/7": ["World Nature Conservation Day", "We can conserve nature with our simple yet impactful habits"],
     "29/7": ["International Tiger Day", "To protect and conserve the big cats, the tiger"],
     "30/7": ["International Day of Friendship", "Through friendship and developing strong ties of trust — we can contribute to global peace"],
-    "31/7": ["World Ranger Day", "To celebrate the work of rangers to protect planet's natural treasures"]
+    "31/7": ["World Ranger Day", "To celebrate the work of rangers to protect planet's natural treasures"],
+    "1/8": ["World Lung Cancer Day", "Smoking is primarily responsible for lung cancer. Time to stop this bad habit!"],
+    "2/8": ["World Breastfeeding Week", "Breastfeeding is the best source of nutrition for a baby's first year of life, so lets promote it"],
+    "3/8": ["World Breastfeeding Week", "Breastfeeding is the best source of nutrition for a baby's first year of life, so lets promote it"],
+    "4/8": ["World Breastfeeding Week", "Breastfeeding is the best source of nutrition for a baby's first year of life, so lets promote it"],
+    "5/8": ["World Breastfeeding Week", "Breastfeeding is the best source of nutrition for a baby's first year of life, so lets promote it"],
+    "6/8": ["World Breastfeeding Week", "Breastfeeding is the best source of nutrition for a baby's first year of life, so lets promote it"],
+    "7/8": ["World Breastfeeding Week", "Breastfeeding is the best source of nutrition for a baby's first year of life, so lets promote it"],
+    "8/8": ["International Cat Day", "Infinity symbol represents an eternal love for couples"],
+    "9/8": ["International Coworking Day", "Lets gather and work together, sharing a common space"],
+    "10/8": ["World Lion Day", "Let's protect the majestic big cat"],
+    "12/8": ["International Youth Day", "We need focus on the difficulties that many young people are experiencing throughout the world"],
+    "13/8": ["World Organ Donation Day", "Lets celebrate the virtuous act of organ donation. The donors save many lives"],
+    "19/8": ["World Humanitarian Day", "Aid workers help people affected by global crises, time to recognise their selfless contributions"],
+    "20/8": ["World Mosquito Day", "Causes to malaria is already known since 1897, now it's time to prevent it"],
+    "21/8": ["World Senior Citizen Day", "Today is dedicated to the lives, achievements, and issues of the elders of our society"],
+    "23/8": ["International Day for the Remembrance of the Slave Trade and Its Abolition", "No exploitations please!"],
+    "24/8": ["International Strange Music Day", "Strange music to deal with unexepcted moments of life!"],
+    "26/8": ["International Dog Day", "Caring and protecting our human's best friend"],
+    "30/8": ["International Whale Shark Day", "The whale shark is known for its slow and gentle behavior, let's protect these amazing creatures"],
+    "31/8": ["International Overdose Awareness Day", "Drug overdose is one of the world's worst health crises that needs awareness and prevention"]
 };
 
 export default days;
