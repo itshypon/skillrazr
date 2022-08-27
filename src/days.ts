@@ -61,7 +61,26 @@ const days: Record<string, string[]> = {
     "24/8": ["International Strange Music Day", "Strange music to deal with unexepcted moments of life!"],
     "26/8": ["International Dog Day", "Caring and protecting our human's best friend"],
     "30/8": ["International Whale Shark Day", "The whale shark is known for its slow and gentle behavior, let's protect these amazing creatures"],
-    "31/8": ["International Overdose Awareness Day", "Drug overdose is one of the world's worst health crises that needs awareness and prevention"]
+    "31/8": ["International Overdose Awareness Day", "Drug overdose is one of the world's worst health crises that needs awareness and prevention"],
+    "2/9": ["World Coconut Day", "A rich source of elecrolytes and many antioxidants, it's water makes a great recovery drink"],
+    "5/9": ["International Day of Charity", "To promote volunteer and philanthropic activities and to act with solidarity and compassion in the face of human suffering"],
+    "7/9": ["International Day of Clean Air for Blue Skies", "To take action to reduce air pollution"],
+    "8/9": ["International Literacy Day", "To raise awareness on the various literacy issues faced by people from different parts of the world"],
+    "9/9": ["International Day to Protect Education from Attack", "To protect students, educators, and schools as education is foundation to building peaceful and resilient societies"],
+    "10/9": ["World Suicide Prevention Day", "Let's promote help seeking, we can all play a role in preventing suicides"],
+    "15/9": ["International Day of Democracy", "Time to appreciate our democratic societies that offer freedom"],
+    "17/9": ["World Patient Safety Day", "To enhance patient safety and reduce patient harm"],
+    "18/9": ["International Equal Pay Day", "Let's promote equal pay for jobs of equal value"],
+    "20/9": ["International Day of University Sport", "To recognise contribution of university sport to individuals, universities and communities"],
+    "21/9": ["World Alzheimer’s Day", "To raise awareness and highlight issues faced by people affected by dementia and help people live well with dementia"],
+    "22/9": ["World Rose Day", "To help cancer patients to boost their spirits and keep them lively"],
+    "23/9": ["International Day of Sign Languages", "Let's make an honest attempt to celebrate and accept the value of sign language"],
+    "25/9": ["World Pharmacists Day", "To recognise the role of of pharmacists to boost health worldwide"],
+    "26/9": ["World Contraception Day", "To raise awareness about the various methods of birth control available, in order to avoid unwanted pregnancies"],
+    "27/9": ["World Tourism Day", "Tourism plays an important role in social, cultural, political and economic value"],
+    "28/9": ["International Day for Universal Access to Information", "Access to quality information is vital to combat ignorance. Let's help dissemination of information to bring positive changes"],
+    "29/9": ["World Heart Day", "To know it's warning signs, take steps to fight it, and to help others who may be sufferfing"],
+    "30/9": ["International Translation Day", "To pay tribute to the work of language professionals, which plays an important role in bringing nations together"]
 };
 
 export default days;
