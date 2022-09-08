@@ -1,12 +1,11 @@
-import React from 'react';
+// import React from 'react';
 import { Button } from "@mui/material";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Parallax } from 'react-scroll-parallax';
 
 
 export default function Internship(props: any) {
-
-    const [comingSoon, showComingSoon] = React.useState(false);
+    // const [comingSoon, showComingSoon] = React.useState(false);
 
     return (
         <div
@@ -39,13 +38,15 @@ export default function Internship(props: any) {
                     }
                 </ul>
                 <div className="navbar-nav-scroll flex flex-row  px-2 py-4">
-                    <Button variant='outlined' className='!capitalize w-[124px]' onMouseEnter={() => {
-                        showComingSoon(true)
+                    <Button variant='outlined' className='!capitalize w-[124px]'
+                    
+                    onMouseEnter={() => {
+                        // showComingSoon(true)
                     }}
                         onMouseLeave={() => {
-                            showComingSoon(false)
+                            // showComingSoon(false)
                         }}
-                    >{!comingSoon ? "Apply Now" : "Coming Soon"}</Button>
+                    >{<a href="https://forms.gle/JnKzMhqz8iJob77q7" target="_blank" rel="noreferrer">Apply Now</a>}</Button>
                 </div>
             </div>
         </div >
