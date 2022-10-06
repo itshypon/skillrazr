@@ -96,7 +96,7 @@ const days: Record<string, string[]> = {
     "14/10": ["World Standards Day", "To pay tribute to experts who develop Internatinal standards"],
     "15/10": ["International Day of Rural Women", "Rural women play a crucial role in ensuring the sustainability of rural households and communities"],
     "16/10": ["World Food Day", "Millions across the globe do not have enough food to sustain a healthy lifestyle, we can atleast stop wasting food"],
-   "17/10": ["International Day for the Eradication of Poverty", "To acknowledge the struggle of people living in poverty and to find ways to reduce global poverty"],
+    "17/10": ["International Day for the Eradication of Poverty", "To acknowledge the struggle of people living in poverty and to find ways to reduce global poverty"],
     "19/10": ["World Pediatric Bone and Joint Day", "Musculoskeletal disorders are any type of disease that affects the joints, ligaments, nerves, muscles, and bones"],
     "20/10": ["World Osteoporosis Day", "To raise awareness of the prevention, diagnosis, and treatment of osteoporosis, a disease in which the density and strength of the bone are reduced"],
     "21/10": ["World Iodine Deficiency Day", "Human body needs iodine to make thyroid hormones, which does several bodily functions, including heart rate, metabolism, body temperature, and muscle contractions"],
@@ -107,7 +107,9 @@ const days: Record<string, string[]> = {
     "27/10": ["World Occupational Therapy Day", "Occupational therapists provide treatment to injured or disabled patients and children with special needs"],
     "28/10": ["International Animation Day", "A day to celebrate all aspects of animation"],
     "29/10": ["World Stroke Day", "To raise awareness of the prevention and treatment of strokes"],
-    "31/10": ["World Savings Day", "Saving has a great impact on financial stability and global economy, 'a penny saved is a penny earned'"]
+    "31/10": ["World Savings Day", "Saving has a great impact on financial stability and global economy, 'a penny saved is a penny earned'"],
+    "1/11": ["World Vegan Day", "To raise education and awareness about vegan diets that excludes meat, eggs, dairy products, and honey"],
+    
 };
 
 export default days;

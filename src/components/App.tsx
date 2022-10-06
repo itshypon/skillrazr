@@ -87,7 +87,7 @@ function DaySnack(props: any) {
     <div>
       <Snackbar className='!top-[110px] sm:!top-[70px] cursor-pointer'
         anchorOrigin={{ vertical, horizontal }}
-        autoHideDuration={7000}
+        autoHideDuration={20000}
         open={open}
         onClose={handleClose}
         message={<div className='flex flex-col items-center'><div className='text-center'><NewspaperIcon /></div><div className='ml-2 text-center'>Today is :- {messages[0]}</div> <div className='text-center'>{messages[1]}</div></div>}
