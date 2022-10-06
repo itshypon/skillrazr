@@ -96,7 +96,7 @@ const days: Record<string, string[]> = {
     "14/10": ["World Standards Day", "To pay tribute to experts who develop Internatinal standards"],
     "15/10": ["International Day of Rural Women", "Rural women play a crucial role in ensuring the sustainability of rural households and communities"],
     "16/10": ["World Food Day", "Millions across the globe do not have enough food to sustain a healthy lifestyle, we can atleast stop wasting food"],
-   "17/10": ["International Day for the Eradication of Poverty", "To acknowledge the struggle of people living in poverty and to find ways to reduce global poverty"],
+    "17/10": ["International Day for the Eradication of Poverty", "To acknowledge the struggle of people living in poverty and to find ways to reduce global poverty"],
     "19/10": ["World Pediatric Bone and Joint Day", "Musculoskeletal disorders are any type of disease that affects the joints, ligaments, nerves, muscles, and bones"],
     "20/10": ["World Osteoporosis Day", "To raise awareness of the prevention, diagnosis, and treatment of osteoporosis, a disease in which the density and strength of the bone are reduced"],
     "21/10": ["World Iodine Deficiency Day", "Human body needs iodine to make thyroid hormones, which does several bodily functions, including heart rate, metabolism, body temperature, and muscle contractions"],
@@ -107,7 +107,25 @@ const days: Record<string, string[]> = {
     "27/10": ["World Occupational Therapy Day", "Occupational therapists provide treatment to injured or disabled patients and children with special needs"],
     "28/10": ["International Animation Day", "A day to celebrate all aspects of animation"],
     "29/10": ["World Stroke Day", "To raise awareness of the prevention and treatment of strokes"],
-    "31/10": ["World Savings Day", "Saving has a great impact on financial stability and global economy, 'a penny saved is a penny earned'"]
+    "31/10": ["World Savings Day", "Saving has a great impact on financial stability and global economy, 'a penny saved is a penny earned'"],
+    "1/11": ["World Vegan Day", "To raise education and awareness about vegan diets that excludes meat, eggs, dairy products, and honey"],
+    "3/11": ["World Jellyfish Day", "Jellyfish are older than dinosaurs and have been around for over 500 million years"],
+    "5/11": ["World Tsunami Awareness Day", "To raise awareness and share innovative approaches to risk reduction as tsunamis can be very destructive"],
+    "7/11": ["International Day of Medical Physics", "Physics greatly benefits in radiology and nuclear medicine which aids in various diagnostic tests"],
+    "8/11": ["World Radiography Day", "To educate general public about X-rays and radiation safety"],
+    "9/11": ["World Adoption Day", "To help raise awareness for adoption and to provide a family for every child"],
+    "10/11": ["International Accounting Day", "Accountants help make businesses and organizations thrive"],
+    "11/11": ["International Origami Day", "To celebrate an unique art from using paper"],
+    "12/11": ["World Pneumonia Day", "Pneumonia is an infection that causes the air sacs in the lungs to become filled with fluid or pus. One of the major risk factors for pneumonia is air pollution"],
+    "13/11": ["World Kindness Day", "To raise awareness to spread kindness and compassion"],
+    "14/11": ["World Diabetes Day", "To raise awanerss about diabetes a leading cause of blindness, amputation, heart disease, and kidney disease"],
+    "16/11": ["International Day for Tolerance", "To respect, accept, and appreciate the rich diversity of our world’s cultures and to coexist peacefully"],
+    "17/11": ["International Students Day", "To raise voices for equal access to education"],
+    "19/11": ["International Men’s Day", "To lead by example, help to create a fair and safe society and teach young boys the values, character, and responsibilities of being a man"],
+    "20/11": ["World Children’s Day", "Children deserve the right to life, health, education, and the right to play. To promote the welfare of children around the world"],
+    "21/11": ["World Hello Day", "To promote the role of communication for preserving peace and to settle conflicts. Say hello!"],
+    "23/11": ["Fibonacci Day", "To do fun activities utilizing the Fibonacci sequence"],
+    "25/11": ["International Day for the Elimination of Violence Against Women", "To remove the silence, stigma, and shame surrounding acts of violence against women"]
 };
 
 export default days;
