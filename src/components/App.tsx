@@ -18,6 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import days from '../days';
+import {Editor} from './Editor';
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -177,6 +178,11 @@ function App(props: any) {
               element={
                 <QuizesList {...props} className="p-48" />
               }
+            />
+
+            <Route
+              path="/editor"
+              element={<Editor {...props} />}
             />
           </Route>
         </Routes>

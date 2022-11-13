@@ -129,6 +129,21 @@ export default function Footer() {
           </Grid>
           <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>
+              <Title>Developer</Title>
+            </Grid>
+
+            <Grid item>
+              <NavLink
+                to="/editor" onClick={() => {
+                  window.scrollTo(0, 100);
+                }}
+              >
+                <Sub>JS Code Runner</Sub>
+              </NavLink>
+            </Grid>
+          </Grid>
+          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+            <Grid item>
               <Title>Legal</Title>
             </Grid>
 
