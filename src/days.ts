@@ -102,7 +102,7 @@ const days: Record<string, string[]> = {
     "21/10": ["World Iodine Deficiency Day", "Human body needs iodine to make thyroid hormones, which does several bodily functions, including heart rate, metabolism, body temperature, and muscle contractions"],
     "22/10": ["International Stuttering Awareness Day", "To change public attitudes and eliminate societal discrimination toward people who stutter"],
     "23/10": ["International Snow Leopard Day", "Often called as the 'ghosts of the mountains', snow leopards are endangered species"],
-    "24/10": ["World Polid Day", "To raise awareness and make efforts to make the world polio-free"],
+    "24/10": ["World Polio Day", "To raise awareness and make efforts to make the world polio-free"],
     "25/10": ["International Artist’s Day", "To honor honors artists and all the contributions they make"],
     "27/10": ["World Occupational Therapy Day", "Occupational therapists provide treatment to injured or disabled patients and children with special needs"],
     "28/10": ["International Animation Day", "A day to celebrate all aspects of animation"],
