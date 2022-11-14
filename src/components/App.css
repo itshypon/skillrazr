@@ -80,3 +80,31 @@
   padding: 20px 10px;
   width: 50%;
 }
+
+/* gpl math */
+
+.gpl-0 {
+  min-width: 180px;
+  top: 180px;
+  left: -180px;
+}
+
+.gpl-1 {
+  top: 400px;
+  left: -180px;
+  min-width: 180px;
+}
+
+.gpl-2 {
+  top: 180px;
+  left: 360px;
+  min-width: 180px;
+}
+
+.gpl-3 {
+  top: 400px;
+  left: 360px;
+  min-width: 180px;
+}
+
+/* gpl math end */
