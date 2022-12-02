@@ -141,6 +141,15 @@ export default function Footer() {
                 <Sub>JS Code Runner</Sub>
               </NavLink>
             </Grid>
+            <Grid item>
+              <NavLink
+                to="/games" onClick={() => {
+                  window.scrollTo(0, 100);
+                }}
+              >
+                <Sub>Games</Sub>
+              </NavLink>
+            </Grid>
           </Grid>
           <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
             <Grid item>

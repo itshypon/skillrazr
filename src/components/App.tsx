@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import days from '../days';
 import {Editor} from './Editor';
+import MoveKnightGame from '../components/Games/MoveKnightGame';
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -183,6 +184,10 @@ function App(props: any) {
             <Route
               path="/editor"
               element={<Editor {...props} />}
+            />
+
+            <Route path="/games"
+              element={<MoveKnightGame {...props} />}
             />
           </Route>
         </Routes>
