@@ -193,12 +193,12 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
 
     return (
       <div
-        className={`w-[100%] flex flex-col align-center items-center justify-center ${
+        className={`w-[100%] flex flex-col align-center items-center mt-[70px] ${
           this.state.gameMode ? "fixed h-[100vh] m-0 bg-white" : "m-[160px]"
         }`}
       >
         {
-          <div style={{ margin: "20px  10px 0 0" }} className="p-1 text-xl">
+          <div style={{ margin: "40px  10px 0 0" }} className="p-1 text-xl">
             Total Moves:{" "}
             <span className="font-bold">{this.state.totalMoves}</span>
           </div>
@@ -241,7 +241,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
               style={{ margin: "4px  4px 0 0", background: "#f4d078" }}
               onClick={this.undoLastStep}
             >
-              Undo Last Move
+              Undo Move
             </button>
           )}
           {this.state.totalMoves > 0 && (
