@@ -204,8 +204,28 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
           </div>
         }
 
+        {this.state.retryCount > 0 && this.state.isBlocked && (
+          <div
+            className="text-xl pb-1"
+            style={{ color: "red", margin: "10px 10px 0 10px" }}
+          >
+            You're blocked
+          </div>
+        )}
+        {this.state.retryCount <= 0 && this.state.isBlocked && (
+          <div
+            className="text-xl pb-1"
+            style={{ color: "red", margin: "10px 10px 0 10px" }}
+          >
+            You've lost the game!!!
+          </div>
+        )}
+
         {this.state.conquered.length === 64 && (
-          <div style={{ color: "green", margin: "20px  10px 0 0" }}>
+          <div
+            style={{ color: "green", margin: "10px  10px 0 0" }}
+            className="text-xl pb-1"
+          >
             Congratulations, You've won!!!
           </div>
         )}
@@ -215,14 +235,6 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
             Try planting a tree, riding the knight without revisits!!!
           </div>
           <RulesAccordian />
-          <button
-            className="p-1 rounded"
-            style={{ margin: "4px  4px 0 0", background: "#f4d078" }}
-            onClick={() => this.setGameMode(!this.state.gameMode)}
-          >
-            {this.state.gameMode ? "Exit" : "Enter"} Game mode
-          </button>
-
           {this.state.knightPrevPosition && this.state.retryCount > 0 && (
             <button
               className="p-2 rounded"
@@ -241,24 +253,15 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
               Reset Game
             </button>
           )}
-          {this.state.retryCount > 0 && this.state.isBlocked && (
-            <div
-              className="text-lg w-[100%]"
-              style={{ color: "red", margin: "20px 10px 0 10px" }}
-            >
-              You're blocked
-            </div>
-          )}
-          {this.state.retryCount <= 0 && this.state.isBlocked && (
-            <div
-              className="text-lg w-[100%]"
-              style={{ color: "red", margin: "20px 10px 0 10px" }}
-            >
-              You've lost the game!!!
-            </div>
-          )}
+          <button
+            className="p-1 rounded"
+            style={{ margin: "4px  4px 0 0", background: "#f4d078" }}
+            onClick={() => this.setGameMode(!this.state.gameMode)}
+          >
+            {this.state.gameMode ? "Exit" : "Enter"} Game mode
+          </button>
         </div>
-        <MusicPlayer />
+        <MusicPlayer isBlocked={this.state.isBlocked} />
       </div>
     );
   }

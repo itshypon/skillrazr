@@ -1,10 +1,13 @@
 import React from "react";
 import notification from "../../assets/music/notification2.mp3";
+import glitch from "../../assets/music/glitch.mp3";
 import monitor from "./helpers/monitor";
 
-const MusicPlayer = () => {
+const MusicPlayer = (props: any) => {
+  const { isBlocked } = props;
+
   monitor.on("dropFinish", () => {
-    playSong();
+    playSong(isBlocked ? glitch : notification);
   });
 
   React.useEffect(() => {
@@ -16,8 +19,10 @@ const MusicPlayer = () => {
     audioPlayer.addEventListener("pause", function (event: any) {});
   }, []);
 
-  const playSong = () => {
+  const playSong = (song: string = notification) => {
     let audioPlayer: any = document.querySelector("audio");
+    audioPlayer.src = song;
+    audioPlayer.load();
     audioPlayer.play();
     audioPlayer.addEventListener("ended", (event: any) => {});
   };
