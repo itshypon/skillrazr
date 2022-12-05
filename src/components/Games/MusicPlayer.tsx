@@ -31,7 +31,7 @@ const MusicPlayer = (props: any) => {
 
   return (
     <div>
-      <audio controls className="hidden" muted={muted} autoPlay />
+      <audio controls className="absolute ml-[999px]" muted={muted} autoPlay />
     </div>
   );
 };
