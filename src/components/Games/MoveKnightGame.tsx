@@ -67,7 +67,7 @@ const RulesAccordian = () => {
     };
 
   return (
-    <div className="flex">
+    <div className="flex mt-1">
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -83,6 +83,7 @@ const RulesAccordian = () => {
         </AccordionSummary>
         <AccordionDetails>
           <ul className="text-xs list-decimal ml-4">
+            <li>Plat trees, riding the knight without revisits!!!</li>
             <li>Drag the knight and drop it on a valid square</li>
             <li>You are allowed 3 times to undo a wrong move</li>
             <li>
@@ -110,6 +111,10 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
     this.undoLastStep = this.undoLastStep.bind(this);
     this.resetGame = this.resetGame.bind(this);
     this.setGameMode = this.setGameMode.bind(this);
+    console.log("nav", document.getElementById("navlinks"));
+    setTimeout(() => {
+      document.getElementById("navlinks")?.classList.add("hidden");
+    }, 100);
   }
 
   getSquare(i: number) {
@@ -182,6 +187,10 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
   }
 
   setGameMode(mode: boolean) {
+    mode
+      ? document.getElementById("navlinks")?.classList.add("hidden")
+      : document.getElementById("navlinks")?.classList.remove("hidden");
+    console.log("hle");
     this.setState({ gameMode: mode });
   }
 
@@ -194,11 +203,11 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
     return (
       <div
         className={`w-[100%] flex flex-col align-center items-center mt-[70px] ${
-          this.state.gameMode ? "fixed h-[100vh] m-0 bg-white" : "m-[160px]"
+          this.state.gameMode ? "fixed h-[100vh] bg-white" : "m-[100px]"
         }`}
       >
         {
-          <div style={{ margin: "40px  10px 0 0" }} className="p-1 text-xl">
+          <div style={{ margin: "34px 4px 0 0" }} className="p-1">
             Total Moves:{" "}
             <span className="font-bold">{this.state.totalMoves}</span>
           </div>
@@ -207,7 +216,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
         {this.state.retryCount > 0 && this.state.isBlocked && (
           <div
             className="text-xl pb-1"
-            style={{ color: "red", margin: "10px 10px 0 10px" }}
+            style={{ color: "red", margin: "2px 10px 0 10px" }}
           >
             You're blocked
           </div>
@@ -215,7 +224,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
         {this.state.retryCount <= 0 && this.state.isBlocked && (
           <div
             className="text-xl pb-1"
-            style={{ color: "red", margin: "10px 10px 0 10px" }}
+            style={{ color: "red", margin: "6px 10px 0 10px" }}
           >
             You've lost the game!!!
           </div>
@@ -223,7 +232,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
 
         {this.state.conquered.length === 64 && (
           <div
-            style={{ color: "green", margin: "10px  10px 0 0" }}
+            style={{ color: "green", margin: "6px  10px 0 0" }}
             className="text-xl pb-1"
           >
             Congratulations, You've won!!!
@@ -231,9 +240,6 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
         )}
         <div className="flex w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] p-0 flex-wrap border border-[#161c2d]">
           {squares}
-          <div style={{ margin: "4px  4px 0 0" }}>
-            Try planting a tree, riding the knight without revisits!!!
-          </div>
           <RulesAccordian />
           {this.state.knightPrevPosition && this.state.retryCount > 0 && (
             <button
