@@ -5,9 +5,11 @@ import monitor from "./helpers/monitor";
 
 const MusicPlayer = (props: any) => {
   const { isBlocked } = props;
+  const [muted, setMuted] = React.useState(true);
 
   monitor.on("dropFinish", () => {
     playSong(isBlocked ? glitch : notification);
+    setMuted(false);
   });
 
   React.useEffect(() => {
@@ -29,7 +31,7 @@ const MusicPlayer = (props: any) => {
 
   return (
     <div>
-      <audio controls className="hidden" />
+      <audio controls className="hidden" muted={muted} autoPlay />
     </div>
   );
 };
