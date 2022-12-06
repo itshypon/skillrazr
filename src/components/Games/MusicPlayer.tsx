@@ -3,7 +3,7 @@ import glitch from "../../assets/music/glitch.mp3";
 import monitor from "./helpers/monitor";
 
 const MusicPlayer = (props: any) => {
-  const { isBlocked, isAudioEnabled } = props;
+  const { isBlocked } = props;
   monitor.state.isBlocked = isBlocked;
 
   const playAlert = () => {
@@ -28,20 +28,20 @@ const MusicPlayer = (props: any) => {
     audioPlayer2.load();
   };
 
-  isAudioEnabled && loadAudio();
+  monitor.on("loadAudioFiles", loadAudio);
 
   return (
     <div>
       <audio
         src={notification}
         controls
-        className="absolute ml-[-9999px]"
+        className="absolute hidden"
         id="audio-notification"
       />
       <audio
         src={glitch}
         controls
-        className="absolute ml-[-7999px]"
+        className="absolute hidden"
         id="audio-alert"
       />
     </div>

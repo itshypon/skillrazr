@@ -13,6 +13,7 @@ import { canMoveKnight, isNoMovesExist } from "./helpers/rules";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MusicPlayer from "./MusicPlayer";
+import monitor from "./helpers/monitor";
 
 interface IProps {}
 
@@ -268,7 +269,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
           >
             {this.state.gameMode ? "Exit" : "Enter"} Game mode
           </button>
-          <button onClick={() => this.setState({ isAudioEnabled: true })}>
+          <button onClick={() => monitor.emit("loadAudioFiles", "")}>
             Turn Audio
           </button>
         </div>
