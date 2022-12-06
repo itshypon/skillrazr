@@ -24,6 +24,7 @@ interface IState {
   conquered: number[];
   retryCount: number;
   gameMode: boolean;
+  isAudioEnabled: boolean;
 }
 
 const Accordion = styled((props: AccordionProps) => (
@@ -106,6 +107,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
       conquered: [0],
       retryCount: 3,
       gameMode: true,
+      isAudioEnabled: false,
     };
     this.handleSquareClick = this.handleSquareClick.bind(this);
     this.undoLastStep = this.undoLastStep.bind(this);
@@ -266,8 +268,14 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
           >
             {this.state.gameMode ? "Exit" : "Enter"} Game mode
           </button>
+          <button onClick={() => this.setState({ isAudioEnabled: true })}>
+            Turn Audio
+          </button>
         </div>
-        <MusicPlayer isBlocked={this.state.isBlocked} />
+        <MusicPlayer
+          isBlocked={this.state.isBlocked}
+          isAudioEnabled={this.state.isAudioEnabled}
+        />
       </div>
     );
   }

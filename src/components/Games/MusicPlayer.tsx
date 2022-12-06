@@ -1,37 +1,49 @@
-import React from "react";
 import notification from "../../assets/music/notification2.mp3";
 import glitch from "../../assets/music/glitch.mp3";
 import monitor from "./helpers/monitor";
 
 const MusicPlayer = (props: any) => {
-  const { isBlocked } = props;
-  const [muted, setMuted] = React.useState(true);
+  const { isBlocked, isAudioEnabled } = props;
+  monitor.state.isBlocked = isBlocked;
 
-  monitor.on("dropFinish", () => {
-    playSong(isBlocked ? glitch : notification);
-    setMuted(false);
+  const playAlert = () => {
+    let audioPlayer: any = document.getElementById("audio-alert");
+    audioPlayer.play();
+  };
+
+  const playNotifi = () => {
+    let audioPlayer: any = document.getElementById("audio-notification");
+    audioPlayer.play();
+  };
+
+  monitor.on("dropFinish", function musicHandler() {
+    monitor.state.isBlocked ? playAlert() : playNotifi();
   });
 
-  React.useEffect(() => {
-    let audioPlayer: any = document.querySelector("audio");
-    audioPlayer.src = notification;
-    audioPlayer.load();
-    audioPlayer.addEventListener("play", function (event: any) {});
+  const loadAudio = () => {
+    let audioPlayer1: any = document.getElementById("audio-notification");
+    audioPlayer1.load();
 
-    audioPlayer.addEventListener("pause", function (event: any) {});
-  }, []);
-
-  const playSong = (song: string = notification) => {
-    let audioPlayer: any = document.querySelector("audio");
-    audioPlayer.src = song;
-    audioPlayer.load();
-    audioPlayer.play();
-    audioPlayer.addEventListener("ended", (event: any) => {});
+    let audioPlayer2: any = document.getElementById("audio-alert");
+    audioPlayer2.load();
   };
+
+  isAudioEnabled && loadAudio();
 
   return (
     <div>
-      <audio controls className="absolute ml-[999px]" muted={muted} autoPlay />
+      <audio
+        src={notification}
+        controls
+        className="absolute ml-[-9999px]"
+        id="audio-notification"
+      />
+      <audio
+        src={glitch}
+        controls
+        className="absolute ml-[-7999px]"
+        id="audio-alert"
+      />
     </div>
   );
 };
