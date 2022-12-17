@@ -3,64 +3,66 @@ import { shuffleArray } from "../uiHelper";
 import MusicPlayer from "../components/Games/MusicPlayer";
 import monitor from "../components/Games/helpers/monitor";
 import ModalDialog from "./Modal";
+import { Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import ReplayIcon from "@mui/icons-material/Replay";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Findy = () => {
   const [showTestDialog, setShowTestDialog] = React.useState(true);
 
   const [notFoundCount, setNotFoundCount] = React.useState(12);
-  const random12Animals = shuffleArray(
-    [
-      "🦉",
-      "🦚",
-      "🦜",
-      "🦢",
-      "🦩",
-      "🐍",
-      "🦋",
-      "🦅",
-      "🦆",
-      "🐞",
-      "🐌",
-      "🪲",
-      "🦗",
-      "🦂",
-      "🐝",
-      "🦟",
-      "🐇",
-      "🪰",
-      "🦟",
-      "🕷",
-      "🪳",
-      "🐜",
-      "🐛",
-      "🐀",
-      "🦌",
-      "🐖",
-      "🦓",
-      "🐎",
-      "🐆",
-      "🐅",
-      "🐈",
-      "🐒",
-      "🐄",
-      "🐑",
-      "🐐",
-      "🐪",
-      "🐘",
-      "🦒",
-      "🦏",
-      "🦛",
-      "🐿",
-      "🦇",
-      "🦥",
-      "🦘",
-      "🐊",
-      "🐢",
-      "🦎",
-      "🦕",
-      "🦖",
-    ].slice(0, 12)
-  );
+  const random12Animals = shuffleArray([
+    "🦉",
+    "🦚",
+    "🦜",
+    "🦢",
+    "🦩",
+    "🐍",
+    "🦋",
+    "🦅",
+    "🦆",
+    "🐞",
+    "🐌",
+    "🪲",
+    "🦗",
+    "🦂",
+    "🐝",
+    "🦟",
+    "🐇",
+    "🪰",
+    "🦟",
+    "🕷",
+    "🪳",
+    "🐜",
+    "🐛",
+    "🐀",
+    "🦌",
+    "🐖",
+    "🦓",
+    "🐎",
+    "🐆",
+    "🐅",
+    "🐈",
+    "🐒",
+    "🐄",
+    "🐑",
+    "🐐",
+    "🐪",
+    "🐘",
+    "🦒",
+    "🦏",
+    "🦛",
+    "🐿",
+    "🦇",
+    "🦥",
+    "🦘",
+    "🐊",
+    "🐢",
+    "🦎",
+    "🦕",
+    "🦖",
+  ]).slice(0, 12);
 
   const [grassAnimals, setGrassAnimals] = React.useState(
     random12Animals.map((animal) => ({
@@ -138,7 +140,21 @@ const Findy = () => {
 
   return (
     <div id="findy" className="fixed w-full h-[100vh]">
-      <div className="text-xxl mt-[110px]">Find Animals</div>
+      <div className="mt-[110px] flex justify-center">
+        <Button
+          className="center border text-xl p-2 m-2 rounded"
+          onClick={() => window.location.reload()}
+        >
+          <ReplayIcon />
+        </Button>
+        <div className="text-xxl">Find Animals</div>
+        <NavLink to="/games">
+          <Button>
+            <ArrowBackIcon /> <span className=""></span>
+          </Button>
+        </NavLink>
+      </div>
+
       <div className="mt-[10px] found">{renderFoundAnimals()}</div>
       <div className="text-lg">
         {notFoundCount === 0 ? "You won!" : `${notFoundCount} to go`}
@@ -155,8 +171,8 @@ const Findy = () => {
         content={
           <span className="">
             <span className="absolute top-[46px] z-[2] text-3xl"> 🦉 🦜</span>
-            <span className="absolute top-[48px] z-[2]right-[16px] text-2xl">
-              🦩 🐍
+            <span className="absolute top-[48px] z-[2] right-[16px] text-2xl">
+              🐒 🦒
             </span>
             <button
               className="pushable  w-full mt-4 mb-4"
