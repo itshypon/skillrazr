@@ -15,6 +15,7 @@ const Modal = ({
   content,
   cancelHandler,
   hideCloseButton = false,
+  hideTitle = false,
 }: any) => {
   return (
     <Dialog
@@ -27,7 +28,11 @@ const Modal = ({
     >
       <div className={`container ${className}`}>
         <div className="body">
-          <DialogTitle className="title bg-transparent" id="alert-dialog-title">
+          <DialogTitle
+            className={`${
+              hideTitle ? "hidden" : ""
+            } title bg-transparent" id="alert-dialog-title`}
+          >
             {title}
           </DialogTitle>
           <DialogContent

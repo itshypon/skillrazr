@@ -153,9 +153,9 @@ const Findy = () => {
         setShowDialog={setShowTestDialog}
         cancelHandler={() => setShowTestDialog(false)}
         content={
-          <span className="mt-4">
-            <span className="absolute top-[46px] text-3xl"> 🦉 🦜</span>
-            <span className="absolute top-[48px] right-[16px] text-2xl">
+          <span className="">
+            <span className="absolute top-[46px] z-[2] text-3xl"> 🦉 🦜</span>
+            <span className="absolute top-[48px] z-[2]right-[16px] text-2xl">
               🦩 🐍
             </span>
             <button
