@@ -9,6 +9,7 @@ import {
 
 const Modal = ({
   showModal,
+  className,
   fullScreen = false,
   title,
   content,
@@ -24,9 +25,9 @@ const Modal = ({
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <div className="container">
+      <div className={`container ${className}`}>
         <div className="body">
-          <DialogTitle className="title" id="alert-dialog-title">
+          <DialogTitle className="title bg-transparent" id="alert-dialog-title">
             {title}
           </DialogTitle>
           <DialogContent

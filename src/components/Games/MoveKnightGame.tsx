@@ -193,7 +193,6 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
     mode
       ? document.getElementById("navlinks")?.classList.add("hidden")
       : document.getElementById("navlinks")?.classList.remove("hidden");
-    console.log("hle");
     this.setState({ gameMode: mode });
   }
 

@@ -20,9 +20,12 @@ const Findy = () => {
       "🦅",
       "🦆",
       "🐞",
+      "🐌",
+      "🪲",
       "🦗",
       "🦂",
       "🐝",
+      "🦟",
       "🐇",
       "🪰",
       "🦟",
@@ -30,6 +33,32 @@ const Findy = () => {
       "🪳",
       "🐜",
       "🐛",
+      "🐀",
+      "🦌",
+      "🐖",
+      "🦓",
+      "🐎",
+      "🐆",
+      "🐅",
+      "🐈",
+      "🐒",
+      "🐄",
+      "🐑",
+      "🐐",
+      "🐪",
+      "🐘",
+      "🦒",
+      "🦏",
+      "🦛",
+      "🐿",
+      "🦇",
+      "🦥",
+      "🦘",
+      "🐊",
+      "🐢",
+      "🦎",
+      "🦕",
+      "🦖",
     ].slice(0, 12)
   );
 
@@ -45,25 +74,25 @@ const Findy = () => {
   const [foundAnimals, setFoundAnimals] = React.useState<any>([]);
 
   React.useEffect(() => {
+    document.getElementById("navlinks")?.classList.add("hidden");
     const findy = document.getElementById("findy");
-    const grass = 100;
     const colors = ["lightgreen", "darkgreen", "olive"];
 
-    function addGrass() {
-      for (var i = 0; i < grass; i++) {
-        var t = document.createElement("div");
-        t.className = "grass";
-        t.style.height = Math.random() * 25 + 45 + "%";
-        t.style.left = i + "%";
-        t.style.width = Math.random() * 1.5 + 0.5 + "vw";
-        t.style.backgroundColor =
+    const addGrass = () => {
+      for (let i = 0; i < 100; i++) {
+        let grass = document.createElement("div");
+        grass.className = "grass";
+        grass.style.height = Math.random() * 25 + 45 + "%";
+        grass.style.left = i + "%";
+        grass.style.width = Math.random() * 1.5 + 0.5 + "vw";
+        grass.style.backgroundColor =
           colors[Math.floor(Math.random() * colors.length)];
-        t.style.animationDelay = Math.random() * 3 + "s";
+        grass.style.animationDelay = Math.random() * 3 + "s";
         //@ts-ignore
-        t.style.zIndex = i % 2 === 0 ? -1 : 1;
-        findy && findy.appendChild(t);
+        grass.style.zIndex = i % 2 === 0 ? -1 : 1;
+        findy && findy.appendChild(grass);
       }
-    }
+    };
 
     addGrass();
   }, []);
@@ -109,7 +138,7 @@ const Findy = () => {
 
   return (
     <div id="findy" className="fixed w-full h-[100vh]">
-      <div className="text-xxl mt-[110px]">Findy</div>
+      <div className="text-xxl mt-[110px]">Find Animals</div>
       <div className="mt-[10px] found">{renderFoundAnimals()}</div>
       <div className="text-lg">
         {notFoundCount === 0 ? "You won!" : `${notFoundCount} to go`}
@@ -118,14 +147,15 @@ const Findy = () => {
       {renderCreatures()}
 
       <ModalDialog
+        className="bg-[#150d0d] w-[300px] h-[200px] flex flex-col justify-center"
         hideCloseButton
         showModal={showTestDialog}
         setShowDialog={setShowTestDialog}
         cancelHandler={() => setShowTestDialog(false)}
         content={
-          <span>
-            <span className="absolute top-[18px] text-2xl"> 🦉 🦜</span>
-            <span className="absolute top-[22px] right-[16px] text-2xl">
+          <span className="mt-4">
+            <span className="absolute top-[46px] text-3xl"> 🦉 🦜</span>
+            <span className="absolute top-[48px] right-[16px] text-2xl">
               🦩 🐍
             </span>
             <button
