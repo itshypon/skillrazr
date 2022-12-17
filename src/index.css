@@ -148,12 +148,11 @@ p span {
   cursor: pointer;
   user-select: none;
 }
-.bird:hover,
-.bird:active {
+.bird:hover {
   z-index: 2 !important;
 }
 
-#findy > p {
+#findy .found {
   display: flex;
   padding: 10px;
   flex-wrap: wrap;
