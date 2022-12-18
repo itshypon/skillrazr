@@ -17,9 +17,7 @@ import monitor from "./helpers/monitor";
 import ModalDialog from "../Modal";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import ReplayIcon from "@mui/icons-material/Replay";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Troubleshoot } from "@mui/icons-material";
 
 interface IProps {}
 
