@@ -2,12 +2,11 @@ import { NavLink } from "react-router-dom";
 
 export default function Games(props: any) {
   const availalbeGames = [
-    // {
-    //   id: "planty",
-    //   title: "Plant Trees",
-    //   icon: LooksOneIcon,
-    //   description: "Plant trees riding a horse",
-    // },
+    {
+      id: "planty",
+      title: "Plant Trees",
+      description: "Plant trees riding a horse",
+    },
     {
       id: "scratchy",
       title: "Scratchy",
