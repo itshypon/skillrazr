@@ -14,6 +14,10 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MusicPlayer from "./MusicPlayer";
 import monitor from "./helpers/monitor";
+import ModalDialog from "../Modal";
+import { Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 interface IProps {}
 
@@ -26,6 +30,7 @@ interface IState {
   retryCount: number;
   gameMode: boolean;
   isAudioEnabled: boolean;
+  showTestDialog: boolean;
 }
 
 const Accordion = styled((props: AccordionProps) => (
@@ -109,8 +114,10 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
       retryCount: 3,
       gameMode: true,
       isAudioEnabled: false,
+      showTestDialog: true,
     };
     this.handleSquareClick = this.handleSquareClick.bind(this);
+    this.setShowTestDialog = this.setShowTestDialog.bind(this);
     this.undoLastStep = this.undoLastStep.bind(this);
     this.resetGame = this.resetGame.bind(this);
     this.setGameMode = this.setGameMode.bind(this);
@@ -196,6 +203,10 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
     this.setState({ gameMode: mode });
   }
 
+  setShowTestDialog() {
+    this.setState({ showTestDialog: !this.setShowTestDialog });
+  }
+
   render() {
     const squares = [];
     for (let i = 0; i < 64; i++) {
@@ -268,13 +279,44 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
           >
             {this.state.gameMode ? "Exit" : "Enter"} Game mode
           </button>
-          <button onClick={() => monitor.emit("loadAudioFiles", "")}>
-            Turn Audio
-          </button>
+          <NavLink to="/games">
+            <Button>
+              <ArrowBackIcon /> <span className=""></span>
+            </Button>
+          </NavLink>
         </div>
         <MusicPlayer
           isBlocked={this.state.isBlocked}
           isAudioEnabled={this.state.isAudioEnabled}
+        />
+        <ModalDialog
+          className="bg-[#150d0d] w-[300px] h-[200px] flex flex-col justify-center"
+          hideCloseButton
+          showModal={this.state.showTestDialog}
+          setShowDialog={this.setShowTestDialog}
+          cancelHandler={() => this.setShowTestDialog()}
+          content={
+            <span className="">
+              <span className="absolute top-[46px] z-[2] text-3xl">
+                {" "}
+                &#127796; &#127796;
+              </span>
+              <span className="absolute top-[48px] z-[2] right-[16px] text-2xl">
+                🐎
+              </span>
+              <button
+                className="pushable w-full mt-4 mb-4"
+                onClick={() => {
+                  this.setShowTestDialog();
+                  monitor.emit("gameStarted", undefined);
+                }}
+              >
+                <span className="shadow"></span>
+                <span className="edge"></span>
+                <span className="front">Play Planty</span>
+              </button>
+            </span>
+          }
         />
       </div>
     );
