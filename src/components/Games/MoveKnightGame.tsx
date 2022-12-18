@@ -305,7 +305,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
                 🐎
               </span>
               <button
-                className="pushable  w-full mt-4 mb-4"
+                className="pushable w-full mt-4 mb-4"
                 onClick={() => {
                   this.setShowTestDialog();
                   monitor.emit("gameStarted", undefined);
