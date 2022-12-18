@@ -62,9 +62,21 @@ const Findy = () => {
     "🦎",
     "🦕",
     "🦖",
+    "🐋",
+    "🐬",
+    "🦭",
+    "🐟",
+    "🐠",
+    "🐡",
+    "🦈",
+    "🐙",
+    "🦀",
+    "🦞",
+    "🦐",
+    "🦑",
   ]).slice(0, 12);
 
-  const [grassAnimals, setGrassAnimals] = React.useState(
+  const [animals, setAnimals] = React.useState(
     random12Animals.map((animal) => ({
       animal,
       pos: {
@@ -89,7 +101,7 @@ const Findy = () => {
         grass.style.width = Math.random() * 1.5 + 0.5 + "vw";
         grass.style.backgroundColor =
           colors[Math.floor(Math.random() * colors.length)];
-        grass.style.animationDelay = Math.random() * 3 + "s";
+        grass.style.animationDelay = Math.random() * 5 + "s";
         //@ts-ignore
         grass.style.zIndex = i % 2 === 0 ? -1 : 1;
         findy && findy.appendChild(grass);
@@ -97,16 +109,36 @@ const Findy = () => {
     };
 
     addGrass();
+
+    let interval: any;
+    setTimeout(() => {
+      interval = setInterval(() => {
+        const animals: any = document.querySelectorAll(".animal") || [];
+        if (!animals.length) {
+          return;
+        }
+        const randomIndex = Math.floor(Math.random() * animals.length);
+        animals[randomIndex].classList.toggle("highlight");
+
+        setTimeout(() => {
+          animals[randomIndex].classList.toggle("highlight");
+        }, 1000);
+      }, 5000);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
-  const renderCreatures = () => {
+  const renderAnmials = () => {
     return (
       <>
-        {grassAnimals.map((creature, index) => {
+        {animals.map((creature, index) => {
           return (
             <div
               key={index}
-              className="bird"
+              className="animal text-5xl sm:text-4xl"
               style={{ left: creature.pos.left, bottom: creature.pos.bottom }}
               onClick={() => {
                 monitor.emit("animalFound", undefined);
@@ -117,12 +149,12 @@ const Findy = () => {
                     monitor.emit("gameWon", undefined);
                   }, 100);
                 }
-                const animalIndex = grassAnimals.findIndex(
+                const animalIndex = animals.findIndex(
                   (i) => i.animal === creature.animal
                 );
-                const animals = grassAnimals.splice(animalIndex, 1);
-                setFoundAnimals(foundAnimals.concat(animals));
-                setGrassAnimals(grassAnimals);
+                const animalsFiltered = animals.splice(animalIndex, 1);
+                setFoundAnimals(foundAnimals.concat(animalsFiltered));
+                setAnimals(animals);
               }}
             >
               {creature.animal}
@@ -160,7 +192,7 @@ const Findy = () => {
         {notFoundCount === 0 ? "You won!" : `${notFoundCount} to go`}
       </div>
       <MusicPlayer />
-      {renderCreatures()}
+      {renderAnmials()}
 
       <ModalDialog
         className="bg-[#150d0d] w-[300px] h-[200px] flex flex-col justify-center"

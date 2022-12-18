@@ -114,9 +114,6 @@ code {
   text-align: center;
 }
 
-p .bird {
-  cursor: auto;
-}
 p span {
   font-weight: 900;
 }
@@ -133,7 +130,7 @@ p span {
   border-radius: 100% 100% 0 0;
   transform-origin: center bottom;
   pointer-events: none;
-  animation: sway 5s linear infinite;
+  animation: sway 8s linear infinite;
 }
 @keyframes sway {
   25% {
@@ -144,15 +141,15 @@ p span {
   }
 }
 
-.bird {
+.animal {
   position: absolute;
-  font-size: 36px;
-  line-height: 100%;
-  cursor: pointer;
+  cursor: default;
   user-select: none;
 }
-.bird:hover {
-  z-index: 2 !important;
+
+.animal.highlight {
+  z-index: 3 !important;
+  border-bottom: 2px solid gray;
 }
 
 #findy .found {
