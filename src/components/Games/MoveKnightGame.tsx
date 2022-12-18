@@ -13,6 +13,7 @@ import { canMoveKnight, isNoMovesExist } from "./helpers/rules";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MusicPlayer from "./MusicPlayer";
+import monitor from "./helpers/monitor";
 
 interface IProps {}
 
@@ -24,6 +25,7 @@ interface IState {
   conquered: number[];
   retryCount: number;
   gameMode: boolean;
+  isAudioEnabled: boolean;
 }
 
 const Accordion = styled((props: AccordionProps) => (
@@ -106,6 +108,7 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
       conquered: [0],
       retryCount: 3,
       gameMode: true,
+      isAudioEnabled: false,
     };
     this.handleSquareClick = this.handleSquareClick.bind(this);
     this.undoLastStep = this.undoLastStep.bind(this);
@@ -190,7 +193,6 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
     mode
       ? document.getElementById("navlinks")?.classList.add("hidden")
       : document.getElementById("navlinks")?.classList.remove("hidden");
-    console.log("hle");
     this.setState({ gameMode: mode });
   }
 
@@ -266,8 +268,14 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
           >
             {this.state.gameMode ? "Exit" : "Enter"} Game mode
           </button>
+          <button onClick={() => monitor.emit("loadAudioFiles", "")}>
+            Turn Audio
+          </button>
         </div>
-        <MusicPlayer isBlocked={this.state.isBlocked} />
+        <MusicPlayer
+          isBlocked={this.state.isBlocked}
+          isAudioEnabled={this.state.isAudioEnabled}
+        />
       </div>
     );
   }

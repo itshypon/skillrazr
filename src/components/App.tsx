@@ -19,7 +19,8 @@ import { useNavigate } from "react-router-dom";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import days from "../days";
 import { Editor } from "./Editor";
-import MoveKnightGame from "../components/Games/MoveKnightGame";
+import Games from "../components/Games";
+import SelectedGame from "../components/SelectedGame";
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -177,8 +178,8 @@ function App(props: any) {
             />
 
             <Route path="/editor" element={<Editor {...props} />} />
-
-            <Route path="/games" element={<MoveKnightGame {...props} />} />
+            <Route path="/games/:id" element={<SelectedGame {...props} />} />
+            <Route path="/games" element={<Games {...props} />} />
           </Route>
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
