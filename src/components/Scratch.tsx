@@ -13,6 +13,7 @@ import sc8 from "../assets/images/scratch_photo8.jpg";
 import sc9 from "../assets/images/scratch_photo9.jpg";
 import sc10 from "../assets/images/scratch_photo10.jpg";
 import sc11 from "../assets/images/scratch_photo11.jpg";
+import scMe from "../assets/images/sc_bg2.png";
 import ReplayIcon from "@mui/icons-material/Replay";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Button } from "@mui/material";
@@ -44,13 +45,12 @@ const Scratch = () => {
       scratchType: SCRATCH_TYPE.LINE,
       containerWidth: scContainer.offsetWidth,
       containerHeight: 500,
-      imageForwardSrc:
-        "https://uploads.codesandbox.io/uploads/user/a5aec563-412a-454f-a80f-dc430ffbf7c5/xgu0-scratch-card.jpg",
+      imageForwardSrc: scMe,
       imageBackgroundSrc: image,
       // "https://openailabsprodscus.blob.core.windows.net/private/user-kLiJ0solYnBI2F2euOGnIRsd/generations/generation-RR0NuCVC7MCAZX1BjdsA8j6W/image.webp?st=2022-12-14T12%3A33%3A55Z&se=2022-12-14T14%3A31%3A55Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/webp&skoid=15f0b47b-a152-4599-9e98-9cb4a58269f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2022-12-14T13%3A05%3A58Z&ske=2022-12-21T13%3A05%3A58Z&sks=b&skv=2021-08-06&sig=YuLqu3FwGlqOXI2LVSTJC152nArhj9VuD0tfXqifwyE%3D",
       // htmlBackground: `<img height="300px" src=${akan}/>`,
       clearZoneRadius: 30,
-      percentToFinish: 90, // When the percent exceeds 50 on touchend event the callback will be exec.
+      percentToFinish: 60, // When the percent exceeds 50 on touchend event the callback will be exec.
       callback: function () {
         // alert("Card Scratched");
       },
