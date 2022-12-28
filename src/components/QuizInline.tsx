@@ -82,7 +82,6 @@ const RenderQuestion = (props: any) => {
     questionAnswers,
     handleChange,
     isSubmitDisabled,
-    submitted,
     answer,
   } = props;
   const isUnanswered = unAnswered.includes(question.id);
@@ -166,6 +165,7 @@ export const QuizInLine = ({
   previewMode = false,
   hideHowToParticipate = false,
 }: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [quizesData, _] = useState<any>(quizData);
   const [allowedTime, setAllowedTime] = useState<number>(60);
   const [submitClicked, setSubmitClicked] = useState<boolean>(false);
@@ -182,6 +182,7 @@ export const QuizInLine = ({
       shuffleArray(Array.from(Array(quizData.questions.length).keys()))
     );
     setAllowedTime(120);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (event: any) => {

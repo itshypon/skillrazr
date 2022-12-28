@@ -85,7 +85,7 @@ export const renderMathExpression = (input: string, id: string) => {
   }, 200);
 };
 
-const getQuizFromString = (quizString: string) => {
+export const getQuizFromString = (quizString: string) => {
   const questionAnswers = quizString.slice(1).split("\n\n");
 
   console.log("all qas", questionAnswers);
@@ -107,7 +107,7 @@ const getQuizFromString = (quizString: string) => {
     });
   });
 
-  return questions;
+  // return questions;
 
   return {
     questions,
