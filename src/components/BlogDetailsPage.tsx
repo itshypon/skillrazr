@@ -7,6 +7,7 @@ import useScript from '../hooks/useScript';
 import useLink from '../hooks/useExternalCssLink';
 import { Button } from '@mui/material';
 import ModalDialog from "./Modal";
+import JsStarter1 from '../components/blogs/JsStarter1';
 
 import blogs from '../data/blogs';
 
@@ -594,6 +595,10 @@ export const BlogDetailsPage = () => {
 
             case 'unit_test_code_coverage': {
                 return <RenderTestCoverageContent blog={blog} />;
+            }
+
+            case 'js_starter': {
+                return <JsStarter1 />
             }
 
             default: {

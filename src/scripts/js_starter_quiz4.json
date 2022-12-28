@@ -1,0 +1,64 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "options": [
+        "let myObject = [1, 2, 3];",
+        "let myObject = {1, 2, 3};",
+        "let myObject = \"1, 2, 3\";",
+        "let myObject = {key1: value1, key2: value2, key3: value3};"
+      ],
+      "title": "What is the correct syntax for creating an object in JavaScript?"
+    },
+    {
+      "id": "2",
+      "options": [
+        "myObject['key1']",
+        "myObject(key1)",
+        "myObject{key1}",
+        "myObject.'key1'"
+      ],
+      "title": "How do you access a property 'key1' of an object in JavaScript?"
+    },
+    {
+      "id": "3",
+      "options": [
+        "myObject.key4 = value4;",
+        "myObject['key4'] = value4;",
+        "myObject.add(key4, value4);",
+        "myObject += {key4: value4};"
+      ],
+      "title": "How do you add a new property 'key4' to an object in JavaScript?"
+    },
+    {
+      "id": "4",
+      "options": [
+        "delete myObject.key1;",
+        "myObject.remove(key1);",
+        "myObject['key1'] = null;",
+        "myObject.key1 = undefined;"
+      ],
+      "title": "How do you delete a property from an object in JavaScript?"
+    },
+    {
+      "id": "5",
+      "options": [
+        "The for...in statement iterates over all enumerable string properties of an object",
+        "for...in can't be used to iterate over the elements of an array",
+        "All of the options",
+        "To iterate over the values of an object"
+      ],
+      "title": "Which of the followings is true for the for...in loop in JavaScript?"
+    }
+  ],
+  "title": "JS Starter Quiz 4",
+  "id": "js-objects",
+  "description": "A quiz on JS Objects",
+  "answers": {
+    "1": "let myObject = {key1: value1, key2: value2, key3: value3};",
+    "2": "myObject['key1']",
+    "3": "myObject['key4'] = value4;",
+    "4": "delete myObject.key1;",
+    "5": "The for...in statement iterates over all enumerable string properties of an object"
+  }
+}

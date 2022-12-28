@@ -1,0 +1,64 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "options": [
+        "function myFunction() { }",
+        "const myFunction = () => { }",
+        "All of the options",
+        "const myFunction = function() { }"
+      ],
+      "title": "What is the correct syntax for defining a function in JavaScript?"
+    },
+    {
+      "id": "2",
+      "options": [
+        "myFunction(arg1, arg2);",
+        "call myFunction(arg1, arg2);",
+        "run myFunction(arg1, arg2);",
+        "execute myFunction(arg1, arg2);"
+      ],
+      "title": "What is the correct way to call a function in JavaScript?"
+    },
+    {
+      "id": "3",
+      "options": [
+        "To stop the function from executing",
+        "To specify the output of the function",
+        "To specify the input of the function",
+        "To specify the name of the function"
+      ],
+      "title": "What is the purpose of the return statement in a function?"
+    },
+    {
+      "id": "4",
+      "options": [
+        "An argument that is required for the function to run",
+        "An argument that has a predetermined value if no value is provided",
+        "An argument that is optional and does not need to be provided",
+        "An argument that is used to specify the return value of the function"
+      ],
+      "title": "What is a default function argument in JavaScript?"
+    },
+    {
+      "id": "5",
+      "options": [
+        "The function keyword can be used to define a function inside an expression",
+        "The function name can be omitted while creating the function expression",
+        "Function expressions in JavaScript are not hoisted",
+        "All of the options"
+      ],
+      "title": "Which of the followings is true for function expressions in JavaScript?"
+    }
+  ],
+  "title": "JS Starter Quiz 2",
+  "id": "js-functions",
+  "description": "A quiz on JS Functions",
+  "answers": {
+    "1": "All of the options",
+    "2": "myFunction(arg1, arg2);",
+    "3": "To specify the output of the function",
+    "4": "An argument that has a predetermined value if no value is provided",
+    "5": "All of the options"
+  }
+}

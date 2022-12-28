@@ -69,7 +69,7 @@ const Scratch = () => {
   return (
     <div
       id="scratcher"
-      className="sc__wrapper mt-[100px] mb-[200px] p-10 fixed w-full h-[100vh]"
+      className="sc__wrapper mt-[50px] mb-[200px] p-10 fixed w-full h-[100vh]"
     >
       <div id="sc-container"></div>
       <div className="mt-4">

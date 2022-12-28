@@ -1,0 +1,65 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "options": [
+        "A data type that is created using a constructor function",
+        "A data type that is derived from a class",
+        "A data type that represents a single value",
+        "A data type that represents a collection of values"
+      ],
+      "title": "What is a primitive data type in JavaScript?"
+    },
+    {
+      "id": "2",
+      "options": [
+        "String, Number, Boolean, Array, Object",
+        "String, Number, Boolean, Symbol",
+        "String, Number, Boolean, Null, Undefined",
+        "String, Number, Boolean, Function"
+      ],
+      "title": "What are the primitive data types in JavaScript?"
+    },
+    {
+      "id": "3",
+      "options": [
+        "'' == false",
+        "0 == false",
+        "0 !== false",
+        "All of the options"
+      ],
+      "title": "Which one of the followings is true?"
+    },
+    {
+      "id": "4",
+      "options": [
+        "const myNumber = new Number(42);",
+        "const myNumber = 42;",
+        "const myNumber = Number('42');",
+        "All of the options"
+      ],
+      "title": "How do you create a number in JavaScript?"
+    },
+    {
+      "id": "5",
+      "options": [
+        "'3' + 2 = 32",
+        "'3' - 2 = NaN",
+        "'3' + 2 = 5",
+        "'3' - 2 = 1"
+      ],
+      "title": "Which of the followings is true?"
+    }
+  ],
+  "answers": {
+    "1": "A data type that represents a single value",
+    "2": "String, Number, Boolean, Null, Undefined",
+    "3": "All of the options",
+    "4": "All of the options",
+    "5": "'3' - 2 = 1"
+  },
+  "title": "JS Starter Quiz 1",
+  "description": "A quiz on  JS Primitives",
+  "status": "published",
+  "id": "js_starter"
+}

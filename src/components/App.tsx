@@ -177,7 +177,14 @@ function App(props: any) {
               element={<QuizesList {...props} className="p-48" />}
             />
 
-            <Route path="/editor" element={<Editor {...props} />} />
+            <Route
+              path="/editor"
+              element={
+                <div style={{ marginTop: "180px" }}>
+                  <Editor {...props} />
+                </div>
+              }
+            />
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />
           </Route>

@@ -16,7 +16,6 @@ code {
 
 .twitter-logo {
   position: relative;
-  height: 20px;
   box-sizing: border-box;
   padding: 1px 12px 1px 12px;
   background-color: #1d9bf0;
@@ -145,6 +144,7 @@ p span {
   position: absolute;
   cursor: default;
   user-select: none;
+  z-index: -1 !important;
 }
 
 .animal.highlight {

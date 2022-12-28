@@ -83,10 +83,14 @@ export default function Footer() {
             className="mb-10 sm:mb-0 items-center"
           >
             <Grid>
-              <NavLink to="/" onClick={() => {
-                window.scrollTo(0, 0);
-              }}>
-                <img src={logo} alt="" style={{ width: "220px" }} /></NavLink>
+              <NavLink
+                to="/"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <img src={logo} alt="" style={{ width: "220px" }} />
+              </NavLink>
             </Grid>
 
             <Rights>
@@ -94,47 +98,66 @@ export default function Footer() {
               <br /> All rights reserved
             </Rights>
           </Grid>
-          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid
+            item
+            spacing={2}
+            md={2}
+            sm={2}
+            xs={4}
+            container
+            direction={"column"}
+          >
             <Grid item>
               <Title>Company</Title>
             </Grid>
             <Grid item>
-              <NavLink to="/about" onClick={() => {
-                window.scrollTo(0, 0);
-              }}>
+              <NavLink
+                to="/about"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Sub>About</Sub>
               </NavLink>
             </Grid>
             <Grid item>
-              <NavLink to="/about#team" onClick={() => {
-                window.scrollTo(0, 0);
-              }}>
+              <NavLink
+                to="/about#team"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Sub>Team</Sub>
               </NavLink>
             </Grid>
             <Grid item>
-              <NavLink to="/about#contact" onClick={() => {
-                window.scrollTo(0, 0);
-              }}>
+              <NavLink
+                to="/about#contact"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Sub>Contact</Sub>
               </NavLink>
             </Grid>
-            <Grid item>
-              <NavLink to="/blogs" onClick={() => {
-                window.scrollTo(0, 0);
-              }}>
-                <Sub>Blogs</Sub>
-              </NavLink>
-            </Grid>
           </Grid>
-          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid
+            item
+            spacing={2}
+            md={2}
+            sm={2}
+            xs={4}
+            container
+            direction={"column"}
+          >
             <Grid item>
               <Title>Developer</Title>
             </Grid>
 
             <Grid item>
               <NavLink
-                to="/editor" onClick={() => {
+                to="/editor"
+                onClick={() => {
                   window.scrollTo(0, 100);
                 }}
               >
@@ -143,7 +166,18 @@ export default function Footer() {
             </Grid>
             <Grid item>
               <NavLink
-                to="/games" onClick={() => {
+                to="/blogs"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <Sub>Blogs</Sub>
+              </NavLink>
+            </Grid>
+            <Grid item>
+              <NavLink
+                to="/games"
+                onClick={() => {
                   window.scrollTo(0, 100);
                 }}
               >
@@ -151,7 +185,15 @@ export default function Footer() {
               </NavLink>
             </Grid>
           </Grid>
-          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid
+            item
+            spacing={2}
+            md={2}
+            sm={2}
+            xs={4}
+            container
+            direction={"column"}
+          >
             <Grid item>
               <Title>Legal</Title>
             </Grid>
@@ -187,7 +229,15 @@ export default function Footer() {
               </NavLink>
             </Grid>
           </Grid>
-          <Grid item spacing={2} md={2} sm={2} xs={4} container direction={"column"}>
+          <Grid
+            item
+            spacing={2}
+            md={2}
+            sm={2}
+            xs={4}
+            container
+            direction={"column"}
+          >
             <Grid item>
               <Title>Social</Title>
             </Grid>

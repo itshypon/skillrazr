@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "options": [
+        "let myArray = [1, 2, 3];",
+        "let myArray = {1, 2, 3};",
+        "let myArray = \"1, 2, 3\";",
+        "let myArray = 1, 2, 3;"
+      ],
+      "title": "What is the correct syntax for creating an array in JavaScript?"
+    },
+    {
+      "id": "2",
+      "options": ["myArray[1]", "myArray(1)", "myArray{1}", "myArray[2]"],
+      "title": "How do you access the second element of an array in JavaScript?"
+    },
+    {
+      "id": "3",
+      "options": [
+        "myArray.push(4);",
+        "myArray[3] = 4;",
+        "myArray.add(4);",
+        "myArray += 4;"
+      ],
+      "title": "How do you add an element 4 to the end of an array in JavaScript?"
+    },
+    {
+      "id": "4",
+      "options": [
+        "myArray.shift();",
+        "myArray.pop();",
+        "myArray.remove(0);",
+        "myArray[0] = null;"
+      ],
+      "title": "How do you remove the first element of an array in JavaScript?"
+    },
+    {
+      "id": "5",
+      "options": [
+        "JS arrays can be heterogeneus",
+        "Size needs to be specified while creating an array",
+        "All of the options",
+        "Arrays follow pass by value"
+      ],
+      "title": "Which of the followings is true for JS arrays"
+    }
+  ],
+  "title": "JS Starter Quiz 3",
+  "id": "js-arrays",
+  "description": "A quiz on JS Arrays",
+  "answers": {
+    "1": "let myArray = [1, 2, 3];",
+    "2": "myArray[1]",
+    "3": "myArray.push(4);",
+    "4": "myArray.shift();",
+    "5": "JS arrays can be heterogeneus"
+  }
+}

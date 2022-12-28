@@ -6,6 +6,10 @@ const data = [
     {
         id: 'unit_test_code_coverage',
         title: 'Unit Tests and Code Coverage'
+    },
+    {
+        id: 'js_starter',
+        title: 'JS Starter Kit'
     }
 ];
 
