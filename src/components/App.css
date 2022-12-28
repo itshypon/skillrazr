@@ -181,3 +181,11 @@
 .pushable:focus:not(:focus-visible) {
   outline: none;
 }
+
+.wrong-ans .Mui-checked {
+  color: red !important;
+}
+
+.correct-ans .Mui-checked {
+  color: green !important;
+}

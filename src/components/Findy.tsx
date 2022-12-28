@@ -7,6 +7,15 @@ import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import ReplayIcon from "@mui/icons-material/Replay";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import confetti from "canvas-confetti";
+
+const renderConfetti = () => {
+  confetti({
+    particleCount: 400,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+};
 
 const Findy = () => {
   const [showTestDialog, setShowTestDialog] = React.useState(true);
@@ -147,6 +156,7 @@ const Findy = () => {
                 if (notFoundCount === 1) {
                   setTimeout(() => {
                     monitor.emit("gameWon", undefined);
+                    renderConfetti();
                   }, 100);
                 }
                 const animalIndex = animals.findIndex(
@@ -172,19 +182,21 @@ const Findy = () => {
 
   return (
     <div id="findy" className="fixed w-full h-[100vh]">
-      <div className="mt-[110px] flex justify-center">
+      <div className="mt-[70px] flex-col justify-center">
+        <NavLink to="/games">
+          <Button variant="outlined" className="!text-xs !p-1 !mr-1">
+            <ArrowBackIcon /> <span className="">Go Back</span>
+          </Button>
+        </NavLink>
         <Button
-          className="center border text-xl p-2 m-2 rounded"
+          variant="outlined"
+          className="center border !text-xs !p-1 m-1 rounded"
           onClick={() => window.location.reload()}
         >
           <ReplayIcon />
+          <span className="">Reload</span>
         </Button>
-        <div className="text-xxl">Find Animals</div>
-        <NavLink to="/games">
-          <Button>
-            <ArrowBackIcon /> <span className=""></span>
-          </Button>
-        </NavLink>
+        <div className="text-xl">Find Animals</div>
       </div>
 
       <div className="mt-[10px] found">{renderFoundAnimals()}</div>

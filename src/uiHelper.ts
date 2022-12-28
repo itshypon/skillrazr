@@ -84,3 +84,36 @@ export const renderMathExpression = (input: string, id: string) => {
       });
   }, 200);
 };
+
+export const getQuizFromString = (quizString: string) => {
+  const questionAnswers = quizString.slice(1).split("\n\n");
+
+  console.log("all qas", questionAnswers);
+
+  const questions = [] as any;
+  questionAnswers.forEach((qAStr, index) => {
+    const arr = qAStr.split("\n");
+    console.log("arr", arr);
+    const [question, ...optionWithAnswer] = arr;
+    console.log("question", question);
+    console.log("options", optionWithAnswer.slice(0, -1));
+    // console.log("answer", optionWithAnswer[optionWithAnswer.length - 1]);
+    // const answer = optionWithAnswer[optionWithAnswer.length - 1];
+
+    questions.push({
+      id: (index + 1).toString(),
+      options: optionWithAnswer,
+      title: question,
+    });
+  });
+
+  // return questions;
+
+  return {
+    questions,
+    title: "",
+    id: "",
+    description: "",
+    answers: {},
+  };
+};
