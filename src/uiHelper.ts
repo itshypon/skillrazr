@@ -40,6 +40,24 @@ export const getQuizes = async () => {
   ).then((resp) => resp.json());
 };
 
+export const getCompletionText = async (
+  query: string,
+  prompt = "",
+  apiKey = ""
+) => {
+  return await fetch(
+    `https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr/getCompletionText`,
+    {
+      headers: {
+        "X-Firebase-AppCheck": `appCheckTokenResponse.token`,
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ query, prompt, apiKey }),
+    }
+  ).then((resp) => resp.json());
+};
+
 export const getScore = (answerObj: any, submissionObj: any) => {
   const totalQuestions = Object.keys(answerObj).length;
 
@@ -116,4 +134,34 @@ export const getQuizFromString = (quizString: string) => {
     description: "",
     answers: {},
   };
+};
+
+export const getQuizQuestionsFromString = (quizString: string) => {
+  const questionAndAnswers = quizString.slice(1).split("\n  \n");
+
+  console.log("all qas", questionAndAnswers);
+
+  const questions = [] as any;
+  const answers: any = {};
+  questionAndAnswers.forEach((qAStr, index) => {
+    const arr = qAStr.split("\n");
+    console.log("arr", arr);
+    const [question, ...optionWithAnswer] = arr;
+    console.log("question", question);
+    console.log("options", optionWithAnswer.slice(0, -1));
+    const options = optionWithAnswer.slice(0, -1);
+    // console.log("answer", optionWithAnswer[optionWithAnswer.length - 1]);
+    const answer = optionWithAnswer[optionWithAnswer.length - 1];
+    console.log("anwer", answer);
+
+    const id = (index + 1).toString();
+    answers[id] = answer.replace("answer: ", "");
+    questions.push({
+      id,
+      options,
+      title: question,
+    });
+  });
+
+  return { questions, answers };
 };
