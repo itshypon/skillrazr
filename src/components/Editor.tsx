@@ -82,9 +82,9 @@ export const Editor = (props: Props) => {
   return (
     <div
       style={{ padding: "20px", width: "100%" }}
-      className="flex align-center"
+      className="flex align-center flex-col sm:flex-row"
     >
-      <div className="editor">
+      <div className="editor p-2 w-full sm:w-6/12">
         <h2 className="py-2 text-2xl">JavaScript Code Runner</h2>
         <CodeMirror
           autoFocus
@@ -99,7 +99,7 @@ export const Editor = (props: Props) => {
         />
       </div>
 
-      <div className="output">
+      <div className="output p-2 w-full sm:w-6/12">
         <button
           className="px-2 py-1 mx-0 my-10 btn border-[1px] border-black rounded bg-white text-black"
           onClick={() => {
