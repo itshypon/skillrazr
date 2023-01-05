@@ -1,8 +1,8 @@
 import React from "react";
-import QuizInLine from "../QuizInline";
-import jsStarter1 from "../../scripts/js_starter_quiz1.json";
+// import QuizInLine from "../QuizInline";
+// import jsStarter1 from "../../scripts/js_starter_quiz1.json";
 
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 
 const Communication = () => {
   return (
