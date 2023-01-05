@@ -94,7 +94,7 @@ export default function Footer() {
             </Grid>
 
             <Rights>
-              © 2022 Genlent Technologies
+              © {new Date().getFullYear()} Genlent Technologies
               <br /> All rights reserved
             </Rights>
           </Grid>

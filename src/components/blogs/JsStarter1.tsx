@@ -12,99 +12,104 @@ const JsStarter1 = () => {
     ` const a = 10; \n const b = 12; \n const c = a + b; \n console.log('c =', c);`
   );
   return (
-    <div className="text-2xl">
+    <div className="text-2xl flex flex-col w-full">
       <h1 className="text-6xl py-5 text-center">JS Starter 1</h1>
       <h1 className="text-5xl py-5">Introduction</h1>
-      JavaScript is a popular programming language that is used to create
-      interactive and dynamic websites. It is a versatile language that can be
-      used to create a wide range of applications, from simple website
-      enhancements to complex web applications. If you are new to JavaScript, it
-      can be intimidating to start learning a new programming language. However,
-      with some practice and dedication, you can quickly become proficient in
-      JavaScript and start building your own interactive web projects. To get
-      started with JavaScript, you will need a text editor to write your code
-      and a web browser to run and test your code. All modern web browsers come
-      with developer tools that allow you to run and debug your code. To make it
-      easy <b>we've integrated a code editor in this page itself </b>, so that
-      you can run your code to understand concepts quickly. Let's start knowing
-      the basic constructs in JS.
-      <h1 className="text-5xl py-5">Basic Constructs</h1>
-      <b>Variables</b> are used to store and manipulate data in a program. They
-      can be declared using the var, let, or const keywords and can hold any
-      data type, including numbers, strings, and arrays.
-      <br /> <br />
-      <b>Conditional statements</b> are used to execute different blocks of code
-      based on whether a certain condition is met. The most common conditional
-      statements in JavaScript are if, else, and switch. <br /> <br />
-      <b>Loops</b> allow a block of code to be executed repeatedly until a
-      certain condition is met. There are several types of loops in JavaScript,
-      including for, while, and do-while. Loops are useful for iterating over
-      arrays and other data structures, as well as for performing tasks a
-      certain number of times. <br /> <br />
-      <b>Functions</b> are blocks of code that can be defined and called by
-      name. They are used to perform a specific task and can accept arguments
-      and return a value. Functions are a fundamental building block of
-      JavaScript and are used to structure and organize code. <br /> <br />
-      <b>Arrays </b>
-      are data structures that store a collection of values. They are useful for
-      storing and manipulating lists of data. Arrays in JavaScript are dynamic,
-      meaning that they can grow or shrink in size as needed and JS allows
-      heterogeneous data types in an array <br /> <br />
-      <b>Object-oriented programming (OOP) </b> is another important concept in
-      JavaScript. OOP is a programming paradigm that is based on the concept of
-      objects and their interactions. Objects can have properties (data) and
-      methods (functions) and can be created using constructor functions or
-      class syntax. OOP allows for the creation of reusable code and the
-      modeling of real-world concepts in a program. Objects in JavaScript are
-      collections of key-value pairs that represent real-world entities. They
-      are similar to arrays but are more flexible, as the keys can be any data
-      type.
-      <b>Classes</b> are a syntax introduced in ECMAScript 2015 (also known as
-      ES6) for defining object-oriented classes in JavaScript. They provide a
-      cleaner and more concise way to create objects and define their methods
-      and properties. Classes can be extended and inherited from, allowing for
-      the creation of complex object hierarchies
-      <br /> <br />
-      <b>DOM Manipulation</b> JavaScript is also used to manipulate the Document
-      Object Model (DOM), which is a tree-like representation of an HTML or XML
-      document. By using JavaScript, you can add, delete, and modify elements on
-      a web page, allowing for dynamic and interactive web pages. <br /> <br />
-      <b>Asynchronous programming </b> is another important aspect of
-      JavaScript. JavaScript is a single-threaded language, which means that it
-      can only execute one task at a time. Asynchronous programming allows
-      JavaScript to execute tasks in the background while still allowing the
-      main thread to run. This is important for maintaining the responsiveness
-      of a web page and is achieved through the use of asynchronous functions
-      such as setTimeout, setInterval, and Promise.
-      <br /> <br />
-      <div className="text-4xl">Other JS topics that you should know :-</div>
-      <br />
-      <b>Scope and Hoisting in JS</b>
-      <br />
-      <b>
-        Function as first class citizen, function declaration vs function
-        expressions
-      </b>
-      <br />
-      <b>Closures in JS</b>
-      <br />
-      <b>Promises</b>
-      <br />
-      <b>Async/await</b>
-      <br /> <b>Modules</b> <br /> <b>Rest and spread operator </b>
-      <br />
-      <b>Map and Set </b>
-      <br />
-      <b>Template literal </b>
-      <br />
-      <br />
-      As you continue to learn and practice JavaScript, you will become more
-      familiar with these concepts and be able to use them to build simple and
-      complex web applications. <br /> <br />
-      Overall, JavaScript is a powerful and versatile programming language that
-      is essential for creating interactive and dynamic websites. With some
-      practice and dedication, you can quickly become proficient in JavaScript
-      and start building your own web projects.
+      <div>
+        JavaScript is a popular programming language that is used to create
+        interactive and dynamic websites. It is a versatile language that can be
+        used to create a wide range of applications, from simple website
+        enhancements to complex web applications. If you are new to JavaScript,
+        it can be intimidating to start learning a new programming language.
+        However, with some practice and dedication, you can quickly become
+        proficient in JavaScript and start building your own interactive web
+        projects. To get started with JavaScript, you will need a text editor to
+        write your code and a web browser to run and test your code. All modern
+        web browsers come with developer tools that allow you to run and debug
+        your code. To make it easy{" "}
+        <b>we've integrated a code editor in this page itself </b>, so that you
+        can run your code to understand concepts quickly. Let's start knowing
+        the basic constructs in JS.
+        <h1 className="text-5xl py-5">Basic Constructs</h1>
+        <b>Variables</b> are used to store and manipulate data in a program.
+        They can be declared using the var, let, or const keywords and can hold
+        any data type, including numbers, strings, and arrays.
+        <br /> <br />
+        <b>Conditional statements</b> are used to execute different blocks of
+        code based on whether a certain condition is met. The most common
+        conditional statements in JavaScript are if, else, and switch. <br />{" "}
+        <br />
+        <b>Loops</b> allow a block of code to be executed repeatedly until a
+        certain condition is met. There are several types of loops in
+        JavaScript, including for, while, and do-while. Loops are useful for
+        iterating over arrays and other data structures, as well as for
+        performing tasks a certain number of times. <br /> <br />
+        <b>Functions</b> are blocks of code that can be defined and called by
+        name. They are used to perform a specific task and can accept arguments
+        and return a value. Functions are a fundamental building block of
+        JavaScript and are used to structure and organize code. <br /> <br />
+        <b>Arrays </b>
+        are data structures that store a collection of values. They are useful
+        for storing and manipulating lists of data. Arrays in JavaScript are
+        dynamic, meaning that they can grow or shrink in size as needed and JS
+        allows heterogeneous data types in an array <br /> <br />
+        <b>Object-oriented programming (OOP) </b> is another important concept
+        in JavaScript. OOP is a programming paradigm that is based on the
+        concept of objects and their interactions. Objects can have properties
+        (data) and methods (functions) and can be created using constructor
+        functions or class syntax. OOP allows for the creation of reusable code
+        and the modeling of real-world concepts in a program. Objects in
+        JavaScript are collections of key-value pairs that represent real-world
+        entities. They are similar to arrays but are more flexible, as the keys
+        can be any data type.
+        <b>Classes</b> are a syntax introduced in ECMAScript 2015 (also known as
+        ES6) for defining object-oriented classes in JavaScript. They provide a
+        cleaner and more concise way to create objects and define their methods
+        and properties. Classes can be extended and inherited from, allowing for
+        the creation of complex object hierarchies
+        <br /> <br />
+        <b>DOM Manipulation</b> JavaScript is also used to manipulate the
+        Document Object Model (DOM), which is a tree-like representation of an
+        HTML or XML document. By using JavaScript, you can add, delete, and
+        modify elements on a web page, allowing for dynamic and interactive web
+        pages. <br /> <br />
+        <b>Asynchronous programming </b> is another important aspect of
+        JavaScript. JavaScript is a single-threaded language, which means that
+        it can only execute one task at a time. Asynchronous programming allows
+        JavaScript to execute tasks in the background while still allowing the
+        main thread to run. This is important for maintaining the responsiveness
+        of a web page and is achieved through the use of asynchronous functions
+        such as setTimeout, setInterval, and Promise.
+        <br /> <br />
+        <div className="text-4xl">Other JS topics that you should know :-</div>
+        <br />
+        <b>Scope and Hoisting in JS</b>
+        <br />
+        <b>
+          Function as first class citizen, function declaration vs function
+          expressions
+        </b>
+        <br />
+        <b>Closures in JS</b>
+        <br />
+        <b>Promises</b>
+        <br />
+        <b>Async/await</b>
+        <br /> <b>Modules</b> <br /> <b>Rest and spread operator </b>
+        <br />
+        <b>Map and Set </b>
+        <br />
+        <b>Template literal </b>
+        <br />
+        <br />
+        As you continue to learn and practice JavaScript, you will become more
+        familiar with these concepts and be able to use them to build simple and
+        complex web applications. <br /> <br />
+        Overall, JavaScript is a powerful and versatile programming language
+        that is essential for creating interactive and dynamic websites. With
+        some practice and dedication, you can quickly become proficient in
+        JavaScript and start building your own web projects.
+      </div>
       <div className="text-3xl my-8">Let's run some code examples :- </div>
       <Button
         className="!mr-2"
