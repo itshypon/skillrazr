@@ -14,8 +14,8 @@ export default function Games(props: any) {
     },
     {
       id: "findy",
-      title: "Find hidden animals",
-      description: "Find animals",
+      title: "Findy",
+      description: "Find hidden animals and objects",
     },
   ];
 
@@ -23,7 +23,7 @@ export default function Games(props: any) {
     <div
       id="games"
       className={
-        "w-full my-24 px-6 pt-10 flex flex-col items-center flex-wrap justify-center"
+        "w-full my-24 sm:mb-60 px-6 pt-10 flex flex-col items-center flex-wrap justify-center"
       }
     >
       <div className="text-6xl text-center mb-8">Games</div>

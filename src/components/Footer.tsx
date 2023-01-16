@@ -21,7 +21,6 @@ const BG = styled("div")`
   }
 `;
 const Rights = styled("span")`
-  margin-top: 5px;
   color: #d9dbe1;
   // @media (max-width: 500px) {
   //     display: flex;
@@ -67,11 +66,11 @@ export default function Footer() {
 
   return (
     <>
-      <BG className="w-full">
+      <BG className="w-full !p-[20px] !sm:p[80px] !py-12">
         <Grid
           className="flex-column sm:flex-row"
           container
-          justifyContent={"space-between"}
+          justifyContent={"center"}
         >
           <Grid
             item
@@ -93,7 +92,7 @@ export default function Footer() {
               </NavLink>
             </Grid>
 
-            <Rights>
+            <Rights className="my-4">
               © {new Date().getFullYear()} Genlent Technologies
               <br /> All rights reserved
             </Rights>
@@ -195,6 +194,48 @@ export default function Footer() {
             direction={"column"}
           >
             <Grid item>
+              <Title>Social</Title>
+            </Grid>
+            <Grid item>
+              <MLink
+                href="https://www.linkedin.com/company/skillrazr"
+                target="_blank"
+              >
+                <Sub>LinkedIn</Sub>
+              </MLink>
+            </Grid>
+            <Grid item>
+              <MLink href="https://twitter.com/skillrazr" target="_blank">
+                <Sub>Twitter</Sub>
+              </MLink>
+            </Grid>
+            <Grid item>
+              <MLink
+                href="https://www.youtube.com/channel/UCBjS5cl2sMU-1ls8j6h15Nw"
+                target="_blank"
+              >
+                <Sub>Youtube</Sub>
+              </MLink>
+            </Grid>
+            <Grid item>
+              <MLink
+                href=" https://www.quora.com/profile/Tukuna-Patro"
+                target="_blank"
+              >
+                <Sub>Quora</Sub>
+              </MLink>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            spacing={2}
+            md={2}
+            sm={2}
+            xs={4}
+            container
+            direction={"column"}
+          >
+            <Grid item>
               <Title>Legal</Title>
             </Grid>
 
@@ -227,45 +268,6 @@ export default function Footer() {
               >
                 <Sub>Return Policy</Sub>
               </NavLink>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            spacing={2}
-            md={2}
-            sm={2}
-            xs={4}
-            container
-            direction={"column"}
-          >
-            <Grid item>
-              <Title>Social</Title>
-            </Grid>
-            <Grid item>
-              <MLink
-                href="https://www.linkedin.com/company/skillrazr"
-                target="_blank"
-              >
-                <Sub>LinkedIn</Sub>
-              </MLink>
-            </Grid>
-            <Grid item>
-              <MLink href="https://twitter.com/skillrazr" target="_blank">
-                <Sub>Twitter</Sub>
-              </MLink>
-            </Grid>
-            <Grid item>
-              <MLink href="https://skillrazr.medium.com/" target="_blank">
-                <Sub>Medium</Sub>
-              </MLink>
-            </Grid>
-            <Grid item>
-              <MLink
-                href=" https://www.quora.com/profile/Tukuna-Patro"
-                target="_blank"
-              >
-                <Sub>Quora</Sub>
-              </MLink>
             </Grid>
           </Grid>
         </Grid>

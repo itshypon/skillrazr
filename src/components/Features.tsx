@@ -28,7 +28,7 @@ export default function Features(props: any) {
               className="flex items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-2 mt-lg-0 box-shadow border rounded-[5px]"
             >
               {<feature.icon />}
-              <span className="ml-2">{feature.title}</span>
+              <span className="ml-2 text-[24px]">{feature.title}</span>
             </div>
           );
         })}

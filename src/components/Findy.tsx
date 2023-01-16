@@ -17,76 +17,161 @@ const renderConfetti = () => {
   });
 };
 
+const names = ["Animals", "Transport"];
+const objectCount = 10;
+
+const random12Animals = shuffleArray([
+  "🦉",
+  "🦚",
+  "🦜",
+  "🦢",
+  "🦩",
+  "🐍",
+  "🦋",
+  "🦅",
+  "🦆",
+  "🐞",
+  "🐌",
+  "🪲",
+  "🦗",
+  "🦂",
+  "🐝",
+  "🦟",
+  "🐇",
+  "🪰",
+  "🦟",
+  "🕷",
+  "🪳",
+  "🐜",
+  "🐛",
+  "🐀",
+  "🦌",
+  "🐖",
+  "🦓",
+  "🐎",
+  "🐆",
+  "🐅",
+  "🐈",
+  "🐒",
+  "🐄",
+  "🐑",
+  "🐐",
+  "🐪",
+  "🐘",
+  "🦒",
+  "🦏",
+  "🦛",
+  "🐿",
+  "🦇",
+  "🦥",
+  "🦘",
+  "🐊",
+  "🐢",
+  "🦎",
+  "🦕",
+  "🦖",
+  "🐋",
+  "🐬",
+  "🦭",
+  "🐟",
+  "🐠",
+  "🐡",
+  "🦈",
+  "🐙",
+  "🦀",
+  "🦞",
+  "🦐",
+  "🦑",
+  "🦍",
+  "🦧",
+  "🐕",
+  "🦬",
+  "🐂",
+  "🐃",
+  "🐄",
+  "🐏",
+  "🐫",
+  "🦙",
+  "🦔",
+  "🦨",
+  "🦃",
+  "🐓",
+  "🐥",
+  "🦤",
+  "🐳",
+]).slice(0, objectCount);
+
+const transports = shuffleArray([
+  "🚂",
+  "🚃",
+  "🚄",
+  "🚅",
+  "🚆",
+  "🚇",
+  "🚈",
+  "🚉",
+  "🚞",
+  "🚋",
+  "🚌",
+  "🚍",
+  "🚐",
+  "🚑",
+  "🚒",
+  "🚓",
+  "🚔",
+  "🚕",
+  "🚖",
+  "🚗",
+  "🚘",
+  "🛻",
+  "🚚",
+  "🚜",
+  "🏎",
+  "🏍",
+  "🛵",
+  "🛺",
+  "🚲",
+  "🛴",
+  "🛹",
+  "🛼",
+  "🚏",
+  "🛤",
+  "🛣",
+  "⛽",
+  "🚨",
+  "🚦",
+  "🚧",
+  "🛑",
+  "⚓",
+  "⛵",
+  "🛶",
+  "🚤",
+  "🛳",
+  "⛴",
+  "🛥",
+  "🚢",
+  "✈",
+  "🛩",
+  "🛫",
+  "🛬",
+  "🪂",
+  "🚁",
+  "🚠",
+  "🛰",
+  "🚀",
+]).slice(0, objectCount);
+
+const objectArray = [random12Animals, transports];
+
+const index = Math.floor(Math.random() * 2);
+
 const Findy = () => {
   const [showTestDialog, setShowTestDialog] = React.useState(true);
 
-  const [notFoundCount, setNotFoundCount] = React.useState(12);
-  const random12Animals = shuffleArray([
-    "🦉",
-    "🦚",
-    "🦜",
-    "🦢",
-    "🦩",
-    "🐍",
-    "🦋",
-    "🦅",
-    "🦆",
-    "🐞",
-    "🐌",
-    "🪲",
-    "🦗",
-    "🦂",
-    "🐝",
-    "🦟",
-    "🐇",
-    "🪰",
-    "🦟",
-    "🕷",
-    "🪳",
-    "🐜",
-    "🐛",
-    "🐀",
-    "🦌",
-    "🐖",
-    "🦓",
-    "🐎",
-    "🐆",
-    "🐅",
-    "🐈",
-    "🐒",
-    "🐄",
-    "🐑",
-    "🐐",
-    "🐪",
-    "🐘",
-    "🦒",
-    "🦏",
-    "🦛",
-    "🐿",
-    "🦇",
-    "🦥",
-    "🦘",
-    "🐊",
-    "🐢",
-    "🦎",
-    "🦕",
-    "🦖",
-    "🐋",
-    "🐬",
-    "🦭",
-    "🐟",
-    "🐠",
-    "🐡",
-    "🦈",
-    "🐙",
-    "🦀",
-    "🦞",
-    "🦐",
-    "🦑",
-  ]).slice(0, 12);
+  const [notFoundCount, setNotFoundCount] = React.useState(objectCount);
 
   const [animals, setAnimals] = React.useState(
-    random12Animals.map((animal) => ({
+    objectArray[index].map((animal) => ({
       animal,
       pos: {
         left: Math.random() * 80 + 10 + "%",
@@ -175,8 +260,12 @@ const Findy = () => {
     );
   };
   const renderFoundAnimals = () => {
-    return foundAnimals.map((animal: any) => {
-      return <div className="relative">{animal.animal}</div>;
+    return foundAnimals.map((animal: any, ind: number) => {
+      return (
+        <div key={ind} className="relative text-[42px]">
+          <span className="ml-1">{animal.animal}</span>
+        </div>
+      );
     });
   };
 
@@ -196,7 +285,7 @@ const Findy = () => {
           <ReplayIcon />
           <span className="">Reload</span>
         </Button>
-        <div className="text-xl">Find Animals</div>
+        <div className="text-xl">Find {`${names[index]}`}</div>
       </div>
 
       <div className="mt-[10px] found">{renderFoundAnimals()}</div>
@@ -214,9 +303,11 @@ const Findy = () => {
         cancelHandler={() => setShowTestDialog(false)}
         content={
           <span className="">
-            <span className="absolute top-[46px] z-[2] text-3xl"> 🦉 🦜</span>
+            <span className="absolute top-[46px] z-[2] text-3xl">
+              {objectArray[index].slice(-2).join(" ")}
+            </span>
             <span className="absolute top-[48px] z-[2] right-[16px] text-2xl">
-              🐒 🦒
+              {objectArray[index].slice(0, 2).join(" ")}
             </span>
             <button
               className="pushable  w-full mt-4 mb-4"

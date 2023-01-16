@@ -7,7 +7,7 @@ import React from "react";
 const Communication = () => {
   return (
     <div className="text-2xl flex flex-col w-full">
-      <h1 className="text-4xl py-5 text-center wrap">
+      <h1 className="text-4xl py-5 text-center lg:text-left wrap">
         Improving Communication Skills
       </h1>
       <h1 className="text-3xl py-5">Introduction</h1>
