@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import ModalDialog from "./Modal";
 import JsStarter1 from "../components/blogs/JsStarter1";
 import Communication from "../components/blogs/Communication";
+import JsProblemArray from "../components/blogs/JsProblemArray";
 
 import blogs from "../data/blogs";
 
@@ -1085,6 +1086,10 @@ export const BlogDetailsPage = () => {
 
       case "english_communication": {
         return <Communication />;
+      }
+
+      case "js_problem_solving_array_object_1": {
+        return <JsProblemArray />;
       }
 
       default: {
