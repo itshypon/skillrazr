@@ -15,6 +15,10 @@ const data = [
     id: "english_communication",
     title: "Communication Skills",
   },
+  {
+    id: "js_problem_solving_array_object_1",
+    title: "Problem Solving JS - Array",
+  },
 ];
 
 export default data;

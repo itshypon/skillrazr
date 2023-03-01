@@ -182,3 +182,7 @@
 .correct-ans .Mui-checked {
   color: green !important;
 }
+
+.blog-ul li {
+  margin-bottom: 12px;
+}
