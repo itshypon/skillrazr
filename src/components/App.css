@@ -39,14 +39,12 @@
 }
 
 .editor-iframe {
-  background-color: black;
-
   width: 100%;
   border: 1px solid gray;
   border-radius: 5px;
   font-size: 20px;
   color: white;
-  height: 284px;
+  height: 382px;
 }
 
 .p-10 {

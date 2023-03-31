@@ -67,8 +67,7 @@ export const Editor = (props: Props) => {
         s.appendChild(doc.createTextNode(value));
         doc.head.appendChild(lib);
         doc.body.appendChild(s);
-        doc.body.style =
-          "font-size: 20px; background: black; color: white; padding: 10px";
+        doc.body.style = "font-size: 20px; color: black; padding: 10px";
       } catch (e) {
         console.log("error", e);
         lib.text = consoleScript;
@@ -80,79 +79,87 @@ export const Editor = (props: Props) => {
     }
   };
   return (
-    <div
-      style={{ padding: "20px", width: "100%" }}
-      className="flex align-center flex-col sm:flex-row"
-    >
-      <div className="editor p-2 w-full sm:w-6/12">
-        <h2 className="py-2 text-2xl">JavaScript Code Runner</h2>
-        <CodeMirror
-          autoFocus
-          value={iframeContent}
-          height="420px"
-          extensions={[javascript({ jsx: true })]}
-          onChange={(value, viewUpdate) => {
-            console.log("value:", value, viewUpdate);
-            //updateOutput(value);
-            setIframeContent(value);
-          }}
-        />
-      </div>
+    <div>
+      <div className="py-2 text-4xl text-center">JavaScript Editor</div>
+      <div
+        style={{ padding: "20px" }}
+        className="flex align-center flex-col sm:flex-row w-[100vw]"
+      >
+        <div className="editor p-2 w-full sm:w-6/12">
+          <h2 className="py-2 text-2xl">Write JS here</h2>
+          <CodeMirror
+            autoFocus
+            value={iframeContent}
+            height="520px"
+            extensions={[javascript({ jsx: true })]}
+            onChange={(value, viewUpdate) => {
+              console.log("value:", value, viewUpdate);
+              //updateOutput(value);
+              setIframeContent(value);
+            }}
+          />
+        </div>
 
-      <div className="output p-2 w-full sm:w-6/12">
-        <button
-          className="px-2 py-1 mx-0 my-10 btn border-[1px] border-black rounded bg-white text-black"
-          onClick={() => {
-            setTestId(Date.now());
-            setError("");
-            setTimeout(() => {
-              //setTestId(Date.now());
-              updateOutput(iframeContent);
-            }, 500);
-          }}
-        >
-          <img src={play} alt="play" width="32px" className="inline"></img>
-          <span className="ml-1 mt-2">Run code</span>
-        </button>
-        {error && (
-          <div>
-            <span style={{ color: "red", fontSize: "20px" }}>{error}</span>
+        <div className="output p-2 w-full sm:w-6/12">
+          <button
+            className="px-2 py-1 mx-0 my-10 btn border-[1px] border-black rounded bg-white text-black"
+            onClick={() => {
+              setTestId(Date.now());
+              setError("");
+              setTimeout(() => {
+                //setTestId(Date.now());
+                updateOutput(iframeContent);
+              }, 500);
+            }}
+          >
+            <img src={play} alt="play" width="32px" className="inline"></img>
+            <span className="ml-1 mt-2">Run code</span>
+          </button>
+          {error && (
+            <div>
+              <span style={{ color: "red", fontSize: "20px" }}>{error}</span>
+              <button
+                className="btn py-1 px-2 mx-2 my-2 btn border-[1px] border-black rounded bg-white text-black"
+                onClick={() => {
+                  setError("");
+                  // setTestId(Date.now());
+                }}
+              >
+                <img
+                  src={delete1}
+                  alt="delete"
+                  width="20px"
+                  className="inline"
+                ></img>
+                <span className="ml-2">Delete</span>
+              </button>
+            </div>
+          )}
+
+          <div className="flex justify-between items-center">
+            <span className="text-xl">Output</span>
             <button
-              className="btn py-1 px-2 mx-2 my-2 btn border-[1px] border-black rounded bg-white text-black"
+              className="btn py-1 px-2 my-2 btn border-[1px] border-black rounded bg-white text-black"
               onClick={() => {
-                setError("");
-                // setTestId(Date.now());
+                setTestId(Date.now());
               }}
             >
               <img
-                src={delete1}
-                alt="delete"
-                width="20px"
+                src={broom}
+                alt="clear"
+                width="24px"
                 className="inline"
               ></img>
-              <span className="ml-2">Delete</span>
+              <span>Clear</span>
             </button>
           </div>
-        )}
-
-        <div className="flex justify-between items-center">
-          <span className="text-xl">Output</span>
-          <button
-            className="btn py-1 px-2 my-2 btn border-[1px] border-black rounded bg-white text-black"
-            onClick={() => {
-              setTestId(Date.now());
-            }}
-          >
-            <img src={broom} alt="clear" width="24px" className="inline"></img>
-            <span>Clear</span>
-          </button>
+          <iframe
+            title="runner"
+            key={testId}
+            className="editor-iframe"
+            ref={frame}
+          />
         </div>
-        <iframe
-          title="runner"
-          key={testId}
-          className="editor-iframe"
-          ref={frame}
-        />
       </div>
     </div>
   );
