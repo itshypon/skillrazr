@@ -22,6 +22,7 @@ import { Editor } from "./Editor";
 import Games from "../components/Games";
 import SelectedGame from "../components/SelectedGame";
 import { CSSEditor } from "./CSSEditor";
+import Navbar from "./Navbar";
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -178,25 +179,27 @@ function App(props: any) {
               element={<QuizesList {...props} className="p-48" />}
             />
 
-            <Route
-              path="/jseditor"
-              element={
-                <div style={{ marginTop: "120px" }}>
-                  <Editor {...props} />
-                </div>
-              }
-            />
-            <Route
-              path="/csseditor"
-              element={
-                <div style={{ marginTop: "120px" }}>
-                  <CSSEditor />
-                </div>
-              }
-            />
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />
           </Route>
+          <Route
+            path="/jseditor"
+            element={
+              <div style={{ marginTop: "120px" }}>
+                <Navbar />
+                <Editor {...props} />
+              </div>
+            }
+          />
+          <Route
+            path="/csseditor"
+            element={
+              <div style={{ marginTop: "120px" }}>
+                <Navbar />
+                <CSSEditor />
+              </div>
+            }
+          />
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
       </BrowserRouter>
