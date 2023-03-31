@@ -21,6 +21,7 @@ import days from "../days";
 import { Editor } from "./Editor";
 import Games from "../components/Games";
 import SelectedGame from "../components/SelectedGame";
+import { CSSEditor } from "./CSSEditor";
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -178,10 +179,18 @@ function App(props: any) {
             />
 
             <Route
-              path="/editor"
+              path="/jseditor"
               element={
-                <div style={{ marginTop: "180px" }}>
+                <div style={{ marginTop: "120px" }}>
                   <Editor {...props} />
+                </div>
+              }
+            />
+            <Route
+              path="/csseditor"
+              element={
+                <div style={{ marginTop: "120px" }}>
+                  <CSSEditor />
                 </div>
               }
             />

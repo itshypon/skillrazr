@@ -155,12 +155,22 @@ export default function Footer() {
 
             <Grid item>
               <NavLink
-                to="/editor"
+                to="/jseditor"
                 onClick={() => {
                   window.scrollTo(0, 100);
                 }}
               >
-                <Sub>JS Code Runner</Sub>
+                <Sub>JS Editor</Sub>
+              </NavLink>
+            </Grid>
+            <Grid item>
+              <NavLink
+                to="/csseditor"
+                onClick={() => {
+                  window.scrollTo(0, 100);
+                }}
+              >
+                <Sub>CSS Editor</Sub>
               </NavLink>
             </Grid>
             <Grid item>
