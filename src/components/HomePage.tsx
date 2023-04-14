@@ -5,7 +5,7 @@ import Quizes from "./Quizes";
 import Testimonials from "./Testimonials";
 import Internship from "./Internship";
 import Faqs from "./Faqs";
-
+import Flashcards from "./FlashCards";
 
 const HomePage = () => {
   return (
@@ -15,6 +15,7 @@ const HomePage = () => {
       <Testimonials />
       <Courses />
       <Quizes />
+      <Flashcards />
       <Internship />
       <Faqs />
     </div>

@@ -6,6 +6,7 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from "./CourseDetailsPage";
 import QuizDetailsPage from "./QuizDetailsPage";
+import FlashcardDetailsPage from "./FlashcardDetailsPage";
 import BlogDetailsPage from "./BlogDetailsPage";
 import QuizesList from "./QuizesListPage";
 import BlogsList from "./BlogsListPage";
@@ -199,6 +200,10 @@ function App(props: any) {
                 <CSSEditor />
               </div>
             }
+          />
+          <Route
+            path="/flashcards/:id"
+            element={<FlashcardDetailsPage {...props} />}
           />
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
