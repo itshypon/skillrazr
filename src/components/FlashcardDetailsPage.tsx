@@ -69,55 +69,43 @@ function FlashcardDetailsPage() {
               {`- ${matchingFlashcards[currentQuestionIndex].description}`}
             </h1>
           </div>
-          <div className="flashcard-container">
-            <div className="question-number">
-              <p>{`${currentQuestionIndex + 1} / ${
-                matchingFlashcards.length
-              }`}</p>
-            </div>
-            <div className={`card ${isFlipped ? "flipped" : ""}`}>
-              <div className="front">
-                <h2 className="question">{`Q${currentQuestionIndex + 1}) ${
-                  matchingFlashcards[currentQuestionIndex].question
-                }`}</h2>
-                <div className="button-container">
-                  {currentQuestionIndex === 0 ? (
-                    <p></p>
-                  ) : (
-                    <button className="prev-button" onClick={handlePrevClick}>
-                      <i className="fa fa-chevron-left"></i>
-                    </button>
-                  )}
+          <div className="question-number">
+            <p>{`${currentQuestionIndex + 1} / ${
+              matchingFlashcards.length
+            }`}</p>
+          </div>
+          <div className={`card ${isFlipped ? "flipped" : ""}`}>
+            <div className="front">
+              <h2 className="question">{`Q${currentQuestionIndex + 1}) ${
+                matchingFlashcards[currentQuestionIndex].question
+              }`}</h2>
+              <div className="button-container">
+                {currentQuestionIndex === 0 ? (
+                  <p></p>
+                ) : (
+                  <button className="prev-button" onClick={handlePrevClick}>
+                    <i className="fa fa-chevron-left"></i>
+                  </button>
+                )}
 
-                  {currentQuestionIndex !== matchingFlashcards.length - 1 && (
-                    <button className="next-button" onClick={handleNextClick}>
-                      <i className="fa fa-chevron-right"></i>
-                    </button>
-                  )}
-                </div>
-                <button className="flip-button" onClick={handleClick}>
-                  Flip
-                </button>
-              </div>
-              <div className="back">
-                <h2>Answer:</h2>
-                <h2 className="answer">
-                  {matchingFlashcards[currentQuestionIndex].answer}
-                </h2>
-                <button className="flip-button" onClick={handleClick}>
-                  Flip
-                </button>
-                {!isFlipped && (
-                  <>
-                    <button className="prev-button" onClick={handlePrevClick}>
-                      Prev
-                    </button>
-                    <button className="next-button" onClick={handleNextClick}>
-                      Next
-                    </button>
-                  </>
+                {currentQuestionIndex !== matchingFlashcards.length - 1 && (
+                  <button className="next-button" onClick={handleNextClick}>
+                    <i className="fa fa-chevron-right"></i>
+                  </button>
                 )}
               </div>
+              <button className="flip-button" onClick={handleClick}>
+                Flip
+              </button>
+            </div>
+            <div className="back">
+              <h2>Answer:</h2>
+              <h2 className="answer">
+                {matchingFlashcards[currentQuestionIndex].answer}
+              </h2>
+              <button className="flip-button" onClick={handleClick}>
+                Flip
+              </button>
             </div>
           </div>
         </>
