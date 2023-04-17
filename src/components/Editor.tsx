@@ -7,10 +7,11 @@ import broom from "../assets/images/broom.svg";
 
 interface Props {
   content?: string;
+  editorClass?: string;
 }
 
 export const Editor = (props: Props) => {
-  const { content } = props;
+  const { content, editorClass = "w-[100vw]" } = props;
   const frame: any = React.useRef(null);
   const [iframeContent, setIframeContent] = React.useState(
     content || "console.log('Start coding!');"
@@ -83,7 +84,7 @@ export const Editor = (props: Props) => {
       <div className="py-2 text-4xl text-center">JavaScript Editor</div>
       <div
         style={{ padding: "20px" }}
-        className="flex align-center flex-col sm:flex-row w-[100vw]"
+        className={`flex align-center flex-col sm:flex-row ${editorClass}`}
       >
         <div className="editor p-2 w-full sm:w-6/12">
           <h2 className="py-2 text-2xl">Write JS here</h2>

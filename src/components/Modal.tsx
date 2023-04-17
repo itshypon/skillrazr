@@ -17,16 +17,17 @@ const Modal = ({
   hideCloseButton = false,
   hideTitle = false,
   maxWidth,
+  modalClassName = "",
 }: any) => {
   return (
     <Dialog
       fullScreen={fullScreen}
-      className="modal"
+      className={`modal ${modalClassName}`}
       open={showModal}
       onClose={cancelHandler}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
-      maxWidth= {maxWidth}
+      maxWidth={maxWidth}
     >
       <div className={`container ${className}`}>
         <div className="body">
