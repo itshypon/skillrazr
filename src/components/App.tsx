@@ -182,6 +182,11 @@ function App(props: any) {
 
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />
+
+            <Route
+              path="/flashcards/:id"
+              element={<FlashcardDetailsPage {...props} />}
+            />
           </Route>
           <Route
             path="/jseditor"
@@ -200,10 +205,6 @@ function App(props: any) {
                 <CSSEditor />
               </div>
             }
-          />
-          <Route
-            path="/flashcards/:id"
-            element={<FlashcardDetailsPage {...props} />}
           />
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}

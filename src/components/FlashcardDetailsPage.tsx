@@ -60,8 +60,8 @@ function FlashcardDetailsPage() {
   return (
     <>
       {matchingFlashcards.length > 0 && (
-        <>
-          <div className="heading">
+        <div className="mb-12">
+          <div className="heading flex justify-center flex-col">
             <h1 className="category">
               {matchingFlashcards[currentQuestionIndex].category}
             </h1>
@@ -108,7 +108,7 @@ function FlashcardDetailsPage() {
               </button>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );
