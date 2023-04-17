@@ -16,6 +16,7 @@ const Modal = ({
   cancelHandler,
   hideCloseButton = false,
   hideTitle = false,
+  maxWidth,
 }: any) => {
   return (
     <Dialog
@@ -25,6 +26,7 @@ const Modal = ({
       onClose={cancelHandler}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      maxWidth= {maxWidth}
     >
       <div className={`container ${className}`}>
         <div className="body">
