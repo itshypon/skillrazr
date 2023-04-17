@@ -18,8 +18,6 @@ function FlashcardDetailsPage() {
     (flashcard) => flashcard.category === category
   );
 
-  console.log(matchingFlashcards);
-
   // get all the flashcards belongs to the id. e.g javascript
 
   const [isFlipped, setIsFlipped] = useState(false);
