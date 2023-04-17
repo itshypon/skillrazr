@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { flashcards } from "../data/flashcards";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./FlashcardDetailsPage.css";
 <link
   rel="stylesheet"
@@ -28,20 +28,19 @@ function FlashcardDetailsPage() {
   const handleClick = () => {
     setIsFlipped(!isFlipped);
   };
-
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     if (currentQuestionIndex < matchingFlashcards.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setIsFlipped(false);
     }
-  };
+  }, [currentQuestionIndex, matchingFlashcards.length]);
 
-  const handlePrevClick = () => {
+  const handlePrevClick = useCallback(() => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
       setIsFlipped(false);
     }
-  };
+  }, [currentQuestionIndex]);
 
   useEffect(() => {
     function handleArrowKeys(event: { keyCode: number }) {
@@ -58,7 +57,7 @@ function FlashcardDetailsPage() {
     return () => {
       window.removeEventListener("keydown", handleArrowKeys);
     };
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, handleNextClick, handlePrevClick]);
 
   return (
     <>
