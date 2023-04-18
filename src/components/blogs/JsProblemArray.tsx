@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Button} from "@mui/material";
 import {Editor} from "./../Editor";
 import Modal from "./../Modal";
+import CodeIcon from '@mui/icons-material/Code';
 
 const JsProblemSolving = () => {
   const [showModal, setShowModal] = useState(false);
@@ -125,7 +126,10 @@ const JsProblemSolving = () => {
             <b>Sum of Array:</b> Write a function that takes an array of numbers
             as input and returns the sum of all the numbers in the array. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function sum(arr) {\n\tlet sum = 0;\n\tfor (let i =0; i<arr.length; i++) {\n\t\tsum += arr[i];\n\t}\n\treturn sum;\n}\nconst numbers = [1,2,3,4,5];\nconst result = sum(numbers);\nconsole.log(result);`)
@@ -140,7 +144,10 @@ const JsProblemSolving = () => {
             numbers as input and returns the average of all the numbers in the
             array. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function avg(arr) {\n\tlet sum = 0;\n\tfor (let i =0; i<arr.length; i++) {\n\t\tsum += arr[i];\n\t}\n\tconst avg = sum / arr.length;\n\treturn avg;\n}\nconst numbers = [1,2,3,4,5];\nconst result = avg(numbers);\nconsole.log(result);`)
@@ -155,7 +162,10 @@ const JsProblemSolving = () => {
             numbers as input and returns a new sorted array of all the numbers
             in the array. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function sort(arr) {\n\treturn arr.sort((a, b) => a - b);\n}\nconst numbers = [5,2,1,3,6];\nconst sortedArr = sort(numbers);\nconsole.log(sortedArr);\n/*We use comparsion function as \nargument because in-built sort \nfunction of JS converts array \nelements into string which may \ngive wrong result. We can also \nuse user-defined sorting functions to sort.*/`)
@@ -168,7 +178,10 @@ const JsProblemSolving = () => {
             <b>Largest Number in Array:</b> Write a function that takes an array
             of numbers as input and returns the largest number in the array. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function largestNum(arr) {\n\t let num = arr[0];\n\tfor(let i=1; i<arr.length; i++) {\n\t\tif(arr[i] > num) {\n\t\t\tnum = arr[i];\n\t\t}\n\t}\n\treturn num;\n}\nconst numbers = [5,2,1,6,3];\nconst largestNumber = largestNum(numbers);\nconsole.log(largestNumber);`)
@@ -181,7 +194,10 @@ const JsProblemSolving = () => {
             <b>Smallest Number in Array:</b> Write a function that takes an array of
             numbers as input and returns the smallest number in the array. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function smallestNum(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = smallestNum(numbers);\nconsole.log(result);`)
@@ -195,7 +211,10 @@ const JsProblemSolving = () => {
             <b>Reverse Array: </b> Write a function that takes an array as input
             and returns a new array with the elements in reverse order.<br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function reverseArr(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = reverseArr(numbers);\nconsole.log(result);`)
@@ -209,7 +228,10 @@ const JsProblemSolving = () => {
             input and returns a new array with all the duplicate elements
             removed. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function removeDuplicates(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,2,1,4,5,5];\nconst result = removeDuplicates(numbers);\nconsole.log(result);`)
@@ -223,7 +245,10 @@ const JsProblemSolving = () => {
             and returns a new array that is the combination of the two input
             arrays. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function merge(arr1, arr2) {\n\t //Your Code Here\n}\nconst numbers1=[2,3,1,4,5];\nconst numbers2=[7,8,9,2,1];\nconst result = merge(numbers1, numbers2);\nconsole.log(result);`)
@@ -237,7 +262,10 @@ const JsProblemSolving = () => {
             as input and returns a new array that contains only the common
             elements between the two input arrays. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function commonElementArr(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,2,3,1,4,5,5];\nconst result = commonElementArr(numbers);\nconsole.log(result);`)
@@ -251,7 +279,10 @@ const JsProblemSolving = () => {
             numbers as input and returns a new array with all the even numbers
             removed. <br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function removeEven(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = removeEven(numbers);\nconsole.log(result);`)
@@ -265,7 +296,10 @@ const JsProblemSolving = () => {
             array of numbers as input and returns the second largest number in
             the array.<br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function secondLargest(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = secondLargest(numbers);\nconsole.log(result);`)
@@ -301,7 +335,10 @@ const JsProblemSolving = () => {
               { country: "india", cities: ["mumbai", "chennai"] }
             `} <br />
           <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function arrInObj(data) {\n\tconst result = {};\n\tdata.forEach(({ city, country }) => {\n\tif (result[country]) {\n\t\tresult[country].cities.push(city);\n\t} else {\n\t\tresult[country] = { country, cities: [city] };\n\t}\n\t});\n\treturn Object.values(result);\n}\nconst data = [\n\t{ city: "mumbai", country: "india" },\n\t{ city: "chennai", country: "india" },\n\t{ city: "new york", country: "usa" },\n\t{ city: "los angeles", country: "usa" },\n];\nconst result = arrInObj(data);\nconsole.log(JSON.stringify(result));`)
@@ -316,7 +353,10 @@ const JsProblemSolving = () => {
             where each object has a name and age property, and returns the
             average age of all employees.<br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function avgAge(arr) {\n\tlet ageSum = 0;\n\tfor(let i=0; i<arr.length; i++){\n\t\tageSum += arr[i].age;\n}\n\t return ageSum/arr.length;\n}\nconst employees = [\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Hitesh", age: 21 },\n\t{ name: "Mukul", age: 28 }\n];\nconst averageAge = avgAge(employees);\nconsole.log(averageAge);`)
@@ -331,7 +371,10 @@ const JsProblemSolving = () => {
             and returns a new array of objects with only the name and age
             properties of each employee.<br/>
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function nameAndAgeObj(employees){\n\tconst arr = [];\n\tfor(let i=0; i<employees.length; i++){\n\t\tarr.push({ name: employees[i].name, age: employees[i].age });\n\t}\n\treturn arr;}\nconst employees = [\n\t{ name: "Rahul", age: 17, taskDone: 2 },\n\t{ name: "Hitesh", age: 21, taskDone: 3 },\n\t{ name: "Mukul", age: 28, taskDone: 1 }\n];\nconst newArr = nameAndAgeObj(employees);\nconsole.log(JSON.stringify(newArr));`)
@@ -348,7 +391,10 @@ const JsProblemSolving = () => {
             names and the values are arrays of employee objects in that
             department.<br />
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function group(employees){\n\t/*Your Code Here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17, department: "CSE" },\n\t{ name: "Hitesh", age: 21, department: "ECE" },\n\t{ name: "Mukul", age: 28, department: "CSE" }\n];\nconst newArr = group(employees);\nconsole.log(JSON.stringify(newArr));`)
@@ -364,7 +410,10 @@ const JsProblemSolving = () => {
             strings in the array and the values are the number of times each
             string appears in the array.<br/>
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function countOccurrences(arr) {\n\t //Your Code Here\n}\nconst arr1=["Rahul","Jaspreet","Kamal"];\nconst result = countOccurrences(arr1);\nconsole.log(JSON.stringify(result));`)
@@ -380,7 +429,10 @@ const JsProblemSolving = () => {
             should return a new array of objects that only contain the objects
             with a truthy value for the specified property.<br/>
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function group(employees, prop){\n\t/*Your Code Here*/\n}\nconst employees = [\n\t{ name: "Rahul", hasID: false },\n\t{ name: "Hitesh", hasID: true },\n\t{ name: "Mukul", hasID: true }\n];\nconst newArr = filterObj(employees, 'haveID');\nconsole.log(JSON.stringify(newArr));!');`)
@@ -396,7 +448,10 @@ const JsProblemSolving = () => {
             where each object has a name and age property, and returns the name
             of the oldest employee.<br/>
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function findObj(arr) {\n\t/*Your Code here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Hitesh", age: 21 },\n\t{ name: "Mukul", age: 28 }\n];\nconst employees = findObj(employees);\nconsole.log(employees);`)
@@ -412,7 +467,10 @@ const JsProblemSolving = () => {
             property, and returns a new array with all the duplicate employee
             objects removed.<br/>
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function removeDuplicates(arr) {\n\t/*Your Code here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Mukul", age: 28 }\n];\nconst employees = removeDuplicates(employees);\nconsole.log(JSON.stringify(employees));`)
@@ -428,7 +486,10 @@ const JsProblemSolving = () => {
             keys are the department names and the values are the average salary
             of all employees in that department.{" "}<br/>
             <Button
-            variant="outlined"
+            startIcon = {<CodeIcon />}
+            variant="contained"
+            color="secondary"
+            style={{backgroundColor: "#FF1493"}}
             onClick={()=>{
               openModal()
               setContent(`function avgAndGroup(employees){\n\t/*Your Code Here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17, department: "CSE", salary: 15000 },\n\t{ name: "Hitesh", age: 21, department: "ECE", salary: 57000 },\n\t{ name: "Mukul", age: 28, department: "CSE", salary: 10000 }\n];\nconst newArr = avgAndGroup(employees);\nconsole.log(JSON.stringify(newArr));`)
