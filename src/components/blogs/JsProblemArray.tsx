@@ -162,13 +162,6 @@ const JsProblemSolving = () => {
             numbers as input and returns a new sorted array of all the numbers
             in the array. <br />
             <Button
-              variant="outlined"
-              onClick={() => {
-                openModal();
-                setContent(
-                  `function sort(arr) {\n\treturn arr.sort((a, b) => a - b);\n}\nconst numbers = [5,2,1,3,6];\nconst sortedArr = sort(numbers);\nconsole.log(sortedArr);\n/*We use comparsion function as \nargument because in-built sort \nfunction of JS converts array \nelements into string which may \ngive wrong result. We can also \nuse user-defined sorting functions to sort.*/`
-                );
-              }}
             startIcon = {<CodeIcon />}
             variant="contained"
             color="secondary"
