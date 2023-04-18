@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {Button} from "@mui/material";
-import {Editor} from "./../Editor";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
+import { Editor } from "./../Editor";
 import Modal from "./../Modal";
 import CodeIcon from '@mui/icons-material/Code';
 
@@ -135,8 +135,8 @@ const JsProblemSolving = () => {
               setContent(`function sum(arr) {\n\tlet sum = 0;\n\tfor (let i =0; i<arr.length; i++) {\n\t\tsum += arr[i];\n\t}\n\treturn sum;\n}\nconst numbers = [1,2,3,4,5];\nconst result = sum(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
-            </Button>  
+              Code
+            </Button>
           </li>
           <li>
             {" "}
@@ -153,8 +153,8 @@ const JsProblemSolving = () => {
               setContent(`function avg(arr) {\n\tlet sum = 0;\n\tfor (let i =0; i<arr.length; i++) {\n\t\tsum += arr[i];\n\t}\n\tconst avg = sum / arr.length;\n\treturn avg;\n}\nconst numbers = [1,2,3,4,5];\nconst result = avg(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
           <li>
             {" "}
@@ -162,6 +162,13 @@ const JsProblemSolving = () => {
             numbers as input and returns a new sorted array of all the numbers
             in the array. <br />
             <Button
+              variant="outlined"
+              onClick={() => {
+                openModal();
+                setContent(
+                  `function sort(arr) {\n\treturn arr.sort((a, b) => a - b);\n}\nconst numbers = [5,2,1,3,6];\nconst sortedArr = sort(numbers);\nconsole.log(sortedArr);\n/*We use comparsion function as \nargument because in-built sort \nfunction of JS converts array \nelements into string which may \ngive wrong result. We can also \nuse user-defined sorting functions to sort.*/`
+                );
+              }}
             startIcon = {<CodeIcon />}
             variant="contained"
             color="secondary"
@@ -171,12 +178,13 @@ const JsProblemSolving = () => {
               setContent(`function sort(arr) {\n\treturn arr.sort((a, b) => a - b);\n}\nconst numbers = [5,2,1,3,6];\nconst sortedArr = sort(numbers);\nconsole.log(sortedArr);\n/*We use comparsion function as \nargument because in-built sort \nfunction of JS converts array \nelements into string which may \ngive wrong result. We can also \nuse user-defined sorting functions to sort.*/`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
             <b>Largest Number in Array:</b> Write a function that takes an array
-            of numbers as input and returns the largest number in the array. <br />
+            of numbers as input and returns the largest number in the array.{" "}
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -187,12 +195,13 @@ const JsProblemSolving = () => {
               setContent(`function largestNum(arr) {\n\t let num = arr[0];\n\tfor(let i=1; i<arr.length; i++) {\n\t\tif(arr[i] > num) {\n\t\t\tnum = arr[i];\n\t\t}\n\t}\n\treturn num;\n}\nconst numbers = [5,2,1,6,3];\nconst largestNumber = largestNum(numbers);\nconsole.log(largestNumber);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
-            <b>Smallest Number in Array:</b> Write a function that takes an array of
-            numbers as input and returns the smallest number in the array. <br />
+            <b>Smallest Number in Array:</b> Write a function that takes an
+            array of numbers as input and returns the smallest number in the
+            array. <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -203,13 +212,14 @@ const JsProblemSolving = () => {
               setContent(`function smallestNum(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = smallestNum(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
             {" "}
             <b>Reverse Array: </b> Write a function that takes an array as input
-            and returns a new array with the elements in reverse order.<br />
+            and returns a new array with the elements in reverse order.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -220,7 +230,7 @@ const JsProblemSolving = () => {
               setContent(`function reverseArr(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = reverseArr(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
@@ -237,7 +247,7 @@ const JsProblemSolving = () => {
               setContent(`function removeDuplicates(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,2,1,4,5,5];\nconst result = removeDuplicates(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
@@ -254,7 +264,7 @@ const JsProblemSolving = () => {
               setContent(`function merge(arr1, arr2) {\n\t //Your Code Here\n}\nconst numbers1=[2,3,1,4,5];\nconst numbers2=[7,8,9,2,1];\nconst result = merge(numbers1, numbers2);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
@@ -271,7 +281,7 @@ const JsProblemSolving = () => {
               setContent(`function commonElementArr(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,2,3,1,4,5,5];\nconst result = commonElementArr(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
@@ -288,13 +298,14 @@ const JsProblemSolving = () => {
               setContent(`function removeEven(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = removeEven(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
           <li>
             <b>Find Second Largest Number: </b> Write a function that takes an
             array of numbers as input and returns the second largest number in
-            the array.<br />
+            the array.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -305,7 +316,7 @@ const JsProblemSolving = () => {
               setContent(`function secondLargest(arr) {\n\t //Your Code Here\n}\nconst numbers=[2,3,1,4,5];\nconst result = secondLargest(numbers);\nconsole.log(result);`)
             }}
             >
-            Code
+              Code
             </Button>
           </li>
         </ul>
@@ -344,14 +355,15 @@ const JsProblemSolving = () => {
               setContent(`function arrInObj(data) {\n\tconst result = {};\n\tdata.forEach(({ city, country }) => {\n\tif (result[country]) {\n\t\tresult[country].cities.push(city);\n\t} else {\n\t\tresult[country] = { country, cities: [city] };\n\t}\n\t});\n\treturn Object.values(result);\n}\nconst data = [\n\t{ city: "mumbai", country: "india" },\n\t{ city: "chennai", country: "india" },\n\t{ city: "new york", country: "usa" },\n\t{ city: "los angeles", country: "usa" },\n];\nconst result = arrInObj(data);\nconsole.log(JSON.stringify(result));`)
             }}
             >
-            Code
-            </Button>  
+              Code
+            </Button>
           </li>
           <li>
             <b> Average calculation: </b>
             Write a function that takes an array of employee objects as input,
             where each object has a name and age property, and returns the
-            average age of all employees.<br />
+            average age of all employees.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -362,14 +374,15 @@ const JsProblemSolving = () => {
               setContent(`function avgAge(arr) {\n\tlet ageSum = 0;\n\tfor(let i=0; i<arr.length; i++){\n\t\tageSum += arr[i].age;\n}\n\t return ageSum/arr.length;\n}\nconst employees = [\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Hitesh", age: 21 },\n\t{ name: "Mukul", age: 28 }\n];\nconst averageAge = avgAge(employees);\nconsole.log(averageAge);`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
           <li>
             <b> Mapping Objects: </b>
             Write a function that takes an array of employee objects as input
             and returns a new array of objects with only the name and age
-            properties of each employee.<br/>
+            properties of each employee.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -380,8 +393,8 @@ const JsProblemSolving = () => {
               setContent(`function nameAndAgeObj(employees){\n\tconst arr = [];\n\tfor(let i=0; i<employees.length; i++){\n\t\tarr.push({ name: employees[i].name, age: employees[i].age });\n\t}\n\treturn arr;}\nconst employees = [\n\t{ name: "Rahul", age: 17, taskDone: 2 },\n\t{ name: "Hitesh", age: 21, taskDone: 3 },\n\t{ name: "Mukul", age: 28, taskDone: 1 }\n];\nconst newArr = nameAndAgeObj(employees);\nconsole.log(JSON.stringify(newArr));`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
           <li>
             {" "}
@@ -389,7 +402,8 @@ const JsProblemSolving = () => {
             objects as input, where each object has a name, age, and department
             property, and returns an object where the keys are the department
             names and the values are arrays of employee objects in that
-            department.<br />
+            department.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -400,15 +414,16 @@ const JsProblemSolving = () => {
               setContent(`function group(employees){\n\t/*Your Code Here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17, department: "CSE" },\n\t{ name: "Hitesh", age: 21, department: "ECE" },\n\t{ name: "Mukul", age: 28, department: "CSE" }\n];\nconst newArr = group(employees);\nconsole.log(JSON.stringify(newArr));`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
           <li>
             {" "}
             <b>Count Occurrences: </b> Write a function that takes an array of
             strings as input and returns an object where the keys are the unique
             strings in the array and the values are the number of times each
-            string appears in the array.<br/>
+            string appears in the array.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -419,15 +434,16 @@ const JsProblemSolving = () => {
               setContent(`function countOccurrences(arr) {\n\t //Your Code Here\n}\nconst arr1=["Rahul","Jaspreet","Kamal"];\nconst result = countOccurrences(arr1);\nconsole.log(JSON.stringify(result));`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
 
           <li>
             <b> Filter Objects: </b> Write a function that takes an array of
             objects as input and a property name as a parameter. The function
             should return a new array of objects that only contain the objects
-            with a truthy value for the specified property.<br/>
+            with a truthy value for the specified property.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -438,15 +454,16 @@ const JsProblemSolving = () => {
               setContent(`function group(employees, prop){\n\t/*Your Code Here*/\n}\nconst employees = [\n\t{ name: "Rahul", hasID: false },\n\t{ name: "Hitesh", hasID: true },\n\t{ name: "Mukul", hasID: true }\n];\nconst newArr = filterObj(employees, 'haveID');\nconsole.log(JSON.stringify(newArr));!');`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
 
           <li>
             <b>Find Object: </b>
             Write a function that takes an array of employee objects as input,
             where each object has a name and age property, and returns the name
-            of the oldest employee.<br/>
+            of the oldest employee.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -457,15 +474,16 @@ const JsProblemSolving = () => {
               setContent(`function findObj(arr) {\n\t/*Your Code here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Hitesh", age: 21 },\n\t{ name: "Mukul", age: 28 }\n];\nconst employees = findObj(employees);\nconsole.log(employees);`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
           <li>
             {" "}
             <b> Remove Duplicates:</b> Write a function that takes an array of
             employee objects as input, where each object has a name and age
             property, and returns a new array with all the duplicate employee
-            objects removed.<br/>
+            objects removed.
+            <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -476,15 +494,15 @@ const JsProblemSolving = () => {
               setContent(`function removeDuplicates(arr) {\n\t/*Your Code here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Rahul", age: 17 },\n\t{ name: "Mukul", age: 28 }\n];\nconst employees = removeDuplicates(employees);\nconsole.log(JSON.stringify(employees));`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
           <li>
             <b>Average and Grouping:</b> Write a function that takes an array of
             employee objects as input, where each object has a name, age,
             department, and salary property, and returns an object where the
             keys are the department names and the values are the average salary
-            of all employees in that department.{" "}<br/>
+            of all employees in that department. <br />
             <Button
             startIcon = {<CodeIcon />}
             variant="contained"
@@ -495,8 +513,8 @@ const JsProblemSolving = () => {
               setContent(`function avgAndGroup(employees){\n\t/*Your Code Here*/\n}\nconst employees = [\n\t{ name: "Rahul", age: 17, department: "CSE", salary: 15000 },\n\t{ name: "Hitesh", age: 21, department: "ECE", salary: 57000 },\n\t{ name: "Mukul", age: 28, department: "CSE", salary: 10000 }\n];\nconst newArr = avgAndGroup(employees);\nconsole.log(JSON.stringify(newArr));`)
             }}
             >
-            Code
-            </Button> 
+              Code
+            </Button>
           </li>
         </ul>
         <br />
@@ -512,12 +530,12 @@ const JsProblemSolving = () => {
 
       <br />
       <Modal
-            showModal={showModal} 
-            cancelHandler={closeModal} 
-            content={<Editor content={content}/>}
-            maxWidth
-            >
-      </Modal>
+        modalClassName="problem-solving"
+        showModal={showModal}
+        cancelHandler={closeModal}
+        content={<Editor content={content} editorClass="w-100" />}
+        maxWidth
+      ></Modal>
       <div>
         I'm sure, after knowing above concepts properly you can improve your
         problem solving skills. Start solving the problems.
