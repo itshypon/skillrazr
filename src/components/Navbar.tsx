@@ -4,15 +4,16 @@ import { NavLink } from "react-router-dom";
 import { auth, provider } from "../init-firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUser, setUser } from '../actions/actions'
-import UserModal from './UserModal/UserModal'
+import { setCurrentUser, setUser } from "../actions/actions";
+import UserModal from "./UserModal/UserModal";
 export default function Navbar(props: any) {
+  const { logout } = props;
 
   const [scrolled, setScrolled] = React.useState<boolean>(false);
-  const dispatch = useDispatch()
-  var user = useSelector((state: any) => state.currentUserReducer)
+  const dispatch = useDispatch();
+  var user = useSelector((state: any) => state.currentUserReducer);
   console.log(user);
-  
+
   const [showModal, setShowModal] = React.useState(false);
 
   const handleClick = () => {
@@ -22,7 +23,7 @@ export default function Navbar(props: any) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  
+
   const scrollHandler = () => {
     if (window.scrollY > 20) {
       setScrolled(true);
@@ -32,13 +33,13 @@ export default function Navbar(props: any) {
   };
 
   const logIn = () => {
-    // log in 
+    // log in
     signInWithPopup(auth, provider)
       .then((result) => {
-        dispatch(setUser(result.user, dispatch))
+        dispatch(setUser(result.user, dispatch));
       })
-      .catch((error) => (console.log(error.message)))
-  }
+      .catch((error) => console.log(error.message));
+  };
 
   React.useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
@@ -89,24 +90,30 @@ export default function Navbar(props: any) {
                 FAQs
               </a>
             </li>
-            {
-              user === null ? (
-                <li className="nav-item ml-8 font-medium">
-                  <a className="nav-link cursor-pointer bg-pink-400 py-1.5 px-2.5 rounded transition duration-300 hover:bg-pink-500" onClick={logIn}>
-                    Log in
-                  </a>
-                </li>
-              ):(
-                <>
-                  <div className="h-10 w-10 ml-8 rounded-full overflow-hidden">
-                    <img src={user.photoURL} alt="avatar" className="h-full w-full object-cover cursor-pointer" onClick={handleClick}/>
-                  </div>
-                  {showModal && (
-                    <UserModal closeModal={handleCloseModal} />
-                  )}
-                </>
-              )
-            }
+            {user === null ? (
+              <li className="nav-item ml-8 font-medium">
+                <a
+                  className="nav-link cursor-pointer bg-pink-400 py-1.5 px-2.5 rounded transition duration-300 hover:bg-pink-500"
+                  onClick={logIn}
+                >
+                  Log in
+                </a>
+              </li>
+            ) : (
+              <>
+                <div className="h-10 w-10 ml-8 rounded-full overflow-hidden">
+                  <img
+                    src={user.photoURL}
+                    alt="avatar"
+                    className="h-full w-full object-cover cursor-pointer"
+                    onClick={handleClick}
+                  />
+                </div>
+                {showModal && (
+                  <UserModal closeModal={handleCloseModal} logout={logout} />
+                )}
+              </>
+            )}
           </ul>
         </div>
       </div>

@@ -26,7 +26,7 @@ import Navbar from "./Navbar";
 import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 const auth = getAuth();
 
@@ -155,11 +155,21 @@ function App(props: any) {
     });
   }, [dispatch]);
 
+  const logout = (callBack: () => {}) => {
+    return signOut(auth)
+      .then(() => {
+        callBack();
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <ParallaxProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout {...props} />}>
+          <Route path="/" element={<Layout {...props} logout={logout} />}>
             <Route index element={<HomePage {...props} />} />
             <Route path="/about" element={<AboutPage {...props} />} />
             <Route
