@@ -51,6 +51,7 @@
       border-radius: 2px;
       padding: 10px 14px 10px 10px;
       margin-bottom: 10px;
+      height: 400px;
     }
 
     .css-concepts {
@@ -138,7 +139,11 @@ strong {
     <input class="button" id="reset" type="button" value="Reset" />
   </div>
   <div class="css-concepts">
+    <button class="css-concept-button" id="css-selectors">CSS Selectors</button>
     <button class="css-concept-button" id="box-model">Box-model</button>
+    <button class="css-concept-button" id="css-variables">CSS Variables</button>
+    <button class="css-concept-button" id="css-pseudo-elements">Pseudo Elements</button>
+    <button class="css-concept-button" id="css-flexbox">CSS Flexbox</button>
   </div>
 </body>
 <script>
@@ -199,6 +204,492 @@ strong {
       color: white;
     }
     `;
+    applyHtmlCss();
+  });
+  //CSS Variables
+  const cssVariables = document.getElementById("css-variables");
+  cssVariables.addEventListener("click", function () {
+    textareaHTML.value = `<h1>CSS Variables</h1>
+  <p>Welcome to CSS variables sections, play with
+    them to get a hang of the concepts. Have fun!! 😃</p>
+  <div>
+    <h2>Introduction</h2>
+    <p>
+      CSS variables, also known as CSS custom properties, are
+      a way to store and reuse values in your CSS code. They
+      allow you to define a value once and then use it throughout
+      your CSS code, making it easier to update and maintain your
+      styles. You can define a CSS variable by using the -- prefix
+      and then using it in your styles by referencing it with
+      the var() function
+    </p>
+  </div>
+
+  <button><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">Learn
+      more about them</a></button>
+      `;
+    textareaCSS.value = `:root {
+  --primary-color: #0091ad;
+  --secondary-color: #fff4e4;
+  --action-color: #ff57bb;
+}
+
+h1 {
+  color: var(--primary-color, black);
+  text-decoration: underline;
+  text-align: center;
+}
+
+p {
+  color: var(--primary-color, rgb(54, 53, 53));
+  text-align: center;
+}
+h2 {
+  color: var(--primary-color, black);
+  text-decoration: underline;
+}
+div {
+  background-color: var(--secondary-color, lightgray);
+  border: 3px solid var(--action-color, black);
+  border-radius: 5px;
+  padding: 10px;
+  width: 80%;
+  margin: 1rem auto;
+}
+div > p {
+  text-align: left;
+  margin: 1rem;
+}
+
+button {
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: var(--primary-color, black);
+  border: 3px solid var(--action-color, blue);
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+a {
+  color: var(--secondary-color, white);
+}`;
+    applyHtmlCss();
+  });
+
+  //CSS Selectors
+  const cssSelectors = document.getElementById("css-selectors");
+  cssSelectors.addEventListener("click", function () {
+    textareaHTML.value = `  <h1>CSS Selector Examples</h1>
+
+<div class="section">
+  <h2>Selection by Element Type</h2>
+  <p>This is a paragraph element.</p>
+</div>
+
+<div class="section">
+  <h2>Selection by Class</h2>
+  <p class="highlight">This paragraph has the .highlight class.</p>
+</div>
+
+<div class="section">
+  <h2>Selection by ID</h2>
+  <p id="important-text">This paragraph has the important-text id.</p>
+</div>
+
+<div class="section">
+  <h2>Selection by Attribute</h2>
+  <a href="http://https://skillrazr.com/" alt="skillrazr Website" target="_blank">skillrazr</a>
+</div>
+
+      `;
+    textareaCSS.value = `h1 {
+  text-align: center;
+}
+
+.section {
+  border: 1px solid rgb(25, 108, 122);
+  padding: 10px;
+  margin: 10px;
+  background-color: oldlace;
+}
+
+/* Selection by Element Type */
+
+p {
+  color: blue;
+}
+
+/* Selection by Class */
+
+.highlight {
+  background-color: yellow;
+}
+
+/* Selection by ID */
+
+#important-text {
+  color: red;
+}
+
+/* Selection by Attribute */
+
+[alt="skillrazr Website"] {
+  color: rgb(255, 20, 147);
+  text-transform: capitalize;
+  font-weight: bolder;
+  font-size: larger;
+  font-style: oblique;
+}
+`;
+    applyHtmlCss();
+  });
+
+  //CSS Pseudo Elements
+  const cssPseudoElements = document.getElementById("css-pseudo-elements");
+  cssPseudoElements.addEventListener("click", function () {
+    textareaHTML.value = `  <p class="first-line-color">
+    A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected
+    element(s). For example, ::first-line can be used to change the color of the first line of a paragraph like we did
+    for this paragraph.
+  </p>
+  <p class="first-word">Or may br you can use it style the first letter.</p>
+  <p class="select-me">
+    Select me. 😃 The ::selection pseudo-element matches the portion of an element that is selected by a user.
+  </p>
+  <p>The <span>::before</span> and <span>::after</span> pseudo-element can be used to insert some content
+    <span>before</span> and <span>after</span> the content of an element. Like here the cat is <span>before</span> the
+    ship, so it can get in thee ship and catch the chick who is <span>after</span> the ship 😉
+  </p>
+  <div class="img-container">
+    <img class="ship-img" src="https://i.imgur.com/tyE0h7I.jpeg"
+  </div>`;
+    textareaCSS.value = `body {
+  padding: 1.5rem;
+}
+p {
+  margin: 1.5rem;
+}
+.first-line-color::first-line {
+  color: rgb(221, 137, 12);
+}
+.first-word::first-letter {
+  font-size: 50px;
+}
+.select-me::selection {
+  color: rgb(255, 20, 147);
+  background-color: rgb(215, 235, 176);
+}
+
+.ship-img {
+  position: relative;
+  left: 112.5px;
+}
+.img-container::before {
+  display: block;
+  content: url("https://i.imgur.com/P5kg7Jh.jpeg");
+}
+
+.img-container::after {
+  display: block;
+  content: url("https://i.imgur.com/CVTiTWr.jpeg");
+  position: relative;
+  left: 225px;
+}
+
+span {
+  color: red;
+}
+
+`;
+    applyHtmlCss();
+  });
+
+   //CSS Flexbox
+   const cssFlexbox = document.getElementById("css-flexbox");
+   cssFlexbox.addEventListener("click", function () {
+    textareaHTML.value = `<h1>Flexbox</h1>
+  <p class="intro">Flexbox is a layout method for arranging items in rows in columns. To use it we need an element or
+    container whose
+    display will be flex, and some items / child elements inside thee flexbox / container. Flexbox offers many
+    properties which we can use to arrange the items inside the container.</p>
+  <p>Following flexbox example has a big blue box, the container and few small green boxes. Each examples has other
+    possible values for the property being illustrated, try them out to see how they affect the layout. Try and
+    understand them, play with the code in our live CSS editor to test your understanding</p>
+  <section>
+    <p>Example 1, without flex</p>
+    <div class="container">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p>Example 2, with flex. Enables flex for all children</p>
+    <div class="container container2">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p>Example 3, Flex Direction. Establishes the main axis. Some property values are :</p>
+    <ul.a>
+      <li>row</li>
+      <li>row-reverse</li>
+      <li>column</li>
+      <li>column-reverse</li>
+    </ul.a>
+    <div class="container container3">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p>Example 4, Flex Wrap. Wraps items if they can't all be made to fit on one line. Some property values are :</p>
+    <ul.a>
+      <li>wrap</li>
+      <li>nowrap</li>
+      <li>wrap-reverse</li>
+    </ul.a>
+    <div class="container container4">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+      <div class="box">
+        <p class="box-no">5</p>
+      </div>
+      <div class="box">
+        <p class="box-no">6</p>
+      </div>
+      <div class="box">
+        <p class="box-no">7</p>
+      </div>
+      <div class="box">
+        <p class="box-no">8</p>
+      </div>
+      <div class="box">
+        <p class="box-no">9</p>
+      </div>
+      <div class="box">
+        <p class="box-no">10</p>
+      </div>
+      <div class="box">
+        <p class="box-no">11</p>
+      </div>
+      <div class="box">
+        <p class="box-no">12</p>
+      </div>
+      <div class="box">
+        <p class="box-no">13</p>
+      </div>
+      <div class="box">
+        <p class="box-no">14</p>
+      </div>
+      <div class="box">
+        <p class="box-no">15</p>
+      </div>
+      <div class="box">
+        <p class="box-no">16</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p>Example 5, Justify content. Attempts to distribute extra space on the main axis. Some property values are :</p>
+    <ul.a>
+      <li>flex-start</li>
+      <li>flex-end</li>
+      <li>center</li>
+      <li>space-between</li>
+      <li>space-around</li>
+      <li>space-evenly</li>
+    </ul.a>
+    <div class="container container5">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+      <div class="box">
+        <p class="box-no">5</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p>Example 6, Align content. Only has an effect with more than one line of content. Some property values are :</p>
+    <ul.a>
+      <li>flex-start</li>
+      <li>flex-end</li>
+      <li>center</li>
+      <li>space-between</li>
+      <li>space-around</li>
+      <li>stretch</li>
+    </ul.a>
+    <div class="container container6">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+      <div class="box">
+        <p class="box-no">5</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <p>Example 7, Align Items. Only has an effect with more than one line of content. Some property values are :</p>
+    <ul.a>
+      <li>flex-start</li>
+      <li>flex-end</li>
+      <li>center</li>
+      <li>baseline</li>
+      <li>stretch</li>
+    </ul.a>
+    <div class="container container7">
+      <div class="box">
+        <p class="box-no">1</p>
+      </div>
+      <div class="box">
+        <p class="box-no">2</p>
+      </div>
+      <div class="box">
+        <p class="box-no">3</p>
+      </div>
+      <div class="box">
+        <p class="box-no">4</p>
+      </div>
+      <div class="box">
+        <p class="box-no">5</p>
+      </div>
+    </div>
+  </section>
+  <button><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank">Learn
+      more about Flexbox</a></button>
+  `;
+    textareaCSS.value = `body {
+  padding: 2rem;
+  color: #0091ad;
+}
+h1 {
+  text-align: center;
+  text-decoration: underline;
+  color: rgb(238, 62, 91);
+}
+section {
+  background-color: #fff4e4;
+  border: 3px solid #ff57bb;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+.intro {
+  margin: 2rem;
+}
+.box-no {
+  text-align: center;
+  margin-top: 20%;
+  color: black;
+}
+.container {
+  width: 300px;
+  height: 300px;
+  border: blue 3px solid;
+  margin: 2rem auto;
+}
+.box {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: green 3px solid;
+  margin: 5px;
+}
+.container2 {
+  display: flex;
+}
+.container3 {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.container4 {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.container5 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.container6 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+.container7 {
+  display: flex;
+  align-items: center;
+}
+button {
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #0091ad;
+  border: 3px solid #ff57bb;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+a {
+  color: var(--secondary-color, white);
+}
+`;
     applyHtmlCss();
   });
 
