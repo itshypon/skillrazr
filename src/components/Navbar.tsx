@@ -92,12 +92,12 @@ export default function Navbar(props: any) {
             </li>
             {user === null ? (
               <li className="nav-item ml-8 font-medium">
-                <a
+                <button
                   className="nav-link cursor-pointer bg-pink-400 py-1.5 px-2.5 rounded transition duration-300 hover:bg-pink-500"
                   onClick={logIn}
                 >
                   Log in
-                </a>
+                </button>
               </li>
             ) : (
               <>
