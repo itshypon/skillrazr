@@ -23,6 +23,12 @@ import Games from "../components/Games";
 import SelectedGame from "../components/SelectedGame";
 import { CSSEditor } from "./CSSEditor";
 import Navbar from "./Navbar";
+import UserPage from "./UserPage";
+import { setCurrentUser } from "../actions/actions";
+import { useDispatch } from "react-redux";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+
+const auth = getAuth();
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -139,12 +145,31 @@ function App(props: any) {
   const date = new Date();
   const dateMonth = `${date.getDate()}/${date.getMonth() + 1}`;
   // const [daySnackSeen, setDaySnackSeen] = React.useState(false);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setCurrentUser(user));
+      }
+    });
+  }, [dispatch]);
+
+  const logout = (callBack: () => {}) => {
+    return signOut(auth)
+      .then(() => {
+        callBack();
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <ParallaxProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout {...props} />}>
+          <Route path="/" element={<Layout {...props} logout={logout} />}>
             <Route index element={<HomePage {...props} />} />
             <Route path="/about" element={<AboutPage {...props} />} />
             <Route
@@ -200,6 +225,7 @@ function App(props: any) {
               </div>
             }
           />
+          <Route path="/user" element={<UserPage />} />
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
       </BrowserRouter>
