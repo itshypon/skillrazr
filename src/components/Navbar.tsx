@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { auth, provider } from "../init-firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUser, setUser } from "../actions/actions";
+import { setUser } from "../actions/actions";
 import UserModal from "./UserModal/UserModal";
 export default function Navbar(props: any) {
   const { logout } = props;
