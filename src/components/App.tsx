@@ -26,6 +26,9 @@ import Navbar from "./Navbar";
 import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+const auth = getAuth();
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -138,21 +141,19 @@ function DaySnack(props: any) {
   );
 }
 
-
 function App(props: any) {
   const date = new Date();
   const dateMonth = `${date.getDate()}/${date.getMonth() + 1}`;
   // const [daySnackSeen, setDaySnackSeen] = React.useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const logUser = localStorage.getItem("user");
-    if (logUser !== null) {
-      console.log(JSON.parse(logUser));
-      
-      dispatch(setCurrentUser(JSON.parse(logUser)))
-    }
-  },[dispatch])
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setCurrentUser(user));
+      }
+    });
+  }, [dispatch]);
 
   return (
     <ParallaxProvider>
@@ -214,7 +215,7 @@ function App(props: any) {
               </div>
             }
           />
-        <Route  path="/user" element={<UserPage />} />
+          <Route path="/user" element={<UserPage />} />
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
       </BrowserRouter>
