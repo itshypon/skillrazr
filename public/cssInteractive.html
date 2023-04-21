@@ -1,122 +1,123 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>Selectors: type</title>
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1.4em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        height: 90%;
+        font-size: 18px;
+      }
 
-<head>
-  <meta charset="utf-8" />
-  <title>Selectors: type</title>
-  <style>
-    body {
-      background-color: #fff;
-      color: #333;
-      font: 1.4em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-      height: 100%;
-      font-size: 18px;
-    }
+      /* styles for the editor */
 
-    /* styles for the editor */
+      .playable {
+        font-family: monospace;
+        display: block;
+        margin-bottom: 10px;
+        background-color: #f4f7f8;
+        border: none;
+        border-left: 4px solid rgb(16, 17, 17);
+        color: #4d4e53;
+        padding: 10px 10px 0px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 18px;
+      }
 
-    .playable {
-      font-family: monospace;
-      display: block;
-      margin-bottom: 10px;
-      background-color: #f4f7f8;
-      border: none;
-      border-left: 4px solid rgb(16, 17, 17);
-      color: #4d4e53;
-      padding: 10px 10px 0px;
-      width: 100%;
-      box-sizing: border-box;
-      font-size: 18px;
-    }
+      .editable-css {
+        height: 80px;
+      }
 
-    .editable-css {
-      height: 80px;
-    }
+      .editable-html {
+        height: 160px;
+      }
 
-    .editable-html {
-      height: 160px;
-    }
+      .reset-section {
+        text-align: center;
+        width: 100%;
+        padding-top: 20px;
+      }
 
-    .reset-section {
-      text-align: center;
-      width: 100%;
-      padding-top: 20px;
-    }
+      .preview {
+        border: 1px solid rgb(13, 13, 13);
+        border-radius: 2px;
+        padding: 10px 14px 10px 10px;
+        margin-bottom: 10px;
+        height: 200px;
+        overflow: scroll !important;
+      }
 
-    .preview {
-      border: 1px solid rgb(13, 13, 13);
-      border-radius: 2px;
-      padding: 10px 14px 10px 10px;
-      margin-bottom: 10px;
-      height: 400px;
-    }
+      .css-concepts {
+        text-align: center;
+        width: 100%;
+        padding-top: 20px;
+      }
 
-    .css-concepts {
-      text-align: center;
-      width: 100%;
-      padding-top: 20px;
-    }
+      .css-concept-button {
+        padding: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 5px;
+      }
 
-    .css-concept-button {
-      padding: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 5px;
-    }
+      .flex {
+        display: flex;
+        justify-content: center;
+      }
 
-    .flex {
-      display: flex;
-      justify-content: center;
-    }
+      .flex-col {
+        flex-direction: column;
+      }
 
-    .flex-col {
-      flex-direction: column;
-    }
+      .button {
+        padding: 8px;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-    .button {
-      padding: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+      textarea:focus-visible {
+        outline: 1px solid rgb(36, 186, 236);
+      }
+    </style>
 
-    textarea:focus-visible {
-      outline: 1px solid rgb(36, 186, 236);
-    }
-  </style>
+    <style class="editable">
+      span {
+        background-color: yellow;
+      }
 
-  <style class="editable">
-    span {
-      background-color: yellow;
-    }
+      strong {
+        color: rebeccapurple;
+      }
 
-    strong {
-      color: rebeccapurple;
-    }
+      em {
+        color: rebeccapurple;
+      }
+    </style>
+  </head>
 
-    em {
-      color: rebeccapurple;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="flex flex-col">
-    <div class="flex">
-      <div style="width: 60%; margin-right: 6px">
-        <div style="font-size: 24px">HTML Editor</div>
-        <textarea class="playable editable-html" style="height: 260px">
+  <body>
+    <div class="flex flex-col">
+      <div class="flex">
+        <div style="width: 60%; margin-right: 6px">
+          <div style="font-size: 24px">HTML Editor</div>
+          <textarea class="playable editable-html" style="height: 260px">
 <h1>Welcome to CSS playground</h1>
 <p>This is a paragraph with a span <span>you can color this span using css </span> it's current color is green, you can change it's color to red by updating the color property, using the above <strong>CSS editor</strong></p> 
 
 <p><strong>important!</strong> You can play with other available examples below, try clicking box-model</p>
-</textarea>
-      </div>
-      <div style="width: 40%">
-        <div style="font-size: 24px">CSS Editor</div>
-        <textarea class="playable editable-css" style="height: 260px">
+</textarea
+          >
+        </div>
+        <div style="width: 40%">
+          <div style="font-size: 24px">CSS Editor</div>
+          <textarea class="playable editable-css" style="height: 260px">
 h1 {
   margin-bottom: 30px;
 }
@@ -129,58 +130,64 @@ strong {
   text-decoration: underline;
 }
           </textarea>
+        </div>
       </div>
+      <div style="font-size: 24px; margin-top: 20px">Preview</div>
+      <iframe class="preview" id="previewFrame"></iframe>
     </div>
-    <div style="font-size: 24px; margin-top: 20px">Preview</div>
-    <iframe class="preview" id="previewFrame"></iframe>
-  </div>
 
-  <div class="reset-section">
-    <input class="button" id="reset" type="button" value="Reset" />
-  </div>
-  <div class="css-concepts">
-    <button class="css-concept-button" id="css-selectors">CSS Selectors</button>
-    <button class="css-concept-button" id="box-model">Box-model</button>
-    <button class="css-concept-button" id="css-variables">CSS Variables</button>
-    <button class="css-concept-button" id="css-pseudo-elements">Pseudo Elements</button>
-    <button class="css-concept-button" id="css-flexbox">CSS Flexbox</button>
-  </div>
-</body>
-<script>
-  const preview = document.getElementById("previewFrame");
-  const previewDoc = preview.contentDocument || preview.contentWindow.document;
-  const textareaHTML = document.querySelector(".editable-html");
-  const textareaCSS = document.querySelector(".editable-css");
-  const reset = document.getElementById("reset");
-  const htmlCode = textareaHTML.value;
-  const cssCode = textareaCSS.value;
+    <div class="reset-section">
+      <input class="button" id="reset" type="button" value="Reset" />
+    </div>
+    <div class="css-concepts">
+      <button class="css-concept-button" id="css-selectors">
+        CSS Selectors
+      </button>
+      <button class="css-concept-button" id="box-model">Box-model</button>
+      <button class="css-concept-button" id="css-variables">
+        CSS Variables
+      </button>
+      <button class="css-concept-button" id="css-pseudo-elements">
+        Pseudo Elements
+      </button>
+      <button class="css-concept-button" id="css-flexbox">CSS Flexbox</button>
+    </div>
+  </body>
+  <script>
+    const preview = document.getElementById('previewFrame')
+    const previewDoc = preview.contentDocument || preview.contentWindow.document
+    const textareaHTML = document.querySelector('.editable-html')
+    const textareaCSS = document.querySelector('.editable-css')
+    const reset = document.getElementById('reset')
+    const htmlCode = textareaHTML.value
+    const cssCode = textareaCSS.value
 
-  function applyHtmlCss(type) {
-    let iframeHtml = `<html><head><style>${textareaCSS.value}</style></head><body>${textareaHTML.value}</body></html>`;
-    let parser = new DOMParser();
-    let iframeDoc = parser.parseFromString(iframeHtml, 'text/html');
-    let iframeBody = previewDoc.querySelector('body');
-    iframeBody.innerHTML = '';
-    iframeBody.appendChild(iframeDoc.documentElement);
-    type === "html" ? textareaHTML.focus() : textareaCSS.focus();
-  }
+    function applyHtmlCss(type) {
+      let iframeHtml = `<html><head><style>${textareaCSS.value}</style></head><body>${textareaHTML.value}</body></html>`
+      let parser = new DOMParser()
+      let iframeDoc = parser.parseFromString(iframeHtml, 'text/html')
+      let iframeBody = previewDoc.querySelector('body')
+      iframeBody.innerHTML = ''
+      iframeBody.appendChild(iframeDoc.documentElement)
+      type === 'html' ? textareaHTML.focus() : textareaCSS.focus()
+    }
 
-  reset.addEventListener("click", function () {
-    textareaHTML.value = htmlCode;
-    textareaCSS.value = cssCode;
-    applyHtmlCss();
-  });
+    reset.addEventListener('click', function () {
+      textareaHTML.value = htmlCode
+      textareaCSS.value = cssCode
+      applyHtmlCss()
+    })
 
-  // box-model
-  const boxModel = document.getElementById("box-model");
-  boxModel.addEventListener("click", function () {
-    textareaHTML.value = `<div id='div1'>Hello div</div>
+    // box-model
+    const boxModel = document.getElementById('box-model')
+    boxModel.addEventListener('click', function () {
+      textareaHTML.value = `<div id='div1'>Hello div</div>
 <div id='div2'>Hello div2</div>
 <span class='span'>This is a span</span>
 <span class='span'>This is another span</span>
 <div id='div3'>This is div without any specified width in css </div>
-      `;
-    textareaCSS.value = `   #div1,#div2 {
+      `
+      textareaCSS.value = `   #div1,#div2 {
       padding: 10px;
       width: 300px;
       margin: 10px;
@@ -203,13 +210,13 @@ strong {
       background: gray;
       color: white;
     }
-    `;
-    applyHtmlCss();
-  });
-  //CSS Variables
-  const cssVariables = document.getElementById("css-variables");
-  cssVariables.addEventListener("click", function () {
-    textareaHTML.value = `<h1>CSS Variables</h1>
+    `
+      applyHtmlCss()
+    })
+    //CSS Variables
+    const cssVariables = document.getElementById('css-variables')
+    cssVariables.addEventListener('click', function () {
+      textareaHTML.value = `<h1>CSS Variables</h1>
   <p>Welcome to CSS variables sections, play with
     them to get a hang of the concepts. Have fun!! 😃</p>
   <div>
@@ -227,8 +234,8 @@ strong {
 
   <button><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">Learn
       more about them</a></button>
-      `;
-    textareaCSS.value = `:root {
+      `
+      textareaCSS.value = `:root {
   --primary-color: #0091ad;
   --secondary-color: #fff4e4;
   --action-color: #ff57bb;
@@ -272,14 +279,14 @@ button {
 }
 a {
   color: var(--secondary-color, white);
-}`;
-    applyHtmlCss();
-  });
+}`
+      applyHtmlCss()
+    })
 
-  //CSS Selectors
-  const cssSelectors = document.getElementById("css-selectors");
-  cssSelectors.addEventListener("click", function () {
-    textareaHTML.value = `  <h1>CSS Selector Examples</h1>
+    //CSS Selectors
+    const cssSelectors = document.getElementById('css-selectors')
+    cssSelectors.addEventListener('click', function () {
+      textareaHTML.value = `  <h1>CSS Selector Examples</h1>
 
 <div class="section">
   <h2>Selection by Element Type</h2>
@@ -301,8 +308,8 @@ a {
   <a href="http://https://skillrazr.com/" alt="skillrazr Website" target="_blank">skillrazr</a>
 </div>
 
-      `;
-    textareaCSS.value = `h1 {
+      `
+      textareaCSS.value = `h1 {
   text-align: center;
 }
 
@@ -340,14 +347,14 @@ p {
   font-size: larger;
   font-style: oblique;
 }
-`;
-    applyHtmlCss();
-  });
+`
+      applyHtmlCss()
+    })
 
-  //CSS Pseudo Elements
-  const cssPseudoElements = document.getElementById("css-pseudo-elements");
-  cssPseudoElements.addEventListener("click", function () {
-    textareaHTML.value = `  <p class="first-line-color">
+    //CSS Pseudo Elements
+    const cssPseudoElements = document.getElementById('css-pseudo-elements')
+    cssPseudoElements.addEventListener('click', function () {
+      textareaHTML.value = `  <p class="first-line-color">
     A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected
     element(s). For example, ::first-line can be used to change the color of the first line of a paragraph like we did
     for this paragraph.
@@ -362,8 +369,8 @@ p {
   </p>
   <div class="img-container">
     <img class="ship-img" src="https://i.imgur.com/tyE0h7I.jpeg"
-  </div>`;
-    textareaCSS.value = `body {
+  </div>`
+      textareaCSS.value = `body {
   padding: 1.5rem;
 }
 p {
@@ -400,14 +407,14 @@ span {
   color: red;
 }
 
-`;
-    applyHtmlCss();
-  });
+`
+      applyHtmlCss()
+    })
 
-   //CSS Flexbox
-   const cssFlexbox = document.getElementById("css-flexbox");
-   cssFlexbox.addEventListener("click", function () {
-    textareaHTML.value = `<h1>Flexbox</h1>
+    //CSS Flexbox
+    const cssFlexbox = document.getElementById('css-flexbox')
+    cssFlexbox.addEventListener('click', function () {
+      textareaHTML.value = `<h1>Flexbox</h1>
   <p class="intro">Flexbox is a layout method for arranging items in rows in columns. To use it we need an element or
     container whose
     display will be flex, and some items / child elements inside thee flexbox / container. Flexbox offers many
@@ -615,8 +622,8 @@ span {
   </section>
   <button><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox" target="_blank">Learn
       more about Flexbox</a></button>
-  `;
-    textareaCSS.value = `body {
+  `
+      textareaCSS.value = `body {
   padding: 2rem;
   color: #0091ad;
 }
@@ -689,13 +696,12 @@ button {
 a {
   color: var(--secondary-color, white);
 }
-`;
-    applyHtmlCss();
-  });
+`
+      applyHtmlCss()
+    })
 
-  textareaHTML.addEventListener("input", () => applyHtmlCss("html"));
-  textareaCSS.addEventListener("input", () => applyHtmlCss("css"));
-  window.addEventListener("load", applyHtmlCss);
-</script>
-
+    textareaHTML.addEventListener('input', () => applyHtmlCss('html'))
+    textareaCSS.addEventListener('input', () => applyHtmlCss('css'))
+    window.addEventListener('load', applyHtmlCss)
+  </script>
 </html>
