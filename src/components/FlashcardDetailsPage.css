@@ -1,9 +1,9 @@
-/* Default styles */
 .card {
   position: relative;
-  height: 400px;
+  min-height: 400px;
   width: 700px;
   margin: 0 auto;
+  margin-top: 5px;
   transform-style: preserve-3d;
   transition: transform 0.5s;
   box-sizing: border-box;
@@ -14,6 +14,7 @@
   position: relative;
   width: 90px;
   margin: 0 auto;
+  padding-left: 20px;
 }
 
 .card.flipped {
@@ -34,8 +35,9 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   background-color: #ffffff;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .back {
@@ -48,7 +50,19 @@
   margin: 0;
 }
 
+.back div {
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: green;
+}
+
 .flip-button {
+  position: absolute;
+  left: 300px;
+  right: 300px;
+  bottom: 10px;
   align-self: center;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -66,6 +80,8 @@
 
 .prev-button,
 .next-button {
+  display: flex;
+  align-items: center;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: none;
@@ -100,18 +116,18 @@
   margin-left: 5px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
 .prev-button {
   margin-right: 1rem;
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
 }
 
 .next-button {
   margin-left: 1rem;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
 }
 
 .heading {
@@ -142,9 +158,12 @@
 
 /* Small devices (phones) */
 @media only screen and (max-width: 600px) {
+  .mb-12 {
+    padding-top: 30px;
+  }
   .card {
-    height: 300px;
-    width: 90%;
+    height: 450px;
+    width: 300px;
   }
 
   .front,
@@ -157,6 +176,10 @@
     font-size: 1.2rem;
   }
 
+  .back div {
+    position: static;
+  }
+
   .flip-button,
   .prev-button,
   .next-button {
@@ -165,5 +188,10 @@
 
   .heading {
     margin-left: 5px;
+  }
+
+  .flip-button {
+    left: auto;
+    right: 120px;
   }
 }

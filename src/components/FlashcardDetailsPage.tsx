@@ -81,25 +81,24 @@ function FlashcardDetailsPage() {
               }`}</h2>
               <div className="button-container">
                 {currentQuestionIndex === 0 ? (
-                  <p></p>
+                  <span></span>
                 ) : (
                   <button className="prev-button" onClick={handlePrevClick}>
                     <i className="fa fa-chevron-left"></i>
                   </button>
                 )}
-
+                <button className="flip-button" onClick={handleClick}>
+                  Flip
+                </button>
                 {currentQuestionIndex !== matchingFlashcards.length - 1 && (
                   <button className="next-button" onClick={handleNextClick}>
                     <i className="fa fa-chevron-right"></i>
                   </button>
                 )}
               </div>
-              <button className="flip-button" onClick={handleClick}>
-                Flip
-              </button>
             </div>
             <div className="back">
-              <h2>Answer:</h2>
+              <div>Answer:</div>
               <h2 className="answer">
                 {matchingFlashcards[currentQuestionIndex].answer}
               </h2>
