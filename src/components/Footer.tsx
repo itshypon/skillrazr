@@ -6,7 +6,7 @@ import ModalDialog from "./Modal";
 import PrivacyPolicy from "./Privacy";
 import TermsOfService from "./Terms";
 import ReturnsPolicy from "./ReturnsPolicy";
-import Roadmaps from "./Roadmaps";
+
 import logo from "../assets/images/SkillRazr.svg";
 
 const BG = styled("div")`
