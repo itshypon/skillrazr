@@ -6,7 +6,7 @@ import ModalDialog from "./Modal";
 import PrivacyPolicy from "./Privacy";
 import TermsOfService from "./Terms";
 import ReturnsPolicy from "./ReturnsPolicy";
-
+import Roadmaps from "./Roadmaps";
 import logo from "../assets/images/SkillRazr.svg";
 
 const BG = styled("div")`
@@ -277,6 +277,9 @@ export default function Footer() {
                 }}
               >
                 <Sub>Return Policy</Sub>
+              </NavLink>
+              <NavLink to="/Roadmaps" className="text-white flex pt-4">
+                Roadmap
               </NavLink>
             </Grid>
           </Grid>

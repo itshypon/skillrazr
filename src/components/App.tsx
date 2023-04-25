@@ -27,6 +27,7 @@ import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import Roadmaps from "./Roadmaps";
 
 const auth = getAuth();
 
@@ -175,6 +176,10 @@ function App(props: any) {
             <Route
               path="/evergreen_courses"
               element={<SummerCoursePage {...props} />}
+            />
+            <Route
+            path="/Roadmaps"
+            index element={<Roadmaps {...props}/>}
             />
             <Route
               path="/courses/:id"

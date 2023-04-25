@@ -72,11 +72,6 @@ export default function Navbar(props: any) {
             </li>
             <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#testimonials">
-                Roadmap
-              </a>
-            </li>
-            <li className="nav-item ml-8 font-medium">
-              <a className="nav-link" href="/#testimonials">
                 Stories
               </a>
             </li>

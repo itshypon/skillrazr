@@ -133,8 +133,9 @@ const Roadmaps = () => {
   }
 
   return (
-    <div className="border-r-4 border-l-4 border-pink-500 rounded-lg">
-      <h1 className="text-6xl text-center mb-8">Get FullStack Ready</h1>
+    
+      <div className="border-r-4 border-l-4 border-pink-500">
+      <h1 className="text-6xl text-center mt-20 w-50 ">Get FullStack Mastered</h1>
       <List className="flex flex-col">
         {topics.map((topic, index) => (
           <div key={index}>
@@ -177,6 +178,7 @@ const Roadmaps = () => {
         ))}
       </List>
     </div>
+    
   )
 }
 
