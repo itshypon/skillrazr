@@ -1,0 +1,19 @@
+.profile img {
+    border: 2px black solid;
+    border-radius: 50%;
+}
+
+.profile .sec-1,.sec-2 {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.Sidebar{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 4rem;
+    margin-left:1px;
+}

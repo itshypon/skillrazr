@@ -27,6 +27,7 @@ import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import Dashboard from "./dashboard_intern/Dashboard";
 
 const auth = getAuth();
 
@@ -213,6 +214,15 @@ function App(props: any) {
               <div style={{ marginTop: "120px" }}>
                 <Navbar />
                 <Editor {...props} />
+              </div>
+            }
+          />
+          <Route
+            path="/internship"
+            element={
+              <div style={{ marginTop: "120px" }}>
+                <Navbar />
+                <Dashboard {...props} />
               </div>
             }
           />
