@@ -6,7 +6,7 @@ import Testimonials from "./Testimonials";
 import Internship from "./Internship";
 import Faqs from "./Faqs";
 
-import Roadmaps from "./Roadmaps";
+
 
 
 
@@ -15,7 +15,6 @@ const HomePage = () => {
     <div className="App container">
       <MainSection />
       <Features />
-      <Roadmaps />
       <Testimonials />
       <Courses />
       <Quizes />
