@@ -14,7 +14,6 @@ function Cards(){
                             color={card.color}
                             barValue={card.barValue}
                             value={card.value}
-                            series={card.series}
                             />
                     </div>
                 )

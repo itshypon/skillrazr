@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import {useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,6 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import './css/Table.css';
+import {internData} from './InternData';
+import {cardsData} from './Data';
+
+
 
 function createData(
   name: string,
@@ -17,22 +22,22 @@ function createData(
 }
 
 const rows = [
-  createData('Himanshu' ,335 ,'Approved'),
-  createData('Mayank' ,337 ,'Pending'),
-  createData('Ranjith' ,333 ,'Approved'),
-  createData('Rajiv' ,334 ,'Decline'),
-  createData('Suraj' ,336 , 'Decline'),
+  createData('Himanshu' ,335 ,'Working'),
+  createData('Mayank' ,337 ,'Reviewing'),
+  createData('Ranjith' ,333 ,'Working'),
+  createData('Rajiv' ,334 ,'Idle'),
+  createData('Suraj' ,336 , 'Idle'),
 ];
 
 const makeStyles = (status:string)=>{
-    if(status === 'Approved')
+    if(status === 'Working')
         {
             return {
                 background: 'rgb(145 254 159 / 47%)',
                 color: 'green',
             }
         }
-        else if(status === 'Pending')
+        else if(status === 'Reviewing')
         {
             return{
                 background: '#ffada8f',
@@ -48,6 +53,20 @@ const makeStyles = (status:string)=>{
 }
 
 export default function BasicTable() {
+  // const [click, setClick] = useState(false);
+  // const [cardTitle, setCardTitle] = useState("");
+
+  function handleClick(name:string){
+    return ()=>{
+    internData.map((item)=>{
+      if(item.name===name){
+        cardsData[0].value=item.numOfTasks;
+        cardsData[1].value=item.codeReviews;
+        cardsData[2].value=item.attendance;
+      }
+    })
+    }
+  }
   return (
     <div className="Table">
         <h3>Recent Orders</h3>
@@ -76,7 +95,11 @@ export default function BasicTable() {
               <TableCell align="right">
                 <span className="status" style={makeStyles(row.status)}>{row.status}</span>
                 </TableCell>
-              <TableCell align="right" className="Details">Details</TableCell>
+              <TableCell align="right" className="Details"><button 
+              className="detailsButton"
+              onClick={handleClick(row.name)}
+              >
+                Details</button></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -1,5 +1,3 @@
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import img from './task.gif'
 export const cardsData = [
     {
       title: "Tasks",
@@ -9,12 +7,6 @@ export const cardsData = [
       },
       barValue: 70,
       value: "7",
-      series: [
-        {
-          name: "Sales",
-          data: [31, 40, 28, 51, 42, 109, 100],
-        },
-      ],
     },
     {
       title: "Code Reviews",
@@ -24,12 +16,6 @@ export const cardsData = [
       },
       barValue: 20,
       value: "2",
-      series: [
-        {
-          name: "Revenue",
-          data: [10, 100, 50, 70, 80, 30, 40],
-        },
-      ],
     },
     {
       title: "Attendance",
@@ -40,11 +26,5 @@ export const cardsData = [
       },
       barValue: 90,
       value: "150",
-      series: [
-        {
-          name: "Expenses",
-          data: [10, 25, 15, 30, 12, 15, 20],
-        },
-      ],
     },
   ];
