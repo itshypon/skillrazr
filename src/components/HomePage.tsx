@@ -7,6 +7,9 @@ import Internship from "./Internship";
 import Faqs from "./Faqs";
 
 
+
+
+
 const HomePage = () => {
   return (
     <div className="App container">
