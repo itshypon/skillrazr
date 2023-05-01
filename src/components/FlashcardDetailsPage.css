@@ -1,0 +1,197 @@
+.card {
+  position: relative;
+  min-height: 400px;
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 5px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.question-number {
+  position: relative;
+  width: 90px;
+  margin: 0 auto;
+  padding-left: 20px;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.question,
+.answer {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.back div {
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: green;
+}
+
+.flip-button {
+  position: absolute;
+  left: 300px;
+  right: 300px;
+  bottom: 10px;
+  align-self: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #2196f3;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.flip-button:hover {
+  background-color: #0d47a1;
+}
+
+.prev-button,
+.next-button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #eeeeee;
+  color: #333333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #dddddd;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.button-container .prev-button {
+  margin-right: 1rem;
+}
+
+.button-container .next-button {
+  margin-left: 1rem;
+}
+
+.fa {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.prev-button {
+  margin-right: 1rem;
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+
+.next-button {
+  margin-left: 1rem;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+}
+
+.heading {
+  margin-top: 80px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.category {
+  font-family: Arial, sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333333;
+  text-shadow: 2px 2px #cccccc;
+}
+
+.description {
+  font-family: Arial, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #666666;
+  margin-top: 5px;
+}
+
+/* Media queries for adaptive design */
+
+/* Small devices (phones) */
+@media only screen and (max-width: 600px) {
+  .mb-12 {
+    padding-top: 30px;
+  }
+  .card {
+    height: 450px;
+    width: 300px;
+  }
+
+  .front,
+  .back {
+    padding: 10px;
+  }
+
+  .question,
+  .answer {
+    font-size: 1.2rem;
+  }
+
+  .back div {
+    position: static;
+  }
+
+  .flip-button,
+  .prev-button,
+  .next-button {
+    font-size: 0.8rem;
+  }
+
+  .heading {
+    margin-left: 5px;
+  }
+
+  .flip-button {
+    left: auto;
+    right: 120px;
+  }
+}

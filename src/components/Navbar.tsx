@@ -85,6 +85,7 @@ export default function Navbar(props: any) {
                 Internship
               </a>
             </li>
+            
             <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#faqs">
                 FAQs
