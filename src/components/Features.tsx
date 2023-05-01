@@ -20,12 +20,12 @@ export default function Features(props: any) {
       }
     >
       <div className="text-6xl text-center mb-8">Top Features</div>
-      <div className="flex flex-wrap flex-col md:flex-row  justify-between p-2 w-full">
+      <div className="flex flex-wrap min-[320px]:flex-col xl:flex-row justify-between p-2 w-full">
         {features.map((feature) => {
           return (
             <div
               key={feature.title}
-              className="flex items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-2 mt-lg-0 box-shadow border rounded-[5px]"
+              className="flex items-center justify-center mt-2 ml-0 px-4 py-2 mt-lg-0 box-shadow border rounded-[5px] "
             >
               {<feature.icon />}
               <span className="ml-2 text-[24px]">{feature.title}</span>

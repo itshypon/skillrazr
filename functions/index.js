@@ -171,3 +171,4 @@ app.post("/getCompletionText", [appCheckVerification], async (req, res) => {
 });
 
 exports.skillRazr = functions.region("asia-south1").https.onRequest(app);
+exports.skillRazrIntern = require("./intern");

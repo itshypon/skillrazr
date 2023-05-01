@@ -33,14 +33,14 @@ export default function Quizes(props: any) {
 
             <div>Test your skills with these short quizzes</div>
 
-            <div className="flex flex-wrap flex-col md:flex-row  justify-center p-2 w-full">
+            <div className="flex flex-wrap sm:flex-col lg:flex-row  items-center justify-center p-2 w-full">
                 {quizes.map((quiz: any) => {
                     return (
-                        <NavLink key={quiz.title} to={`/quizzes/${quiz.id}`} onClick={() => {
+                        <NavLink key={quiz.title} className="mr-2 sm:w-8/12 lg:w-fit" to={`/quizzes/${quiz.id}`} onClick={() => {
                             window.scrollTo(0, 0);
                         }}>
                             <div
-                                className="flex flex-col items-center justify-center mt-2 ml-0 sm:ml-12 px-4 py-4 mt-lg-0  box-shadow border border-green-500 rounded-[5px]"
+                                className="flex flex-col items-center justify-center mt-2 ml-0 w-full ml-2 px-4 py-4 mt-lg-0  box-shadow border border-green-500 rounded-[5px]"
                             >
 
 

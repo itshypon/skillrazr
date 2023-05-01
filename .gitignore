@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
 
 /temp_notes
 
@@ -12,6 +13,9 @@
 
 # production
 /build
+
+#VS Code Settings
+/.vscode
 
 # misc
 .DS_Store
