@@ -6,6 +6,7 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from "./CourseDetailsPage";
 import QuizDetailsPage from "./QuizDetailsPage";
+import FlashcardDetailsPage from "./FlashcardDetailsPage";
 import BlogDetailsPage from "./BlogDetailsPage";
 import QuizesList from "./QuizesListPage";
 import BlogsList from "./BlogsListPage";
@@ -211,6 +212,11 @@ function App(props: any) {
 
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />
+
+            <Route
+              path="/flashcards/:id"
+              element={<FlashcardDetailsPage {...props} />}
+            />
           </Route>
           <Route
             path="/jseditor"
