@@ -18,10 +18,10 @@ export const Editor = (props: Props) => {
   );
   const [error, setError] = React.useState("");
   const [testId, setTestId] = React.useState(Date.now());
-  
+
   //object to store js concepts
   const jsConcepts = {
-    'Variable Declaration' : `//JS gives us 3 ways to declare variables
+    "Variable Declaration": `//JS gives us 3 ways to declare variables
   //var, let, const
   //var is the old way, ES6 introduced let & const
   //advantage of let & const is that it allows scoping at the block level
@@ -81,7 +81,7 @@ export const Editor = (props: Props) => {
   //This is because the constant variable is simply a reference to an object in memory. When you modify the properties of the object, you
   //are not changing the reference itself, but rather the data stored at that reference`,
 
-    'Loops & Iterations' : `let array = [45, 23, 1, 0, 63];
+    "Loops & Iterations": `let array = [45, 23, 1, 0, 63];
 let string = "SkillRazr";
 let obj = { a: 1, b: 2, c: 3 };
 //for loop
@@ -131,12 +131,12 @@ for (let element of string) {
 for (let prop in obj) {
   console.log(prop + ": " + obj[prop]);
 }`,
-    'Arrays' : `//creating an array
+    Arrays: `//creating an array
 //an array can have any type of elements within it, including other arrays and objects
 let fruits = ["apple", "banana", "orange", "mango"];
 
 //we can access its element using index
-//index starts at 0 from the leftmost element, and at -1 at the rightmost element
+//index starts at 0 from the leftmost element
 console.log(fruits[2]);
 console.log(fruits[0]);
 console.log(fruits[-2]);
@@ -169,7 +169,7 @@ console.log("fruits : " + fruits);
 let firstElement = fruits.shift();
 console.log("First Element : " + firstElement);
 console.log("fruits : " + fruits);`,
-    'Functions' : `//a function can be declared and used in many ways in javascript
+    Functions: `//a function can be declared and used in many ways in javascript
 
 //using function keyword
 
@@ -212,12 +212,12 @@ console.log("Double of 456 is : " + double(456));
 
 (() => {
   console.log("Me too.");
-})();`
+})();`,
   };
 
-  //function to generate button for each each concept 
+  //function to generate button for each each concept
   const createButtons = () => {
-    let buttons = []
+    let buttons = [];
     for (const concept in jsConcepts) {
       buttons.push(
         <button
@@ -232,7 +232,7 @@ console.log("Double of 456 is : " + double(456));
             {concept}
           </span>
         </button>
-      )
+      );
     }
     return buttons;
   };
