@@ -278,6 +278,9 @@ export default function Footer() {
               >
                 <Sub>Return Policy</Sub>
               </NavLink>
+              <NavLink to="/Roadmaps" className="text-white flex pt-4">
+                Roadmap
+              </NavLink>
             </Grid>
           </Grid>
         </Grid>

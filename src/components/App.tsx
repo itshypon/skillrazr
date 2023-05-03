@@ -6,6 +6,7 @@ import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from "./CourseDetailsPage";
 import QuizDetailsPage from "./QuizDetailsPage";
+import FlashcardDetailsPage from "./FlashcardDetailsPage";
 import BlogDetailsPage from "./BlogDetailsPage";
 import QuizesList from "./QuizesListPage";
 import BlogsList from "./BlogsListPage";
@@ -27,7 +28,8 @@ import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import Dashboard from "./dashboard_intern/Dashboard";
+import Roadmaps from "./Roadmaps";
+import InternDashboard from "./dashboard_intern/Dashboard";
 
 const auth = getAuth();
 
@@ -177,6 +179,7 @@ function App(props: any) {
               path="/evergreen_courses"
               element={<SummerCoursePage {...props} />}
             />
+            <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
             <Route
               path="/courses/:id"
               element={<CourseDetailsPage {...props} />}
@@ -205,24 +208,24 @@ function App(props: any) {
               element={<QuizesList {...props} className="p-48" />}
             />
 
+            <Route
+              path="/internship"
+              element={<InternDashboard {...props} />}
+            />
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />
+
+            <Route
+              path="/flashcards/:id"
+              element={<FlashcardDetailsPage {...props} />}
+            />
           </Route>
           <Route
             path="/jseditor"
             element={
               <div style={{ marginTop: "120px" }}>
-                <Navbar />
+                <Navbar {...props} />
                 <Editor {...props} />
-              </div>
-            }
-          />
-          <Route
-            path="/internship"
-            element={
-              <div style={{ marginTop: "120px" }}>
-                <Navbar />
-                <Dashboard {...props} />
               </div>
             }
           />
@@ -230,7 +233,7 @@ function App(props: any) {
             path="/csseditor"
             element={
               <div style={{ marginTop: "120px" }}>
-                <Navbar />
+                <Navbar {...props} />
                 <CSSEditor />
               </div>
             }
