@@ -170,5 +170,36 @@ app.post("/getCompletionText", [appCheckVerification], async (req, res) => {
   }
 });
 
+app.post("/generateStory", [appCheckVerification], async (req, res) => {
+  const { storyPrompt, apiKey } = req.body;
+  try {
+    const configuration = new Configuration({
+      apiKey: apiKey || "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",
+    });
+
+    const openai = new OpenAIApi(configuration);
+
+    const completion = await openai.createCompletion({
+      model: "gpt-3.5-turbo",
+      temperature: 0.7,
+      max_tokens: 2000,
+      messages: [{role: "user", content: storyPrompt}],
+    });
+
+    const result = completion.data.choices[0].message.content;
+
+    if (!result) {
+      return res.status(200).json({
+        status: 0,
+        message: "Unable to generate story, Sorry. Please try again later.",
+      });
+    }
+
+    return res.status(200).json({ status: 1, data: result });
+  } catch (error) {
+    return res.status(200).json({ status: -1, error });
+  }
+});
+
 exports.skillRazr = functions.region("asia-south1").https.onRequest(app);
 exports.skillRazrIntern = require("./intern");
