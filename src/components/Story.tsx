@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { storyGenerator } from "../uiHelper";
 
 export default function Story() {
+  //variable to store generated story
+  const [generatedStory, setGeneratedStory] = useState<string>("");
   //variable to store selected characters
   const [pickedCharacters, setPickedCharacters] = useState<string[]>([]);
   //function to add a character in pickedCharacter
@@ -73,6 +76,17 @@ export default function Story() {
     }
     return buttons;
   };
+  //function to generate story
+  const generateStory = async () => {
+    let result = storyGenerator(
+      "what is the first letter of alphabet?",
+      "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"
+    );
+    console.log(result);
+    // setGeneratedStory(
+    //   await storyGenerator("what is the first letter of alphabet?")
+    // );
+  };
   return (
     <div>
       <div style={{ height: "131px" }}></div>{" "}
@@ -88,6 +102,10 @@ export default function Story() {
         <div>{createCharacterAddButtons()}</div>
         <p>Selected characters, click on them to unselect them</p>
         <div>{createCharacterRemoveButtons()}</div>
+        <button onClick={generateStory}>
+          Click here to generate the story.
+        </button>
+        <p>{generatedStory}</p>
       </main>
     </div>
   );

@@ -165,3 +165,17 @@ export const getQuizQuestionsFromString = (quizString: string) => {
 
   return { questions, answers };
 };
+
+export const storyGenerator = async (storyPrompt: string, apiKey = "") => {
+  return await fetch(
+    `https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr/generateStory`,
+    {
+      headers: {
+        "X-Firebase-AppCheck": `appCheckTokenResponse.token`,
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ storyPrompt, apiKey }),
+    }
+  ).then((resp) => resp.json());
+};
