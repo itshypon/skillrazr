@@ -3,6 +3,8 @@ import { storyGenerator } from "../uiHelper";
 import { NavLink } from "react-router-dom";
 import { Button, CircularProgress } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+// import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 
 export default function Story() {
   const [generatedStory, setGeneratedStory] = useState<string>("");
@@ -83,17 +85,23 @@ export default function Story() {
       setLoading(false);
       console.log(result);
       setGeneratedStory(result.data);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
 
-      const message = new SpeechSynthesisUtterance(result.data);
+  const readStory = () => {
+    try {
+      const message = new SpeechSynthesisUtterance(generatedStory);
       const synth = window.speechSynthesis;
 
       message.voice = synth.getVoices()[0];
       message.volume = 1;
-      message.rate = 0.75;
+      // message.rate = 0.75;
 
       synth.speak(message);
     } catch (e) {
-      setLoading(false);
+      console.log("error reading text", e);
     }
   };
 
@@ -109,13 +117,23 @@ export default function Story() {
         {loading ? (
           <CircularProgress />
         ) : (
-          <Button
-            variant="contained"
-            onClick={generateStory}
-            disabled={pickedCharacters.length === 0}
-          >
-            Generate
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              onClick={generateStory}
+              disabled={pickedCharacters.length === 0}
+            >
+              Generate
+            </Button>
+
+            <Button
+              className="ml-4"
+              onClick={readStory}
+              disabled={!generatedStory}
+            >
+              <PlayCircleIcon></PlayCircleIcon>
+            </Button>
+          </>
         )}
         <p className="text-base px-4 mt-4 max-h-[160px] overflow-auto">
           {generatedStory}
