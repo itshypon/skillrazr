@@ -3,6 +3,7 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 const { Configuration, OpenAIApi } = require("openai");
+const env = require("./.env.json");
 
 const getScore = (answerObj, submissionObj) => {
   const totalQuestions = Object.keys(answerObj).length;
@@ -30,7 +31,11 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 
-const whitelist = ["https://skillrazr.com", "https://skillrazr.web.app"];
+const whitelist = [
+  "https://skillrazr.com",
+  "https://skillrazr.web.app",
+  "http://localhost:3000",
+];
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -143,7 +148,7 @@ app.post("/getCompletionText", [appCheckVerification], async (req, res) => {
   const { query, prompt = "", apiKey } = req.body;
   try {
     const configuration = new Configuration({
-      apiKey: apiKey || "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",
+      apiKey: apiKey || env.OPEN_AI_API_KEY,
     });
 
     const openai = new OpenAIApi(configuration);
@@ -174,7 +179,7 @@ app.post("/generateStory", [appCheckVerification], async (req, res) => {
   const { storyPrompt, apiKey } = req.body;
   try {
     const configuration = new Configuration({
-      apiKey: apiKey || "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",
+      apiKey: apiKey || env.OPEN_AI_API_KEY,
     });
 
     const openai = new OpenAIApi(configuration);

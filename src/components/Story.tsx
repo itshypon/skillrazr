@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { storyGenerator } from "../uiHelper";
+import { NavLink } from "react-router-dom";
+import { Button, CircularProgress } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function Story() {
-  //variable to store generated story
   const [generatedStory, setGeneratedStory] = useState<string>("");
-  //variable to store selected characters
   const [pickedCharacters, setPickedCharacters] = useState<string[]>([]);
-  //function to add a character in pickedCharacter
-  const addCharacter = (newCharacter: string) => {
-    if (pickedCharacters.includes(newCharacter)) {
-      //call function to display tooltip informing user that the character is already selected
+  const [loading, setLoading] = useState(false);
+
+  const addRemoveCharacter = (character: string) => {
+    if (pickedCharacters.includes(character)) {
+      let array = [...pickedCharacters];
+      array.splice(array.indexOf(character), 1);
+      setPickedCharacters(array);
     } else {
-      setPickedCharacters((previousValue) => [...previousValue, newCharacter]);
+      if (pickedCharacters.length === 3) {
+        return;
+      }
+      setPickedCharacters((previousValue) => [...previousValue, character]);
     }
   };
-  //function to remove occurrences of a character in pickedCharacter
-  const removeCharacter = (character: string) => {
-    let array = [...pickedCharacters];
-    array.splice(array.indexOf(character), 1);
-    setPickedCharacters(array);
-  };
+
   //variable to store characters
-  const characters = {
+  const characters: Record<string, string> = {
     "🐵": "Monkey",
     "🦊": "Fox",
     "🦁": "Lion",
@@ -29,83 +31,100 @@ export default function Story() {
     "🦄": "Unicorn",
     "🐀": "Rat",
     "🐑": "Sheep",
-    "🐇": "Rabbit",
+    "🐇": "Rabit",
     "🦍": "Gorilla",
     "🐉": "Dragon",
     "🐍": "Snake",
   };
   //function to generate character add buttons
-  const createCharacterAddButtons = () => {
+  const renderCharacters = () => {
     let buttons = [];
     for (const character in characters) {
-      {
-        buttons.push(
-          <button
-            key={`${characters[character as keyof typeof characters]}-add-key`}
-            onClick={() => {
-              addCharacter(character);
-            }}
-            id={`${
-              characters[character as keyof typeof characters]
-            }-add-button`}
-          >
-            {character}
-          </button>
-        );
-      }
-    }
-    return buttons;
-  };
-  //function to generate character remove buttons
-  const createCharacterRemoveButtons = () => {
-    let buttons = [];
-    for (const character of pickedCharacters) {
       buttons.push(
         <button
-          key={`${characters[character as keyof typeof characters]}-remove-key`}
+          className="mr-2"
+          key={`${characters[character as keyof typeof characters]}-add-key`}
           onClick={() => {
-            removeCharacter(character);
+            addRemoveCharacter(character);
           }}
-          id={`${
-            characters[character as keyof typeof characters]
-          }-remove-button`}
+          id={`${characters[character as keyof typeof characters]}-add-button`}
         >
-          {character}
+          <span
+            className={`${
+              pickedCharacters.includes(character)
+                ? "border-2 bg-green-500"
+                : "border-0"
+            }`}
+          >
+            {character}
+          </span>
         </button>
       );
     }
     return buttons;
   };
-  //function to generate story
+
+  useEffect(() => {
+    document.getElementById("navlinks")?.classList.add("hidden");
+    return () =>
+      document.getElementById("navlinks")?.classList.remove("hidden");
+  }, []);
+
   const generateStory = async () => {
-    let result = storyGenerator(
-      "what is the first letter of alphabet?",
-      "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"
-    );
-    console.log(result);
-    // setGeneratedStory(
-    //   await storyGenerator("what is the first letter of alphabet?")
-    // );
+    setGeneratedStory("");
+    setLoading(true);
+    const actors = pickedCharacters.map((i) => characters[i]).join(",");
+    console.log("selected chars", actors);
+    try {
+      let result = await storyGenerator(
+        `Generate a moral story having characters ${actors} for a 3 year old kid`
+      );
+
+      setLoading(false);
+      console.log(result);
+      setGeneratedStory(result.data);
+
+      const message = new SpeechSynthesisUtterance(result.data);
+      const synth = window.speechSynthesis;
+
+      message.voice = synth.getVoices()[0];
+      message.volume = 1;
+      message.rate = 0.75;
+
+      synth.speak(message);
+    } catch (e) {
+      setLoading(false);
+    }
   };
+
   return (
-    <div>
-      <div style={{ height: "131px" }}></div>{" "}
+    <div className="fixed w-full h-[100vh]" id="story">
       {/* div to add empty space (height) so below elements are not hidden by navbar */}
-      <main>
-        <h2>AI story writer!!</h2>
-        <p>
-          In a world where everything is being charged up with AI, why not use
-          AI to write story for your kids. Or Even better, let the kids create
-          stories themselves using AI.
+      <main className="mt-[110px]">
+        <div className="text-4xl mb-6 border-b-2 border-gray-500 inline-block">
+          Story Time!
+        </div>
+        <p className="text-2xl">Pick 2 Characters!</p>
+        <div className="text-3xl my-6">{renderCharacters()}</div>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Button
+            variant="contained"
+            onClick={generateStory}
+            disabled={pickedCharacters.length === 0}
+          >
+            Generate
+          </Button>
+        )}
+        <p className="text-base px-4 mt-4 max-h-[160px] overflow-auto">
+          {generatedStory}
         </p>
-        <p>Pick Characters for your story.</p>
-        <div>{createCharacterAddButtons()}</div>
-        <p>Selected characters, click on them to unselect them</p>
-        <div>{createCharacterRemoveButtons()}</div>
-        <button onClick={generateStory}>
-          Click here to generate the story.
-        </button>
-        <p>{generatedStory}</p>
+        <NavLink to="/games">
+          <Button variant="outlined" className="!text-xs !p-1 !mr-1">
+            <ArrowBackIcon /> <span className="">Go Back</span>
+          </Button>
+        </NavLink>
       </main>
     </div>
   );

@@ -167,15 +167,17 @@ export const getQuizQuestionsFromString = (quizString: string) => {
 };
 
 export const storyGenerator = async (storyPrompt: string, apiKey = "") => {
-  return await fetch(
-    `https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr/generateStory`,
-    {
-      headers: {
-        "X-Firebase-AppCheck": `appCheckTokenResponse.token`,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({ storyPrompt, apiKey }),
-    }
-  ).then((resp) => resp.json());
+  // in local dev environment start the function emulator and point the API url to the emulator
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr"
+    : "http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazr";
+
+  return await fetch(`${baseUrl}/generateStory`, {
+    headers: {
+      "X-Firebase-AppCheck": `appCheckTokenResponse.token`,
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({ storyPrompt, apiKey }),
+  }).then((resp) => resp.json());
 };
