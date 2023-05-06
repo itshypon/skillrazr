@@ -2,6 +2,7 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
+const env = require("./.env.json");
 
 const app = express();
 app.use(cors());
@@ -10,10 +11,7 @@ app.get("/", (req, res) => res.status(200).send("hi intern!"));
 app.post("/addIntern", async (req, res) => {
   const { name, email, mobileNo, joinDate, github, notes } = req.body;
 
-  if (
-    req.header("skillrazr-sub-app") !==
-    process.env.NODE_ENV.INTERN_API_HEADER_KEY_VALUE
-  ) {
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
     return res.status(401).json({ status: 0, error: "you are not authorised" });
   }
 
@@ -44,10 +42,7 @@ app.post("/addIntern", async (req, res) => {
 });
 
 app.post("/getAllInterns", async (req, res) => {
-  if (
-    req.header("skillrazr-sub-app") !==
-    process.env.NODE_ENV.INTERN_API_HEADER_KEY_VALUE
-  ) {
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
     return res.status(401).json({ status: 0, error: "you are not authorised" });
   }
 

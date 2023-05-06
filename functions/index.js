@@ -179,12 +179,16 @@ app.post("/generateStory", [appCheckVerification], async (req, res) => {
 
     const openai = new OpenAIApi(configuration);
 
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: storyPrompt }],
+    const completion = await openai.createCompletion({
+      // model: "gpt-3.5-turbo",
+      // messages: [{ role: "user", content: storyPrompt }],
+      model: "text-davinci-002",
+      temperature: 0.7,
+      max_tokens: 2000,
+      prompt: storyPrompt,
     });
 
-    const result = completion.data.choices[0].message.content;
+    const result = completion.data.choices[0].text;
 
     if (!result) {
       return res.status(200).json({
@@ -195,6 +199,7 @@ app.post("/generateStory", [appCheckVerification], async (req, res) => {
 
     return res.status(200).json({ status: 1, data: result });
   } catch (error) {
+    console.log("generate story error", error, req.body);
     return res.status(200).json({ status: -1, error });
   }
 });

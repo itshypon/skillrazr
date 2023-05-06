@@ -45,12 +45,25 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-
 ## Firebase config set commands
+
 firebase functions:config:set someservice.key="THE API KEY" someservice.id="THE CLIENT ID"
 
-
-## Firebase Deployment 
+## Firebase Deployment
 
 # Hosting - Staging
+
 firebase deploy --only hosting:stage
+
+# Deploy functions
+
+firebase deploy --only functions
+firebase deploy --only functions:skillRazrIntern // specific function
+
+# Running functions locally
+
+firebase emulators:start
+Once emulator runs locally you can access the function port and make api calls locally e.g http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazr/generateStory
+
+When function takes a config param while deploying, to run the function locally you need to provide the same config using firebase .runtimeconfig.json in functions directory to generate the config use below command
+functions:config:get > .runtimeconfig.json

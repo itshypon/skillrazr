@@ -152,7 +152,18 @@ export default function Footer() {
             <Grid item>
               <Title>Developer</Title>
             </Grid>
-
+            <Grid item>
+              <NavLink
+                to="https://github.com/SkillRazr"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  window.scrollTo(0, 100);
+                }}
+              >
+                <Sub>Github</Sub>
+              </NavLink>
+            </Grid>
             <Grid item>
               <NavLink
                 to="/jseditor"
