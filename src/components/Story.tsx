@@ -5,11 +5,21 @@ import { Button, CircularProgress } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 // import PauseCircleIcon from '@mui/icons-material/PauseCircle';
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 
 export default function Story() {
   const [generatedStory, setGeneratedStory] = useState<string>("");
   const [pickedCharacters, setPickedCharacters] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [voice, setVoice] = React.useState<SpeechSynthesisVoice>();
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setVoice(voices.find((v) => v.name === event.target.value));
+  };
 
   const addRemoveCharacter = (character: string) => {
     if (pickedCharacters.includes(character)) {
@@ -72,6 +82,15 @@ export default function Story() {
       document.getElementById("navlinks")?.classList.remove("hidden");
   }, []);
 
+  useEffect(() => {
+    window.speechSynthesis.addEventListener("voiceschanged", () => {
+      const synth = window.speechSynthesis;
+      const voices = synth.getVoices().filter((v) => v.lang === "en-US");
+      setVoices(voices);
+      setVoice(voices[0]);
+    });
+  }, []);
+
   const generateStory = async () => {
     setGeneratedStory("");
     setLoading(true);
@@ -95,9 +114,11 @@ export default function Story() {
       const message = new SpeechSynthesisUtterance(generatedStory);
       const synth = window.speechSynthesis;
 
-      message.voice = synth.getVoices()[0];
+      if (voice) {
+        message.voice = voice;
+      }
       message.volume = 1;
-      // message.rate = 0.75;
+      message.rate = 1;
 
       synth.speak(message);
     } catch (e) {
@@ -119,6 +140,7 @@ export default function Story() {
         ) : (
           <>
             <Button
+              className="w-[240px]"
               variant="contained"
               onClick={generateStory}
               disabled={pickedCharacters.length === 0}
@@ -126,13 +148,34 @@ export default function Story() {
               Generate
             </Button>
 
-            <Button
-              className="ml-4"
-              onClick={readStory}
-              disabled={!generatedStory}
-            >
-              <PlayCircleIcon></PlayCircleIcon>
-            </Button>
+            <div className="flex items-center justify-center mt-4">
+              {generatedStory && voice ? (
+                <FormControl>
+                  <InputLabel id="demo-simple-select-label">Voice</InputLabel>
+
+                  <Select
+                    className="h-[40px]"
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={voice.name}
+                    label="Voice"
+                    onChange={handleChange}
+                  >
+                    {voices.map((v) => (
+                      <MenuItem value={v.name}>{v.name}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              ) : null}
+
+              <Button
+                className="ml-4 "
+                onClick={readStory}
+                disabled={!generatedStory}
+              >
+                <PlayCircleIcon fontSize={"large"}></PlayCircleIcon>
+              </Button>
+            </div>
           </>
         )}
         <p className="text-base px-4 mt-4 max-h-[160px] overflow-auto">
