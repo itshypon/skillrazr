@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Button, CircularProgress } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-// import PauseCircleIcon from '@mui/icons-material/PauseCircle';
+import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -24,6 +24,7 @@ export default function Story() {
   const [voice, setVoice] = React.useState<SpeechSynthesisVoice>();
   const [playing, setPlaying] = useState(false);
   const [openCurtains, setOpenCurtains] = useState(false);
+  const [pause, setPause] = useState(false);
 
   const handleChange = (event: SelectChangeEvent) => {
     setVoice(voices.find((v) => v.name === event.target.value));
@@ -47,13 +48,14 @@ export default function Story() {
     "🐵": "Monkey",
     "🦊": "Fox",
     "🦁": "Lion",
-    "🐯": "Tiger",
-    "🦄": "Unicorn",
+    "🐅": "Tiger",
+    "🐆": "Leopard",
+    "🦓": "Zebra",
+    "🐎": "Horse",
     "🐀": "Rat",
     "🐑": "Sheep",
     "🐇": "Rabit",
     "🦍": "Gorilla",
-    "🐉": "Dragon",
     "🐍": "Snake",
     "🐪": "Camel",
     "🐘": "Elephant",
@@ -100,7 +102,7 @@ export default function Story() {
           className="mr-2"
           key={`${characters[character as keyof typeof characters]}-add-key`}
         >
-          <span className={`actor actor${index} relative top-[5px]`}>
+          <span className={`actor actor${index} relative top-[5px] text-5xl`}>
             {character}
           </span>
         </button>
@@ -162,9 +164,10 @@ export default function Story() {
       }, 5000);
 
       message.addEventListener("end", (event) => {
-        // setPlaying(false);
+        setPlaying(false);
         console.log(`Story finished in ${event.elapsedTime / 1000} seconds.`);
         setOpenCurtains(false);
+        setSelectedCharacters([]);
       });
     } catch (e) {
       setPlaying(false);
@@ -172,18 +175,31 @@ export default function Story() {
     }
   };
 
+  const pauseStory = () => {
+    const synth = window.speechSynthesis;
+    if (synth) {
+      if (!pause) {
+        synth.pause();
+        setPause(true);
+      } else {
+        synth.resume();
+        setPause(false);
+      }
+    }
+  };
+
   return (
     <div className="fixed w-full h-[100vh]" id="story">
       {/* div to add empty space (height) so below elements are not hidden by navbar */}
       <main className="mt-[90px]">
-        <div className="text-4xl mb-6 border-b-2 border-gray-500 inline-block relative">
+        <div className="text-3xl mb-6 border-b-2 border-gray-500 inline-block relative">
           Story Time!
-          <span className="absolute top-[16px] right-[-40px] text-5xl rotate-[15deg]">
+          <span className="absolute top-[12px] right-[-40px] text-5xl rotate-[15deg]">
             🐒
           </span>
         </div>
         {playing ? (
-          <div className="border-[6px] border-gray-500">
+          <div className="border-[6px] border-red-500">
             <div
               className={`text-3xl my-0 curtain ${
                 openCurtains ? " curtain-open" : " curtain-closed"
@@ -239,13 +255,29 @@ export default function Story() {
                 </FormControl>
               ) : null}
 
-              <Button
-                className="ml-4 "
-                onClick={readStory}
-                disabled={!generatedStory}
-              >
-                <PlayCircleIcon fontSize={"large"}></PlayCircleIcon>
-              </Button>
+              {!playing ? (
+                <Button
+                  className="ml-4 "
+                  onClick={readStory}
+                  disabled={!generatedStory}
+                >
+                  <PlayCircleIcon fontSize={"large"}></PlayCircleIcon>
+                </Button>
+              ) : (
+                <>
+                  {pause ? (
+                    <PlayCircleIcon
+                      fontSize={"large"}
+                      onClick={pauseStory}
+                    ></PlayCircleIcon>
+                  ) : (
+                    <PauseCircleIcon
+                      fontSize={"large"}
+                      onClick={pauseStory}
+                    ></PauseCircleIcon>
+                  )}
+                </>
+              )}
             </div>
           </>
         )}

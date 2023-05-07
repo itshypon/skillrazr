@@ -185,9 +185,7 @@ app.post("/generateStory", [appCheckVerification], async (req, res) => {
     const openai = new OpenAIApi(configuration);
 
     const completion = await openai.createCompletion({
-      // model: "gpt-3.5-turbo",
-      // messages: [{ role: "user", content: storyPrompt }],
-      model: "text-davinci-002",
+      model: "text-curie-001",
       temperature: 0.7,
       max_tokens: 2000,
       prompt: storyPrompt,
