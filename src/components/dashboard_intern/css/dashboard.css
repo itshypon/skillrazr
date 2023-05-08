@@ -17,6 +17,12 @@
   font-family: "Montserrat", sans-serrif;
 }
 
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
 .dashboard {
   /* padding: 0.5rem 3.5rem; */
   color: var(--black);

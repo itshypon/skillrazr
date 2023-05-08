@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import MainDashboard from "./MainDashboard";
 import RightSide from "./RightSide";
 import { useSelector } from "react-redux";
+import Info from "./Info";
 
 function Dashboard(props: any) {
   var user = useSelector((state: any) => state.currentUserReducer);
@@ -17,8 +18,10 @@ function Dashboard(props: any) {
             github="https://www.github.com"
             linkedin="https:www.linkedin.com"
           />
+          <div className="rightSide">
+          <Info />
           <MainDashboard />
-          <RightSide />
+          </div>
         </div>
       ) : (
         <div>Please login to continue!</div>
