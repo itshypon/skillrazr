@@ -63,4 +63,33 @@ app.post("/getAllInterns", async (req, res) => {
   }
 });
 
+app.post("/updateInternAttendance", async (req, res) => {
+  console.log("api start", env.INTERN_API_HEADER_KEY_VALUE);
+
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
+    return res.status(401).json({ status: 0, error: "you are not authorised" });
+  }
+
+  try {
+    const { users } = JSON.parse(req.body);
+    const db = admin.firestore();
+
+    const updateBatch = db.batch();
+
+    console.log("api body", users, req.body);
+
+    users.forEach((docId) => {
+      const docRef = db.collection("interns").doc(docId);
+      console.log("docRef", docRef);
+      updateBatch.update(docRef, { absent: true });
+    });
+
+    const result = await updateBatch.commit();
+    console.log("result from batch", result);
+    res.status(200).json({ status: 1, data: result });
+  } catch (error) {
+    res.status(200).json({ status: 0, error });
+  }
+});
+
 exports.api = functions.region("asia-south1").https.onRequest(app);
