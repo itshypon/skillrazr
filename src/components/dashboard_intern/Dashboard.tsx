@@ -2,6 +2,7 @@ import "./css/dashboard.css";
 import Sidebar from "./Sidebar";
 import MainDashboard from "./MainDashboard";
 import RightSide from "./RightSide";
+import LandingPage from "./LandingPage";
 import { useSelector } from "react-redux";
 import Info from "./Info";
 
@@ -24,7 +25,9 @@ function Dashboard(props: any) {
           </div>
         </div>
       ) : (
-        <div>Please login to continue!</div>
+        <div>
+          <LandingPage />
+        </div>
       )}
     </div>
   );
