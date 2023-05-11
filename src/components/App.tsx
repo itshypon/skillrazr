@@ -29,7 +29,7 @@ import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import Roadmaps from "./Roadmaps";
-import InternLandingPage from "./dashboard_intern/LandingPage";
+import InternLandingPage from "./dashboard_intern/Dashboard";
 import LandingPage from "./dashboard_intern/LandingPage";
 
 const auth = getAuth();
@@ -212,6 +212,10 @@ function App(props: any) {
             <Route
               path="/internship"
               element={<LandingPage {...props} />}
+            />
+            <Route
+              path="/dashboard"
+              element={<InternLandingPage {...props} />}
             />
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />

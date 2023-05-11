@@ -4,7 +4,7 @@ import MainDashboard from "./MainDashboard";
 import RightSide from "./RightSide";
 import LandingPage from "./LandingPage";
 import { useSelector } from "react-redux";
-import Info from "./Info";
+
 
 function Dashboard(props: any) {
   var user = useSelector((state: any) => state.currentUserReducer);
@@ -20,7 +20,6 @@ function Dashboard(props: any) {
             linkedin="https:www.linkedin.com"
           />
           <div className="rightSide">
-          <Info />
           <MainDashboard />
           </div>
         </div>
