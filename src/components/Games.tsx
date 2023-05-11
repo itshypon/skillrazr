@@ -17,6 +17,11 @@ export default function Games(props: any) {
       title: "Findy",
       description: "Find hidden animals and objects",
     },
+    {
+      id: "story-generator",
+      title: "AI Story Creator",
+      description: "Use AI to create stories.",
+    },
   ];
 
   return (
