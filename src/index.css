@@ -104,7 +104,8 @@ code {
 
 /* Findy */
 
-#findy {
+#findy,
+#story {
   background: lightyellow;
   background-size: 20% auto;
   font-family: sans-serif;

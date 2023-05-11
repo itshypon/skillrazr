@@ -180,6 +180,7 @@ function App(props: any) {
               element={<SummerCoursePage {...props} />}
             />
             <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
+            <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
             <Route
               path="/courses/:id"
               element={<CourseDetailsPage {...props} />}
