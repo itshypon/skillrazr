@@ -12,7 +12,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "./AccordianUtils";
-import { getCompletionText, getQuizQuestionsFromString } from "../uiHelper";
+import { getCompletionText, getQuizQuestionsFromString } from "../services";
 import { quizString } from "../data/quizStrOpenApi";
 
 export default function NewQuiz() {

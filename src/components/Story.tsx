@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { storyGenerator } from "../uiHelper";
+import { storyGenerator } from "../services";
 import { NavLink } from "react-router-dom";
 import { Button, CircularProgress } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";

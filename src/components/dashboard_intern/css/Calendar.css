@@ -1,0 +1,61 @@
+.inactive {
+  background: gray;
+  display: none;
+}
+
+.inactive.weekend {
+  background: gray;
+  display: none;
+}
+
+.day {
+  padding: 2px;
+  font-size: 12px;
+  background: rgb(40, 110, 40);
+}
+
+.absent {
+  background: rgb(210, 37, 37);
+}
+
+.weekend {
+  background: rgb(239, 142, 81);
+}
+
+.future {
+  background-color: #b2abab;
+}
+
+.inactive {
+  display: none;
+}
+
+table {
+  border: 1px solid gray;
+  min-height: 360px;
+  margin: 10px 10px 0 0;
+  color: black;
+  padding: 6px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* table td {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 4px;
+  padding-right: 4px;
+} */
+
+.day {
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+}
+
+.calendar {
+  border: lightslategray;
+  padding: 4px;
+}

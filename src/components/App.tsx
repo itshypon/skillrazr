@@ -28,9 +28,16 @@ import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import thunk from "redux-thunk";
+import rootReducer from "../reducer";
+import { Provider } from "react-redux";
+
 import Roadmaps from "./Roadmaps";
 import InternLandingPage from "./dashboard_intern/Dashboard";
 import LandingPage from "./dashboard_intern/LandingPage";
+import { createStore, applyMiddleware, compose } from "redux";
+
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 const auth = getAuth();
 
@@ -210,10 +217,7 @@ function App(props: any) {
               element={<QuizesList {...props} className="p-48" />}
             />
 
-            <Route
-              path="/internship"
-              element={<LandingPage {...props} />}
-            />
+            <Route path="/internship" element={<LandingPage {...props} />} />
             <Route
               path="/dashboard"
               element={<InternLandingPage {...props} />}
@@ -252,4 +256,12 @@ function App(props: any) {
   );
 }
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
+
+export default AppWrapper;

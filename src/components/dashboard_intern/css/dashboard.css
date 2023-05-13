@@ -1,5 +1,3 @@
-
-
 :root {
   --yellow: linear-gradient(180deg, #f8d49a -146.42%, #fad79d -46.42%);
   --orange: #fca61f;
@@ -13,12 +11,9 @@
   --activeItem: #f799a354;
 }
 
-
-
 .rightSide {
   display: flex;
   flex-direction: column;
-  margin: 10px;
 }
 
 .dashboard {

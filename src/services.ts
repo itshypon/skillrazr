@@ -209,5 +209,5 @@ export const getAllInterns = async () => {
     },
     method: "POST",
     body: JSON.stringify({}),
-  });
+  }).then((resp) => resp.json());
 };
