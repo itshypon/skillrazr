@@ -1,7 +1,6 @@
 import "./css/dashboard.css";
 import Sidebar from "./Sidebar";
 import MainDashboard from "./MainDashboard";
-import RightSide from "./RightSide";
 import LandingPage from "./LandingPage";
 import { useSelector } from "react-redux";
 

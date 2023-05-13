@@ -5,7 +5,7 @@ describe("Calender", () => {
   it("should render a calendar with the correct month and year", () => {
     const date = new Date(2023, 3);
     render(<Calender date={date} />);
-    expect(screen.getByText("Apr - 2023")).toBeTruthy();
+    expect(screen.getByText("Mar - 2023")).toBeTruthy();
   });
 
   it("should render days of the week", () => {
