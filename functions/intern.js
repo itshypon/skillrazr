@@ -37,7 +37,7 @@ app.post("/addIntern", async (req, res) => {
 
     return res.status(200).json({ status: 1, data: result });
   } catch (error) {
-    return res.status(200).json({ status: -1, error });
+    return res.status(409).json({ status: -1, error });
   }
 });
 
@@ -59,7 +59,7 @@ app.post("/getAllInterns", async (req, res) => {
 
     return res.status(200).json({ status: 1, data: interns });
   } catch (error) {
-    return res.status(200).json({ status: -1, error });
+    return res.status(500).json({ status: -1, error });
   }
 });
 
@@ -71,24 +71,86 @@ app.post("/updateInternAttendance", async (req, res) => {
   }
 
   try {
-    const { users } = JSON.parse(req.body);
+    const { checkBoxValues } = JSON.parse(req.body);
     const db = admin.firestore();
 
+    const now = Date.now();
+    const internsRef = db.collection("interns");
+    const internsQuery = await internsRef.get();
     const updateBatch = db.batch();
 
-    console.log("api body", users, req.body);
-
-    users.forEach((docId) => {
-      const docRef = db.collection("interns").doc(docId);
-      console.log("docRef", docRef);
-      updateBatch.update(docRef, { absent: true });
+    internsQuery.docs.forEach((doc, index) => {
+      const isChecked = checkBoxValues[index]
+      const absentArray = doc.data().absent || [];
+      if (!isChecked) {
+        absentArray.push(now)
+      }
+      updateBatch.update(doc.ref, { absent: absentArray });
     });
-
     const result = await updateBatch.commit();
-    console.log("result from batch", result);
     res.status(200).json({ status: 1, data: result });
   } catch (error) {
-    res.status(200).json({ status: 0, error });
+    res.status(409).json({ status: 0, error });
+  }
+});
+
+app.post("/saveNote", async (req, res) => {
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
+    return res.status(401).json({ status: 0, error: "you are not authorised" });
+  }
+
+  const db = admin.firestore();
+  const { type, notes, email } = req.body;
+
+  try {
+    const internRef = db.collection("interns").doc(email);
+    const internDoc = await internRef.get()
+    const notesArray = internDoc.data().notes || []
+    const updateNotes = {
+      type: type,
+      text: notes,
+    }
+    notesArray.push(updateNotes)
+    await internRef.update({ notes: notesArray})
+  } catch (error) {
+    return res.status(500).json({ status: -1, error });
+  }
+});
+
+app.post("/getNotes", async (req, res) => {
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
+    return res.status(401).json({ status: 0, error: "you are not authorised" });
+  }
+
+  const db = admin.firestore();
+  const { id } = req.body
+
+  try {
+      const internRef = db.collection("interns").doc(id)
+      const internDoc = await internRef.get()
+      const recentNotesArray = internDoc.data().notes
+      res.status(200).json({ status: 1, data: recentNotesArray });
+    }
+    catch (error) {
+    return res.status(500).json({ status: -1, error });
+  }
+});
+
+app.post("/removeIntern", async (req, res) => {
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
+    return res.status(401).json({ status: 0, error: "you are not authorised" });
+  }
+
+  const db = admin.firestore();
+  const { id } = req.body;
+
+  try {
+      const internDocRef = db.collection("interns").doc(id)
+      deleteDoc(internDocRef)
+      res.status(200).json({ status: 1 });
+    }
+    catch (error) {
+    return res.status(404).json({ status: -1, error });
   }
 });
 
