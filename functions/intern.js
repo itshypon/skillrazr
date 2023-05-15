@@ -42,10 +42,6 @@ app.post("/addIntern", async (req, res) => {
 });
 
 app.post("/getAllInterns", async (req, res) => {
-  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
-    return res.status(401).json({ status: 0, error: "you are not authorised" });
-  }
-
   try {
     const db = admin.firestore();
 
@@ -151,6 +147,29 @@ app.post("/removeIntern", async (req, res) => {
     }
     catch (error) {
     return res.status(404).json({ status: -1, error });
+  }
+});
+
+app.post("/getInternPerfomanceData", async (req, res) => {
+  const { userToken } = req.body;
+
+  const db = admin.firestore();
+
+  try {
+    const data = await admin.auth().verifyIdToken(userToken);
+    const email = data.email;
+    const internsRef = db.collection("interns").doc(email);
+    const doc = await internsRef.get();
+
+    if (doc.exists) {
+      return res.status(200).json({ status: 1, data: doc.data() });
+    } else {
+      return res
+        .status(200)
+        .json({ status: 0, message: "no such user exists!" });
+    }
+  } catch (error) {
+    return res.status(200).json({ status: -1, error });
   }
 });
 

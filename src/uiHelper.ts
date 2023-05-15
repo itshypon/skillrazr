@@ -181,3 +181,33 @@ export const storyGenerator = async (storyPrompt: string, apiKey = "") => {
     body: JSON.stringify({ storyPrompt, apiKey }),
   }).then((resp) => resp.json());
 };
+
+export const getInternPerformanceData = async (userToken: string) => {
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazrIntern-api/getInternPerfomanceData"
+    : "http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/getInternPerfomanceData";
+
+  return await fetch(baseUrl, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      userToken,
+    }),
+  }).then((resp) => resp.json());
+};
+
+export const getAllInterns = async () => {
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazrIntern-api/getAllInterns"
+    : "http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/getAllInterns";
+
+  return await fetch(baseUrl, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({}),
+  });
+};
