@@ -30,7 +30,7 @@ const LandingPage = () => {
             </button>
             <Link to="/dashboard">
               <button className="floating-button secondary">
-                See Dashboard
+                Intern Dashboard
               </button>
             </Link>
           </div>

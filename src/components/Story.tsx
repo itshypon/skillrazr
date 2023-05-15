@@ -131,14 +131,12 @@ export default function Story() {
     setGeneratedStory("");
     setLoading(true);
     const actors = selectedCharacters.map((i) => characters[i]).join(",");
-    console.log("selected chars", actors);
     try {
       let result = await storyGenerator(
         `Generate a moral story having characters ${actors} for a 3 year old kid`
       );
 
       setLoading(false);
-      console.log(result);
       setGeneratedStory(result.data);
     } catch (e) {
       setLoading(false);
@@ -165,13 +163,11 @@ export default function Story() {
 
       message.addEventListener("end", (event) => {
         setPlaying(false);
-        console.log(`Story finished in ${event.elapsedTime / 1000} seconds.`);
         setOpenCurtains(false);
         setSelectedCharacters([]);
       });
     } catch (e) {
       setPlaying(false);
-      console.log("error reading text", e);
     }
   };
 

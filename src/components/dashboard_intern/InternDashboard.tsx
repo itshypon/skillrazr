@@ -70,7 +70,9 @@ function InternDashboard() {
               No Internship details found for {user && user.email}
             </div>
           ) : (
-            <div className="text-3xl p-20">Please Login to view dashboard</div>
+            <div className="text-3xl p-20">
+              Please login to view the dashboard
+            </div>
           )}
         </>
       )}

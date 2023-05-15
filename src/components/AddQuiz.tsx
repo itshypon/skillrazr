@@ -45,7 +45,6 @@ export default function NewQuiz() {
       if (process.env.REACT_APP_ENV === "development") {
         const { questions, answers } = getQuizQuestionsFromString(quizString);
 
-        console.log("questions", questions);
         const _questions = [...quizData.questions, ...questions];
         setQuizData({
           ...quizData,
@@ -89,26 +88,6 @@ export default function NewQuiz() {
     setOpen(true);
   };
 
-  // const saveQuiz = async () => {
-  //     if (quizData.questions.length < 5) {
-  //         setInCompleteQuiz(true);
-  //     } else {
-  //         setInCompleteQuiz(false);
-
-  //         const rawResponse = await fetch(`${getApiBaseUrl()}addQuiz`, {
-  //             method: 'POST',
-  //             credentials: 'include',
-  //             headers: {
-  //                 'Content-Type': 'application/json'
-  //             },
-  //             body: JSON.stringify({ ...quizData, createdAt: Date.now(), status: 'unpublished' })
-  //         });
-
-  //         if (rawResponse.ok) {
-  //             console.log('added one quiz');
-  //         }
-  //     }
-  // };
   const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
@@ -116,15 +95,10 @@ export default function NewQuiz() {
   };
 
   const renderQuestionData = () => {
-    // if (inCompleteQuiz) {
-    //     return null;
-    // }
-
     const output = JSON.stringify({ ...quizData }, undefined, 4);
 
     return (
       <>
-        {/* <div>{output}</div> */}
         <Button
           disabled={quizData.questions.length < 5}
           onClick={() => {
@@ -148,7 +122,7 @@ export default function NewQuiz() {
                 }
               );
             } catch (e) {
-              console.log("clipboard is not available", output);
+              console.log("clipboard is not available", e);
             }
           }}
           variant="contained"
