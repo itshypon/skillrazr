@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./css/Sidebar.css";
 import pic from "./avatar.gif";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import BadgeIcon from "@mui/icons-material/Badge";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 function Sidebar(props: any) {
@@ -13,7 +12,7 @@ function Sidebar(props: any) {
         <img src={pic} alt="" className="w-[120px]" />
         <span>
           <div className="sec-1">
-            <BadgeIcon />
+            {/* <BadgeIcon /> */}
             {props.name}
           </div>
           <div className="sec-2">
@@ -21,7 +20,7 @@ function Sidebar(props: any) {
               <GitHubIcon />
             </Link>
             <Link to={props.linkedin}>
-              <LinkedInIcon />
+              <LinkedInIcon className="icon" />
             </Link>
           </div>
         </span>

@@ -1,48 +1,41 @@
-import "./css/MainDashboard.css";
 import Cards from "./Cards";
-import Calendar from "./Calendar";
-import { getAllInterns } from "../../services";
-import { useEffect, useState } from "react";
+import Calendar from "./Calender";
 
-function MainDashboard() {
-  const [interns, setInterns] = useState<any>([]);
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const response = await getAllInterns();
-        setInterns(response.data);
-      } catch (e) {}
-    };
+function MainDashboard({
+  data,
+}: {
+  data: [
+    {
+      code_review: number;
+      development: number;
+      learning: number;
+      testing: number;
+      absentDays: [];
+      notes: [];
+    }
+  ];
+}) {
+  const monthIndex = 0;
 
-    loadData();
-  }, []);
-
-  console.log("interns", interns);
+  const cardsData = [
+    { title: "Code Review", value: data[monthIndex].code_review },
+    {
+      title: "Development",
+      value: data[monthIndex].development,
+    },
+    { title: "Learning", value: data[monthIndex].learning },
+    { title: "Testing", value: data[monthIndex].testing },
+  ];
   return (
-    <div className="MainDash">
-      <h1>Dashboard</h1>
-      <Cards />
-      <div className="flex flex-col sm:flex-row item-center mb-6">
-        {[new Date(2023, 3), new Date(2023, 4)].map((date: Date) => (
+    <div className="flex items-center sm:items-start flex-col">
+      <h1 className="text-2xl">Monthly Performance Dashboard</h1>
+      <Cards data={cardsData} />
+      <div className="flex flex-col sm:flex-row item-center mt-4 sm:mt-10 mb-6">
+        {[new Date(2023, 3)].map((date: Date) => (
           <Calendar
             date={date}
-            absentDays={[3, 4, 5]}
-            notes={{
-              "4": {
-                type: "info",
-                message: "Hello you are doing good, keep it up",
-              },
-              "5": {
-                type: "info",
-                message:
-                  "Hello a note for you, need some improvment in your presentation",
-              },
-              "6": {
-                type: "alert",
-                message:
-                  "Nothing much to say \n you need to appear the classes more often",
-              },
-            }}
+            absentDays={data[monthIndex].absentDays}
+            notes={data[monthIndex].notes}
           />
         ))}
       </div>

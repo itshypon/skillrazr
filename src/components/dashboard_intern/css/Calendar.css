@@ -1,21 +1,19 @@
 .inactive {
   background: gray;
-  display: none;
 }
 
 .inactive.weekend {
   background: gray;
-  display: none;
 }
 
 .day {
   padding: 2px;
   font-size: 12px;
-  background: rgb(40, 110, 40);
+  background: rgb(104, 152, 104);
 }
 
 .absent {
-  background: rgb(210, 37, 37);
+  background: rgb(208, 74, 74);
 }
 
 .weekend {
@@ -24,10 +22,6 @@
 
 .future {
   background-color: #b2abab;
-}
-
-.inactive {
-  display: none;
 }
 
 table {

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./css/LandingPage.css";
 import pic from "./landing-img.png";
@@ -6,24 +5,17 @@ import pic2 from "./pic-2.png";
 import pic3 from "./pic-3.png";
 import linkedIn from "./linkedin.png";
 import twitter from "./twitter.png";
+import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 const LandingPage = () => {
-  const handleLinkedInClick = () => {
-    window.open("https://www.linkedin.com/company/skillrazr/", "_blank");
-  };
-  const handleTwitterClick = () => {
-    window.open("https://twitter.com/skillrazr", "_blank");
-  };
-  const handleApplyClick = () => {
-    window.open(
-      "https://calendly.com/skillrazr/interview?month=2023-05",
-      "_blank"
-    );
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row landing-page">
+      <div className="flex flex-col sm:flex-row p-20 sm:p-40 landing-page">
         <div className="container-l flex flex-col items-center sm:items-start px-5 sm:px-24">
           <div className="heading">
             Embark on a Transformative Internship Journey
@@ -32,38 +24,41 @@ const LandingPage = () => {
             Gain valuable experience, learn new skills, and receive mentorship
             from senior developers
           </div>
-          <div className="buttons">
-            <button className="floating-button" onClick={handleApplyClick}>
-              Apply Now
+          <div className="buttons mb-10">
+            <button className="floating-button">
+              <a href="#application">Learn more</a>
             </button>
             <Link to="/dashboard">
-              <button className="floating-button">See Dashboard</button>
+              <button className="floating-button secondary">
+                See Dashboard
+              </button>
             </Link>
           </div>
         </div>
-        <div className="container-r">
+        <div className="container-r flex flex-col">
           <img src={pic} alt="Landing-img" />
-          <div className="icons">
-            <img src={linkedIn} alt="" onClick={handleLinkedInClick} />
-            <img src={twitter} alt="" onClick={handleTwitterClick} />
-          </div>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row sub-section">
-        <div className="image-container">
-          <img src={pic2} alt="Landing Image1" className="landing-image" />
-          <img src={pic3} alt="Landing Image2" className="landing-image" />
+      <div className="flex flex-col p-6 sm:p-20 sm:flex-row sub-section2">
+        <div className="image-container flex justify-center items-center">
+          <img
+            src={pic2}
+            alt="Landing Image1"
+            className="landing-image w-[280px] sm:w-[420px]"
+          />
         </div>
         <div className="info-container">
-          <div className="heading">Become a Web Developer at SkillRazr</div>
+          <div className="heading">Sharpen your Skills at SkillRazr</div>
           <div className="tag">
             SkillRazr is offering an exciting internship opportunity for
-            aspiring web developers. As a web developer intern at SkillRazr, you
-            will have the chance to apply your HTML, CSS, and JavaScript skills
-            in a real-world setting. Work alongside experienced professionals,
-            gain hands-on experience, and enhance your web development
-            expertise.<br></br>
-            Requirements:
+            aspiring web developers. <br /> As a web developer intern at
+            SkillRazr, you will have the chance to apply your HTML, CSS, and
+            JavaScript skills in a real-world setting. <br />
+            Work alongside experienced professionals, gain hands-on experience,
+            and enhance your web development expertise.
+            <br />
+            <br />
+            <b>Requirements:-</b>
             <ul>
               <li>Proficiency in HTML, CSS, and JavaScript</li>
               <li>Basic understanding of web development principles</li>
@@ -72,13 +67,94 @@ const LandingPage = () => {
               <li>Good communication and time management skills</li>
             </ul>
             <br />
-            Stipend: Rs.5000/month
+            <b>Location:</b> Remote
             <br />
-            <br></br>
+            <b>Duration:</b> 3 months
+            <br />
+            <b>Stipend:</b> Rs 5,000* per month
+            <br />
+            <br />
             Join us at SkillRazr and embark on a transformative journey to
             advance your web development skills and gain valuable industry
-            experience. Apply now and take the first step towards a successful
-            career in web development
+            experience. Take the first step towards a successful career in web
+            development.
+          </div>
+        </div>
+      </div>
+      <div
+        id="application"
+        className="flex flex-col sm:flex-row  p-6 sm:p-20 sub-section w-[100%]"
+      >
+        <div className="image-container flex justify-center items-center">
+          <img
+            src={pic3}
+            alt="Landing Image2"
+            className="landing-image w-[280px] sm:w-[420px]"
+          />
+        </div>
+        <div className="info-container">
+          <div className="heading">Application Process</div>
+          <div className="tag">
+            We receive applications mostly through Linkedin. <br />
+            <br />
+            <div>
+              You'll find all details of all upcoming internships <br />
+              at our social handles{" "}
+              <div className="flex mr-2 mt-2">
+                <NavLink
+                  className={"block mr-2"}
+                  target="_blank"
+                  to={"https://www.linkedin.com/company/80788727"}
+                >
+                  <img src={linkedIn} alt="linked-in" className="w-8" />
+                </NavLink>{" "}
+                &{" "}
+                <NavLink
+                  className={"block ml-2"}
+                  target="_blank"
+                  to={"https://twitter.com/skillrazr"}
+                >
+                  <img src={twitter} alt="twitter" className="w-8" />
+                </NavLink>
+              </div>
+              <br />
+              <br />
+            </div>
+            <b>Details:-</b>
+            <br />
+            <br />
+            <ul>
+              <li>We open internships throughout the year.</li>
+              <br />
+              <li>
+                Interested and qualified candidates schedule interviews mostly
+                through{" "}
+                <NavLink
+                  to={"https://calendly.com/skillrazr/interview"}
+                  target="_blank"
+                >
+                  Calendy
+                </NavLink>
+              </li>
+              <br />
+              <li>
+                Our 30-minute interview round primarily consists of a problem
+                solving task.
+              </li>
+              <br />
+              <li>
+                Finally candidates who clear the interview, start their
+                internship with us.
+              </li>
+              <br />
+              <li>
+                <b>Note :-</b> The stipend amount of Rs 5,000 is subject to
+                interns perfomance and number of interns during the internship.
+                SkillRazr has a fixed budget of Rs 30,000 to spend on interns
+                during the 3 months internship.
+              </li>
+            </ul>
+            <br />
           </div>
         </div>
       </div>

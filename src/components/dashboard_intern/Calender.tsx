@@ -18,7 +18,7 @@ import WarningIcon from "@mui/icons-material/Warning";
 type DateType = {
   date: Date;
   absentDays?: Array<number>;
-  notes?: Record<string, Record<string, string>>;
+  notes?: Array<Record<string, string>>;
 };
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -39,7 +39,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-const Calender = ({ date, absentDays, notes = {} }: DateType) => {
+const Calender = ({ date, absentDays, notes = [] }: DateType) => {
   const monthStart = startOfMonth(date);
   const monthEnd = endOfMonth(date);
   const weeksInMonth = eachWeekOfInterval(
@@ -116,23 +116,30 @@ const Calender = ({ date, absentDays, notes = {} }: DateType) => {
                   }
 
                   if (!currentMonth) {
-                    return null;
+                    return <td key={ind} />;
                   }
+
+                  const notesFound = notes.find(
+                    (note) => note.date === `${dayIndex}`
+                  );
+
                   return (
                     <td
                       key={ind}
                       className="w-[50px] h-[50px] text-2xl font-bold"
                     >
-                      {Object.keys(notes).indexOf(`${dayIndex}`) !== -1 ? (
+                      {notesFound ? (
                         <HtmlTooltip
-                          title={notes[dayIndex].message}
+                          title={notesFound.message}
                           arrow
                           enterTouchDelay={0}
-                          data-testid={`note-${dayIndex}`}
+                          data-testid={`note-${dayIndex}-${notesFound.type}`}
                         >
-                          <div className={classNames.join(" ")}>
+                          <div
+                            className={`${classNames.join(" ")} cursor-pointer`}
+                          >
                             {format(day, "d")}
-                            {notes[dayIndex].type === "info" ? (
+                            {notesFound.type === "info" ? (
                               <NoteIcon className="!text-base" />
                             ) : (
                               <WarningIcon
