@@ -14,6 +14,7 @@ import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import styled from "@emotion/styled";
 import NoteIcon from "@mui/icons-material/Note";
 import WarningIcon from "@mui/icons-material/Warning";
+import { getMonthName } from "../../uiHelper";
 
 type DateType = {
   date: Date;
@@ -51,27 +52,13 @@ const Calender = ({ date, absentDays, notes = [] }: DateType) => {
   );
 
   const monthIndex = date.getMonth();
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const month = months[monthIndex];
+  const monthName = getMonthName(monthIndex);
   const year = date.getFullYear();
 
   return (
     <div className="mt-10 calendar">
       <span className="text-2xl">
-        {month} - {year}
+        {monthName} - {year}
       </span>
       <table className="text-2xl">
         <thead>

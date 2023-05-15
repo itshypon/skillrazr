@@ -1,15 +1,17 @@
 import "./css/dashboard.css";
 import Sidebar from "./Sidebar";
-import MainDashboard from "./MainDashboard";
+import PerformanceBoard from "./PerformanceBoard";
 import { getInternPerformanceData } from "../../services";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-function Dashboard() {
+function InternDashboard() {
   var user = useSelector((state: any) => state.currentUserReducer);
 
   const [data, setData] = useState<any>([]);
   const [showAuthError, setAuthError] = useState<boolean>(false);
+  const [noInternFound, setNoInternFound] = useState<boolean>(false);
+
   const [githubUrl, setGithubUrl] = useState("");
   const [linkedInUrl, setLinkedInUrl] = useState("");
 
@@ -21,22 +23,28 @@ function Dashboard() {
     const loadData = async () => {
       try {
         const response = await getInternPerformanceData(user.accessToken);
-        console.log("resp", response);
         if (response.status === -1) {
           setAuthError(true);
+        } else if (response.status === 0) {
+          setNoInternFound(true);
+        } else {
+          setLinkedInUrl(response.data.linkedIn);
+          setGithubUrl(response.data.github);
+          setData(response.data.performanceData);
+          setNoInternFound(false);
+          setAuthError(false);
         }
-        setLinkedInUrl(response.data.linkedIn);
-        setGithubUrl(response.data.github);
-        setData(response.data.performanceData);
       } catch (e) {
         console.log("error", e);
       }
     };
 
+    if (!user) {
+      setNoInternFound(false);
+    }
+
     user && loadData();
   }, [user]);
-
-  console.log("interns", data);
 
   if (showAuthError) {
     return <>Access token expired, please login to get a new one!"</>;
@@ -52,14 +60,22 @@ function Dashboard() {
             linkedin={linkedInUrl || "https:www.linkedin.com"}
           />
           <div className="rightSide">
-            <MainDashboard data={data} />
+            <PerformanceBoard data={data} />
           </div>
         </div>
       ) : (
-        <div className="text-3xl p-20">Please Login to view dashboard</div>
+        <>
+          {noInternFound ? (
+            <div className="text-3xl p-20">
+              No Internship details found for {user && user.email}
+            </div>
+          ) : (
+            <div className="text-3xl p-20">Please Login to view dashboard</div>
+          )}
+        </>
       )}
     </div>
   );
 }
 
-export default Dashboard;
+export default InternDashboard;

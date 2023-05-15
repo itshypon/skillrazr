@@ -33,7 +33,7 @@ import rootReducer from "../reducer";
 import { Provider } from "react-redux";
 
 import Roadmaps from "./Roadmaps";
-import InternLandingPage from "./dashboard_intern/Dashboard";
+import InternLandingPage from "./dashboard_intern/InternDashboard";
 import LandingPage from "./dashboard_intern/LandingPage";
 import { createStore, applyMiddleware, compose } from "redux";
 
