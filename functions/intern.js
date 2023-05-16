@@ -3,6 +3,7 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 const env = require("./.env.json");
+const { getMonthName } = require("./utils");
 
 const app = express();
 app.use(cors());
@@ -50,7 +51,9 @@ app.post("/getAllInterns", async (req, res) => {
     const snapshot = await internsRef.get();
 
     snapshot.forEach((doc) => {
-      interns.push(doc.data());
+      const { performanceData, ...rest } = doc.data();
+
+      interns.push({ ...rest });
     });
 
     return res.status(200).json({ status: 1, data: interns });
@@ -59,94 +62,77 @@ app.post("/getAllInterns", async (req, res) => {
   }
 });
 
-app.post("/updateInternAttendance", async (req, res) => {
-  console.log("api start", env.INTERN_API_HEADER_KEY_VALUE);
-
+app.post("/updateInternsAttendance", async (req, res) => {
   if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
     return res.status(401).json({ status: 0, error: "you are not authorised" });
   }
 
   try {
-    const { checkBoxValues } = JSON.parse(req.body);
+    const { date, docIds } = req.body;
     const db = admin.firestore();
 
-    const now = Date.now();
-    const internsRef = db.collection("interns");
-    const internsQuery = await internsRef.get();
+    const dateObj = new Date(date);
+    // ToDo - add validation to allow updates only from a date from the internship duration
+
+    const monthYear = `${getMonthName(
+      dateObj.getMonth()
+    )}_${dateObj.getFullYear()}`;
+
     const updateBatch = db.batch();
 
-    internsQuery.docs.forEach((doc, index) => {
-      const isChecked = checkBoxValues[index]
-      const absentArray = doc.data().absent || [];
-      if (!isChecked) {
-        absentArray.push(now)
+    for (let docId of docIds) {
+      let docRef = db.collection("interns").doc(docId);
+      const doc = await docRef.get();
+      const performanceData = doc.data().performanceData;
+
+      if (!performanceData[monthYear]) {
+        performanceData[monthYear] = {};
       }
-      updateBatch.update(doc.ref, { absent: absentArray });
-    });
+
+      const absentArray = performanceData[monthYear].absentDays || [];
+      performanceData[monthYear].absentDays = [...absentArray, date];
+      updateBatch.update(docRef, { performanceData });
+    }
+
     const result = await updateBatch.commit();
     res.status(200).json({ status: 1, data: result });
   } catch (error) {
-    res.status(409).json({ status: 0, error });
+    console.log("error", error);
+    res.status(409).json({ status: -1, error });
   }
 });
 
-app.post("/saveNote", async (req, res) => {
+app.post("/updateInternNotes", async (req, res) => {
   if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
     return res.status(401).json({ status: 0, error: "you are not authorised" });
   }
 
   const db = admin.firestore();
-  const { type, notes, email } = req.body;
+  const { date, note, docId } = req.body;
 
   try {
-    const internRef = db.collection("interns").doc(email);
-    const internDoc = await internRef.get()
-    const notesArray = internDoc.data().notes || []
-    const updateNotes = {
-      type: type,
-      text: notes,
+    const dateObj = new Date(date);
+
+    const monthYear = `${getMonthName(
+      dateObj.getMonth()
+    )}_${dateObj.getFullYear()}`;
+
+    const internRef = db.collection("interns").doc(docId);
+    const internDoc = await internRef.get();
+    const performanceData = internDoc.data().performanceData;
+
+    if (!performanceData[monthYear]) {
+      performanceData[monthYear] = {};
     }
-    notesArray.push(updateNotes)
-    await internRef.update({ notes: notesArray})
+    const notes = performanceData[monthYear].notes || [];
+    notes.push({ ...note, date });
+
+    performanceData[monthYear].notes = notes;
+
+    await internRef.update({ performanceData });
+    res.status(200).json({ status: 1, data: performanceData });
   } catch (error) {
     return res.status(500).json({ status: -1, error });
-  }
-});
-
-app.post("/getNotes", async (req, res) => {
-  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
-    return res.status(401).json({ status: 0, error: "you are not authorised" });
-  }
-
-  const db = admin.firestore();
-  const { id } = req.body
-
-  try {
-      const internRef = db.collection("interns").doc(id)
-      const internDoc = await internRef.get()
-      const recentNotesArray = internDoc.data().notes
-      res.status(200).json({ status: 1, data: recentNotesArray });
-    }
-    catch (error) {
-    return res.status(500).json({ status: -1, error });
-  }
-});
-
-app.post("/removeIntern", async (req, res) => {
-  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
-    return res.status(401).json({ status: 0, error: "you are not authorised" });
-  }
-
-  const db = admin.firestore();
-  const { id } = req.body;
-
-  try {
-      const internDocRef = db.collection("interns").doc(id)
-      deleteDoc(internDocRef)
-      res.status(200).json({ status: 1 });
-    }
-    catch (error) {
-    return res.status(404).json({ status: -1, error });
   }
 });
 
