@@ -32,21 +32,21 @@ describe("Calender", () => {
   });
 
   it("should render notes for days with notes", () => {
-    const date = new Date();
+    const date = new Date(2023, 4);
     const notes = [
       {
-        date: "2",
+        date: Date.parse("05/02/2023"), // 2nd May
         type: "info",
         message: "Hello you are doing good, keep it up",
       },
       {
-        date: "3",
+        date: Date.parse("05/03/2023"),
         type: "info",
         message:
           "Hello a note for you, need some improvment in your presentation",
       },
       {
-        date: "4",
+        date: Date.parse("05/04/2023"),
         type: "alert",
         message:
           "Hello a note for you, need some improvment in your presentation",
@@ -63,8 +63,7 @@ describe("Calender", () => {
 
   it("should not render notes for days without notes", () => {
     const date = new Date();
-    const notes = [{}];
-    render(<Calender date={date} notes={notes} />);
+    render(<Calender date={date} />);
     for (let i = 1; i <= date.getDate(); i++) {
       expect(screen.getByText(i)).toBeTruthy();
       expect(screen.queryByTestId(`note-${i}`)).toBeFalsy();

@@ -5,40 +5,51 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useState } from "react";
-import { getMonthName } from "../../uiHelper";
+import { PeformanceData } from "../../types/types";
 
-function MainDashboard({
-  data,
-}: {
-  data: [
-    {
-      code_review: number;
-      development: number;
-      learning: number;
-      testing: number;
-      absentDays: [];
-      notes: [];
-      date: number;
-    }
-  ];
-}) {
-  const monthNames = data.map((i) => getMonthName(new Date(i.date).getMonth()));
-  const dates = data.map((i) => new Date(i.date));
+function MainDashboard({ data }: { data: Record<string, PeformanceData> }) {
+  const monthAndYears = Object.keys(data);
+  const monthNames = monthAndYears.map((i) => i.split("_")[0]);
+  const year = monthAndYears[0].split("_")[1];
 
-  const [selectedMonth, setMonth] = useState(0);
+  const getDate = (monthYearStr: string) => {
+    const month = monthYearStr.split("_")[0];
+    const monthMap: Record<string, number> = {
+      "Jan": 0,
+      "Feb": 1,
+      "Mar": 2,
+      "Apr": 3,
+      "May": 4,
+    };
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setMonth(+event.target.value);
+    const year = monthYearStr.split("_")[1];
+    return new Date(+year, monthMap[month]);
   };
 
+  const [selectedMonth, setMonth] = useState(monthNames[0]);
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setMonth(event.target.value);
+  };
+
+  console.log("data", `${selectedMonth}_${year}`, data);
   const cardsData = [
-    { title: "Code Review", value: data[selectedMonth].code_review },
     {
       title: "Development",
-      value: data[selectedMonth].development,
+      value: data[`${selectedMonth}_${year}`].scores.development,
     },
-    { title: "Learning", value: data[selectedMonth].learning },
-    { title: "Testing", value: data[selectedMonth].testing },
+    {
+      title: "Code Review",
+      value: data[`${selectedMonth}_${year}`].scores.code_reviews,
+    },
+    {
+      title: "Learning",
+      value: data[`${selectedMonth}_${year}`].scores.learning,
+    },
+    {
+      title: "Testing",
+      value: data[`${selectedMonth}_${year}`].scores.testing,
+    },
   ];
   return (
     <div className="flex items-center sm:items-start flex-col">
@@ -53,17 +64,17 @@ function MainDashboard({
           autoWidth
           label="Month"
         >
-          {monthNames.map((month, index) => (
-            <MenuItem value={index}>{month}</MenuItem>
+          {monthNames.map((month) => (
+            <MenuItem value={month}>{month}</MenuItem>
           ))}
         </Select>
       </FormControl>
       <Cards data={cardsData} />
       <div className="flex flex-col sm:flex-row item-center mt-4 sm:mt-10 mb-6">
         <Calendar
-          date={dates[selectedMonth]}
-          absentDays={data[selectedMonth].absentDays}
-          notes={data[selectedMonth].notes}
+          date={getDate(`${selectedMonth}_${year}`)}
+          absentDays={data[`${selectedMonth}_${year}`].absentDays}
+          notes={data[`${selectedMonth}_${year}`].notes}
         />
       </div>
     </div>

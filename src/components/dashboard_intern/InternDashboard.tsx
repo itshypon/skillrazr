@@ -4,11 +4,14 @@ import PerformanceBoard from "./PerformanceBoard";
 import { getInternPerformanceData } from "../../services";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { PeformanceData } from "../../types/types";
 
 function InternDashboard() {
-  var user = useSelector((state: any) => state.currentUserReducer);
-
-  const [data, setData] = useState<any>([]);
+  const user = useSelector((state: any) => state.currentUserReducer);
+  const [performancedata, setData] = useState<Record<
+    string,
+    PeformanceData
+  > | null>(null);
   const [showAuthError, setAuthError] = useState<boolean>(false);
   const [noInternFound, setNoInternFound] = useState<boolean>(false);
 
@@ -52,7 +55,7 @@ function InternDashboard() {
 
   return (
     <div className="dashboard">
-      {user && data.length ? (
+      {user && performancedata ? (
         <div className="dashboardGlass p-4 sm:p-8">
           <Sidebar
             name={user.displayName}
@@ -60,7 +63,7 @@ function InternDashboard() {
             linkedin={linkedInUrl || "https:www.linkedin.com"}
           />
           <div className="rightSide">
-            <PerformanceBoard data={data} />
+            <PerformanceBoard data={performancedata} />
           </div>
         </div>
       ) : (

@@ -12,14 +12,20 @@ import {
 import "./css/Calendar.css";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import styled from "@emotion/styled";
-import NoteIcon from "@mui/icons-material/Note";
+// import NoteIcon from "@mui/icons-material/Note";
 import WarningIcon from "@mui/icons-material/Warning";
+import StarsIcon from "@mui/icons-material/Stars";
 import { getMonthName } from "../../uiHelper";
+type NoteType = {
+  type: string;
+  date: number;
+  message: string;
+};
 
 type DateType = {
   date: Date;
   absentDays?: Array<number>;
-  notes?: Array<Record<string, string>>;
+  notes?: Array<NoteType>;
 };
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -98,7 +104,11 @@ const Calender = ({ date, absentDays, notes = [] }: DateType) => {
                     classNames.push("future");
                   }
 
-                  if (absentDays?.indexOf(dayIndex) !== -1) {
+                  if (
+                    absentDays
+                      ?.map((i) => new Date(i).getDate())
+                      ?.indexOf(dayIndex) !== -1
+                  ) {
                     classNames.push("absent");
                   }
 
@@ -107,7 +117,7 @@ const Calender = ({ date, absentDays, notes = [] }: DateType) => {
                   }
 
                   const notesFound = notes.find(
-                    (note) => note.date === `${dayIndex}`
+                    (note) => new Date(note.date).getDate() === dayIndex
                   );
 
                   return (
@@ -127,7 +137,7 @@ const Calender = ({ date, absentDays, notes = [] }: DateType) => {
                           >
                             {format(day, "d")}
                             {notesFound.type === "info" ? (
-                              <NoteIcon className="!text-base" />
+                              <StarsIcon className="!text-base" />
                             ) : (
                               <WarningIcon
                                 className="!text-base"
