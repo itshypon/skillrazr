@@ -3,10 +3,10 @@ import "./css/LandingPage.css";
 import pic from "./landing-img.png";
 import pic2 from "./pic-2.png";
 import pic3 from "./pic-3.png";
-import linkedIn from "./linkedin.png";
-import twitter from "./twitter.png";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -106,7 +106,7 @@ const LandingPage = () => {
                   target="_blank"
                   to={"https://www.linkedin.com/company/80788727"}
                 >
-                  <img src={linkedIn} alt="linked-in" className="w-8" />
+                  <LinkedInIcon color="primary" />
                 </NavLink>{" "}
                 &{" "}
                 <NavLink
@@ -114,7 +114,8 @@ const LandingPage = () => {
                   target="_blank"
                   to={"https://twitter.com/skillrazr"}
                 >
-                  <img src={twitter} alt="twitter" className="w-8" />
+                  {/* <img src={twitter} alt="twitter" className="w-8" /> */}
+                  <TwitterIcon color="primary" />
                 </NavLink>
               </div>
               <br />
