@@ -10,7 +10,7 @@ app.use(cors());
 app.get("/", (req, res) => res.status(200).send("hi intern!"));
 
 app.post("/addIntern", async (req, res) => {
-  const { name, email, mobileNo, joinDate, github, notes } = req.body;
+  const { name, email, mobileNo, joinDate, github, linkedin, notes } = req.body;
 
   if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
     return res.status(401).json({ status: 0, error: "you are not authorised" });
@@ -27,14 +27,36 @@ app.post("/addIntern", async (req, res) => {
         .json({ status: 0, message: "Can't add, intern exists already!" });
     }
 
-    const result = db.collection("interns").doc(email).set({
-      name,
-      email,
-      notes,
-      joinDate,
-      github,
-      mobileNo,
-    });
+    const dateObj = new Date(joinDate);
+
+    // 3 months internship, Jan-Mar, Apr-Jun, July-Sep, Oct-Dec
+    const month1Year = `${getMonthName(
+      dateObj.getMonth()
+    )}_${dateObj.getFullYear()}`;
+    const month2Year = `${getMonthName(
+      dateObj.getMonth() + 1
+    )}_${dateObj.getFullYear()}`;
+    const month3Year = `${getMonthName(
+      dateObj.getMonth() + 2
+    )}_${dateObj.getFullYear()}`;
+
+    const result = db
+      .collection("interns")
+      .doc(email)
+      .set({
+        name,
+        email,
+        notes,
+        joinDate,
+        github,
+        linkedin,
+        mobileNo,
+        performanceData: {
+          [month1Year]: {},
+          [month2Year]: {},
+          [month3Year]: {},
+        },
+      });
 
     return res.status(200).json({ status: 1, data: result });
   } catch (error) {
