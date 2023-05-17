@@ -4,19 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const { Configuration, OpenAIApi } = require("openai");
 const env = require("./.env.json");
-
-const getScore = (answerObj, submissionObj) => {
-  const totalQuestions = Object.keys(answerObj).length;
-
-  let correctAnswers = 0;
-  Object.keys(answerObj).forEach((questionId) => {
-    if (answerObj[questionId] === submissionObj[questionId]) {
-      correctAnswers++;
-    }
-  });
-
-  return (correctAnswers / totalQuestions) * 100;
-};
+const { getScore } = require("./utils");
 
 admin.initializeApp({
   credential: admin.credential.cert({

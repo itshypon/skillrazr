@@ -67,3 +67,31 @@ Once emulator runs locally you can access the function port and make api calls l
 
 When function takes a config param while deploying, to run the function locally you need to provide the same config using firebase .runtimeconfig.json in functions directory to generate the config use below command
 functions:config:get > .runtimeconfig.json
+
+# API Samples
+
+## updateInternNotes
+
+`const updateInternNotes = async () => {
+  return await fetch('http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/updateInternNotes', {
+    headers: {
+      "Content-Type": "application/json",
+      "skillrazr-sub-app": "apiKey"
+    },
+    method: "POST",
+    body: JSON.stringify({docId: "jatinsharma@gmail1.com", date: 1684207360036, note: {type: 'alert', message: 'testing api' }}),
+  });
+};`
+
+## updateInternAttendance
+
+`const updateInternsAttendance = async () => {
+  return await fetch('http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/updateInternsAttendance', {
+    headers: {
+      "Content-Type": "application/json",
+      "skillrazr-sub-app": "apiKey"
+    },
+    method: "POST",
+    body: JSON.stringify({docIds: ["jatinsharma@gmail1.com"], date: 1684207360036}),
+  });
+};`
