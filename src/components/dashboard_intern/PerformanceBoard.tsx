@@ -20,6 +20,13 @@ function MainDashboard({ data }: { data: Record<string, PeformanceData> }) {
       "Mar": 2,
       "Apr": 3,
       "May": 4,
+      "Jun": 5,
+      "Jul": 6,
+      "Aug": 7,
+      "Sep": 8,
+      "Oct": 9,
+      "Nov": 10,
+      "Dec": 11,
     };
 
     const year = monthYearStr.split("_")[1];
@@ -32,23 +39,23 @@ function MainDashboard({ data }: { data: Record<string, PeformanceData> }) {
     setMonth(event.target.value);
   };
 
-  console.log("data", `${selectedMonth}_${year}`, data);
+  const scores = data[`${selectedMonth}_${year}`].scores || {};
   const cardsData = [
     {
       title: "Development",
-      value: data[`${selectedMonth}_${year}`].scores.development,
+      value: scores.development,
     },
     {
       title: "Code Review",
-      value: data[`${selectedMonth}_${year}`].scores.code_reviews,
+      value: scores.code_reviews,
     },
     {
       title: "Learning",
-      value: data[`${selectedMonth}_${year}`].scores.learning,
+      value: scores.learning,
     },
     {
       title: "Testing",
-      value: data[`${selectedMonth}_${year}`].scores.testing,
+      value: scores.testing,
     },
   ];
   return (
