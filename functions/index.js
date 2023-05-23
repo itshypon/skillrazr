@@ -190,7 +190,6 @@ app.post("/generateStory", [appCheckVerification], async (req, res) => {
 
     return res.status(200).json({ status: 1, data: result });
   } catch (error) {
-    console.log("generate story error", error, req.body);
     return res.status(200).json({ status: -1, error });
   }
 });

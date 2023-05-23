@@ -8,7 +8,6 @@ interface IProps {
 export default class Knight extends Component<IProps> {
   onDragStart(e: any) {
     e.dataTransfer.setData("id", "knight"); // without this on Firefox drag and drop fails
-    console.log("being dragged");
     monitor.emit("dragInProgress", e);
   }
 

@@ -34,9 +34,7 @@ export default class Square extends React.Component<IProps, IState> {
   }
 
   onDrop(evt: any) {
-    console.log("dropped");
     monitor.emit("dropFinish", evt);
-    console.log(evt);
     if (
       canMoveKnight(this.props.knightPosition, this.props.x, this.props.y) &&
       !this.props.conquered
@@ -46,30 +44,17 @@ export default class Square extends React.Component<IProps, IState> {
     }
   }
   onDragOver(e: any) {
-    console.log("drag over");
-
     e.preventDefault();
-    console.log("drag over");
   }
   onDragEnd(e: any) {
-    console.log("drag end");
-
     e.preventDefault();
-    console.log("drag end");
     this.setState({ highLight: false });
   }
   onDragEnter(e: any) {
-    console.log("drag enter");
-
     e.preventDefault();
-    console.log("drag enter");
-    console.log(!this.props.conquered);
   }
   onDragLeave(e: any) {
-    console.log("drag leave");
-
     e.preventDefault();
-    console.log("drag leave");
     if (canMoveKnight(this.props.knightPosition, this.props.x, this.props.y)) {
       this.setState({ highLight: false });
     }

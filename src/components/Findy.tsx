@@ -1,5 +1,5 @@
 import * as React from "react";
-import { shuffleArray } from "../uiHelper";
+import { shuffleArray } from "../services";
 import MusicPlayer from "../components/Games/MusicPlayer";
 import monitor from "../components/Games/helpers/monitor";
 import ModalDialog from "./Modal";
