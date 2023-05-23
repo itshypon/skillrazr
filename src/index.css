@@ -1,10 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap");
+
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -104,7 +106,8 @@ code {
 
 /* Findy */
 
-#findy {
+#findy,
+#story {
   background: lightyellow;
   background-size: 20% auto;
   font-family: sans-serif;

@@ -12,7 +12,6 @@ export default function Navbar(props: any) {
   const [scrolled, setScrolled] = React.useState<boolean>(false);
   const dispatch = useDispatch();
   var user = useSelector((state: any) => state.currentUserReducer);
-  console.log(user);
 
   const [showModal, setShowModal] = React.useState(false);
 
@@ -81,11 +80,11 @@ export default function Navbar(props: any) {
               </a>
             </li>
             <li className="nav-item ml-8 font-medium">
-              <a className="nav-link" href="/#internship">
+              <a className="nav-link" href="/internship">
                 Internship
               </a>
             </li>
-            
+
             <li className="nav-item ml-8 font-medium">
               <a className="nav-link" href="/#faqs">
                 FAQs

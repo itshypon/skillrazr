@@ -9,14 +9,12 @@ admin.initializeApp({
 const db = admin.firestore();
 
 const insertToQuizDb = async (quiz) => {
-  console.log("*** Writing to DB started ...");
   await db
     .collection("quiz")
     .doc(quiz.id)
     .set({
       ...quiz,
     });
-  console.log("*** All records written! to DB  ***");
 };
 
 const quizes = [

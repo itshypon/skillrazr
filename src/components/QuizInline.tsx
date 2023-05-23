@@ -18,7 +18,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import QuizIcon from "@mui/icons-material/Quiz";
-import { getScore, shuffleArray, renderMathExpression } from "../uiHelper";
+import { getScore, shuffleArray, renderMathExpression } from "../services";
 import { State } from "./App";
 import confetti from "canvas-confetti";
 

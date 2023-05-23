@@ -28,7 +28,16 @@ import UserPage from "./UserPage";
 import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import thunk from "redux-thunk";
+import rootReducer from "../reducer";
+import { Provider } from "react-redux";
+
 import Roadmaps from "./Roadmaps";
+import InternLandingPage from "./dashboard_intern/InternDashboard";
+import LandingPage from "./dashboard_intern/LandingPage";
+import { createStore, applyMiddleware, compose } from "redux";
+
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 const auth = getAuth();
 
@@ -178,10 +187,8 @@ function App(props: any) {
               path="/evergreen_courses"
               element={<SummerCoursePage {...props} />}
             />
-            <Route
-            path="/Roadmaps"
-            index element={<Roadmaps {...props}/>}
-            />
+            <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
+            <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
             <Route
               path="/courses/:id"
               element={<CourseDetailsPage {...props} />}
@@ -210,6 +217,11 @@ function App(props: any) {
               element={<QuizesList {...props} className="p-48" />}
             />
 
+            <Route path="/internship" element={<LandingPage {...props} />} />
+            <Route
+              path="/dashboard"
+              element={<InternLandingPage {...props} />}
+            />
             <Route path="/games/:id" element={<SelectedGame {...props} />} />
             <Route path="/games" element={<Games {...props} />} />
 
@@ -222,7 +234,7 @@ function App(props: any) {
             path="/jseditor"
             element={
               <div style={{ marginTop: "120px" }}>
-                <Navbar />
+                <Navbar {...props} />
                 <Editor {...props} />
               </div>
             }
@@ -231,7 +243,7 @@ function App(props: any) {
             path="/csseditor"
             element={
               <div style={{ marginTop: "120px" }}>
-                <Navbar />
+                <Navbar {...props} />
                 <CSSEditor />
               </div>
             }
@@ -244,4 +256,12 @@ function App(props: any) {
   );
 }
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
+
+export default AppWrapper;

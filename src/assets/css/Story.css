@@ -1,0 +1,119 @@
+@keyframes runRight {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 500%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes runLeft {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -500%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.actor {
+  animation: linear infinite;
+  animation-name: runRight;
+  animation-duration: 6s;
+  animation-delay: 4.2s;
+}
+
+.actor0 {
+  animation-name: runRight;
+}
+
+.actor1 {
+  animation-name: runLeft;
+}
+
+.actor2 {
+  animation-name: runRight;
+}
+
+.curtain-closed .actor {
+  animation: none;
+}
+
+.curtain-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.curtain-panel {
+  background: green;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  transition: all 3s ease-out;
+}
+
+.curtain {
+  /* overflow: hidden; */
+  height: 80px;
+}
+
+.curtain-panel-left {
+  /* Styles for sliding the left panel */
+  color: red;
+  transform: translateX(0%);
+  transition-delay: 1s;
+}
+
+.curtain-panel-right {
+  /* Styles for sliding the right panel */
+  color: red;
+  transform: translateX(0%);
+  transition-delay: 1s;
+}
+
+.curtain-content {
+  background: #090b0a;
+  position: absolute; /* Forces the prize position into the container start */
+  z-index: 1; /* Places the prize behind the panels, which are z-index 2 */
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.curtain-open .curtain-panel-right {
+  transform: translateX(100%);
+  transition-duration: 4s;
+}
+
+.curtain-open .curtain-panel-left {
+  transform: translateX(-100%);
+  transition-duration: 4s;
+}
+
+.curtain-panel-left:after,
+.curtain-panel-right:after {
+  content: "";
+  background-size: 20px 20px;
+  background-image: radial-gradient(
+    circle at 10px -5px,
+    rgba(0, 0, 0, 0) 12px,
+    #fff 13px
+  );
+  display: block;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

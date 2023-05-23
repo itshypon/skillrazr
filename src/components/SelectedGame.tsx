@@ -3,6 +3,7 @@ import MoveKnightGame from "../components/Games/MoveKnightGame";
 import Scratch from "../components/Scratch";
 import Findy from "../components/Findy";
 import { useParams } from "react-router";
+import Story from "./Story";
 
 const SelectedGame = () => {
   const { id: gameId } = useParams<string>();
@@ -18,7 +19,9 @@ const SelectedGame = () => {
       case "findy": {
         return <Findy />;
       }
-
+      case "story-generator": {
+        return <Story />;
+      }
       default: {
         return null;
       }

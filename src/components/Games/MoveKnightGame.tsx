@@ -121,7 +121,6 @@ export default class MoveKnightGame extends React.Component<IProps, IState> {
     this.undoLastStep = this.undoLastStep.bind(this);
     this.resetGame = this.resetGame.bind(this);
     this.setGameMode = this.setGameMode.bind(this);
-    console.log("nav", document.getElementById("navlinks"));
     setTimeout(() => {
       document.getElementById("navlinks")?.classList.add("hidden");
     }, 100);

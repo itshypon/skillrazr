@@ -12,7 +12,6 @@ import "./FlashcardDetailsPage.css";
 
 function FlashcardDetailsPage() {
   const { id: category } = useParams();
-  console.log("id", category);
 
   const matchingFlashcards = flashcards.filter(
     (flashcard) => flashcard.category === category

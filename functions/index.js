@@ -3,19 +3,8 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 const { Configuration, OpenAIApi } = require("openai");
-
-const getScore = (answerObj, submissionObj) => {
-  const totalQuestions = Object.keys(answerObj).length;
-
-  let correctAnswers = 0;
-  Object.keys(answerObj).forEach((questionId) => {
-    if (answerObj[questionId] === submissionObj[questionId]) {
-      correctAnswers++;
-    }
-  });
-
-  return (correctAnswers / totalQuestions) * 100;
-};
+const env = require("./.env.json");
+const { getScore } = require("./utils");
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -30,7 +19,11 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 
-const whitelist = ["https://skillrazr.com", "https://skillrazr.web.app"];
+const whitelist = [
+  "https://skillrazr.com",
+  "https://skillrazr.web.app",
+  "http://localhost:3000",
+];
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -143,7 +136,7 @@ app.post("/getCompletionText", [appCheckVerification], async (req, res) => {
   const { query, prompt = "", apiKey } = req.body;
   try {
     const configuration = new Configuration({
-      apiKey: apiKey || "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",
+      apiKey: apiKey || env.OPEN_AI_API_KEY,
     });
 
     const openai = new OpenAIApi(configuration);
@@ -161,6 +154,37 @@ app.post("/getCompletionText", [appCheckVerification], async (req, res) => {
       return res.status(200).json({
         status: 0,
         message: "No completion data found using chat openai api!",
+      });
+    }
+
+    return res.status(200).json({ status: 1, data: result });
+  } catch (error) {
+    return res.status(200).json({ status: -1, error });
+  }
+});
+
+app.post("/generateStory", [appCheckVerification], async (req, res) => {
+  const { storyPrompt, apiKey } = req.body;
+  try {
+    const configuration = new Configuration({
+      apiKey: apiKey || env.OPEN_AI_API_KEY,
+    });
+
+    const openai = new OpenAIApi(configuration);
+
+    const completion = await openai.createCompletion({
+      model: "text-curie-001",
+      temperature: 0.7,
+      max_tokens: 2000,
+      prompt: storyPrompt,
+    });
+
+    const result = completion.data.choices[0].text;
+
+    if (!result) {
+      return res.status(200).json({
+        status: 0,
+        message: "Unable to generate story, Sorry. Please try again later.",
       });
     }
 
