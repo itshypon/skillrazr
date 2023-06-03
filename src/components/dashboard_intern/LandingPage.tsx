@@ -17,7 +17,7 @@ const LandingPage = () => {
     <>
       <div className="flex flex-col sm:flex-row p-20 sm:p-40 landing-page">
         <div className="container-l flex flex-col items-center sm:items-start px-5 sm:px-24">
-          <div className="heading">
+          <div className="text-4xl mt-8 sm:mt-4 mb-6">
             Embark on a Transformative Internship Journey
           </div>
           <div className="tag">
@@ -48,7 +48,7 @@ const LandingPage = () => {
           />
         </div>
         <div className="info-container">
-          <div className="heading">Sharpen your Skills at SkillRazr</div>
+          <div className="text-4xl mb-6">Sharpen your Skills at SkillRazr</div>
           <div className="tag">
             SkillRazr is offering an exciting internship opportunity for
             aspiring web developers. <br /> As a web developer intern at
@@ -93,7 +93,7 @@ const LandingPage = () => {
           />
         </div>
         <div className="info-container">
-          <div className="heading">Application Process</div>
+          <div className="text-4xl mb-6">Application Process</div>
           <div className="tag">
             We receive applications mostly through Linkedin. <br />
             <br />
@@ -106,7 +106,7 @@ const LandingPage = () => {
                   target="_blank"
                   to={"https://www.linkedin.com/company/80788727"}
                 >
-                  <LinkedInIcon color="primary" />
+                  <LinkedInIcon color="primary" fontSize="large" />
                 </NavLink>{" "}
                 &{" "}
                 <NavLink
@@ -115,7 +115,7 @@ const LandingPage = () => {
                   to={"https://twitter.com/skillrazr"}
                 >
                   {/* <img src={twitter} alt="twitter" className="w-8" /> */}
-                  <TwitterIcon color="primary" />
+                  <TwitterIcon color="primary" fontSize="large" />
                 </NavLink>
               </div>
               <br />

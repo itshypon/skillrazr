@@ -3,12 +3,8 @@ import Features from "./Features";
 import Courses from "./Courses";
 import Quizes from "./Quizes";
 import Testimonials from "./Testimonials";
-import Internship from "./Internship";
 import Faqs from "./Faqs";
 import Flashcards from "./FlashCards";
-
-
-
 
 const HomePage = () => {
   return (
@@ -19,7 +15,6 @@ const HomePage = () => {
       <Courses />
       <Quizes />
       <Flashcards />
-      <Internship />
       <Faqs />
     </div>
   );

@@ -56,6 +56,7 @@ export default function Footer() {
   const handleDialogClose = () => {
     setShowPrivacyDialog(false);
   };
+
   const handleTermsDialogClose = () => {
     setShowTermsDialog(false);
   };
@@ -203,6 +204,15 @@ export default function Footer() {
               >
                 <Sub>Games</Sub>
               </NavLink>
+              <NavLink
+                to="/fullstackdev"
+                className="text-white flex pt-4 pb-4"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                FullStack Roadmap
+              </NavLink>
             </Grid>
           </Grid>
           <Grid
@@ -288,9 +298,6 @@ export default function Footer() {
                 }}
               >
                 <Sub>Return Policy</Sub>
-              </NavLink>
-              <NavLink to="/Roadmaps" className="text-white flex pt-4">
-                Roadmap
               </NavLink>
             </Grid>
           </Grid>

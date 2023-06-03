@@ -54,9 +54,9 @@ function InternDashboard() {
   }
 
   return (
-    <div className="dashboard">
+    <div className="dashboard mt-[96px] sm:mt-10">
       {user && performancedata ? (
-        <div className="dashboardGlass p-4 sm:p-8">
+        <div className="dashboardGlass p-4 sm:p-8 mt-4 sm:mt-4">
           <Sidebar
             name={user.displayName}
             github={githubUrl || "https://www.github.com"}
@@ -73,7 +73,7 @@ function InternDashboard() {
               No Internship details found for {user && user.email}
             </div>
           ) : (
-            <div className="text-3xl p-20">
+            <div className="text-3xl p-4 sm:p-20 wrap text-center">
               Please login to view the dashboard
             </div>
           )}

@@ -6,6 +6,7 @@ import { signInWithPopup } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../actions/actions";
 import UserModal from "./UserModal/UserModal";
+
 export default function Navbar(props: any) {
   const { logout } = props;
 
@@ -64,34 +65,29 @@ export default function Navbar(props: any) {
 
         <div id="navlinks" className="navbar-nav-scroll flex flex-row">
           <ul className="navbar-nav flex items-center flex-row text-xs sm:text-base py-3">
-            <li className="first:ml-0 nav-item ml-8 font-medium">
+            <li className="first:ml-0 nav-item ml-4 sm:ml-8 font-medium">
               <a className="nav-link" href="/#features">
                 Features
               </a>
             </li>
-            <li className="nav-item ml-8 font-medium">
-              <a className="nav-link" href="/#testimonials">
-                Stories
-              </a>
-            </li>
-            <li className="nav-item ml-8 font-medium">
+            <li className="nav-item ml-4 sm:ml-8 font-medium">
               <a className="nav-link" href="/#courses">
                 Courses
               </a>
             </li>
-            <li className="nav-item ml-8 font-medium">
+            <li className="nav-item ml-4 sm:ml-8 font-medium">
               <a className="nav-link" href="/internship">
                 Internship
               </a>
             </li>
 
-            <li className="nav-item ml-8 font-medium">
+            <li className="nav-item ml-4 sm:ml-8 font-medium">
               <a className="nav-link" href="/#faqs">
                 FAQs
               </a>
             </li>
             {user === null ? (
-              <li className="nav-item ml-8 font-medium">
+              <li className="nav-item ml-4 sm:ml-8 font-medium">
                 <button
                   className="nav-link cursor-pointer bg-pink-400 py-1.5 px-2.5 rounded transition duration-300 hover:bg-pink-500"
                   onClick={logIn}
@@ -101,7 +97,7 @@ export default function Navbar(props: any) {
               </li>
             ) : (
               <>
-                <div className="h-10 w-10 ml-8 rounded-full overflow-hidden">
+                <div className="h-10 w-10 ml-4 sm:ml-8 rounded-full overflow-hidden">
                   <img
                     src={user.photoURL}
                     alt="avatar"

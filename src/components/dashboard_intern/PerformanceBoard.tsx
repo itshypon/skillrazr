@@ -60,7 +60,9 @@ function MainDashboard({ data }: { data: Record<string, PeformanceData> }) {
   ];
   return (
     <div className="flex items-center sm:items-start flex-col">
-      <h1 className="text-2xl">Monthly Performance Dashboard</h1>
+      <h1 className="text-2xl text-center py-4">
+        Monthly Performance Dashboard
+      </h1>
       <FormControl sx={{ m: 1, minWidth: 80 }} className="!mx-0 !my-4">
         <InputLabel id="demo-simple-select-autowidth-label">Month</InputLabel>
         <Select

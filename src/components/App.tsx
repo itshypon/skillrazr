@@ -32,7 +32,7 @@ import thunk from "redux-thunk";
 import rootReducer from "../reducer";
 import { Provider } from "react-redux";
 
-import Roadmaps from "./Roadmaps";
+import TaskList from "./TaskList";
 import InternLandingPage from "./dashboard_intern/InternDashboard";
 import LandingPage from "./dashboard_intern/LandingPage";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -187,8 +187,11 @@ function App(props: any) {
               path="/evergreen_courses"
               element={<SummerCoursePage {...props} />}
             />
-            <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
-            <Route path="/Roadmaps" index element={<Roadmaps {...props} />} />
+            <Route
+              path="/fullstackdev"
+              index
+              element={<TaskList {...props} />}
+            />
             <Route
               path="/courses/:id"
               element={<CourseDetailsPage {...props} />}
