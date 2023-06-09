@@ -12,3 +12,17 @@ export const setCurrentUser = (data) => {
       payload: data
   }
 }
+
+export const setAllInterns = (data) => {
+  return{
+    type: 'ALL_INTERNS',
+    payload: data
+  }
+}
+
+export const setInternPerformanceData = (data) => {
+  return{
+    type: 'INTERN_PERFORMANCE_DATA',
+    payload: data
+  }
+}

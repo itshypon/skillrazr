@@ -624,9 +624,10 @@ it('should return success with subscribed items for the given day', () => {
 
 export const BlogDetailsPage = () => {
   const { id: blogId } = useParams<string>();
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   const blog: any = blogs.find((data) => data.id === blogId);
 
-  const [scrollPosition, setSrollPosition] = useState(0);
   const handleScroll = () => {
     var scrolled_top =
       window.pageYOffset ||
@@ -642,13 +643,14 @@ export const BlogDetailsPage = () => {
     var horizontal_width = (scrolled_top / to_scroll) * 100;
 
     // if (blogId === 'unit_test_coverage') return;
-    setSrollPosition(horizontal_width > 100 ? 100 : horizontal_width);
+    setScrollPosition(horizontal_width > 100 ? 100 : horizontal_width);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      setScrollPosition(0);
     };
   }, []);
 
@@ -674,7 +676,7 @@ export const BlogDetailsPage = () => {
           </a>{" "}
         </div>
         <br />
-        <div className="p-4">
+        <div className="p-4 w-full">
           Every year millions of fresh graduates come out of college in search
           of jobs to start their career. Last 2 decades tech sector is
           significantly hiring fresh graduates who are interested in the tech
@@ -1100,7 +1102,7 @@ export const BlogDetailsPage = () => {
 
   return (
     <>
-      <div className="fixed text-red-400 z-20 w-full h-2 top-[110px] sm:top-[70px]">
+      <div className="fixed w-full z-20 h-2 top-[136px] sm:top-[80px]">
         <div
           style={{
             width: `${scrollPosition}%`,
@@ -1109,7 +1111,9 @@ export const BlogDetailsPage = () => {
           }}
         ></div>
       </div>
-      <div className={`flex flex-col w-full mt-10 py-20 px-10 sm:px-20`}>
+      <div
+        className={`flex w-full flex-col mt-10 py-20 px-10 sm:px-20 break-words`}
+      >
         <div className="flex items-center flex-col">
           {!blog ? (
             <div className="flex flex-col items-center p-20">

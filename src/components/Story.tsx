@@ -54,7 +54,7 @@ export default function Story() {
     "🐎": "Horse",
     "🐀": "Rat",
     "🐑": "Sheep",
-    "🐇": "Rabit",
+    "🐇": "Rabbit",
     "🦍": "Gorilla",
     "🐍": "Snake",
     "🐪": "Camel",

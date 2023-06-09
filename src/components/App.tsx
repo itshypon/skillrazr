@@ -2,6 +2,7 @@ import * as React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
+import LayoutWithoutFooter from "./LayoutWithoutFooter";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import CourseDetailsPage from "./CourseDetailsPage";
@@ -23,19 +24,26 @@ import { Editor } from "./Editor";
 import Games from "../components/Games";
 import SelectedGame from "../components/SelectedGame";
 import { CSSEditor } from "./CSSEditor";
-import Navbar from "./Navbar";
 import UserPage from "./UserPage";
-import { setCurrentUser } from "../actions/actions";
+import { setCurrentUser, setInternPerformanceData } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import thunk from "redux-thunk";
 import rootReducer from "../reducer";
 import { Provider } from "react-redux";
 
+import AddCourse from "./AddCourse/AddCourse";
+import EditCourse from "./AddCourse/EditCourse";
+import CourseReadOnly from "./AddCourse/CourseReadOnly";
 import TaskList from "./TaskList";
 import InternLandingPage from "./dashboard_intern/InternDashboard";
 import LandingPage from "./dashboard_intern/LandingPage";
 import { createStore, applyMiddleware, compose } from "redux";
+import SelfPacedCoursesPage from "./SelfPacedCoursesPage";
+import SelfPacedCoursesDetailPage from "./SelfPacedCoursesDetailPage";
+import AllInterns from "./AllInternsDashboard/AllInterns";
+import PublicInternDetails from "./AllInternsDashboard/PublicInternDetails";
+import { getInternPerformanceData } from "../services";
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
@@ -104,16 +112,16 @@ function DaySnack(props: any) {
   const { vertical, horizontal, open } = state;
 
   const handleClose = () => {
-    // handleClick(true);
+    handleClick && handleClick(true);
     setState({ ...state, open: false });
   };
 
   return (
     <div>
       <Snackbar
-        className="!top-[110px] sm:!top-[70px] cursor-pointer"
+        className="!top-[110px] sm:!top-[70px] w-screen cursor-pointer"
         anchorOrigin={{ vertical, horizontal }}
-        autoHideDuration={20000}
+        autoHideDuration={10000}
         open={open}
         onClose={handleClose}
         message={
@@ -122,12 +130,12 @@ function DaySnack(props: any) {
               <NewspaperIcon />
             </div>
             <div className="ml-2 text-center">Today is :- {messages[0]}</div>{" "}
-            <div className="text-center">{messages[1]}</div>
+            <div className="text-center w-[300px] sm:w-full">{messages[1]}</div>
           </div>
         }
         key={vertical + horizontal}
         onClick={() => {
-          handleClick(true);
+          handleClick && handleClick(true);
           if (url) {
             navigate(`../${url}`, { replace: false });
             handleClose();
@@ -155,13 +163,16 @@ function DaySnack(props: any) {
 function App(props: any) {
   const date = new Date();
   const dateMonth = `${date.getDate()}/${date.getMonth() + 1}`;
-  // const [daySnackSeen, setDaySnackSeen] = React.useState(false);
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user: any) => {
       if (user) {
         dispatch(setCurrentUser(user));
+
+        const res = await getInternPerformanceData(user?.accessToken);
+        dispatch(setInternPerformanceData(res));
       }
     });
   }, [dispatch]);
@@ -232,26 +243,56 @@ function App(props: any) {
               path="/flashcards/:id"
               element={<FlashcardDetailsPage {...props} />}
             />
+            <Route path="/account" element={<UserPage />} />
           </Route>
-          <Route
-            path="/jseditor"
-            element={
-              <div style={{ marginTop: "120px" }}>
-                <Navbar {...props} />
-                <Editor {...props} />
-              </div>
-            }
-          />
-          <Route
-            path="/csseditor"
-            element={
-              <div style={{ marginTop: "120px" }}>
-                <Navbar {...props} />
-                <CSSEditor />
-              </div>
-            }
-          />
-          <Route path="/user" element={<UserPage />} />
+
+          {/* below routes are without footer */}
+          <Route element={<LayoutWithoutFooter {...props} logout={logout} />}>
+            <Route
+              path="/jseditor"
+              element={
+                <div style={{ marginTop: "120px" }}>
+                  <Editor {...props} />
+                </div>
+              }
+            />
+            <Route
+              path="/csseditor"
+              element={
+                <div style={{ marginTop: "120px" }}>
+                  <CSSEditor />
+                </div>
+              }
+            />
+            <Route path="/addCourse" element={<AddCourse />} />
+            <Route path="/editCourse" element={<EditCourse />} />
+            <Route path="/readCourse" element={<CourseReadOnly />} />
+            <Route
+              path="/self_paced_courses/:id"
+              element={<SelfPacedCoursesDetailPage {...props} />}
+            />
+
+            <Route
+              path="/self_paced_courses"
+              element={<SelfPacedCoursesPage {...props} />}
+            />
+            <Route
+              path="/allinterns"
+              element={
+                <div className="mt-[120px]">
+                  <AllInterns />
+                </div>
+              }
+            />
+            <Route
+              path="/allinterns/:email"
+              element={
+                <div className="mt-[80px] flex h-[100vh]">
+                  <PublicInternDetails />
+                </div>
+              }
+            />
+          </Route>
         </Routes>
         {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
       </BrowserRouter>

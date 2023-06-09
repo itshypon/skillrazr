@@ -1,7 +1,6 @@
 import "./css/dashboard.css";
 import Sidebar from "./Sidebar";
 import PerformanceBoard from "./PerformanceBoard";
-import { getInternPerformanceData } from "../../services";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PeformanceData } from "../../types/types";
@@ -18,6 +17,9 @@ function InternDashboard() {
   const [githubUrl, setGithubUrl] = useState("");
   const [linkedInUrl, setLinkedInUrl] = useState("");
 
+  const response = useSelector((state: any) => state.performanceDataReducer);
+  // console.log(response);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -25,15 +27,14 @@ function InternDashboard() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await getInternPerformanceData(user.accessToken);
-        if (response.status === -1) {
+        if (response?.status === -1) {
           setAuthError(true);
-        } else if (response.status === 0) {
+        } else if (response?.status === 0) {
           setNoInternFound(true);
         } else {
-          setLinkedInUrl(response.data.linkedIn);
-          setGithubUrl(response.data.github);
-          setData(response.data.performanceData);
+          setLinkedInUrl(response?.data.linkedin);
+          setGithubUrl(response?.data.github);
+          setData(response?.data.performanceData);
           setNoInternFound(false);
           setAuthError(false);
         }
@@ -47,22 +48,30 @@ function InternDashboard() {
     }
 
     user && loadData();
-  }, [user]);
+  }, [user, response]);
 
   if (showAuthError) {
-    return <>Access token expired, please login to get a new one!"</>;
+    return (
+      <div className="w-full grid place-content-center text-center grow">
+        <p className="text-3xl font-bold p-4 hover:text-[#ff1694] transistion duration-1000">
+          &lt;&gt; Access token expired, please login to get a new one!
+          &lt;/&gt;
+        </p>
+      </div>
+    );
   }
 
   return (
-    <div className="dashboard mt-[96px] sm:mt-10">
+    <div className="dashboard mt-[116px] sm:mt-10 w-screen p-2 sm:p-4 grow">
       {user && performancedata ? (
         <div className="dashboardGlass p-4 sm:p-8 mt-4 sm:mt-4">
           <Sidebar
             name={user.displayName}
             github={githubUrl || "https://www.github.com"}
             linkedin={linkedInUrl || "https:www.linkedin.com"}
+            email={user.email}
           />
-          <div className="rightSide">
+          <div className="rightSide ml-0 sm:ml-4">
             <PerformanceBoard data={performancedata} />
           </div>
         </div>
@@ -74,7 +83,7 @@ function InternDashboard() {
             </div>
           ) : (
             <div className="text-3xl p-4 sm:p-20 wrap text-center">
-              Please login to view the dashboard
+              Please login to view your dashboard
             </div>
           )}
         </>

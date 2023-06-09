@@ -28,7 +28,7 @@ export default function Games(props: any) {
     <div
       id="games"
       className={
-        "w-full my-24 sm:mb-60 px-6 pt-10 flex flex-col items-center flex-wrap justify-center"
+        "grow w-full my-24 sm:mb-60 px-6 pt-10 flex flex-col items-center flex-wrap justify-center"
       }
     >
       <div className="text-6xl text-center mb-8">Games</div>

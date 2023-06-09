@@ -299,13 +299,12 @@ console.log("Double of 456 is : " + double(456));
   };
   return (
     <div>
-      <div className="py-2 text-4xl text-center">JavaScript Editor</div>
       <div
         style={{ padding: "20px" }}
         className={`flex align-center flex-col sm:flex-row ${editorClass}`}
       >
         <div className="editor p-2 w-full sm:w-6/12">
-          <h2 className="py-2 text-2xl">Write JS here</h2>
+          <h2 className="py-2 text-3xl">Write JS here</h2>
           <CodeMirror
             autoFocus
             value={iframeContent}

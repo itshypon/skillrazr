@@ -47,6 +47,18 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 }));
 
 const Calender = ({ date, absentDays, notes = [] }: DateType) => {
+  // if (absentDays) {
+  //   const absentDayss = absentDays?.map((i) => {
+  //     i = i.split('/').reverse().join('/')
+  //     Date.parse(i)
+  //   })  
+  // }
+  // if (notes) {
+  //   const notess = notes?.map((i) => {
+  //     i = i.split('/').reverse().join('/')
+  //     Date.parse(i)
+  //   })
+  // }
   const monthStart = startOfMonth(date);
   const monthEnd = endOfMonth(date);
   const weeksInMonth = eachWeekOfInterval(

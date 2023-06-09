@@ -179,7 +179,7 @@ export default function Footer() {
               <NavLink
                 to="/csseditor"
                 onClick={() => {
-                  window.scrollTo(0, 100);
+                  window.scrollTo(0, 0);
                 }}
               >
                 <Sub>CSS Editor</Sub>

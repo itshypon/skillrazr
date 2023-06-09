@@ -94,6 +94,7 @@ app.post("/updateInternsAttendance", async (req, res) => {
     const db = admin.firestore();
 
     const dateObj = new Date(date);
+    const formattedDate = dateObj.toISOString();
     // ToDo - add validation to allow updates only from a date from the internship duration
 
     const monthYear = `${getMonthName(
@@ -112,7 +113,7 @@ app.post("/updateInternsAttendance", async (req, res) => {
       }
 
       const absentArray = performanceData[monthYear].absentDays || [];
-      performanceData[monthYear].absentDays = [...absentArray, date];
+      performanceData[monthYear].absentDays = [...absentArray, formattedDate];
       updateBatch.update(docRef, { performanceData });
     }
 
@@ -134,6 +135,7 @@ app.post("/updateInternNotes", async (req, res) => {
 
   try {
     const dateObj = new Date(date);
+    const formattedDate = dateObj.toISOString();
 
     const monthYear = `${getMonthName(
       dateObj.getMonth()
@@ -147,7 +149,7 @@ app.post("/updateInternNotes", async (req, res) => {
       performanceData[monthYear] = {};
     }
     const notes = performanceData[monthYear].notes || [];
-    notes.push({ ...note, date });
+    notes.push({ ...note, formattedDate });
 
     performanceData[monthYear].notes = notes;
 
@@ -159,12 +161,12 @@ app.post("/updateInternNotes", async (req, res) => {
 });
 
 app.post("/getInternPerfomanceData", async (req, res) => {
-  const { userToken } = req.body;
+  const { accessToken } = req.body;
 
   const db = admin.firestore();
 
   try {
-    const data = await admin.auth().verifyIdToken(userToken);
+    const data = await admin.auth().verifyIdToken(accessToken);
     const email = data.email;
     const internsRef = db.collection("interns").doc(email);
     const doc = await internsRef.get();
@@ -178,6 +180,45 @@ app.post("/getInternPerfomanceData", async (req, res) => {
     }
   } catch (error) {
     return res.status(200).json({ status: -1, error });
+  }
+});
+
+app.post("/updateToggle", async (req, res) => {
+  const { accessToken, toggleValue } = req.body;
+
+  const db = admin.firestore();
+
+  try {
+    // Update the state in Firebase
+    const data = await admin.auth().verifyIdToken(accessToken);
+    const email = data.email;
+    const docRef = db.collection("interns").doc(email);
+    await docRef.update({
+      profilePublic: toggleValue,
+      profilePublicUpdatedOn: new Date().toISOString(),
+    });
+    res.status(200).json({ status: 1 });
+  } catch (error) {
+    console.log("data in toggle ", error);
+    return res.status(500).json({ status: -1, error });
+  }
+});
+
+app.post("/getIntern", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const db = admin.firestore();
+
+    const internsRef = db.collection("interns").doc(email);
+    const doc = await internsRef.get();
+
+    const { performanceData, profilePublic, ...rest } = doc.data();
+
+    return res
+      .status(200)
+      .json({ status: 1, data: profilePublic ? doc.data() : { ...rest } });
+  } catch (error) {
+    return res.status(500).json({ status: -1, error });
   }
 });
 

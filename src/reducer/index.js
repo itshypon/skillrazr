@@ -23,11 +23,28 @@ const currentUserReducer = (state = null, action) => {
   }
 }
 
+const allInternsReducer = (state=null, action) => {
+  switch(action.type){
+    case 'ALL_INTERNS':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const performanceDataReducer = (state=null, action) => {
+  switch(action.type){
+    case 'INTERN_PERFORMANCE_DATA':
+      return action.payload;
+    default:
+      return state;
+  }
+}
 
 
 // Combine reducers
 const rootReducer = combineReducers({
-    authReducer, currentUserReducer, 
+    authReducer, currentUserReducer, allInternsReducer, performanceDataReducer,
   });
 
 export default rootReducer;

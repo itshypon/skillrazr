@@ -6,6 +6,8 @@
 .pnp.js
 .env
 package-lock.json
+.*.json
+functions/.google_calendar_cred.json
 
 /temp_notes
 

@@ -3,10 +3,9 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap");
 
-
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -160,4 +159,14 @@ p span {
   padding: 10px;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.ql-container.ql-disabled h3,
+.ql-container.ql-disabled ol,
+.ql-container.ql-disabled ul,
+.ql-container.ql-disabled pre.ql-syntax {
+  font-size: 20px !important;
+}
+.public-intern-image {
+  box-shadow: 0 0 13px 3px white;
 }

@@ -1,3 +1,4 @@
 node_modules/
 .env.json
 .runtimeconfig.json
+.google_calendar_cred.json

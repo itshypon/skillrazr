@@ -5,11 +5,10 @@ import { auth, provider } from "../init-firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../actions/actions";
-import UserModal from "./UserModal/UserModal";
+import UserModal from "./UserModal/UserMenu";
 
 export default function Navbar(props: any) {
   const { logout } = props;
-
   const [scrolled, setScrolled] = React.useState<boolean>(false);
   const dispatch = useDispatch();
   var user = useSelector((state: any) => state.currentUserReducer);
@@ -47,7 +46,7 @@ export default function Navbar(props: any) {
 
   return (
     <header
-      className={`fixed z-10 px-0 sm:px-6 top-0 left-0 right-0 bg-white flex flex-col items-center flex-wrap justify-between hover:shadow ${
+      className={`fixed h-[136px] sm:h-[80px] z-[999] px-0 sm:px-6 top-0 left-0 right-0 bg-white flex flex-col items-center flex-wrap justify-between hover:shadow ${
         scrolled ? "shadow" : ""
       }`}
     >

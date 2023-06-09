@@ -14,7 +14,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="w-screen">
       <div className="flex flex-col sm:flex-row p-20 sm:p-40 landing-page">
         <div className="container-l flex flex-col items-center sm:items-start px-5 sm:px-24">
           <div className="text-4xl mt-8 sm:mt-4 mb-6">
@@ -28,9 +28,9 @@ const LandingPage = () => {
             <button className="floating-button">
               <a href="#application">Learn more</a>
             </button>
-            <Link to="/dashboard">
+            <Link to="/allinterns">
               <button className="floating-button secondary">
-                Intern Dashboard
+                Interns Dashboard
               </button>
             </Link>
           </div>
@@ -159,7 +159,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

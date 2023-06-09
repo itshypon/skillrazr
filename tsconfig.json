@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["@types/editorjs__header", "date-fns"],
     "useUnknownInCatchVariables": false,
     "allowJs": true,
     "skipLibCheck": true,

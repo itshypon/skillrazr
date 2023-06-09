@@ -194,5 +194,70 @@ app.post("/generateStory", [appCheckVerification], async (req, res) => {
   }
 });
 
+app.post("/saveCourse", [appCheckVerification], async (req, res) => {
+  const { title, description, chapters, userToken, authorName = "" } = req.body;
+  try {
+    const data = await admin.auth().verifyIdToken(userToken);
+    const email = data.email;
+
+    if (!email) {
+      return res
+        .status(200)
+        .json({ status: -1, error: "You need to login to save a course" });
+    }
+
+    const _title = title.split(" ").join("_");
+
+    const result = await db
+      .collection("courses")
+      .doc(`${_title}_${email}`)
+      .set({
+        title,
+        description,
+        chapters,
+        created_at: Date.now(),
+        authorEmail: email,
+        author: authorName,
+        state: "draft",
+      });
+
+    return res.status(200).json({ status: 1, data: result });
+  } catch (error) {
+    return res.status(200).json({ status: -1, error });
+  }
+});
+
+app.post("/getAllCourses", [appCheckVerification], async (req, res) => {
+  const { userToken } = req.body;
+  try {
+    const data = await admin.auth().verifyIdToken(userToken);
+    const email = data.email;
+
+    if (!email) {
+      return res
+        .status(200)
+        .json({ status: -1, error: "You need to login to get courses" });
+    }
+
+    const courses = [];
+    await db
+      .collection("courses")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          courses.push(doc.data());
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    return res.status(200).json({ status: 1, data: courses });
+  } catch (error) {
+    return res.status(200).json({ status: -1, error });
+  }
+});
+
 exports.skillRazr = functions.region("asia-south1").https.onRequest(app);
 exports.skillRazrIntern = require("./intern");
+exports.skillRazrEvents = require("./events");

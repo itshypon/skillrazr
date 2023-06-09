@@ -1,3 +1,5 @@
+import type { Chapter } from "../src/components/AddCourse/AddCourse";
+
 export const getQuizScrore = async (quizId: string, quizSubmission: any) => {
   return await fetch(
     `https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr/getQuizScore`,
@@ -168,7 +170,7 @@ export const storyGenerator = async (storyPrompt: string, apiKey = "") => {
   }).then((resp) => resp.json());
 };
 
-export const getInternPerformanceData = async (userToken: string) => {
+export const getInternPerformanceData = async (accessToken: string) => {
   const baseUrl = process.env.REACT_APP_ENV
     ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazrIntern-api/getInternPerfomanceData"
     : "http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/getInternPerfomanceData";
@@ -179,7 +181,7 @@ export const getInternPerformanceData = async (userToken: string) => {
     },
     method: "POST",
     body: JSON.stringify({
-      userToken,
+      accessToken,
     }),
   }).then((resp) => resp.json());
 };
@@ -195,5 +197,76 @@ export const getAllInterns = async () => {
     },
     method: "POST",
     body: JSON.stringify({}),
+  }).then((resp) => resp.json());
+};
+
+export const updateToggle = async (
+  accessToken: string,
+  toggleValue: boolean
+) => {
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazrIntern-api/updateToggle"
+    : "http://127.0.0.1:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/updateToggle";
+
+  return await fetch(baseUrl, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      accessToken,
+      toggleValue,
+    }),
+  }).then((resp) => resp.json());
+};
+
+export const getIntern = async (email: string) => {
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazrIntern-api/getIntern"
+    : "http://localhost:5001/genlent-8aab7/asia-south1/skillRazrIntern-api/getIntern";
+
+  return await fetch(baseUrl, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      email,
+    }),
+  }).then((resp) => resp.json());
+};
+
+export const saveCourse = async (payload: {
+  title: string;
+  description: string;
+  chapters: Chapter[];
+  userToken: string;
+}) => {
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr/saveCourse"
+    : "http://localhost:5001/genlent-8aab7/asia-south1/skillRazr/saveCourse";
+
+  return await fetch(baseUrl, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-Firebase-AppCheck": `appCheckTokenResponse.token`,
+    },
+    method: "POST",
+    body: JSON.stringify(payload),
+  }).then((resp) => resp.json());
+};
+
+export const getCourses = async (payload: { userToken: string }) => {
+  const baseUrl = process.env.REACT_APP_ENV
+    ? "https://asia-south1-genlent-8aab7.cloudfunctions.net/skillRazr/getAllCourses"
+    : "http://localhost:5001/genlent-8aab7/asia-south1/skillRazr/getAllCourses";
+
+  return await fetch(baseUrl, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-Firebase-AppCheck": `appCheckTokenResponse.token`,
+    },
+    method: "POST",
+    body: JSON.stringify(payload),
   }).then((resp) => resp.json());
 };
