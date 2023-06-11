@@ -27,9 +27,9 @@ const UserMenu = ({ closeModal, logout }) => {
           My Dashboard
         </NavLink>
 
-        <p className="cursor-pointer logout-btn" onClick={handleLogout}>
+        <button className="cursor-pointer logout-btn" onClick={handleLogout}>
           Log Out
-        </p>
+        </button>
       </div>
     </div>
   );

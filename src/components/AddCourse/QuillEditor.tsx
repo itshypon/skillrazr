@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "quill/dist/quill.snow.css";
 import styles from "./QuillEditor.module.css";
+import { IOSSwitch } from "../SwitchToggle";
 
 type QuillEditorProps = {
   chapter: {
@@ -21,17 +22,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
   const modules = {
     toolbar: [
       [{ "header": [1, 2, 3, 4, 5, 6, false] }],
-      [
-        {
-          font: [
-            "Arial",
-            "Verdana",
-            "Helvetica",
-            "Times New Roman",
-            "Courier New",
-          ],
-        },
-      ],
+      [{ "size": ["small", false, "large", "huge"] }],
       [
         {
           color: [
@@ -71,6 +62,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
 
   const formats = [
     "header",
+    "size",
     "bold",
     "italic",
     "underline",
@@ -82,17 +74,12 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
     "link",
     "image",
     "code-block",
-    "font",
     "color",
     "background",
   ];
 
   const [editorContent, setEditorContent] = useState(chapter.content);
-  const [showEditor, setShowEditor] = useState(true);
-
-  const handleToggleView = () => {
-    setShowEditor((prevValue) => !prevValue);
-  };
+  const [showEditor, setShowEditor] = useState(!readOnly);
 
   const chapterContentChangeHandler = (content: string) => {
     setEditorContent(content);
@@ -104,51 +91,46 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
   }, [chapter]);
 
   return (
-    <div className={styles.container}>
-      {readOnly ? null : (
-        <div className={styles.button__container}>
-          <button
-            onClick={handleToggleView}
-            className={`${showEditor ? styles.active : ""}`}
-            disabled={showEditor}
-          >
-            Editor
-          </button>
-          <button
-            onClick={handleToggleView}
-            className={`${!showEditor ? styles.active : ""}`}
-            disabled={!showEditor}
-          >
-            Preview
-          </button>
+    <div className={`${styles.container} min-w-[360px] md:min-w-[600px]`}>
+      {!readOnly && (
+        <div className="flex p-2 mb-4">
+          <div>
+            <IOSSwitch
+              checked={!showEditor}
+              onChange={() => setShowEditor(!showEditor)}
+              label={"Preview"}
+            />
+          </div>
         </div>
       )}
-      <div id="toolbar" className="!border-0"></div>
-      <div className={styles.editor__preview}>
-        {showEditor ? (
-          <>
-            <div>
-              <ReactQuill
-                theme="snow"
-                readOnly={readOnly}
-                value={editorContent}
-                onChange={chapterContentChangeHandler}
-                modules={readOnly ? { toolbar: "#toolbar" } : modules}
-                formats={formats}
-              />
-            </div>
-          </>
-        ) : (
+
+      {(!showEditor || readOnly) && (
+        <div id="toolbar" className="!border-0 absolute" />
+      )}
+
+      {readOnly || !showEditor ? (
+        <ReactQuill
+          key={chapter.id}
+          className="quill-preview"
+          theme="snow"
+          readOnly={true}
+          value={editorContent}
+          modules={{ toolbar: "#toolbar" }}
+          formats={formats}
+        />
+      ) : (
+        <div data-testid="quill-edit-mode">
           <ReactQuill
+            key={chapter.id}
             theme="snow"
-            readOnly={true}
+            readOnly={false}
             value={editorContent}
             onChange={chapterContentChangeHandler}
-            modules={{ toolbar: "#toolbar" }}
+            modules={modules}
             formats={formats}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

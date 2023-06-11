@@ -152,7 +152,7 @@ function EditCourse() {
   };
 
   return (
-    <div className={styles.body}>
+    <div className="m-0 pt-24 sm:pt-20">
       {loading ? (
         <div className="flex justify-center items-center h-[200px]">
           <CircularProgress />
@@ -191,7 +191,7 @@ function EditCourse() {
               </div>
             </div>
           </div>
-          <div className="flex">
+          <div className="flex h-[calc(100vh-175px)]">
             <div className={styles.side_navbar}>
               <div className={styles.add_newpage} onClick={newChapterHandler}>
                 <LibraryAdd />
@@ -223,7 +223,7 @@ function EditCourse() {
               </div>
             </div>
             <div className={""}>
-              <div className="flex items-center mb-16 mt-4">
+              <div className="flex items-center mb-8 mt-4">
                 <Edit className="h-[32px] ml-8" />
                 <div>
                   <div className={styles.chapter_name}>
@@ -239,7 +239,7 @@ function EditCourse() {
                     className={`${styles.chapter_name} ${styles.chapter_desc}`}
                   >
                     <input
-                      className="block"
+                      className="block min-w-[360px]"
                       type="text"
                       value={selectedChapterDescription}
                       placeholder="Chapter description"

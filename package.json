@@ -40,7 +40,6 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
-    "react-scroll-parallax": "^3.2.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "scratchcard-js": "^1.4.10",
@@ -68,7 +67,7 @@
     "start": "react-scripts start",
     "build": "REACT_APP_ENV=production react-scripts build",
     "stage": "REACT_APP_ENV=stage react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --silent",
     "test:coverage": "CI=true npm test -- --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint \"**/*.{ts,tsx}\""

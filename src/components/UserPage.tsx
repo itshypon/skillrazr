@@ -6,7 +6,7 @@ const UserPage = () => {
   var user = useSelector((state: any) => state.currentUserReducer);
 
   return (
-    <div className="flex flex-col mt-40 sm:mt-20 p-8 sm:p-20 w-full">
+    <div className="flex flex-col mt-40 sm:mt-20 p-8 sm:p-20 w-full grow">
       <div className="text-2xl pb-2">My Details</div>
       <img src={user?.photoURL} alt="avatar" className="w-[60px]" />
       <p>{user?.displayName}</p>

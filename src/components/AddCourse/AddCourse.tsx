@@ -173,7 +173,7 @@ function AddCourse() {
   };
 
   return (
-    <div className={styles.body}>
+    <div className="m-0 pt-24 sm:pt-20">
       <div className={styles.upper_navbar}>
         <div className={`${styles.header} mt-10 md:mt-0`}>
           <div className="flex items-center">
@@ -228,8 +228,8 @@ function AddCourse() {
           </div>
         </div>
       </div>
-      <div className="flex">
-        <div className={`${styles.side_navbar} h-[100vh]`}>
+      <div className="flex h-[calc(100vh-175px)]">
+        <div className={`${styles.side_navbar}`}>
           <div className={styles.add_newpage} onClick={newChapterHandler}>
             <LibraryAdd />
             <h1 className="ml-2">Add New Chapter</h1>
@@ -259,7 +259,7 @@ function AddCourse() {
           </div>
         </div>
         <div className={""}>
-          <div className="flex items-center mb-16 mt-4">
+          <div className="flex items-center mb-8 mt-4">
             <Edit className="h-[32px] ml-8" />
             <div>
               <div className={styles.chapter_name}>
@@ -282,7 +282,7 @@ function AddCourse() {
               </div>
               <div className={`${styles.chapter_name} ${styles.chapter_desc}`}>
                 <input
-                  className="block"
+                  className="block min-w-[240px]"
                   type="text"
                   value={selectedChapterDescription}
                   placeholder="Chapter description"

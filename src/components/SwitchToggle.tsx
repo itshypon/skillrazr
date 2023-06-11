@@ -1,53 +1,65 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Switch, { SwitchProps } from '@mui/material/Switch';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-export const IOSSwitch = styled((props: SwitchProps) => (
-  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+export const IOSSwitch = styled((props: SwitchProps & { label?: string }) => (
+  <>
+    <FormControlLabel
+      control={
+        <Switch
+          focusVisibleClassName=".Mui-focusVisible"
+          disableRipple
+          {...props}
+        />
+      }
+      label={<span className="ml-2 font-bold">{props.label}</span>}
+    />
+  </>
 ))(({ theme }) => ({
   width: 42,
   height: 26,
   padding: 0,
-  '& .MuiSwitch-switchBase': {
+  "& .MuiSwitch-switchBase": {
     padding: 0,
     margin: 2,
-    transitionDuration: '300ms',
-    '&.Mui-checked': {
-      transform: 'translateX(16px)',
-      color: '#fff',
-      '& + .MuiSwitch-track': {
-        backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#ff1694',
+    transitionDuration: "300ms",
+    "&.Mui-checked": {
+      transform: "translateX(16px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#ff1694",
         opacity: 1,
         border: 0,
       },
-      '&.Mui-disabled + .MuiSwitch-track': {
+      "&.Mui-disabled + .MuiSwitch-track": {
         opacity: 0.5,
       },
     },
-    '&.Mui-focusVisible .MuiSwitch-thumb': {
-      color: '#33cf4d',
-      border: '6px solid #fff',
+    "&.Mui-focusVisible .MuiSwitch-thumb": {
+      color: "#33cf4d",
+      border: "6px solid #fff",
     },
-    '&.Mui-disabled .MuiSwitch-thumb': {
+    "&.Mui-disabled .MuiSwitch-thumb": {
       color:
-        theme.palette.mode === 'light'
+        theme.palette.mode === "light"
           ? theme.palette.grey[100]
           : theme.palette.grey[600],
     },
-    '&.Mui-disabled + .MuiSwitch-track': {
-      opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+    "&.Mui-disabled + .MuiSwitch-track": {
+      opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
     },
   },
-  '& .MuiSwitch-thumb': {
-    boxSizing: 'border-box',
+  "& .MuiSwitch-thumb": {
+    boxSizing: "border-box",
     width: 22,
     height: 22,
   },
-  '& .MuiSwitch-track': {
+  "& .MuiSwitch-track": {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === 'light' ? '#808080' : '#39393D',
+    backgroundColor: theme.palette.mode === "light" ? "#808080" : "#39393D",
     opacity: 1,
-    transition: theme.transitions.create(['background-color'], {
+    transition: theme.transitions.create(["background-color"], {
       duration: 500,
     }),
   },

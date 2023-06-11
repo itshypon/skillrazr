@@ -71,7 +71,7 @@ function ReadOnlyCourse() {
     setShowChapters(!showChapters);
   };
 
-  const PrevNextButtonHandler = (btn: string) => {
+  const prevNextButtonHandler = (btn: string) => {
     chapters.map((chapter, index) => {
       if (chapter.id === selectedChapter.id) {
         if (btn === "prev" && index > 0) {
@@ -85,9 +85,8 @@ function ReadOnlyCourse() {
     setShowChapters(false);
   };
 
-  console.log("course Read Only");
   return (
-    <div className={styles.body}>
+    <div className="m-0 pt-24 sm:pt-20">
       {loading ? (
         <div className="flex justify-center items-center h-[200px]">
           <CircularProgress />
@@ -170,7 +169,7 @@ function ReadOnlyCourse() {
                     {selectedChapter.id !== 1 && (
                       <button
                         className={"mr-10"}
-                        onClick={() => PrevNextButtonHandler("prev")}
+                        onClick={() => prevNextButtonHandler("prev")}
                       >
                         <div>
                           <ArrowBack />
@@ -179,7 +178,7 @@ function ReadOnlyCourse() {
                       </button>
                     )}
                     {selectedChapter.id !== chapters.length && (
-                      <button onClick={() => PrevNextButtonHandler("next")}>
+                      <button onClick={() => prevNextButtonHandler("next")}>
                         <div>Next Page</div>
                         <div>
                           <ArrowForward />

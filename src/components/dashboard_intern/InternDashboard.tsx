@@ -1,12 +1,21 @@
+import React from "react";
 import "./css/dashboard.css";
 import Sidebar from "./Sidebar";
 import PerformanceBoard from "./PerformanceBoard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { PeformanceData } from "../../types/types";
+import { getInternPerformanceData } from "../../services";
+import { setInternPerformanceData } from "../../actions/actions";
 
 function InternDashboard() {
   const user = useSelector((state: any) => state.currentUserReducer);
+  const userPerfData = useSelector((state: any) => {
+    console.log("global st", state);
+    return state.performanceDataReducer;
+  });
+
+  console.log("useperfdata", userPerfData);
   const [performancedata, setData] = useState<Record<
     string,
     PeformanceData
@@ -17,38 +26,35 @@ function InternDashboard() {
   const [githubUrl, setGithubUrl] = useState("");
   const [linkedInUrl, setLinkedInUrl] = useState("");
 
-  const response = useSelector((state: any) => state.performanceDataReducer);
-  // console.log(response);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const loadData = async () => {
       try {
-        if (response?.status === -1) {
+        const perfData =
+          userPerfData || (await getInternPerformanceData(user.accessToken));
+        dispatch(setInternPerformanceData(perfData));
+
+        if (perfData?.status === -1) {
           setAuthError(true);
-        } else if (response?.status === 0) {
+        } else if (perfData?.status === 0) {
           setNoInternFound(true);
         } else {
-          setLinkedInUrl(response?.data.linkedin);
-          setGithubUrl(response?.data.github);
-          setData(response?.data.performanceData);
+          setLinkedInUrl(perfData?.data.linkedin);
+          setGithubUrl(perfData?.data.github);
+          setData(perfData?.data.performanceData);
           setNoInternFound(false);
           setAuthError(false);
         }
-      } catch (e) {
-        console.log("error", e);
-      }
+      } catch (e) {}
     };
 
-    if (!user) {
-      setNoInternFound(false);
-    }
-
-    user && loadData();
-  }, [user, response]);
+    user && user.accessToken && loadData();
+  }, [user, userPerfData, dispatch]);
 
   if (showAuthError) {
     return (

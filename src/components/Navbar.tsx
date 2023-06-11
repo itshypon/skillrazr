@@ -11,7 +11,7 @@ export default function Navbar(props: any) {
   const { logout } = props;
   const [scrolled, setScrolled] = React.useState<boolean>(false);
   const dispatch = useDispatch();
-  var user = useSelector((state: any) => state.currentUserReducer);
+  let user = useSelector((state: any) => state.currentUserReducer);
 
   const [showModal, setShowModal] = React.useState(false);
 
@@ -65,25 +65,17 @@ export default function Navbar(props: any) {
         <div id="navlinks" className="navbar-nav-scroll flex flex-row">
           <ul className="navbar-nav flex items-center flex-row text-xs sm:text-base py-3">
             <li className="first:ml-0 nav-item ml-4 sm:ml-8 font-medium">
-              <a className="nav-link" href="/#features">
-                Features
-              </a>
+              <NavLink to={"/#features"}>Features</NavLink>
             </li>
             <li className="nav-item ml-4 sm:ml-8 font-medium">
-              <a className="nav-link" href="/#courses">
-                Courses
-              </a>
+              <NavLink to={"/#courses"}>Courses</NavLink>
             </li>
             <li className="nav-item ml-4 sm:ml-8 font-medium">
-              <a className="nav-link" href="/internship">
-                Internship
-              </a>
+              <NavLink to={"/internship"}>Internship</NavLink>
             </li>
 
             <li className="nav-item ml-4 sm:ml-8 font-medium">
-              <a className="nav-link" href="/#faqs">
-                FAQs
-              </a>
+              <NavLink to={"/#faqs"}>FAQs</NavLink>
             </li>
             {user === null ? (
               <li className="nav-item ml-4 sm:ml-8 font-medium">

@@ -51,19 +51,13 @@ function Sidebar(props: any) {
           const result = await getIntern(props.email);
           if (result.status === 1) {
             setIntern(result.data);
+            setToggle(result.data.profilePublic);
           }
         }
-      } catch (error) {
-        // Handle the error
-        console.log(error.message);
-      }
+      } catch (error) {}
     };
     _getIntern();
   }, [props.email, toggle]);
-
-  React.useEffect(() => {
-    setToggle(intern.profilePublic);
-  }, [intern.profilePublic]);
 
   const [showAlert, setShowAlert] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -71,6 +65,13 @@ function Sidebar(props: any) {
   const handleToggleChange = async () => {
     // check time passed
     const time = new Date(intern.profilePublicUpdatedOn).getTime() + 86400000; // 24hr;
+
+    console.log(
+      "time",
+      intern.profilePublicUpdatedOn,
+      new Date(intern.profilePublicUpdatedOn).getTime(),
+      intern
+    );
 
     if (new Date().getTime() > time || !intern.profilePublic) {
       setShowModal(true);
@@ -81,8 +82,10 @@ function Sidebar(props: any) {
 
   const handleProceed = async () => {
     setShowModal(false);
-    setToggle(!toggle);
-    await updateToggle(user?.accessToken, !toggle);
+    try {
+      await updateToggle(user?.accessToken, !toggle);
+      setToggle(!toggle);
+    } catch (e) {}
   };
 
   return (
@@ -108,7 +111,11 @@ function Sidebar(props: any) {
           <p className="font-bold">Performance Data</p>
           <div className="flex space-x-3 mt-3 justify-center items-center">
             <p className="text-[13px]">Hide</p>
-            <IOSSwitch checked={toggle} onChange={handleToggleChange} />
+            <IOSSwitch
+              checked={toggle}
+              onChange={handleToggleChange}
+              label=""
+            />
             <p className="text-[13px]">Show</p>
           </div>
         </div>

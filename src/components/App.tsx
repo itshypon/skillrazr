@@ -13,7 +13,6 @@ import QuizesList from "./QuizesListPage";
 import BlogsList from "./BlogsListPage";
 import NewQuiz from "./AddQuiz";
 import SummerCoursePage from "./EverGreenCoursePage";
-import { ParallaxProvider } from "react-scroll-parallax";
 import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -25,7 +24,7 @@ import Games from "../components/Games";
 import SelectedGame from "../components/SelectedGame";
 import { CSSEditor } from "./CSSEditor";
 import UserPage from "./UserPage";
-import { setCurrentUser, setInternPerformanceData } from "../actions/actions";
+import { setCurrentUser } from "../actions/actions";
 import { useDispatch } from "react-redux";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import thunk from "redux-thunk";
@@ -37,13 +36,12 @@ import EditCourse from "./AddCourse/EditCourse";
 import CourseReadOnly from "./AddCourse/CourseReadOnly";
 import TaskList from "./TaskList";
 import InternLandingPage from "./dashboard_intern/InternDashboard";
-import LandingPage from "./dashboard_intern/LandingPage";
+import LandingPage from "./dashboard_intern/InternLandingPage";
 import { createStore, applyMiddleware, compose } from "redux";
 import SelfPacedCoursesPage from "./SelfPacedCoursesPage";
 import SelfPacedCoursesDetailPage from "./SelfPacedCoursesDetailPage";
 import AllInterns from "./AllInternsDashboard/AllInterns";
 import PublicInternDetails from "./AllInternsDashboard/PublicInternDetails";
-import { getInternPerformanceData } from "../services";
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
@@ -170,9 +168,6 @@ function App(props: any) {
     onAuthStateChanged(auth, async (user: any) => {
       if (user) {
         dispatch(setCurrentUser(user));
-
-        const res = await getInternPerformanceData(user?.accessToken);
-        dispatch(setInternPerformanceData(res));
       }
     });
   }, [dispatch]);
@@ -188,115 +183,100 @@ function App(props: any) {
   };
 
   return (
-    <ParallaxProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout {...props} logout={logout} />}>
-            <Route index element={<HomePage {...props} />} />
-            <Route path="/about" element={<AboutPage {...props} />} />
-            <Route
-              path="/evergreen_courses"
-              element={<SummerCoursePage {...props} />}
-            />
-            <Route
-              path="/fullstackdev"
-              index
-              element={<TaskList {...props} />}
-            />
-            <Route
-              path="/courses/:id"
-              element={<CourseDetailsPage {...props} />}
-            />
-            <Route
-              path="/quizes/:id"
-              element={<QuizDetailsPage {...props} />}
-            />
-            <Route
-              path="/quizzes/:id"
-              element={<QuizDetailsPage {...props} />}
-            />
-            <Route path="/blogs/:id" element={<BlogDetailsPage {...props} />} />
-            <Route
-              path="/blogs"
-              element={<BlogsList {...props} className="p-48" />}
-            />
-            <Route path="/quizes/new" element={<NewQuiz />} />
-            <Route path="/quizzes/new" element={<NewQuiz />} />
-            <Route
-              path="/quizes"
-              element={<QuizesList {...props} className="p-48" />}
-            />
-            <Route
-              path="/quizzes"
-              element={<QuizesList {...props} className="p-48" />}
-            />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout {...props} logout={logout} />}>
+          <Route index element={<HomePage {...props} />} />
+          <Route path="/about" element={<AboutPage {...props} />} />
+          <Route
+            path="/evergreen_courses"
+            element={<SummerCoursePage {...props} />}
+          />
+          <Route path="/fullstackdev" index element={<TaskList {...props} />} />
+          <Route
+            path="/courses/:id"
+            element={<CourseDetailsPage {...props} />}
+          />
+          <Route path="/quizes/:id" element={<QuizDetailsPage {...props} />} />
+          <Route path="/quizzes/:id" element={<QuizDetailsPage {...props} />} />
+          <Route path="/blogs/:id" element={<BlogDetailsPage {...props} />} />
+          <Route
+            path="/blogs"
+            element={<BlogsList {...props} className="p-48" />}
+          />
+          <Route path="/quizes/new" element={<NewQuiz />} />
+          <Route path="/quizzes/new" element={<NewQuiz />} />
+          <Route
+            path="/quizes"
+            element={<QuizesList {...props} className="p-48" />}
+          />
+          <Route
+            path="/quizzes"
+            element={<QuizesList {...props} className="p-48" />}
+          />
 
-            <Route path="/internship" element={<LandingPage {...props} />} />
-            <Route
-              path="/dashboard"
-              element={<InternLandingPage {...props} />}
-            />
-            <Route path="/games/:id" element={<SelectedGame {...props} />} />
-            <Route path="/games" element={<Games {...props} />} />
+          <Route path="/internship" element={<LandingPage {...props} />} />
+          <Route path="/dashboard" element={<InternLandingPage {...props} />} />
+          <Route path="/games/:id" element={<SelectedGame {...props} />} />
+          <Route path="/games" element={<Games {...props} />} />
 
-            <Route
-              path="/flashcards/:id"
-              element={<FlashcardDetailsPage {...props} />}
-            />
-            <Route path="/account" element={<UserPage />} />
-          </Route>
+          <Route
+            path="/flashcards/:id"
+            element={<FlashcardDetailsPage {...props} />}
+          />
+          <Route path="/account" element={<UserPage />} />
+        </Route>
 
-          {/* below routes are without footer */}
-          <Route element={<LayoutWithoutFooter {...props} logout={logout} />}>
-            <Route
-              path="/jseditor"
-              element={
-                <div style={{ marginTop: "120px" }}>
-                  <Editor {...props} />
-                </div>
-              }
-            />
-            <Route
-              path="/csseditor"
-              element={
-                <div style={{ marginTop: "120px" }}>
-                  <CSSEditor />
-                </div>
-              }
-            />
-            <Route path="/addCourse" element={<AddCourse />} />
-            <Route path="/editCourse" element={<EditCourse />} />
-            <Route path="/readCourse" element={<CourseReadOnly />} />
-            <Route
-              path="/self_paced_courses/:id"
-              element={<SelfPacedCoursesDetailPage {...props} />}
-            />
+        {/* below routes are without footer */}
+        <Route element={<LayoutWithoutFooter {...props} logout={logout} />}>
+          <Route
+            path="/jseditor"
+            element={
+              <div style={{ marginTop: "120px" }}>
+                <Editor {...props} />
+              </div>
+            }
+          />
+          <Route
+            path="/csseditor"
+            element={
+              <div style={{ marginTop: "120px" }}>
+                <CSSEditor />
+              </div>
+            }
+          />
+          <Route path="/addCourse" element={<AddCourse />} />
+          <Route path="/editCourse" element={<EditCourse />} />
+          <Route path="/readCourse" element={<CourseReadOnly />} />
+          <Route
+            path="/self_paced_courses/:id"
+            element={<SelfPacedCoursesDetailPage {...props} />}
+          />
 
-            <Route
-              path="/self_paced_courses"
-              element={<SelfPacedCoursesPage {...props} />}
-            />
-            <Route
-              path="/allinterns"
-              element={
-                <div className="mt-[120px]">
-                  <AllInterns />
-                </div>
-              }
-            />
-            <Route
-              path="/allinterns/:email"
-              element={
-                <div className="mt-[80px] flex h-[100vh]">
-                  <PublicInternDetails />
-                </div>
-              }
-            />
-          </Route>
-        </Routes>
-        {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
-      </BrowserRouter>
-    </ParallaxProvider>
+          <Route
+            path="/self_paced_courses"
+            element={<SelfPacedCoursesPage {...props} />}
+          />
+          <Route
+            path="/allinterns"
+            element={
+              <div className="mt-[120px]">
+                <AllInterns />
+              </div>
+            }
+          />
+          <Route
+            path="/allinterns/:email"
+            element={
+              <div className="mt-[80px] flex h-[100vh]">
+                <PublicInternDetails />
+              </div>
+            }
+          />
+        </Route>
+      </Routes>
+      {days[dateMonth] ? <DaySnack messages={days[dateMonth]} /> : <Snack />}
+    </BrowserRouter>
   );
 }
 
