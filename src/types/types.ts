@@ -9,4 +9,12 @@ interface PeformanceData {
   notes: [];
 }
 
+export type Chapter = {
+  id: number;
+  title: string;
+  description: string;
+  content: string;
+  isLocked?: boolean;
+};
+
 export type { PeformanceData };

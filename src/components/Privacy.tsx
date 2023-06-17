@@ -1,10 +1,11 @@
+import React from "react";
 const PrivacyPolicy = () => {
   return (
     <div className="text-[black]">
       This policy, together with any other documents referred to in it, sets out
       the basis on which any personal data Genlent Technologies (OPC) Pvt. Ltd
-      (“<b>SkillRazr </b>”, “we”, “us”) collects from you, or that you provide to
-      us, will be processed by us. Please read the following carefully to
+      (“<b>SkillRazr </b>”, “we”, “us”) collects from you, or that you provide
+      to us, will be processed by us. Please read the following carefully to
       understand our views and practices regarding your personal data and how we
       will treat it. By visiting this website, you are accepting and consenting
       to the practices described in this policy.

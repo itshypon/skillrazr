@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./AddCourse.module.css";
 import courseTitle from "./assets/courseTitle.png";
 import QuillEditor from "./QuillEditor";
+import LockIcon from "@mui/icons-material/Lock";
+import { IOSSwitch } from "../SwitchToggle";
 import {
   Edit,
   Save,
@@ -12,18 +14,15 @@ import {
 } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import { saveCourse } from "../../services";
-
-export type Chapter = {
-  id: number;
-  title: string;
-  description: string;
-  content: string;
-};
+import type { Chapter } from "../../types/types";
 
 function AddCourse() {
   const [courseName, setCourseName] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
   const user = useSelector((state: any) => state.currentUserReducer);
+  const [chapterLocked, setChapterLocked] = useState<boolean | undefined>(
+    false
+  );
 
   const [chapters, setChapters] = useState<Chapter[]>([
     {
@@ -133,6 +132,19 @@ function AddCourse() {
     }
   };
 
+  const chapterLockHandler = (value: boolean) => {
+    if (selectedChapter) {
+      setChapters((prevChapters) =>
+        prevChapters.map((chapter) =>
+          chapter.id === selectedChapter.id
+            ? { ...chapter, isLocked: value }
+            : chapter
+        )
+      );
+    }
+    setChapterLocked(value);
+  };
+
   const validate = () => {
     return validateTitle() && validateDesc() && validateAllChapters();
   };
@@ -236,22 +248,21 @@ function AddCourse() {
           </div>
           <div className={styles.chapter}>
             <ul>
-              {chapters.map((val, _key) => {
+              {chapters.map((chapter, _key) => {
                 return (
                   <li
-                    key={val.id}
+                    key={chapter.id}
                     className={`relative ${styles.chapter_li} ${
-                      selectedChapter === val || selectedChapter.id === val.id
-                        ? styles.selected
-                        : ""
-                    } ${val.title === "" ? styles.chapterError : ""}`}
+                      selectedChapter.id === chapter.id ? styles.selected : ""
+                    } ${chapter.title === "" ? styles.chapterError : ""}`}
                     onClick={() => {
-                      selectedChapterHandler(val);
+                      selectedChapterHandler(chapter);
                     }}
                   >
-                    <span className="absolute left-[-20px]">{val.id}</span>
-                    <div>{val.title}</div>
-                    <div className="text-xs">{val.description}</div>
+                    <span className="absolute left-[-20px]">{_key + 1}</span>
+                    {chapter.isLocked && <LockIcon />}
+                    <div>{chapter.title}</div>
+                    <div className="text-xs">{chapter.description}</div>
                   </li>
                 );
               })}
@@ -289,6 +300,17 @@ function AddCourse() {
                   onChange={chapterDespriptionHandler}
                 />
               </div>
+            </div>
+            <div className="mx-4">
+              <LockIcon
+                className={`${styles.custom_lock} ${
+                  chapterLocked ? `${styles.locked}` : ""
+                }`}
+              />
+              <IOSSwitch
+                checked={chapterLocked}
+                onChange={(e) => chapterLockHandler(e.target.checked)}
+              />
             </div>
           </div>
           {selectedChapter && (

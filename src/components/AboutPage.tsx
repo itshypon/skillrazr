@@ -3,6 +3,8 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import styled from "@emotion/styled";
 import tukuna from "../assets/images/tukuna.jpeg";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const ImageContainer = styled("div")`
   img {
@@ -19,7 +21,7 @@ export default function About(props: any) {
   return (
     <div
       className={
-        "mt-24 px-6 pt-20 sm:pt-[80px] flex flex-col items-center flex-wrap justify-between"
+        "text-xl mt-24 px-6 pt-20 sm:pt-[80px] flex flex-col items-center flex-wrap justify-between"
       }
     >
       <div
@@ -61,9 +63,20 @@ export default function About(props: any) {
           </div>
 
           <div>
-            <span className="">10+</span> years in tech industry,
-            mostly as a full stack JavaScript Software Engineer,{" "}
+            <span className="">10+</span> years in tech industry, mostly as a
+            full stack JavaScript Software Engineer,{" "}
             <span className="">5+</span> years in teaching.
+            <div className="mt-2">
+              <NavLink
+                to="/profiles/tukuna"
+                className="border-b border-blue-300 mt-2"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                View training profile
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
@@ -84,7 +97,9 @@ export default function About(props: any) {
           </div>
           <div className="text-1xl py-2">
             <PhoneIcon />
-            <span className="px-2"><a href="tel:+918297074155">8297074155</a></span>
+            <span className="px-2">
+              <a href="tel:+918297074155">8297074155</a>
+            </span>
           </div>
         </div>
       </div>

@@ -6,13 +6,8 @@ import { getCourses } from "../../services";
 import { ArrowBack, ArrowForward, Menu, Close } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
-
-export type Chapter = {
-  id: number;
-  title: string;
-  description: string;
-  content: string;
-};
+import LockIcon from "@mui/icons-material/Lock";
+import type { Chapter } from "../../types/types";
 
 function ReadOnlyCourse() {
   const [courseName, setCourseName] = useState("ReactJs");
@@ -69,6 +64,7 @@ function ReadOnlyCourse() {
     setSelectedChapterName(chapter.title);
     setSelectedChapterDescription(chapter.description);
     setShowChapters(!showChapters);
+    window.scrollTo(0, 0);
   };
 
   const prevNextButtonHandler = (btn: string) => {
@@ -120,33 +116,34 @@ function ReadOnlyCourse() {
                   </div>
                 </div>
               </div>
-              <div className="flex">
+              <div className="flex h-[calc(100vh-175px)]">
                 <div
                   className={`${styles.side_navbar} ${
                     !showChapters ? "" : styles.show_side_navbar
                   }`}
                 >
                   <div className={styles.chapter}>
-                    <ul>
-                      {chapters.map((val, key) => {
+                    <ul className="pb-12">
+                      {chapters.map((chapter, key) => {
                         return (
                           <li
-                            key={val.id}
+                            key={chapter.id}
                             className={`relative ${styles.chapter_li} ${
-                              selectedChapter === val ||
-                              selectedChapter.id === val.id
+                              selectedChapter.id === chapter.id
                                 ? styles.selected
                                 : ""
                             }`}
                             onClick={() => {
-                              selectedChapterHandler(val);
+                              selectedChapterHandler(chapter);
                             }}
                           >
                             <span className="absolute left-[-20px]">
-                              {val.id}
+                              {key + 1}
                             </span>
-                            <div>{val.title}</div>
-                            <div className="text-xs">{val.description}</div>
+                            {chapter.isLocked && <LockIcon />}
+
+                            <div>{chapter.title}</div>
+                            <div className="text-xs">{chapter.description}</div>
                           </li>
                         );
                       })}

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "quill/dist/quill.snow.css";
@@ -9,6 +10,7 @@ type QuillEditorProps = {
     id: number;
     title: string;
     content: string;
+    isLocked?: boolean;
   };
   readOnly?: boolean;
   chapterSaveHandler: (content: string) => void;
@@ -114,7 +116,11 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
           className="quill-preview"
           theme="snow"
           readOnly={true}
-          value={editorContent}
+          value={
+            chapter.isLocked
+              ? "<h3>You need to purchase the course to get access to this chapter!<h3>"
+              : editorContent
+          }
           modules={{ toolbar: "#toolbar" }}
           formats={formats}
         />

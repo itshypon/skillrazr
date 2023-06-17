@@ -95,3 +95,11 @@ functions:config:get > .runtimeconfig.json
     body: JSON.stringify({docIds: ["jatinsharma@gmail1.com"], date: 1684207360036}),
   });
 };`
+
+# Precommit-hooks using husky
+
+We are running lint and unit tests before code is committed. When linking or test task fails the commit is prevented to avoid broken code push to remote.
+
+# To setup precommit- hooks run
+
+`npm run prepare` This will register husky hooks to your local github. For details [Husky](https://www.npmjs.com/package/husky)

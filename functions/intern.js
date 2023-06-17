@@ -222,4 +222,44 @@ app.post("/getIntern", async (req, res) => {
   }
 });
 
+app.post("/postScores", async (req, res) => {
+  if (req.header("skillrazr-sub-app") !== env.INTERN_API_HEADER_KEY_VALUE) {
+    return res.status(401).json({ status: 0, error: "you are not authorised" });
+  }
+
+  const db = admin.firestore();
+  const { scores, email } = req.body;
+
+  const dateObj = new Date();
+
+  try {
+    const monthYear = `${getMonthName(
+      dateObj.getMonth()
+    )}_${dateObj.getFullYear()}`;
+
+    const internRef = db.collection("interns").doc(email);
+    const internDoc = await internRef.get();
+    const performanceData = internDoc.data().performanceData;
+
+    if (!performanceData[monthYear]) {
+      performanceData[monthYear] = {};
+    }
+    const scoresObj = {
+      code_reviews: scores.codeReview,
+      develpoment: scores.development,
+      learning: scores.learning,
+      testing: scores.testing,
+    };
+
+    if (!performanceData[monthYear].scores) {
+      performanceData[monthYear].scores = scoresObj;
+      await internRef.update({ performanceData });
+      res.status(200).json({ status: 1, data: performanceData });
+    }
+    res.status(200).json({ status: 0 });
+  } catch (error) {
+    return res.status(500).json({ status: -1, error });
+  }
+});
+
 exports.api = functions.region("asia-south1").https.onRequest(app);

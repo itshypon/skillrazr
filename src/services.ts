@@ -1,4 +1,4 @@
-import type { Chapter } from "../src/components/AddCourse/AddCourse";
+import type { Chapter } from "../src/types/types";
 
 export const getQuizScrore = async (quizId: string, quizSubmission: any) => {
   return await fetch(

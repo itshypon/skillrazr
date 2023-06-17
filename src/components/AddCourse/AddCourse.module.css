@@ -140,13 +140,9 @@
 }
 
 .chapter_name {
-  position: relative;
-  left: 30px;
-}
-
-.chapter_name {
   display: flex;
   align-items: center;
+  margin-left: 24px;
 }
 
 .chapter_name img {
@@ -270,4 +266,16 @@
     width: 180px;
     height: 60px;
   }
+}
+
+.custom_lock {
+  z-index: 1;
+  position: absolute;
+  left: -9px;
+  top: 2px;
+  font-size: 20px !important;
+}
+
+.locked {
+  left: 9px;
 }

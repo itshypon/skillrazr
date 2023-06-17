@@ -12,19 +12,18 @@ import {
 import { saveCourse, getCourses } from "../../services";
 import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
-
-export type Chapter = {
-  id: number;
-  title: string;
-  description: string;
-  content: string;
-};
+import LockIcon from "@mui/icons-material/Lock";
+import { IOSSwitch } from "../SwitchToggle";
+import type { Chapter } from "../../types/types";
 
 function EditCourse() {
   const [courseName, setCourseName] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
   const [loading, setLoading] = useState(true);
   const user = useSelector((state: any) => state.currentUserReducer);
+  const [chapterLocked, setChapterLocked] = useState<boolean | undefined>(
+    false
+  );
 
   const [chapters, setChapters] = useState<Chapter[]>([
     {
@@ -70,6 +69,7 @@ function EditCourse() {
     setSelectedChapter(chapter);
     setSelectedChapterName(chapter.title);
     setSelectedChapterDescription(chapter.description);
+    setChapterLocked(chapter.isLocked);
   };
 
   const PrevNextButtonHandler = (btn: string) => {
@@ -95,6 +95,15 @@ function EditCourse() {
       });
       if (response.status === 1) {
         alert("course saved successfully");
+      }
+      if (
+        response.status === -1 &&
+        response.error &&
+        response.error.code === "auth/id-token-expired"
+      ) {
+        alert(
+          "Course save failed! You need to login again to be able to save the course."
+        );
       }
     } catch (e) {
       console.log("error", e);
@@ -151,6 +160,19 @@ function EditCourse() {
     }
   };
 
+  const chapterLockHandler = (value: boolean) => {
+    if (selectedChapter) {
+      setChapters((prevChapters) =>
+        prevChapters.map((chapter) =>
+          chapter.id === selectedChapter.id
+            ? { ...chapter, isLocked: value }
+            : chapter
+        )
+      );
+    }
+    setChapterLocked(value);
+  };
+
   return (
     <div className="m-0 pt-24 sm:pt-20">
       {loading ? (
@@ -199,23 +221,25 @@ function EditCourse() {
               </div>
               <div className={styles.chapter}>
                 <ul>
-                  {chapters.map((val, key) => {
+                  {chapters.map((chapter, key) => {
                     return (
                       <li
-                        key={val.id}
+                        key={chapter.id}
                         className={`relative ${styles.chapter_li} ${
-                          selectedChapter === val ||
-                          selectedChapter.id === val.id
+                          selectedChapter.id === chapter.id
                             ? styles.selected
                             : ""
                         }`}
                         onClick={() => {
-                          selectedChapterHandler(val);
+                          selectedChapterHandler(chapter);
                         }}
                       >
-                        <span className="absolute left-[-20px]">{val.id}</span>
-                        <div>{val.title}</div>
-                        <div className="text-xs">{val.description}</div>
+                        <span className="absolute left-[-20px]">
+                          {chapter.id}
+                        </span>
+                        {chapter.isLocked && <LockIcon />}
+                        <div>{chapter.title}</div>
+                        <div className="text-xs">{chapter.description}</div>
                       </li>
                     );
                   })}
@@ -225,7 +249,7 @@ function EditCourse() {
             <div className={""}>
               <div className="flex items-center mb-8 mt-4">
                 <Edit className="h-[32px] ml-8" />
-                <div>
+                <div className="flex flex-col">
                   <div className={styles.chapter_name}>
                     <input
                       type="text"
@@ -246,6 +270,17 @@ function EditCourse() {
                       onChange={chapterDespriptionHandler}
                     />
                   </div>
+                </div>
+                <div className="mx-4">
+                  <LockIcon
+                    className={`${styles.custom_lock} ${
+                      chapterLocked ? `${styles.locked}` : ""
+                    }`}
+                  />
+                  <IOSSwitch
+                    checked={chapterLocked}
+                    onChange={(e) => chapterLockHandler(e.target.checked)}
+                  />
                 </div>
               </div>
               {selectedChapter && (

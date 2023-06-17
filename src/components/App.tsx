@@ -42,6 +42,7 @@ import SelfPacedCoursesPage from "./SelfPacedCoursesPage";
 import SelfPacedCoursesDetailPage from "./SelfPacedCoursesDetailPage";
 import AllInterns from "./AllInternsDashboard/AllInterns";
 import PublicInternDetails from "./AllInternsDashboard/PublicInternDetails";
+import Profiles from "./Profiles";
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
@@ -270,6 +271,14 @@ function App(props: any) {
             element={
               <div className="mt-[80px] flex h-[100vh]">
                 <PublicInternDetails />
+              </div>
+            }
+          />
+          <Route
+            path="/profiles/tukuna"
+            element={
+              <div className="my-[80px] flex h-[90vh]">
+                <Profiles />
               </div>
             }
           />
